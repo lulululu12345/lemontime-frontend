@@ -29,29 +29,6 @@ const TimerContainer = ({ pomodoro, shortBreak, longBreak }) => {
   const [time, setTime] = useState(currentTask.duration)
   const [start, setStart] = useState(false)
   const [completed, setCompleted] = useState(0)
-  // Effect hook to stop countdown upon reaching zero
-  useEffect(() => {
-    if (time === 0) {
-      setStart(false)
-    }
-    if (time === 0 && currentTask.name === 'pomodoro') {
-      setCompleted(prev => prev + 1)
-    }
-  }, [time, currentTask])
-  // Effect hook for the clock, updated by start state
-  useEffect(() => {
-    let interval = null
-
-    if (start) {
-      interval = setInterval(() => {
-        setTime(prevTime => prevTime - 10)
-      }, 10)
-    } else {
-      clearInterval(interval)
-    }
-
-    return () => clearInterval(interval)
-  }, [start])
 
   return (
     <div>
@@ -63,11 +40,14 @@ const TimerContainer = ({ pomodoro, shortBreak, longBreak }) => {
         shortBreak={shortBreak}
         longBreak={longBreak}
       />
-      <h2>
-        <span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-        <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
-        {/* <span>{('0' + (time / 10) % 1000).slice(-2)}</span> */}
-      </h2>
+      <Timer 
+        time={time}
+        setTime={setTime}
+        start={start}
+        setStart={setStart}
+        setCompleted={setCompleted}
+        currentTask={currentTask}
+      />
       <div>
         <button onClick={() => setStart(true)}>Start</button>
         <button onClick={() => setStart(false)}>Stop</button>
@@ -87,6 +67,43 @@ const TaskButtons = ({ setStart, setTime, setCurrentTask, pomodoro, shortBreak, 
       <button onClick={() => {setStart(false); setTime(shortBreak.duration); setCurrentTask(shortBreak);}}>Short Break</button>
       <button onClick={() => {setStart(false); setTime(longBreak.duration); setCurrentTask(longBreak);}}>Long Break</button>
     </div>
+  )
+}
+
+const Timer = ({ time, setTime, start, setStart, setCompleted, currentTask }) => {
+    // Effect hook to stop countdown upon reaching zero
+    useEffect(() => {
+      if (time === 0) {
+        setStart(false)
+      }
+      if (time === 0 && currentTask.name === 'pomodoro') {
+        setCompleted(prev => prev + 1)
+      }
+    }, [time, currentTask])
+
+    // Effect hook for the clock, updated by start state
+    useEffect(() => {
+      let interval = null
+  
+      if (start) {
+        interval = setInterval(() => {
+          setTime(prevTime => prevTime - 10)
+        }, 10)
+      } else {
+        clearInterval(interval)
+      }
+  
+      return () => clearInterval(interval)
+    }, [start])
+
+  return (
+    <>
+      <h2>
+          <span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+          <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
+          {/* <span>{('0' + (time / 10) % 1000).slice(-2)}</span> */}
+      </h2>
+    </>
   )
 }
 
