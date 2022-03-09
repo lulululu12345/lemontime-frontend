@@ -51,8 +51,8 @@ const App = () => {
         {/* <span>{('0' + (time / 10) % 1000).slice(-2)}</span> */}
       </h2>
       <div>
-        <button onClick={() => setStart(true)}>Play</button>
-        <button onClick={() => setStart(false)}>Pause</button>
+        <button onClick={() => setStart(true)}>Start</button>
+        <button onClick={() => setStart(false)}>Stop</button>
         <button onClick={() => {setTime(currentTask.duration); setStart(false);}}>Reset</button>
       </div>
       <div>
