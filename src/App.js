@@ -7,12 +7,29 @@ const App = () => {
   const pomodoro = { name: 'pomodoro', duration: 1500000 }
   const shortBreak = { name: 'shortBreak' , duration: 300000 }
   const longBreak = { name: 'longBreak', duration: 600000}
+
+  return (
+    <div className='App'>
+      <h1>Timer</h1>
+      <TimerContainer 
+        pomodoro={pomodoro}
+        shortBreak={shortBreak}
+        longBreak={longBreak}
+      />
+      
+    </div>
+  )
+}
+
+
+
+const TimerContainer = ({ pomodoro, shortBreak, longBreak }) => {
   // State hooks
   const [currentTask, setCurrentTask] = useState(pomodoro)
   const [time, setTime] = useState(currentTask.duration)
   const [start, setStart] = useState(false)
   const [completed, setCompleted] = useState(0)
-
+  // Effect hook to stop countdown upon reaching zero
   useEffect(() => {
     if (time === 0) {
       setStart(false)
@@ -21,7 +38,7 @@ const App = () => {
       setCompleted(prev => prev + 1)
     }
   }, [time, currentTask])
-
+  // Effect hook for the clock, updated by start state
   useEffect(() => {
     let interval = null
 
@@ -36,10 +53,8 @@ const App = () => {
     return () => clearInterval(interval)
   }, [start])
 
-
   return (
-    <div className='App'>
-      <h1>Timer</h1>
+    <div>
       <div>
         <button onClick={() => {setStart(false); setTime(pomodoro.duration); setCurrentTask(pomodoro);}}>Pomodoro</button>
         <button onClick={() => {setStart(false); setTime(shortBreak.duration); setCurrentTask(shortBreak);}}>Short Break</button>
