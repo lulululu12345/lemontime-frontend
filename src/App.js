@@ -48,11 +48,11 @@ const TimerContainer = ({ pomodoro, shortBreak, longBreak }) => {
         setCompleted={setCompleted}
         currentTask={currentTask}
       />
-      <div>
-        <button onClick={() => setStart(true)}>Start</button>
-        <button onClick={() => setStart(false)}>Stop</button>
-        <button onClick={() => {setTime(currentTask.duration); setStart(false);}}>Reset</button>
-      </div>
+      <TransportButtons 
+        setStart={setStart}
+        setTime={setTime}
+        currentTask={currentTask}
+      />
       <div>
         {`Completed: ${completed}`}
       </div>
@@ -104,6 +104,16 @@ const Timer = ({ time, setTime, start, setStart, setCompleted, currentTask }) =>
           {/* <span>{('0' + (time / 10) % 1000).slice(-2)}</span> */}
       </h2>
     </>
+  )
+}
+
+const TransportButtons = ({ setStart, setTime, currentTask }) => {
+  return (
+    <div>
+      <button onClick={() => setStart(true)}>Start</button>
+      <button onClick={() => setStart(false)}>Stop</button>
+      <button onClick={() => {setTime(currentTask.duration); setStart(false);}}>Reset</button>
+    </div>
   )
 }
 
