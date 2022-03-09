@@ -55,11 +55,14 @@ const TimerContainer = ({ pomodoro, shortBreak, longBreak }) => {
 
   return (
     <div>
-      <div>
-        <button onClick={() => {setStart(false); setTime(pomodoro.duration); setCurrentTask(pomodoro);}}>Pomodoro</button>
-        <button onClick={() => {setStart(false); setTime(shortBreak.duration); setCurrentTask(shortBreak);}}>Short Break</button>
-        <button onClick={() => {setStart(false); setTime(longBreak.duration); setCurrentTask(longBreak);}}>Long Break</button>
-      </div>
+      <TaskButtons 
+        setStart={setStart}
+        setTime={setTime}
+        setCurrentTask={setCurrentTask}
+        pomodoro={pomodoro}
+        shortBreak={shortBreak}
+        longBreak={longBreak}
+      />
       <h2>
         <span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
         <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
@@ -73,6 +76,16 @@ const TimerContainer = ({ pomodoro, shortBreak, longBreak }) => {
       <div>
         {`Completed: ${completed}`}
       </div>
+    </div>
+  )
+}
+
+const TaskButtons = ({ setStart, setTime, setCurrentTask, pomodoro, shortBreak, longBreak }) => {
+  return (
+    <div>
+      <button onClick={() => {setStart(false); setTime(pomodoro.duration); setCurrentTask(pomodoro);}}>Pomodoro</button>
+      <button onClick={() => {setStart(false); setTime(shortBreak.duration); setCurrentTask(shortBreak);}}>Short Break</button>
+      <button onClick={() => {setStart(false); setTime(longBreak.duration); setCurrentTask(longBreak);}}>Long Break</button>
     </div>
   )
 }
