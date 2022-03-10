@@ -2,21 +2,89 @@ import React, { useState, useEffect } from 'react'
 
 const App = () => {
   // Phony Database
-  const todo = ['taskA', 'taskB', 'taskC']
+  const tasks = ['taskA', 'taskB', 'taskC']
   // Duration in milliseconds for different tasks
   const pomodoro = { name: 'pomodoro', duration: 1500000 }
   const shortBreak = { name: 'shortBreak' , duration: 300000 }
   const longBreak = { name: 'longBreak', duration: 600000}
-
+  
+  
+  
+  
   return (
     <div className='App'>
+      <span>
+      <Settings 
+        pomodoro={pomodoro}
+        shortBreak={shortBreak}
+        longBreak={longBreak}
+      />
+      </span>
+      <span>
+      </span>
       <h1>Timer</h1>
       <TimerContainer 
         pomodoro={pomodoro}
         shortBreak={shortBreak}
         longBreak={longBreak}
-      />
-      
+        />
+    </div>
+  )
+}
+
+const Settings = ({ pomodoro, shortBreak, longBreak }) => {
+  const [showSettings, setShowSettings] = useState(false)
+  
+  const onClickSettings = () => {
+    setShowSettings(!showSettings)
+  }
+
+  if (showSettings === false) {
+    return (
+      <button onClick={onClickSettings}>Settings</button>
+    )
+  }
+  if (showSettings === true) {
+    return (
+      <div>
+        <h2>Settings</h2>
+        <div>
+          <h3>Timer</h3>
+          <ul style={{listStyleType: 'none'}}>
+            <li>{`Pomodoro ${pomodoro.duration / 60000}:00`}</li>
+            <li>{`Short Break ${shortBreak.duration / 60000}:00`}</li>
+            <li>{`Long Break ${longBreak.duration / 60000}:00`}</li>
+          </ul>
+        </div>
+        <button onClick={onClickSettings}>Close</button>
+      </div>
+    )
+  }
+}
+
+const Tasks = (props) => {
+  // State hooks
+  const [showTasks, setShowTasks] = useState(false)
+  
+  // Toggle task display
+  const onClickTasks = () => {
+    setShowTasks(!showTasks)
+  }
+
+  if (showTasks === false) {
+    return (
+      <button onClick={onClickTasks}>Tasks</button>
+      )
+    }
+    return (
+      <div>
+      <div>
+        <h3>Tasks</h3>
+        <ul style={{listStyleType: 'none'}}>
+          {props.tasks.map(task => <li key={task}>{task}</li>)}
+        </ul>
+      </div>
+      <button onClick={onClickTasks}>Close</button>
     </div>
   )
 }
