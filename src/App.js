@@ -21,8 +21,6 @@ const App = () => {
   )
 }
 
-
-
 const TimerContainer = ({ pomodoro, shortBreak, longBreak }) => {
   // State hooks
   const [currentTask, setCurrentTask] = useState(pomodoro)
