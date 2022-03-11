@@ -12,4 +12,6 @@ Build out the components with basic html/javascript before styling. Pick out fon
 
 1 - finish building settings component including auto run feature and ability to customize study/break durations
 
+1.2 - figure out popup window style for settings
+
 2 - figure out the best way to add audio

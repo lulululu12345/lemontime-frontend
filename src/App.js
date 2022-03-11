@@ -28,13 +28,12 @@ const App = () => {
         return this.durMins * 60000
       } 
     })
-  // const pomodoro = { name: 'pomodoro', duration: 1500000 }
-  // const shortBreak = { name: 'shortBreak' , duration: 300000 }
-  // const longBreak = { name: 'longBreak', duration: 600000}
-  
-  
-  
-  
+
+  const [currentTask, setCurrentTask] = useState(pomodoro)
+  const [time, setTime] = useState(currentTask.durMillis)
+  const [start, setStart] = useState(false)
+
+
   return (
     <div className='App'>
       <span>
@@ -45,12 +44,24 @@ const App = () => {
         setShortBreak={setShortBreak}
         longBreak={longBreak}
         setLongBreak={setLongBreak}
+        currentTask={currentTask}
+        setCurrentTask={setCurrentTask}
+        time={time}
+        setTime={setTime}
+        start={start}
+        setStart={setStart}
       />
       </span>
       <span>
       </span>
       <h1>Timer</h1>
       <TimerContainer 
+        start={start}
+        setStart={setStart}
+        currentTask={currentTask}
+        setCurrentTask={setCurrentTask}
+        time={time}
+        setTime={setTime}
         pomodoro={pomodoro}
         shortBreak={shortBreak}
         longBreak={longBreak}
@@ -59,46 +70,68 @@ const App = () => {
   )
 }
 
-const Settings = ({ pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak }) => {
+const Settings = ({ start, setStart, currentTask, setCurrentTask, time, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak }) => {
   // State hooks
   const [showSettings, setShowSettings] = useState(false)
+
   // Handler function for settings button. Used to toggle display of settings popup window.
   const onClickSettings = () => {
     setShowSettings(!showSettings)
   }
-  // Handler for settings form submission.
-  const onSubmitSettings = () => {
-
-  }
-
+  
+  // Handler functions for changing slider values. Updates value stored in respective task's state object.
   const handlePomodoroChange = (event) => {
+    const eventValue = Number(event.target.value)
     setPomodoro({ 
       name: 'pomodoro', 
-      durMins: event.target.value, 
+      durMins: eventValue, 
       get durMillis(){
         return this.durMins * 60000
       } 
     })
   }
   const handleShortBreakChange = (event) => {
+    const eventValue = Number(event.target.value)
     setShortBreak({ 
       name: 'shortBreak', 
-      durMins: event.target.value, 
+      durMins: eventValue, 
       get durMillis(){
         return this.durMins * 60000
       } 
     })
   }
   const handleLongBreakChange = (event) => {
+    const eventValue = Number(event.target.value)
     setLongBreak({ 
       name: 'longBreak', 
-      durMins: event.target.value, 
+      durMins: eventValue, 
       get durMillis(){
         return this.durMins * 60000
       } 
     })
   }
 
+  // Handler for settings form submission.
+  const onSubmitSettings = (event) => {
+    event.preventDefault()
+
+    setStart(false)
+
+    if (currentTask.name === 'pomodoro') {
+      setCurrentTask(pomodoro)
+      setTime(pomodoro.durMillis)
+    }
+    if (currentTask.name === 'shortBreak') {
+      setCurrentTask(shortBreak)
+      setTime(shortBreak.durMillis)
+    }
+    if (currentTask.name === 'longBreak') {
+      setCurrentTask(longBreak)
+      setTime(longBreak.durMillis)
+    }
+    
+    setShowSettings(!showSettings)
+  }
 
   if (showSettings === false) {
     return (
@@ -121,45 +154,17 @@ const Settings = ({ pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak,
           <label>Long Break: {longBreak.durMins}</label>
           <br/>
           <input type='range' min='10' max='20' value={longBreak.durMins} onChange={handleLongBreakChange} />
+          <br/>
+          <input type='submit' value='Save' />
         </form>
-        <button onClick={onClickSettings}>Close</button>
+          <button onClick={onClickSettings}>Close</button>
       </div>
     )
   }
 }
 
-const Tasks = (props) => {
+const TimerContainer = ({ start, setStart, currentTask, setCurrentTask, time, setTime, pomodoro, shortBreak, longBreak }) => {
   // State hooks
-  const [showTasks, setShowTasks] = useState(false)
-  
-  // Toggle task display
-  const onClickTasks = () => {
-    setShowTasks(!showTasks)
-  }
-
-  if (showTasks === false) {
-    return (
-      <button onClick={onClickTasks}>Tasks</button>
-      )
-    }
-    return (
-      <div>
-      <div>
-        <h3>Tasks</h3>
-        <ul style={{listStyleType: 'none'}}>
-          {props.tasks.map(task => <li key={task}>{task}</li>)}
-        </ul>
-      </div>
-      <button onClick={onClickTasks}>Close</button>
-    </div>
-  )
-}
-
-const TimerContainer = ({ pomodoro, shortBreak, longBreak }) => {
-  // State hooks
-  const [currentTask, setCurrentTask] = useState(pomodoro)
-  const [time, setTime] = useState(currentTask.durMillis)
-  const [start, setStart] = useState(false)
   const [completed, setCompleted] = useState(0)
 
   return (
@@ -203,30 +208,30 @@ const TaskButtons = ({ setStart, setTime, setCurrentTask, pomodoro, shortBreak, 
 }
 
 const Timer = ({ time, setTime, start, setStart, setCompleted, currentTask }) => {
-    // Effect hook to stop countdown upon reaching zero
-    useEffect(() => {
-      if (time === 0) {
-        setStart(false)
-      }
-      if (time === 0 && currentTask.name === 'pomodoro') {
-        setCompleted(prev => prev + 1)
-      }
-    }, [time, currentTask])
+  // Effect hook to stop countdown upon reaching zero
+  useEffect(() => {
+    if (time === 0) {
+      setStart(false)
+    }
+    if (time === 0 && currentTask.name === 'pomodoro') {
+      setCompleted(prev => prev + 1)
+    }
+  }, [time, currentTask])
 
-    // Effect hook for the clock, updated by start state
-    useEffect(() => {
-      let interval = null
-  
-      if (start) {
-        interval = setInterval(() => {
-          setTime(prevTime => prevTime - 10)
-        }, 10)
-      } else {
-        clearInterval(interval)
-      }
-  
-      return () => clearInterval(interval)
-    }, [start])
+  // Effect hook for the decrementing timer every setInterval
+  useEffect(() => {
+    let interval = null
+
+    if (start) {
+      interval = setInterval(() => {
+        setTime(prevTime => prevTime - 10)
+      }, 10)
+    } else {
+      clearInterval(interval)
+    }
+
+    return () => clearInterval(interval)
+  }, [start])
 
   return (
     <>
