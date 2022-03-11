@@ -4,9 +4,33 @@ const App = () => {
   // Phony Database
   const tasks = ['taskA', 'taskB', 'taskC']
   // Duration in milliseconds for different tasks
-  const pomodoro = { name: 'pomodoro', duration: 1500000 }
-  const shortBreak = { name: 'shortBreak' , duration: 300000 }
-  const longBreak = { name: 'longBreak', duration: 600000}
+  const [pomodoro, setPomodoro] = 
+    useState({ 
+      name: 'pomodoro', 
+      durMins: 25, 
+      get durMillis(){
+        return this.durMins * 60000
+      } 
+    })
+  const [shortBreak, setShortBreak] = 
+    useState({ 
+      name: 'shortBreak', 
+      durMins: 5, 
+      get durMillis(){
+        return this.durMins * 60000
+      } 
+    })
+  const [longBreak, setLongBreak] = 
+    useState({ 
+      name: 'longBreak', 
+      durMins: 10, 
+      get durMillis(){
+        return this.durMins * 60000
+      } 
+    })
+  // const pomodoro = { name: 'pomodoro', duration: 1500000 }
+  // const shortBreak = { name: 'shortBreak' , duration: 300000 }
+  // const longBreak = { name: 'longBreak', duration: 600000}
   
   
   
@@ -16,8 +40,11 @@ const App = () => {
       <span>
       <Settings 
         pomodoro={pomodoro}
+        setPomodoro={setPomodoro}
         shortBreak={shortBreak}
+        setShortBreak={setShortBreak}
         longBreak={longBreak}
+        setLongBreak={setLongBreak}
       />
       </span>
       <span>
@@ -32,12 +59,46 @@ const App = () => {
   )
 }
 
-const Settings = ({ pomodoro, shortBreak, longBreak }) => {
+const Settings = ({ pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak }) => {
+  // State hooks
   const [showSettings, setShowSettings] = useState(false)
-  
+  // Handler function for settings button. Used to toggle display of settings popup window.
   const onClickSettings = () => {
     setShowSettings(!showSettings)
   }
+  // Handler for settings form submission.
+  const onSubmitSettings = () => {
+
+  }
+
+  const handlePomodoroChange = (event) => {
+    setPomodoro({ 
+      name: 'pomodoro', 
+      durMins: event.target.value, 
+      get durMillis(){
+        return this.durMins * 60000
+      } 
+    })
+  }
+  const handleShortBreakChange = (event) => {
+    setShortBreak({ 
+      name: 'shortBreak', 
+      durMins: event.target.value, 
+      get durMillis(){
+        return this.durMins * 60000
+      } 
+    })
+  }
+  const handleLongBreakChange = (event) => {
+    setLongBreak({ 
+      name: 'longBreak', 
+      durMins: event.target.value, 
+      get durMillis(){
+        return this.durMins * 60000
+      } 
+    })
+  }
+
 
   if (showSettings === false) {
     return (
@@ -48,14 +109,19 @@ const Settings = ({ pomodoro, shortBreak, longBreak }) => {
     return (
       <div>
         <h2>Settings</h2>
-        <div>
-          <h3>Timer</h3>
-          <ul style={{listStyleType: 'none'}}>
-            <li>{`Pomodoro ${pomodoro.duration / 60000}:00`}</li>
-            <li>{`Short Break ${shortBreak.duration / 60000}:00`}</li>
-            <li>{`Long Break ${longBreak.duration / 60000}:00`}</li>
-          </ul>
-        </div>
+        <form onSubmit={onSubmitSettings}>
+          <label>Pomodoro: {pomodoro.durMins}</label>
+          <br/>
+          <input type='range' min='25' max='50' value={pomodoro.durMins} onChange={handlePomodoroChange} />
+          <br/>
+          <label>Short Break: {shortBreak.durMins}</label>
+          <br/>
+          <input type='range' min='5' max='10' value={shortBreak.durMins} onChange={handleShortBreakChange} />
+          <br/>
+          <label>Long Break: {longBreak.durMins}</label>
+          <br/>
+          <input type='range' min='10' max='20' value={longBreak.durMins} onChange={handleLongBreakChange} />
+        </form>
         <button onClick={onClickSettings}>Close</button>
       </div>
     )
@@ -92,7 +158,7 @@ const Tasks = (props) => {
 const TimerContainer = ({ pomodoro, shortBreak, longBreak }) => {
   // State hooks
   const [currentTask, setCurrentTask] = useState(pomodoro)
-  const [time, setTime] = useState(currentTask.duration)
+  const [time, setTime] = useState(currentTask.durMillis)
   const [start, setStart] = useState(false)
   const [completed, setCompleted] = useState(0)
 
@@ -129,9 +195,9 @@ const TimerContainer = ({ pomodoro, shortBreak, longBreak }) => {
 const TaskButtons = ({ setStart, setTime, setCurrentTask, pomodoro, shortBreak, longBreak }) => {
   return (
     <div>
-      <button onClick={() => {setStart(false); setTime(pomodoro.duration); setCurrentTask(pomodoro);}}>Pomodoro</button>
-      <button onClick={() => {setStart(false); setTime(shortBreak.duration); setCurrentTask(shortBreak);}}>Short Break</button>
-      <button onClick={() => {setStart(false); setTime(longBreak.duration); setCurrentTask(longBreak);}}>Long Break</button>
+      <button onClick={() => {setStart(false); setTime(pomodoro.durMillis); setCurrentTask(pomodoro);}}>Pomodoro</button>
+      <button onClick={() => {setStart(false); setTime(shortBreak.durMillis); setCurrentTask(shortBreak);}}>Short Break</button>
+      <button onClick={() => {setStart(false); setTime(longBreak.durMillis); setCurrentTask(longBreak);}}>Long Break</button>
     </div>
   )
 }
@@ -178,7 +244,7 @@ const TransportButtons = ({ setStart, setTime, currentTask }) => {
     <div>
       <button onClick={() => setStart(true)}>Start</button>
       <button onClick={() => setStart(false)}>Stop</button>
-      <button onClick={() => {setTime(currentTask.duration); setStart(false);}}>Reset</button>
+      <button onClick={() => {setTime(currentTask.durMillis); setStart(false);}}>Reset</button>
     </div>
   )
 }

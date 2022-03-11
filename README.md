@@ -9,3 +9,7 @@ Break the sketch down into components. Figure out where the containers will be, 
 
 Frontend Build:
 Build out the components with basic html/javascript before styling. Pick out fonts, colours, style elements and so on. Use a mobile first approach.
+
+1 - finish building settings component including auto run feature and ability to customize study/break durations
+
+2 - figure out the best way to add audio
