@@ -90,6 +90,9 @@ const Settings = ({ start, setStart, currentTask, setCurrentTask, time, setTime,
   // Handler function for settings button. Used to toggle display of settings popup window.
   const onClickSettings = () => {
     setShowSettings(!showSettings)
+    setPomodoroSliderValue(pomodoro.durMins)
+    setShortBreakSliderValue(shortBreak.durMins)
+    setLongBreakSliderValue(longBreak.durMins)
   }
   
   // Handler for changes to pomodoro slider
