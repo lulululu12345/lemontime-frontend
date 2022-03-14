@@ -32,6 +32,13 @@ const App = () => {
   const [currentTask, setCurrentTask] = useState(pomodoro)
   const [time, setTime] = useState(currentTask.durMillis)
   const [start, setStart] = useState(false)
+  const [autoRun, setAutoRun] = useState(false)
+  const [log, setLog] = 
+  useState({
+    pomodoros: 0,
+    shortBreaks: 0,
+    longBreaks: 0
+  })
 
 
   return (
@@ -50,6 +57,8 @@ const App = () => {
         setTime={setTime}
         start={start}
         setStart={setStart}
+        autoRun={autoRun}
+        setAutoRun={setAutoRun}
       />
       </span>
       <span>
@@ -70,53 +79,82 @@ const App = () => {
   )
 }
 
-const Settings = ({ start, setStart, currentTask, setCurrentTask, time, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak }) => {
+const Settings = ({ start, setStart, currentTask, setCurrentTask, time, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, autoRun, setAutoRun }) => {
   // State hooks
   const [showSettings, setShowSettings] = useState(false)
-
+  const [pomodoroSliderValue, setPomodoroSliderValue] = useState(25)
+  const [shortBreakSliderValue, setShortBreakSliderValue] = useState(5)
+  const [longBreakSliderValue, setLongBreakSliderValue] = useState(10)
+  const [autoRunCheckboxValue, setAutoRunCheckboxValue] = useState('false')
+  const [formSubmit, setFormSubmit] = useState(false)
   // Handler function for settings button. Used to toggle display of settings popup window.
   const onClickSettings = () => {
     setShowSettings(!showSettings)
   }
   
-  // Handler functions for changing slider values. Updates value stored in respective task's state object.
+  // Handler for changes to pomodoro slider
   const handlePomodoroChange = (event) => {
     const eventValue = Number(event.target.value)
-    setPomodoro({ 
-      name: 'pomodoro', 
-      durMins: eventValue, 
-      get durMillis(){
-        return this.durMins * 60000
-      } 
-    })
+    setPomodoroSliderValue(eventValue)
   }
+  // Handler for changes to shortBreak slider
   const handleShortBreakChange = (event) => {
     const eventValue = Number(event.target.value)
-    setShortBreak({ 
-      name: 'shortBreak', 
-      durMins: eventValue, 
-      get durMillis(){
-        return this.durMins * 60000
-      } 
-    })
+    setShortBreakSliderValue(eventValue)
   }
+  // Handler for changes to longBreak slider
   const handleLongBreakChange = (event) => {
     const eventValue = Number(event.target.value)
-    setLongBreak({ 
-      name: 'longBreak', 
-      durMins: eventValue, 
-      get durMillis(){
-        return this.durMins * 60000
-      } 
-    })
+    setLongBreakSliderValue(eventValue)
+  }
+  // Handler for auto-run checkbox
+  const handleAutoRunChange = (event) => {
+    const eventValue = event.target.value;
+    if (eventValue === 'true') return setAutoRunCheckboxValue('false')
+    if (eventValue === 'false') return setAutoRunCheckboxValue('true')
   }
 
   // Handler for settings form submission.
   const onSubmitSettings = (event) => {
     event.preventDefault()
-
     setStart(false)
 
+    setPomodoro({ 
+      name: 'pomodoro', 
+      durMins: pomodoroSliderValue, 
+      get durMillis(){
+        return this.durMins * 60000
+      } 
+    })
+
+    setShortBreak({ 
+      name: 'shortBreak', 
+      durMins: shortBreakSliderValue, 
+      get durMillis(){
+        return this.durMins * 60000
+      } 
+    })
+
+    setLongBreak({ 
+      name: 'longBreak', 
+      durMins: longBreakSliderValue, 
+      get durMillis(){
+        return this.durMins * 60000
+      } 
+    })
+    
+    // setAutoRun(autoRunCheckboxValue)
+    const runConditional = () => {
+      (autoRunCheckboxValue === 'true') ? setAutoRun(true) : setAutoRun(false);
+    }
+
+    runConditional()
+
+    setFormSubmit(true)
+    setShowSettings(!showSettings)
+  }
+
+  useEffect(() => {
     if (currentTask.name === 'pomodoro') {
       setCurrentTask(pomodoro)
       setTime(pomodoro.durMillis)
@@ -129,10 +167,10 @@ const Settings = ({ start, setStart, currentTask, setCurrentTask, time, setTime,
       setCurrentTask(longBreak)
       setTime(longBreak.durMillis)
     }
-    
-    setShowSettings(!showSettings)
-  }
+    setFormSubmit(false)
+  }, [formSubmit])
 
+  // Conditional rendering
   if (showSettings === false) {
     return (
       <button onClick={onClickSettings}>Settings</button>
@@ -143,17 +181,20 @@ const Settings = ({ start, setStart, currentTask, setCurrentTask, time, setTime,
       <div>
         <h2>Settings</h2>
         <form onSubmit={onSubmitSettings}>
-          <label>Pomodoro: {pomodoro.durMins}</label>
+          <label>Pomodoro: {pomodoroSliderValue}</label>
           <br/>
-          <input type='range' min='25' max='50' value={pomodoro.durMins} onChange={handlePomodoroChange} />
+          <input type='range' min='25' max='50' value={pomodoroSliderValue} onChange={handlePomodoroChange} />
           <br/>
-          <label>Short Break: {shortBreak.durMins}</label>
+          <label>Short Break: {shortBreakSliderValue}</label>
           <br/>
-          <input type='range' min='5' max='10' value={shortBreak.durMins} onChange={handleShortBreakChange} />
+          <input type='range' min='5' max='10' value={shortBreakSliderValue} onChange={handleShortBreakChange} />
           <br/>
-          <label>Long Break: {longBreak.durMins}</label>
+          <label>Long Break: {longBreakSliderValue}</label>
           <br/>
-          <input type='range' min='10' max='20' value={longBreak.durMins} onChange={handleLongBreakChange} />
+          <input type='range' min='10' max='20' value={longBreakSliderValue} onChange={handleLongBreakChange} />
+          <br/>
+          <input type='checkbox' value={autoRunCheckboxValue} onChange={handleAutoRunChange} checked={(autoRunCheckboxValue === 'true') ? true : false} />
+          <label>Auto-run task blocks</label>
           <br/>
           <input type='submit' value='Save' />
         </form>

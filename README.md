@@ -15,3 +15,11 @@ Build out the components with basic html/javascript before styling. Pick out fon
 1.2 - figure out popup window style for settings
 
 2 - figure out the best way to add audio
+
+3 - Figure out how to get browser notifications and display remaining time in the tab
+
+2022.03.14
+1 - Auto-run
+2 - make the long break optional
+3 - turn settings into a popup window
+4 - Restart project planning starting from the backend
