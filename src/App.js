@@ -229,7 +229,8 @@ const TimerContainer = ({ start, setStart, currentTask, setCurrentTask, time, se
         setCompleted={setCompleted}
         currentTask={currentTask}
       />
-      <TransportButtons 
+      <TransportButtons
+        start={start}
         setStart={setStart}
         setTime={setTime}
         currentTask={currentTask}
@@ -288,11 +289,15 @@ const Timer = ({ time, setTime, start, setStart, setCompleted, currentTask }) =>
   )
 }
 
-const TransportButtons = ({ setStart, setTime, currentTask }) => {
+const TransportButtons = ({ start, setStart, setTime, currentTask }) => {
+
+  const startStopOnClick = () => {
+    setStart(!start)
+  }
+
   return (
     <div>
-      <button onClick={() => setStart(true)}>Start</button>
-      <button onClick={() => setStart(false)}>Stop</button>
+      <button onClick={startStopOnClick}>{start ? 'Stop' : 'Start'}</button>
       <button onClick={() => {setTime(currentTask.durMillis); setStart(false);}}>Reset</button>
     </div>
   )
