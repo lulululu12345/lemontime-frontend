@@ -23,3 +23,7 @@ Build out the components with basic html/javascript before styling. Pick out fon
 2 - make the long break optional
 3 - turn settings into a popup window
 4 - Restart project planning starting from the backend
+
+2022.03.15
+3 - Add long break interval nuumber box
+4 - Extract everything into separate modules (properly) as should have been done from the beginning
