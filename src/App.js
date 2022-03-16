@@ -13,7 +13,7 @@ const App = () => {
       durMins: 25, 
       get durMs(){
         return this.durMins * 60000
-      } 
+      }
     })
   const [shortBreak, setShortBreak] = 
     useState({ 

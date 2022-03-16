@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import TimeBlocks from './TimeBlocks'
 import Timer from './Timer'
 import TransportCtrl from './TransportCtrl'
