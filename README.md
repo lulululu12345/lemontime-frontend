@@ -25,5 +25,5 @@ Build out the components with basic html/javascript before styling. Pick out fon
 4 - Restart project planning starting from the backend
 
 2022.03.15
-3 - Add long break interval nuumber box
 4 - Extract everything into separate modules (properly) as should have been done from the beginning
+5 - Go over statistics pages from example apps and take note of which stats are tracked

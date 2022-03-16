@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import TimerContainer from './components/TimerContainer'
 
 const App = () => {
   // Phony Database
@@ -37,9 +38,13 @@ const App = () => {
   const [start, setStart] = useState(false)
   const [autoBreak, setAutoBreak] = useState(false)
   const [autoPomodoro, setAutoPomodoro] = useState(false)
-  const [log, setLog] = useState([])
+  const [longBreakInterval, setLongBreakInterval] = useState(4)
+  const [log, setLog] = 
+    useState({
+      workCompleted: 0,
+      blocksCompleted: []
+    })
 
-  console.log(log)
   return (
     <div className='App'>
       <span>
@@ -60,6 +65,8 @@ const App = () => {
         setAutoBreak={setAutoBreak}
         autoPomodoro={autoPomodoro}
         setAutoPomodoro={setAutoPomodoro}
+        longBreakInterval={longBreakInterval}
+        setLongBreakInterval={setLongBreakInterval}
       />
       </span>
       <span>
@@ -77,6 +84,7 @@ const App = () => {
         longBreak={longBreak}
         autoBreak={autoBreak}
         autoPomodoro={autoPomodoro}
+        longBreakInterval={longBreakInterval}
         log={log}
         setLog={setLog}
       />
@@ -84,7 +92,7 @@ const App = () => {
   )
 }
 
-const Settings = ({ start, setStart, currentTask, setCurrentTask, time, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, autoBreak, setAutoBreak, autoPomodoro, setAutoPomodoro }) => {
+const Settings = ({ start, setStart, currentTask, setCurrentTask, time, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, autoBreak, setAutoBreak, autoPomodoro, setAutoPomodoro, longBreakInterval, setLongBreakInterval }) => {
   // State hooks
   const [showSettings, setShowSettings] = useState(false)
   const [pomodoroValue, setPomodoroValue] = useState(25)
@@ -93,6 +101,7 @@ const Settings = ({ start, setStart, currentTask, setCurrentTask, time, setTime,
   const [autoBreakCheckbox, setAutoBreakCheckbox] = useState('false')
   const [autoPomodoroCheckbox, setAutoPomodoroCheckbox] = useState('false')
   const [formSubmit, setFormSubmit] = useState(false)
+  const [longBreakIntervalValue, setLongBreakIntervalValue] = useState(4)
   // Handler function for settings button. Used to toggle display of settings popup window.
   const onClickSettings = () => {
     setShowSettings(!showSettings)
@@ -127,6 +136,11 @@ const Settings = ({ start, setStart, currentTask, setCurrentTask, time, setTime,
     const eventValue = event.target.value;
     if (eventValue === 'true') return setAutoPomodoroCheckbox('false')
     if (eventValue === 'false') return setAutoPomodoroCheckbox('true')
+  }
+
+  const handleLongBreakIntervalChange = (event) => {
+    const eventValue = event.target.value;
+    setLongBreakIntervalValue(eventValue)
   }
 
   // Handler for settings form submission.
@@ -169,6 +183,8 @@ const Settings = ({ start, setStart, currentTask, setCurrentTask, time, setTime,
 
     runConditional()
 
+    setLongBreakInterval(longBreakIntervalValue)
+
     setFormSubmit(true)
     setShowSettings(!showSettings)
   }
@@ -203,21 +219,24 @@ const Settings = ({ start, setStart, currentTask, setCurrentTask, time, setTime,
         <form onSubmit={onSubmitSettings}>
           <label>Pomodoro</label>
           <br/>
-          <input type='number' min='1' value={pomodoroValue} onChange={handlePomodoroChange} />
+          <input type='number' min='0' value={pomodoroValue} onChange={handlePomodoroChange} />
           <br/>
           <label>Short Break</label>
           <br/>
-          <input type='number' min='1' value={shortBreakValue} onChange={handleShortBreakChange} />
+          <input type='number' min='0' value={shortBreakValue} onChange={handleShortBreakChange} />
           <br/>
           <label>Long Break</label>
           <br/>
-          <input type='number' min='1' value={longBreakValue} onChange={handleLongBreakChange} />
+          <input type='number' min='0' value={longBreakValue} onChange={handleLongBreakChange} />
           <br/>
           <label>Auto run Breaks</label>
           <input type='checkbox' value={autoBreakCheckbox} onChange={handleAutoBreakChange} checked={(autoBreakCheckbox === 'true') ? true : false} />
           <br/>
           <label>Auto run Pomodoros</label>
           <input type='checkbox' value={autoPomodoroCheckbox} onChange={handleAutoPomodoroChange} checked={(autoPomodoroCheckbox === 'true') ? true : false} />
+          <br/>
+          <label>Long Break interval</label>
+          <input type='number' value={longBreakIntervalValue} onChange={handleLongBreakIntervalChange} />
           <br/>
           <input type='submit' value='Save' />
         </form>
@@ -227,109 +246,123 @@ const Settings = ({ start, setStart, currentTask, setCurrentTask, time, setTime,
   }
 }
 
-const TimerContainer = ({ start, setStart, currentTask, setCurrentTask, time, setTime, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, log, setLog }) => {
+// const TimerContainer = ({ start, setStart, currentTask, setCurrentTask, time, setTime, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog }) => {
 
-  return (
-    <div>
-      <TaskButtons 
-        setStart={setStart}
-        setTime={setTime}
-        setCurrentTask={setCurrentTask}
-        pomodoro={pomodoro}
-        shortBreak={shortBreak}
-        longBreak={longBreak}
-      />
-      <Timer 
-        time={time}
-        setTime={setTime}
-        start={start}
-        setStart={setStart}
-        currentTask={currentTask}
-        setCurrentTask={setCurrentTask}
-        pomodoro={pomodoro}
-        shortBreak={shortBreak}
-        longBreak={longBreak}
-        autoBreak={autoBreak}
-        autoPomodoro={autoPomodoro}
-        log={log}
-        setLog={setLog}
-      />
-      <TransportButtons
-        start={start}
-        setStart={setStart}
-        setTime={setTime}
-        currentTask={currentTask}
-      />
-    </div>
-  )
-}
+//   return (
+//     <div>
+//       <TaskButtons 
+//         setStart={setStart}
+//         setTime={setTime}
+//         setCurrentTask={setCurrentTask}
+//         pomodoro={pomodoro}
+//         shortBreak={shortBreak}
+//         longBreak={longBreak}
+//       />
+//       <Timer 
+//         time={time}
+//         setTime={setTime}
+//         start={start}
+//         setStart={setStart}
+//         currentTask={currentTask}
+//         setCurrentTask={setCurrentTask}
+//         pomodoro={pomodoro}
+//         shortBreak={shortBreak}
+//         longBreak={longBreak}
+//         autoBreak={autoBreak}
+//         autoPomodoro={autoPomodoro}
+//         longBreakInterval={longBreakInterval}
+//         log={log}
+//         setLog={setLog}
+//       />
+//       <TransportButtons
+//         start={start}
+//         setStart={setStart}
+//         setTime={setTime}
+//         currentTask={currentTask}
+//       />
+//     </div>
+//   )
+// }
 
-const TaskButtons = ({ setStart, setTime, setCurrentTask, pomodoro, shortBreak, longBreak }) => {
-  return (
-    <div>
-      <button onClick={() => {setStart(false); setTime(pomodoro.durMs); setCurrentTask(pomodoro);}}>Pomodoro</button>
-      <button onClick={() => {setStart(false); setTime(shortBreak.durMs); setCurrentTask(shortBreak);}}>Short Break</button>
-      <button onClick={() => {setStart(false); setTime(longBreak.durMs); setCurrentTask(longBreak);}}>Long Break</button>
-    </div>
-  )
-}
-const Timer = ({ time, setTime, start, setStart, setCompleted, currentTask, setCurrentTask, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, log, setLog }) => {
-  // Effect hook to stop countdown upon reaching zero
-  useEffect(() => {
-    if (time === 0) {
-      setStart(false)
-      setLog(log.concat(currentTask))
-    }
-    if (time === 0 && currentTask.type ==='work' && autoBreak === true) {
-      setTime(shortBreak.durMs)
-      setCurrentTask(shortBreak)
-      setStart(true)
-    }
-    if (time === 0 && currentTask.type ==='break' && autoPomodoro === true) {
-      setTime(shortBreak.durMs)
-      setCurrentTask(shortBreak)
-      setStart(true)
-    }
-  }, [time, currentTask])
+// const TaskButtons = ({ setStart, setTime, setCurrentTask, pomodoro, shortBreak, longBreak }) => {
+//   return (
+//     <div>
+//       <button onClick={() => {setStart(false); setTime(pomodoro.durMs); setCurrentTask(pomodoro);}}>Pomodoro</button>
+//       <button onClick={() => {setStart(false); setTime(shortBreak.durMs); setCurrentTask(shortBreak);}}>Short Break</button>
+//       <button onClick={() => {setStart(false); setTime(longBreak.durMs); setCurrentTask(longBreak);}}>Long Break</button>
+//     </div>
+//   )
+// }
+// const Timer = ({ time, setTime, start, setStart, setCompleted, currentTask, setCurrentTask, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog }) => {
+//   // Effect hook to stop countdown upon reaching zero
+//   useEffect(() => {
+//     if (time === 0) {
+//       setStart(false)
+//       setLog({
+//         workCompleted: log.workCompleted + 1,
+//         blocksCompleted: log.blocksCompleted.concat(currentTask)
+//       })
+//     }
+//     if (time === 0 && currentTask.type === 'work') {
+//       if (log.workCompleted % longBreakInterval === 0) {
+//         setTime(longBreak.durMs)
+//         setCurrentTask(longBreak)
+//       } 
+//       else {
+//         setTime(shortBreak.durMs)
+//         setCurrentTask(shortBreak)
+//       }
+//       if (autoBreak === true) {
+//         setStart (true)
+//       }
+//     }
+//     if (time === 0 && currentTask.type ==='break' && autoPomodoro === true) {
+//       setTime(pomodoro.durMs)
+//       setCurrentTask(pomodoro)
+//       if (autoPomodoro === true) {
+//         setStart (true)
+//       }
+//     }
+//   }, [time, currentTask])
 
-  // Effect hook for the decrementing timer every setInterval
-  useEffect(() => {
-    let interval = null
+//   // Effect hook for the decrementing timer every setInterval
+//   useEffect(() => {
+//     let interval = null
 
-    if (start) {
-      interval = setInterval(() => {
-        setTime(prevTime => prevTime - 10)
-      }, 10)
-    } else {
-      clearInterval(interval)
-    }
+//     if (start) {
+//       interval = setInterval(() => {
+//         setTime(prevTime => prevTime - 10)
+//       }, 10)
+//     } else {
+//       clearInterval(interval)
+//     }
 
-    return () => clearInterval(interval)
-  }, [start])
+//     return () => clearInterval(interval)
+//   }, [start])
 
-  return (
-    <>
-      <h2>
-          <span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
-          <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
-          {/* <span>{('0' + (time / 10) % 1000).slice(-2)}</span> */}
-      </h2>
-    </>
-  )
-}
+//   return (
+//     <>
+//       <h2>
+//           <span>{('0' + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
+//           <span>{('0' + Math.floor((time / 1000) % 60)).slice(-2)}</span>
+//           {/* <span>{('0' + (time / 10) % 1000).slice(-2)}</span> */}
+//       </h2>
+//     </>
+//   )
+// }
 
-const TransportButtons = ({ start, setStart, setTime, currentTask }) => {
+// const TransportButtons = ({ start, setStart, setTime, currentTask }) => {
 
-  const startStopOnClick = () => {
-    setStart(!start)
-  }
+//   const startStopOnClick = () => {
+//     setStart(!start)
+//   }
 
-  return (
-    <div>
-      <button onClick={startStopOnClick}>{start ? 'Stop' : 'Start'}</button>
-      <button onClick={() => {setTime(currentTask.durMs); setStart(false);}}>Reset</button>
-    </div>
-  )
-}
+//   return (
+//     <div>
+//       <button onClick={startStopOnClick}>{start ? 'Stop' : 'Start'}</button>
+//       <button onClick={() => {setTime(currentTask.durMs); setStart(false);}}>Reset</button>
+//     </div>
+//   )
+// }
 
 export default App
