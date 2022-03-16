@@ -1,15 +1,34 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import SkipButton from './SkipButton'
+import StopAndGoButton from './StopAndGoButton'
+import ResetButton from './ResetButton'
 
-const TransportCtrl = ({ start, setStart, setTime, currentTask }) => {
-
-  const startStopOnClick = () => {
-    setStart(!start)
-  }
-
+const TransportCtrl = ({ start, setStart, time, setTime, currentTask, setCurrentTask, pomodoro, shortBreak, longBreak, longBreakInterval, log, setLog }) => {
   return (
     <div>
-      <button onClick={startStopOnClick}>{start ? 'Stop' : 'Start'}</button>
-      <button onClick={() => {setTime(currentTask.durMs); setStart(false);}}>Reset</button>
+      <ResetButton 
+        time={time} 
+        setTime={setTime} 
+        setStart={setStart} 
+        currentTask={currentTask} 
+      />
+      <StopAndGoButton 
+        start={start}
+        setStart={setStart}
+      />
+      <SkipButton 
+        start={start} 
+        setStart={setStart} 
+        currentTask={currentTask} 
+        setCurrentTask={setCurrentTask} 
+        log={log} 
+        setLog={setLog} 
+        setTime={setTime} 
+        pomodoro={pomodoro} 
+        shortBreak={shortBreak} 
+        longBreak={longBreak} 
+        longBreakInterval={longBreakInterval} 
+      />
     </div>
   )
 }

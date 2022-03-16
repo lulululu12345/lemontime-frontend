@@ -29,7 +29,6 @@ const TimeBlocks = ({ setStart, setTime, setCurrentTask, pomodoro, shortBreak, l
 }
 
 const TimeBlockButton = ({ setStart, setTime, setCurrentTask, newBlock, text }) => {
-
   const onClickBlock = () => {
     setStart(false)
     setTime(newBlock.durMs)

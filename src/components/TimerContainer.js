@@ -34,8 +34,16 @@ const TimerContainer = ({ start, setStart, currentTask, setCurrentTask, time, se
       <TransportCtrl
         start={start}
         setStart={setStart}
+        time={time}
         setTime={setTime}
         currentTask={currentTask}
+        setCurrentTask={setCurrentTask}
+        pomodoro={pomodoro}
+        shortBreak={shortBreak}
+        longBreak={longBreak}
+        longBreakInterval={longBreakInterval}
+        log={log}
+        setLog={setLog}
       />
     </div>
   )

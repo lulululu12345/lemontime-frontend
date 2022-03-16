@@ -5,12 +5,24 @@ const Timer = ({ time, setTime, start, setStart, setCompleted, currentTask, setC
   useEffect(() => {
     if (time === 0) {
       setStart(false)
-      setLog({
-        workCompleted: log.workCompleted + 1,
-        blocksCompleted: log.blocksCompleted.concat(currentTask)
-      })
+      if (currentTask.type === 'work') {
+        setLog({
+          workCompleted: log.workCompleted + 1,
+          blocksCompleted: log.blocksCompleted.concat(currentTask)
+        })
+      }
+      if (currentTask.type === 'break') {
+        setLog({
+          workCompleted: log.workCompleted,
+          blocksCompleted: log.blocksCompleted.concat(currentTask)
+        })
+      }
     }
-    if (time === 0 && currentTask.type === 'work') {
+  }, [time, currentTask])
+
+  useEffect(() => {
+    // This if statement manages the automatic setting of the timer to the appropriate Break Time Block
+    if (time === 0 && currentTask.type === 'work') {       
       if (log.workCompleted % longBreakInterval === 0) {
         setTime(longBreak.durMs)
         setCurrentTask(longBreak)
@@ -23,14 +35,15 @@ const Timer = ({ time, setTime, start, setStart, setCompleted, currentTask, setC
         setStart (true)
       }
     }
-    if (time === 0 && currentTask.type ==='break' && autoPomodoro === true) {
+    // This if statement manages the automatic
+    if (time === 0 && currentTask.type === 'break') {
       setTime(pomodoro.durMs)
       setCurrentTask(pomodoro)
       if (autoPomodoro === true) {
         setStart (true)
       }
     }
-  }, [time, currentTask])
+  }, [log])
 
   // Effect hook for the decrementing timer every setInterval
   useEffect(() => {
