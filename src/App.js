@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import TimerContainer from './components/TimerContainer'
 import SettingsContainer from './components/SettingsContainer'
+import TimerContainer from './components/TimerContainer'
+import TaskContainer from './components/TaskContainer'
 
 const App = () => {
   // Phony Database
@@ -89,6 +90,7 @@ const App = () => {
         log={log}
         setLog={setLog}
       />
+      <TaskContainer />
     </div>
   )
 }

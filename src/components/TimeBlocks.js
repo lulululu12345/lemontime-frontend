@@ -6,21 +6,21 @@ const TimeBlocks = ({ setStart, setTime, setCurrentTask, pomodoro, shortBreak, l
       <TimeBlockButton
         setStart={setStart}
         setTime={setTime}
-        settCurrentTask={setCurrentTask}
+        setCurrentTask={setCurrentTask}
         newBlock={pomodoro}
         text='Pomodoro'
       />
       <TimeBlockButton
         setStart={setStart}
         setTime={setTime}
-        settCurrentTask={setCurrentTask}
+        setCurrentTask={setCurrentTask}
         newBlock={shortBreak}
         text='Short Break'
       />
       <TimeBlockButton
         setStart={setStart}
         setTime={setTime}
-        settCurrentTask={setCurrentTask}
+        setCurrentTask={setCurrentTask}
         newBlock={longBreak}
         text='Long Break'
       />

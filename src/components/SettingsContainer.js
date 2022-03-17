@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import FocusDurationInput from './FocusDurationInput'
+import LongBreakSchedule from './LongBreakSchedule'
+import AutoRunBox from './AutoRunBox'
 
-const SettingsContainer = ({ start, setStart, currentTask, setCurrentTask, time, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, autoBreak, setAutoBreak, autoPomodoro, setAutoPomodoro, longBreakInterval, setLongBreakInterval }) => {
+const SettingsContainer = ({ setStart, currentTask, setCurrentTask, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, setAutoBreak, setAutoPomodoro, setLongBreakInterval }) => {
   // State hooks
   const [showSettings, setShowSettings] = useState(false)
   const [pomodoroValue, setPomodoroValue] = useState(25)
@@ -17,99 +20,79 @@ const SettingsContainer = ({ start, setStart, currentTask, setCurrentTask, time,
     setShortBreakValue(shortBreak.durMins)
     setLongBreakValue(longBreak.durMins)
   }
-  
-  // Handler for changes to pomodoro slider
-  const handlePomodoroChange = (event) => {
-    const eventValue = Number(event.target.value)
-    setPomodoroValue(eventValue)
-  }
-  // Handler for changes to shortBreak slider
-  const handleShortBreakChange = (event) => {
-    const eventValue = Number(event.target.value)
-    setShortBreakValue(eventValue)
-  }
-  // Handler for changes to longBreak slider
-  const handleLongBreakChange = (event) => {
-    const eventValue = Number(event.target.value)
-    setLongBreakValue(eventValue)
-  }
-  // Handler for auto break checkbox
-  const handleAutoBreakChange = (event) => {
-    const eventValue = event.target.value;
-    if (eventValue === 'true') return setAutoBreakCheckbox('false')
-    if (eventValue === 'false') return setAutoBreakCheckbox('true')
-  }
-  // Handler for auto pomodoro checkbox
-  const handleAutoPomodoroChange = (event) => {
-    const eventValue = event.target.value;
-    if (eventValue === 'true') return setAutoPomodoroCheckbox('false')
-    if (eventValue === 'false') return setAutoPomodoroCheckbox('true')
-  }
 
-  const handleLongBreakIntervalChange = (event) => {
-    const eventValue = event.target.value;
-    setLongBreakIntervalValue(eventValue)
-  }
-
-  // Handler for settings form submission.
+  // When the settings are saved
   const onSubmitSettings = (event) => {
+    // Prevent default form submission behaviour
     event.preventDefault()
+    // Stop the timer
     setStart(false)
-
+    // Set the pomodoro prop to a new object using the duration value supplied in the settings form
     setPomodoro({ 
       name: 'pomodoro',
       type: 'work',
+      // durMins set to value supplied in pomodoro number box
       durMins: pomodoroValue, 
       get durMs(){
         return this.durMins * 60000
       } 
     })
-
+    // Set the shortBreak prop to a new object using the duration value supplied in the settings form
     setShortBreak({ 
       name: 'shortBreak',
       type: 'break',
+      // durMins set to value supplied in shortBreak number box
       durMins: shortBreakValue, 
       get durMs(){
         return this.durMins * 60000
       } 
     })
-
+    // Set the longBreak prop to a new object using the duration value supplied in the settings form
     setLongBreak({ 
       name: 'longBreak',
       type: 'break',
+      // durMins set to value supplied in longBreak number box
       durMins: longBreakValue, 
       get durMs(){
         return this.durMins * 60000
       } 
     })
     
-    // setAutoRun(autoRunCheckboxValue)
+    // If either auto-run box was checked, set the corresponding prop to match
     const runConditional = () => {
       (autoBreakCheckbox === 'true') ? setAutoBreak(true) : setAutoBreak(false);
       (autoPomodoroCheckbox === 'true') ? setAutoPomodoro(true) : setAutoPomodoro(false);
     }
-
+    // Call the above function
     runConditional()
-
+    // set the long break interval to the value supplied in the settings form
     setLongBreakInterval(longBreakIntervalValue)
-
+    // setFormSubmit to trigger render of the effect below
     setFormSubmit(true)
+    // Make the settings form disappear
     setShowSettings(!showSettings)
   }
-
+  // After the settings form submission, timer display is updated with the new duration supplied in the settings form
   useEffect(() => {
+    // Check currentTimeBlock to ensure the proper timeBlock duration is displayed
     if (currentTask.name === 'pomodoro') {
+      // Update currentTimeBlock prop with the new poomodoro object
       setCurrentTask(pomodoro)
       setTime(pomodoro.durMs)
     }
+    // Check currentTimeBlock to ensure the proper timeBlock duration is displayed
     if (currentTask.name === 'shortBreak') {
+      // Update currentTimeBlock prop with the new shortBreak object
       setCurrentTask(shortBreak)
       setTime(shortBreak.durMs)
     }
+    // Check currentTimeBlock to ensure the proper timeBlock duration is displayed
     if (currentTask.name === 'longBreak') {
+      // Update currentTimeBlock prop with the new longBreak object
       setCurrentTask(longBreak)
       setTime(longBreak.durMs)
     }
+    // Prepare for future form submissions by resetting formSubmit to false
     setFormSubmit(false)
   }, [formSubmit])
 
@@ -125,28 +108,12 @@ const SettingsContainer = ({ start, setStart, currentTask, setCurrentTask, time,
         <h2>Settings</h2>
         <h3>Time(minutes)</h3>
         <form onSubmit={onSubmitSettings}>
-          <label>Pomodoro</label>
-          <br/>
-          <input type='number' min='0' value={pomodoroValue} onChange={handlePomodoroChange} />
-          <br/>
-          <label>Short Break</label>
-          <br/>
-          <input type='number' min='0' value={shortBreakValue} onChange={handleShortBreakChange} />
-          <br/>
-          <label>Long Break</label>
-          <br/>
-          <input type='number' min='0' value={longBreakValue} onChange={handleLongBreakChange} />
-          <br/>
-          <label>Long Break interval</label>
-          <br/>
-          <input type='number' value={longBreakIntervalValue} onChange={handleLongBreakIntervalChange} />
-          <br/>
-          <label>Auto run Breaks</label>
-          <input type='checkbox' value={autoBreakCheckbox} onChange={handleAutoBreakChange} checked={(autoBreakCheckbox === 'true') ? true : false} />
-          <br/>
-          <label>Auto run Pomodoros</label>
-          <input type='checkbox' value={autoPomodoroCheckbox} onChange={handleAutoPomodoroChange} checked={(autoPomodoroCheckbox === 'true') ? true : false} />
-          <br/>
+          <FocusDurationInput numBoxValue={pomodoroValue}   setNumBoxValue={setPomodoroValue}   labelText='Pomodoro' />
+          <FocusDurationInput numBoxValue={shortBreakValue} setNumBoxValue={setShortBreakValue} labelText='Short Break' />
+          <FocusDurationInput numBoxValue={longBreakValue}  setNumBoxValue={setLongBreakValue}  labelText='Long Break' />
+          <LongBreakSchedule longBreakIntervalValue={longBreakIntervalValue} setLongBreakIntervalValue={setLongBreakIntervalValue} />
+          <AutoRunBox checkboxValue={autoBreakCheckbox}    setCheckboxValue={setAutoBreakCheckbox}    labelText={'Auto Run Breaks'} />
+          <AutoRunBox checkboxValue={autoPomodoroCheckbox} setCheckboxValue={setAutoPomodoroCheckbox} labelText={'Auto Run Pomodoros'} />
           <input type='submit' value='Save' />
         </form>
           <button onClick={onClickSettings}>Close</button>
