@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
-const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId }) => {
-  const [showTaskForm, setShowTaskForm] = useState(false)
+const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTaskForm, setShowTaskForm }) => {
+  // const [showTaskForm, setShowTaskForm] = useState(false)
   const [taskNameEdit, setTaskNameEdit] = useState('')
   const [taskDurEdit, setTaskDurEdit] = useState(1)
   const [taskNoteEdit, setTaskNoteEdit] = useState('')
@@ -75,8 +75,6 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId }) => {
       </div>
     )
   }
-  return <button onClick={toggleForm}>Edit</button>
-
 }
 
 export default EditTask
