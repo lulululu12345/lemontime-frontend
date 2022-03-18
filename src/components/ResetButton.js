@@ -1,15 +1,15 @@
 import React from 'react'
 
 // ResetButton component for resetting timer
-const ResetButton = ({ time, setTime, setStart, currentTask }) => {
+const ResetButton = ({ time, setTime, setStart, currentTimeBlock }) => {
   const onClickReset = () => {
-    setTime(currentTask.durMs)
+    setTime(currentTimeBlock.durMs)
     setStart(false)
   }
   
   return (
     <>
-      {time < currentTask.durMs
+      {time < currentTimeBlock.durMs
         ? <button onClick={onClickReset}>Reset</button>
         : <></>
       }

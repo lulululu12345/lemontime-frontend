@@ -1,48 +1,66 @@
 import React, { useEffect } from 'react'
 
-const Timer = ({ time, setTime, start, setStart, currentTask, setCurrentTask, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog }) => {
-  // Effect hook to stop countdown upon reaching zero and update log prop
+const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTimeBlock, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog, selectedTask, setSelectedTask, tasks, setTasks }) => {
+  // Stop countdown when timer reaches zero and add completed TimeBlock to log
   useEffect(() => {
     // If the time prop has reached 0 (timer has completed)
     if (time === 0) {
       // Stop the timer
       setStart(false)
       // If the timer just completed a pomodoro
-      if (currentTask.type === 'work') {
+      if (currentTimeBlock.type === 'work') {
+        // 
+        const updateTask = tasks.map(task => {
+          if (task.name === selectedTask) {
+            return {
+              name: task.name,
+              dur: task.dur,
+              blocksCompleted: task.blocksCompleted += 1,
+              note: task.note
+            }
+          }
+          else return task
+        })
+        // This is almost working but not quite, becaust the update task array only returns a number value for the new array...
+        console.log('updateTask', updateTask)
+        console.log('tasks', tasks)
+        // console.log('findTask', findTask)
+
+
         // Add one to the log's workCompleted property and add the current task object to the blocksCompleted array with concat
         setLog({
           workCompleted: log.workCompleted + 1,
-          blocksCompleted: log.blocksCompleted.concat(currentTask)
+          blocksCompleted: log.blocksCompleted.concat(currentTimeBlock)
         })
       }
       // If the timer just completed a short or long break
-      if (currentTask.type === 'break') {
+      if (currentTimeBlock.type === 'break') {
         // Add the current task object to the log's blocksCompleted array without changing the workCompleted value
         setLog({
           workCompleted: log.workCompleted,
-          blocksCompleted: log.blocksCompleted.concat(currentTask)
+          blocksCompleted: log.blocksCompleted.concat(currentTimeBlock)
         })
       }
     }
-  }, [time, currentTask])
+  }, [time, currentTimeBlock])
 
   // Effect for setting the Timer to a new task after the timer has completed and the log prop has been updated
   useEffect(() => {
     // If the timer completes a pomodoro
-    if (time === 0 && currentTask.type === 'work') {  
+    if (time === 0 && currentTimeBlock.type === 'work') {  
       // Check to see if it is time for a long break 
       if (log.workCompleted % longBreakInterval === 0) {
         // Set the time prop to the long break duration in ms
         setTime(longBreak.durMs)
         // Set the current task to long break
-        setCurrentTask(longBreak)
+        setCurrentTimeBlock(longBreak)
       } 
       // If it isn't time for a long break, it must be time for a short one
       else {
         // Set the time prop to the short break duration in ms
         setTime(shortBreak.durMs)
         // Set the current task to short break
-        setCurrentTask(shortBreak)
+        setCurrentTimeBlock(shortBreak)
       }
       // If the auto break setting is turned on
       if (autoBreak === true) {
@@ -51,11 +69,11 @@ const Timer = ({ time, setTime, start, setStart, currentTask, setCurrentTask, po
       }
     }
     // If the timer completes a break
-    if (time === 0 && currentTask.type === 'break') {
+    if (time === 0 && currentTimeBlock.type === 'break') {
       // Set the time prop to the pomodoro duration in ms
       setTime(pomodoro.durMs)
       // Set the current task to pomodoro
-      setCurrentTask(pomodoro)
+      setCurrentTimeBlock(pomodoro)
       // If the auto pomodoro setting is turned on
       if (autoPomodoro === true) {
         // Set the start prop to true to automatically start the pomodoro timer

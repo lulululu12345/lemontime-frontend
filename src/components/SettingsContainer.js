@@ -3,7 +3,7 @@ import FocusDurationInput from './FocusDurationInput'
 import LongBreakSchedule from './LongBreakSchedule'
 import AutoRunBox from './AutoRunBox'
 
-const SettingsContainer = ({ setStart, currentTask, setCurrentTask, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, setAutoBreak, setAutoPomodoro, setLongBreakInterval }) => {
+const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, setAutoBreak, setAutoPomodoro, setLongBreakInterval }) => {
   // State hooks
   const [showSettings, setShowSettings] = useState(false)
   const [pomodoroValue, setPomodoroValue] = useState(25)
@@ -75,21 +75,21 @@ const SettingsContainer = ({ setStart, currentTask, setCurrentTask, setTime, pom
   // After the settings form submission, timer display is updated with the new duration supplied in the settings form
   useEffect(() => {
     // Check currentTimeBlock to ensure the proper timeBlock duration is displayed
-    if (currentTask.name === 'pomodoro') {
+    if (currentTimeBlock.name === 'pomodoro') {
       // Update currentTimeBlock prop with the new poomodoro object
-      setCurrentTask(pomodoro)
+      setCurrentTimeBlock(pomodoro)
       setTime(pomodoro.durMs)
     }
     // Check currentTimeBlock to ensure the proper timeBlock duration is displayed
-    if (currentTask.name === 'shortBreak') {
+    if (currentTimeBlock.name === 'shortBreak') {
       // Update currentTimeBlock prop with the new shortBreak object
-      setCurrentTask(shortBreak)
+      setCurrentTimeBlock(shortBreak)
       setTime(shortBreak.durMs)
     }
     // Check currentTimeBlock to ensure the proper timeBlock duration is displayed
-    if (currentTask.name === 'longBreak') {
+    if (currentTimeBlock.name === 'longBreak') {
       // Update currentTimeBlock prop with the new longBreak object
-      setCurrentTask(longBreak)
+      setCurrentTimeBlock(longBreak)
       setTime(longBreak.durMs)
     }
     // Prepare for future form submissions by resetting formSubmit to false

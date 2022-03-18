@@ -5,7 +5,25 @@ import TaskContainer from './components/TaskContainer'
 
 const App = () => {
   // Phony Database
-  const tasks = ['taskA', 'taskB', 'taskC']
+  const [tasks, setTasks] = useState([{
+    name: 'Shlurp the pollywogs',
+    dur: 4,
+    blocksCompleted: 0,
+    note: 'All the live long day'
+  },
+  {
+    name: 'Flies in the buttermilk',
+    dur: 2,
+    blocksCompleted: 0,
+    note: 'Get em out'
+  }
+  ])
+
+
+
+
+
+
   // Duration in milliseconds for different tasks
   const [pomodoro, setPomodoro] = 
     useState({ 
@@ -35,12 +53,13 @@ const App = () => {
       } 
     })
 
-  const [currentTask, setCurrentTask] = useState(pomodoro)
-  const [time, setTime] = useState(currentTask.durMillis)
+  const [currentTimeBlock, setCurrentTimeBlock] = useState(pomodoro)
+  const [time, setTime] = useState(currentTimeBlock.durMillis)
   const [start, setStart] = useState(false)
   const [autoBreak, setAutoBreak] = useState(false)
   const [autoPomodoro, setAutoPomodoro] = useState(false)
   const [longBreakInterval, setLongBreakInterval] = useState(4)
+  const [selectedTask, setSelectedTask] = useState(false)
   const [log, setLog] = 
     useState({
       workCompleted: 0,
@@ -57,8 +76,8 @@ const App = () => {
         setShortBreak={setShortBreak}
         longBreak={longBreak}
         setLongBreak={setLongBreak}
-        currentTask={currentTask}
-        setCurrentTask={setCurrentTask}
+        currentTimeBlock={currentTimeBlock}
+        setCurrentTimeBlock={setCurrentTimeBlock}
         time={time}
         setTime={setTime}
         start={start}
@@ -77,8 +96,8 @@ const App = () => {
       <TimerContainer 
         start={start}
         setStart={setStart}
-        currentTask={currentTask}
-        setCurrentTask={setCurrentTask}
+        currentTimeBlock={currentTimeBlock}
+        setCurrentTimeBlock={setCurrentTimeBlock}
         time={time}
         setTime={setTime}
         pomodoro={pomodoro}
@@ -89,8 +108,17 @@ const App = () => {
         longBreakInterval={longBreakInterval}
         log={log}
         setLog={setLog}
+        selectedTask={selectedTask}
+        setSelectedTask={setSelectedTask}
+        tasks={tasks}
+        setTasks={setTasks}
       />
-      <TaskContainer />
+      <TaskContainer 
+        selectedTask={selectedTask}
+        setSelectedTask={setSelectedTask}
+        tasks={tasks}
+        setTasks={setTasks}
+      />
     </div>
   )
 }

@@ -1,26 +1,26 @@
 import React from 'react'
 
-const TimeBlocks = ({ setStart, setTime, setCurrentTask, pomodoro, shortBreak, longBreak }) => {
+const TimeBlocks = ({ setStart, setTime, setCurrentTimeBlock, pomodoro, shortBreak, longBreak }) => {
   return (
     <div>
       <TimeBlockButton
         setStart={setStart}
         setTime={setTime}
-        setCurrentTask={setCurrentTask}
+        setCurrentTimeBlock={setCurrentTimeBlock}
         newBlock={pomodoro}
         text='Pomodoro'
       />
       <TimeBlockButton
         setStart={setStart}
         setTime={setTime}
-        setCurrentTask={setCurrentTask}
+        setCurrentTimeBlock={setCurrentTimeBlock}
         newBlock={shortBreak}
         text='Short Break'
       />
       <TimeBlockButton
         setStart={setStart}
         setTime={setTime}
-        setCurrentTask={setCurrentTask}
+        setCurrentTimeBlock={setCurrentTimeBlock}
         newBlock={longBreak}
         text='Long Break'
       />
@@ -28,11 +28,11 @@ const TimeBlocks = ({ setStart, setTime, setCurrentTask, pomodoro, shortBreak, l
   )
 }
 
-const TimeBlockButton = ({ setStart, setTime, setCurrentTask, newBlock, text }) => {
+const TimeBlockButton = ({ setStart, setTime, setCurrentTimeBlock, newBlock, text }) => {
   const onClickBlock = () => {
     setStart(false)
     setTime(newBlock.durMs)
-    setCurrentTask(newBlock)
+    setCurrentTimeBlock(newBlock)
   }
   return <button onClick={onClickBlock}>{text}</button>
 }

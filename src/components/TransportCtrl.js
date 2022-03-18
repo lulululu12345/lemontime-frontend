@@ -3,14 +3,14 @@ import SkipButton from './SkipButton'
 import StopAndGoButton from './StopAndGoButton'
 import ResetButton from './ResetButton'
 
-const TransportCtrl = ({ start, setStart, time, setTime, currentTask, setCurrentTask, pomodoro, shortBreak, longBreak, longBreakInterval, log, setLog }) => {
+const TransportCtrl = ({ start, setStart, time, setTime, currentTimeBlock, setCurrentTimeBlock, pomodoro, shortBreak, longBreak, longBreakInterval, log, setLog }) => {
   return (
     <div>
       <ResetButton 
         time={time} 
         setTime={setTime} 
         setStart={setStart} 
-        currentTask={currentTask} 
+        currentTimeBlock={currentTimeBlock} 
       />
       <StopAndGoButton 
         start={start}
@@ -19,8 +19,8 @@ const TransportCtrl = ({ start, setStart, time, setTime, currentTask, setCurrent
       <SkipButton 
         start={start} 
         setStart={setStart} 
-        currentTask={currentTask} 
-        setCurrentTask={setCurrentTask} 
+        currentTimeBlock={currentTimeBlock} 
+        setCurrentTimeBlock={setCurrentTimeBlock} 
         log={log} 
         setLog={setLog} 
         setTime={setTime} 

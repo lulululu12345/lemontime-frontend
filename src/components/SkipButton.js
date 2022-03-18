@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
 
 // SkipButton component for skipping to the next time block
-const SkipButton = ({ start, setStart, currentTask, setCurrentTask, log, setLog, setTime, pomodoro, shortBreak, longBreak, longBreakInterval }) => {
+const SkipButton = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock, log, setLog, setTime, pomodoro, shortBreak, longBreak, longBreakInterval }) => {
   const [skip, setSkip] = useState(false)
 
   const onClickSkip = () => {
     setStart(false)
-    if (currentTask.type === 'work') {
+    if (currentTimeBlock.type === 'work') {
       setLog({
         workCompleted: log.workCompleted + 1,
         blocksCompleted: log.blocksCompleted
       })
     }
-    if (currentTask.type === 'break') {
+    if (currentTimeBlock.type === 'break') {
       setLog({
         workCompleted: log.workCompleted,
         blocksCompleted: log.blocksCompleted
@@ -22,19 +22,19 @@ const SkipButton = ({ start, setStart, currentTask, setCurrentTask, log, setLog,
   }
 
   useEffect(() => {
-    if (skip === true && currentTask.type === 'work') {
+    if (skip === true && currentTimeBlock.type === 'work') {
       if (log.workCompleted % longBreakInterval === 0) {
         setTime(longBreak.durMs)
-        setCurrentTask(longBreak)
+        setCurrentTimeBlock(longBreak)
       } 
       else {
         setTime(shortBreak.durMs)
-        setCurrentTask(shortBreak)
+        setCurrentTimeBlock(shortBreak)
       }
     }
-    if (skip === true && currentTask.type === 'break') {
+    if (skip === true && currentTimeBlock.type === 'break') {
       setTime(pomodoro.durMs)
-      setCurrentTask(pomodoro)
+      setCurrentTimeBlock(pomodoro)
     }
     setSkip(false)
   }, [skip])
