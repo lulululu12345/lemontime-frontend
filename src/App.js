@@ -6,12 +6,14 @@ import TaskContainer from './components/TaskContainer'
 const App = () => {
   // Phony Database
   const [tasks, setTasks] = useState([{
+    id: 0,
     name: 'Shlurp the pollywogs',
     dur: 4,
     blocksCompleted: 0,
     note: 'All the live long day'
   },
   {
+    id: 1,
     name: 'Flies in the buttermilk',
     dur: 2,
     blocksCompleted: 0,

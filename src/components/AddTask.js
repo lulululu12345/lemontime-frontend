@@ -1,0 +1,67 @@
+import React, { useState } from 'react'
+
+const AddTask = ({ tasks, setTasks }) => {
+  const [showTaskForm, setShowTaskForm] = useState(false)
+  const [taskNameAdd, setTaskNameAdd] = useState('')
+  const [taskDurAdd, setTaskDurAdd] = useState(1)
+  const [taskNoteAdd, setTaskNoteAdd] = useState('')
+
+  const handleNameChange = (event) => {
+    const eventValue = event.target.value
+    setTaskNameAdd(eventValue)
+  }
+
+  const handleDurChange = (event) => {
+    const eventValue = event.target.value
+    setTaskDurAdd(eventValue)
+  }
+
+  const handleNoteChange = (event) => {
+    const eventValue = event.target.value
+    setTaskNoteAdd(eventValue)
+  }
+
+  const toggleForm = () => {
+    setShowTaskForm(!showTaskForm)
+  }
+
+  const submitTaskForm = (event) => {
+    event.preventDefault()
+    console.log(tasks.length)
+
+    const newTask = {
+      id: tasks.length,
+      name: taskNameAdd,
+      dur: taskDurAdd,
+      blocksCompleted: 0,
+      note: taskNoteAdd
+    }
+
+    setTasks(tasks.concat(newTask))
+    setTaskNameAdd('')
+    setTaskDurAdd(1)
+    setTaskNoteAdd('')
+    setShowTaskForm(false)
+  }
+  if (showTaskForm) {
+    return (
+      <div>
+        <form onSubmit={submitTaskForm} >
+          <input type='text' placeholder='Task Name' value={taskNameAdd} onChange={handleNameChange} required />
+          <br/>
+          <label>Task Duration</label>
+          <br/>
+          <input type='number' min='1' max='999' value={taskDurAdd} onChange={handleDurChange} />
+          <br/>
+          <input type='textarea' placeholder='Notes' value={taskNoteAdd} onChange={handleNoteChange} />
+          <br/>
+          <input type='submit' value='Save' />
+        </form>
+        <button onClick={toggleForm} >Cancel</button>
+      </div>
+    )
+  }
+  return <button onClick={toggleForm}>Add</button>
+}
+
+export default AddTask
