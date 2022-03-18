@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import SettingsContainer from './components/SettingsContainer'
 import TimerContainer from './components/TimerContainer'
 import TaskContainer from './components/TaskContainer'
@@ -20,12 +20,7 @@ const App = () => {
     note: 'Get em out'
   }
   ])
-
-
-
-
-
-
+  
   // Duration in milliseconds for different tasks
   const [pomodoro, setPomodoro] = 
     useState({ 
