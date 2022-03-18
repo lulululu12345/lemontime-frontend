@@ -28,11 +28,6 @@ const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks }) => {
       <div>
       {listTasks}
     </div>
-      {/* <Tasks 
-        tasks={tasks}  
-        selectedTask={selectedTask} 
-        setSelectedTask={setSelectedTask}
-      /> */}
       <AddTask 
         tasks={tasks} 
         setTasks={setTasks}

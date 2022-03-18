@@ -43,7 +43,7 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
       blocksCompleted: 0,
       note: taskNoteEdit
     }
-    console.log(taskId);
+    
     setTasks(tasks.map(task => {
       if (task.id === taskId) {
         return newTask

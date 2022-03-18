@@ -10,9 +10,10 @@ const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTim
       // If the timer just completed a pomodoro
       if (currentTimeBlock.type === 'work') {
         // 
-        const updateTask = tasks.map(task => {
+        setTasks(tasks.map(task => {
           if (task.name === selectedTask) {
             return {
+              id: task.id,
               name: task.name,
               dur: task.dur,
               blocksCompleted: task.blocksCompleted += 1,
@@ -20,13 +21,7 @@ const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTim
             }
           }
           else return task
-        })
-        // This is almost working but not quite, becaust the update task array only returns a number value for the new array...
-        console.log('updateTask', updateTask)
-        console.log('tasks', tasks)
-        // console.log('findTask', findTask)
-
-
+        }))
         // Add one to the log's workCompleted property and add the current task object to the blocksCompleted array with concat
         setLog({
           workCompleted: log.workCompleted + 1,
