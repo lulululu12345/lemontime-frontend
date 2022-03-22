@@ -21,7 +21,6 @@ const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks }) => {
       />
     ) 
   })
-  // Figure out how to hide the add button
   return (
     <div>
       <h2>Tasks</h2>

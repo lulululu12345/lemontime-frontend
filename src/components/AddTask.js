@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import taskService from '../services/tasks'
 
 const AddTask = ({ tasks, setTasks }) => {
   const [showTaskForm, setShowTaskForm] = useState(false)
@@ -27,17 +28,21 @@ const AddTask = ({ tasks, setTasks }) => {
 
   const submitTaskForm = (event) => {
     event.preventDefault()
-    console.log(tasks.length)
 
     const newTask = {
-      id: tasks.length,
       name: taskNameAdd,
       dur: taskDurAdd,
-      blocksCompleted: 0,
-      note: taskNoteAdd
+      note: taskNoteAdd,
+      blocksCompleted: 0
     }
 
-    setTasks(tasks.concat(newTask))
+    taskService
+      .create(newTask)
+      .then(response => {
+        setTasks(tasks.concat(response.data))
+      })
+
+    // setTasks(tasks.concat(newTask))
     setTaskNameAdd('')
     setTaskDurAdd(1)
     setTaskNoteAdd('')

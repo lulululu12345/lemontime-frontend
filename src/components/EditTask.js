@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import taskService from '../services/tasks'
 
 const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTaskForm, setShowTaskForm }) => {
   // const [showTaskForm, setShowTaskForm] = useState(false)
@@ -36,20 +37,26 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
   const submitTaskForm = (event) => {
     event.preventDefault()
 
-    const newTask = {
+    const changedTask = {
       id: taskId,
       name: taskNameEdit,
       dur: taskDurEdit,
-      blocksCompleted: 0,
-      note: taskNoteEdit
+      note: taskNoteEdit,
+      blocksCompleted: 0
     }
     
-    setTasks(tasks.map(task => {
-      if (task.id === taskId) {
-        return newTask
-      }
-      return task
-    }))
+    taskService
+      .update(taskId, changedTask)
+      .then(response => {
+        setTasks(tasks.map(task => task.id !== taskId ? task : response.data))
+      })
+
+    // setTasks(tasks.map(task => {
+    //   if (task.id === taskId) {
+    //     return changedTask
+    //   }
+    //   return task
+    // }))
     
     setTaskNameEdit('')
     setTaskDurEdit(1)
