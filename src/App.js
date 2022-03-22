@@ -1,25 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import taskService from './services/tasks'
 import SettingsContainer from './components/SettingsContainer'
 import TimerContainer from './components/TimerContainer'
 import TaskContainer from './components/TaskContainer'
 
 const App = () => {
   // Phony Database
-  const [tasks, setTasks] = useState([{
-    id: 0,
-    name: 'Shlurp the pollywogs',
-    dur: 4,
-    blocksCompleted: 0,
-    note: 'All the live long day'
-  },
-  {
-    id: 1,
-    name: 'Flies in the buttermilk',
-    dur: 2,
-    blocksCompleted: 0,
-    note: 'Get em out'
-  }
-  ])
+  const [tasks, setTasks] = useState([])
+
+  useEffect(() => {
+    taskService
+      .getAll()
+      .then(response => {
+        setTasks(response.data)
+      })
+  }, [])
   
   // Duration in milliseconds for different tasks
   const [pomodoro, setPomodoro] = 
