@@ -42,7 +42,6 @@ const AddTask = ({ tasks, setTasks }) => {
         setTasks(tasks.concat(response.data))
       })
 
-    // setTasks(tasks.concat(newTask))
     setTaskNameAdd('')
     setTaskDurAdd(1)
     setTaskNoteAdd('')

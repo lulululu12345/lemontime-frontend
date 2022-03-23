@@ -13,6 +13,11 @@ const update = (id, newObject) => {
   return axios.put(`${baseUrl}/${id}`, newObject)
 }
 
-const taskService = { getAll, create, update }
+const remove = (id) => {
+  console.log(id)
+  return axios.delete(`${baseUrl}/${id}`)
+}
+
+const taskService = { getAll, create, update, remove }
 
 export default taskService

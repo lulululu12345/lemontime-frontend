@@ -34,6 +34,15 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
     setShowTaskForm(!showTaskForm)
   }
 
+  const deleteTask = () => {
+    console.log(typeof taskId);
+    taskService
+      .remove(taskId)
+      .then(() => {
+        setTasks(tasks.filter(task => task.id !== taskId))
+      })
+  }
+
   const submitTaskForm = (event) => {
     event.preventDefault()
 
@@ -51,13 +60,6 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
         setTasks(tasks.map(task => task.id !== taskId ? task : response.data))
       })
 
-    // setTasks(tasks.map(task => {
-    //   if (task.id === taskId) {
-    //     return changedTask
-    //   }
-    //   return task
-    // }))
-    
     setTaskNameEdit('')
     setTaskDurEdit(1)
     setTaskNoteEdit('')
@@ -79,6 +81,7 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
           <input type='submit' value='Save' />
         </form>
         <button onClick={toggleForm} >Cancel</button>
+        <button onClick={deleteTask} >Delete</button>
       </div>
     )
   }
