@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import EditTask from './EditTask'
 
-const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, setSelectedTask, tasks, setTasks, taskId }) => {
+const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, setSelectedTask, tasks, setTasks, taskId, login }) => {
   const [showTaskForm, setShowTaskForm] = useState(false)
 
   const onCardClick = (event) => {
@@ -29,6 +29,7 @@ const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, 
           taskNote={taskNote}
           showTaskForm={showTaskForm}
           setShowTaskForm={setShowTaskForm}
+          login={login}
         />
       </div>
     )

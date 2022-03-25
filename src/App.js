@@ -5,15 +5,18 @@ import TimerContainer from './components/TimerContainer'
 import TaskContainer from './components/TaskContainer'
 
 const App = () => {
-  // Phony Database
+  // localStorage.clear()
+  const [login, setLogin] = useState(false)
   const [tasks, setTasks] = useState([])
 
   useEffect(() => {
-    taskService
-      .getAll()
-      .then(response => {
-        setTasks(response.data)
-      })
+    if (login) {
+      taskService
+        .getAll()
+        .then(response => {
+          setTasks(response.data)
+        })
+    }
   }, [])
   
   // Duration in milliseconds for different tasks
@@ -21,7 +24,7 @@ const App = () => {
     useState({ 
       name: 'pomodoro',
       type: 'work', 
-      durMins: 25, 
+      durMins: JSON.parse(localStorage.getItem('pomodoro')), 
       get durMs(){
         return this.durMins * 60000
       }
@@ -30,7 +33,7 @@ const App = () => {
     useState({ 
       name: 'shortBreak', 
       type: 'break',
-      durMins: 5, 
+      durMins: JSON.parse(localStorage.getItem('shortBreak')), 
       get durMs(){
         return this.durMins * 60000
       } 
@@ -39,7 +42,7 @@ const App = () => {
     useState({ 
       name: 'longBreak', 
       type: 'break',
-      durMins: 10, 
+      durMins: JSON.parse(localStorage.getItem('longBreak')), 
       get durMs(){
         return this.durMins * 60000
       } 
@@ -48,9 +51,9 @@ const App = () => {
   const [currentTimeBlock, setCurrentTimeBlock] = useState(pomodoro)
   const [time, setTime] = useState(currentTimeBlock.durMillis)
   const [start, setStart] = useState(false)
-  const [autoBreak, setAutoBreak] = useState(false)
-  const [autoPomodoro, setAutoPomodoro] = useState(false)
-  const [longBreakInterval, setLongBreakInterval] = useState(4)
+  const [autoBreak, setAutoBreak] = useState(JSON.parse(localStorage.getItem('autoBreak')))
+  const [autoPomodoro, setAutoPomodoro] = useState(JSON.parse(localStorage.getItem('autoPomodoro')))
+  const [longBreakInterval, setLongBreakInterval] = useState(JSON.parse(localStorage.getItem('longBreakInterval')))
   const [selectedTask, setSelectedTask] = useState(false)
   const [log, setLog] = 
     useState({
@@ -110,6 +113,7 @@ const App = () => {
         setSelectedTask={setSelectedTask}
         tasks={tasks}
         setTasks={setTasks}
+        login={login}
       />
     </div>
   )

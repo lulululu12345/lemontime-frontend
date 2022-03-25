@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import taskService from '../services/tasks'
 
-const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTaskForm, setShowTaskForm }) => {
+const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTaskForm, setShowTaskForm, login }) => {
   // const [showTaskForm, setShowTaskForm] = useState(false)
   const [taskNameEdit, setTaskNameEdit] = useState('')
   const [taskDurEdit, setTaskDurEdit] = useState(1)
@@ -35,12 +35,13 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
   }
 
   const deleteTask = () => {
-    console.log(typeof taskId);
-    taskService
-      .remove(taskId)
-      .then(() => {
-        setTasks(tasks.filter(task => task.id !== taskId))
-      })
+    if (login) {
+      taskService
+        .remove(taskId)
+        .then(() => {
+          setTasks(tasks.filter(task => task.id !== taskId))
+        })
+    }
   }
 
   const submitTaskForm = (event) => {
@@ -53,12 +54,13 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
       note: taskNoteEdit,
       blocksCompleted: 0
     }
-    
-    taskService
-      .update(taskId, changedTask)
-      .then(response => {
-        setTasks(tasks.map(task => task.id !== taskId ? task : response.data))
-      })
+    if (login) {
+      taskService
+        .update(taskId, changedTask)
+        .then(response => {
+          setTasks(tasks.map(task => task.id !== taskId ? task : response.data))
+        })
+    }
 
     setTaskNameEdit('')
     setTaskDurEdit(1)

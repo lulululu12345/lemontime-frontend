@@ -3,7 +3,7 @@ import TaskCard from './TaskCard'
 import AddTask from './AddTask'
 import './TaskContainer.css'
 
-const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks }) => {
+const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks, login }) => {
 
   const listTasks = tasks.map((task) => {
     return (
@@ -18,6 +18,7 @@ const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks }) => {
         setSelectedTask={setSelectedTask}
         tasks={tasks}
         setTasks={setTasks}
+        login={login}
       />
     ) 
   })
@@ -30,6 +31,7 @@ const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks }) => {
       <AddTask 
         tasks={tasks} 
         setTasks={setTasks}
+        login={login}
       />
     </div>  
   )

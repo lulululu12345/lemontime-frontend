@@ -3,7 +3,7 @@ import FocusDurationInput from './FocusDurationInput'
 import LongBreakSchedule from './LongBreakSchedule'
 import AutoRunBox from './AutoRunBox'
 
-const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, setAutoBreak, setAutoPomodoro, setLongBreakInterval }) => {
+const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, setAutoBreak, setAutoPomodoro, longBreakInterval, setLongBreakInterval }) => {
   // State hooks
   const [showSettings, setShowSettings] = useState(false)
   const [pomodoroValue, setPomodoroValue] = useState(25)
@@ -19,6 +19,7 @@ const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, se
     setPomodoroValue(pomodoro.durMins)
     setShortBreakValue(shortBreak.durMins)
     setLongBreakValue(longBreak.durMins)
+    setLongBreakIntervalValue(longBreakInterval)
   }
 
   // When the settings are saved
@@ -27,6 +28,13 @@ const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, se
     event.preventDefault()
     // Stop the timer
     setStart(false)
+    // Store form values in localStorage
+    localStorage.setItem('pomodoro', JSON.stringify(pomodoroValue))
+    localStorage.setItem('shortBreak', JSON.stringify(shortBreakValue))
+    localStorage.setItem('longBreak', JSON.stringify(longBreakValue))
+    localStorage.setItem('longBreakInterval', JSON.stringify(longBreakIntervalValue))
+    localStorage.setItem('autoBreak', JSON.stringify(autoBreakCheckbox))
+    localStorage.setItem('autoPomodoro', JSON.stringify(autoPomodoroCheckbox))
     // Set the pomodoro prop to a new object using the duration value supplied in the settings form
     setPomodoro({ 
       name: 'pomodoro',

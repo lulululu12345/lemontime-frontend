@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import taskService from '../services/tasks'
 
-const AddTask = ({ tasks, setTasks }) => {
+const AddTask = ({ tasks, setTasks, login }) => {
   const [showTaskForm, setShowTaskForm] = useState(false)
   const [taskNameAdd, setTaskNameAdd] = useState('')
   const [taskDurAdd, setTaskDurAdd] = useState(1)
@@ -35,12 +35,13 @@ const AddTask = ({ tasks, setTasks }) => {
       note: taskNoteAdd,
       blocksCompleted: 0
     }
-
-    taskService
-      .create(newTask)
-      .then(response => {
-        setTasks(tasks.concat(response.data))
-      })
+    if (login) {
+      taskService
+        .create(newTask)
+        .then(response => {
+          setTasks(tasks.concat(response.data))
+        })
+    }
 
     setTaskNameAdd('')
     setTaskDurAdd(1)
