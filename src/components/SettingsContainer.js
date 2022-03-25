@@ -20,6 +20,8 @@ const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, se
     setShortBreakValue(shortBreak.durMins)
     setLongBreakValue(longBreak.durMins)
     setLongBreakIntervalValue(longBreakInterval)
+    setAutoBreakCheckbox(JSON.parse(localStorage.getItem('autoBreak')))
+    setAutoPomodoroCheckbox(JSON.parse(localStorage.getItem('autoPomodoro')))
   }
 
   // When the settings are saved

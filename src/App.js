@@ -7,7 +7,11 @@ import TaskContainer from './components/TaskContainer'
 const App = () => {
   // localStorage.clear()
   const [login, setLogin] = useState(false)
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')))
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+  }, [tasks])
 
   useEffect(() => {
     if (login) {
@@ -49,7 +53,7 @@ const App = () => {
     })
 
   const [currentTimeBlock, setCurrentTimeBlock] = useState(pomodoro)
-  const [time, setTime] = useState(currentTimeBlock.durMillis)
+  const [time, setTime] = useState(currentTimeBlock.durMs)
   const [start, setStart] = useState(false)
   const [autoBreak, setAutoBreak] = useState(JSON.parse(localStorage.getItem('autoBreak')))
   const [autoPomodoro, setAutoPomodoro] = useState(JSON.parse(localStorage.getItem('autoPomodoro')))

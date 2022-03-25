@@ -35,6 +35,9 @@ const AddTask = ({ tasks, setTasks, login }) => {
       note: taskNoteAdd,
       blocksCompleted: 0
     }
+
+    setTasks(tasks.concat(newTask))
+
     if (login) {
       taskService
         .create(newTask)

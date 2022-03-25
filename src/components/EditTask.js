@@ -35,6 +35,9 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
   }
 
   const deleteTask = () => {
+
+    setTasks(tasks.filter(task => task.id !== taskId))
+
     if (login) {
       taskService
         .remove(taskId)
@@ -54,6 +57,9 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
       note: taskNoteEdit,
       blocksCompleted: 0
     }
+
+    setTasks(tasks.map(task => task.id !== taskId ? task : changedTask))
+
     if (login) {
       taskService
         .update(taskId, changedTask)
