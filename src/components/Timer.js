@@ -99,7 +99,6 @@ const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTim
 
   // Convert the time props millisecond value to minutes
   const calcMinutes = () => {
-    console.log(currentTimeBlock.durMins);
     if (Math.floor(time / 60000) >= 100) {
       return ('0' + Math.floor(time / 60000)).slice(-3)
     }

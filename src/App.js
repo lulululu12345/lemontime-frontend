@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import taskService from './services/tasks'
+import LoginContainer from './components/LoginContainer'
 import SettingsContainer from './components/SettingsContainer'
 import TimerContainer from './components/TimerContainer'
 import TaskContainer from './components/TaskContainer'
@@ -68,6 +69,7 @@ const App = () => {
   return (
     <div className='App'>
       <span>
+      <LoginContainer />
       <SettingsContainer 
         pomodoro={pomodoro}
         setPomodoro={setPomodoro}
