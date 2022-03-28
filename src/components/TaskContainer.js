@@ -1,9 +1,10 @@
 import React from 'react'
 import TaskCard from './TaskCard'
+import TaskOptions from './TaskOptions'
 import AddTask from './AddTask'
 import './TaskContainer.css'
 
-const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks, login }) => {
+const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks, login, user }) => {
 
   const listTasks = tasks.map((task) => {
     return (
@@ -24,7 +25,11 @@ const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks, login }
   })
   return (
     <div>
-      <h2>fdas</h2>
+      <h2>Tasks</h2>
+      <TaskOptions 
+        user={user}
+        tasks={tasks}
+      />
       <div>
       {listTasks}
     </div>

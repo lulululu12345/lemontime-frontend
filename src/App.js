@@ -8,6 +8,7 @@ import TaskContainer from './components/TaskContainer'
 const App = () => {
   // localStorage.clear()
   const [login, setLogin] = useState(false)
+  const [user, setUser] = useState(null)
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')))
 
   useEffect(() => {
@@ -69,7 +70,10 @@ const App = () => {
   return (
     <div className='App'>
       <span>
-      <LoginContainer />
+      <LoginContainer 
+        user={user}
+        setUser={setUser}
+      />
       <SettingsContainer 
         pomodoro={pomodoro}
         setPomodoro={setPomodoro}
@@ -93,7 +97,7 @@ const App = () => {
       </span>
       <span>
       </span>
-      <h1>asdf</h1>
+      <h1>Timer</h1>
       <TimerContainer 
         start={start}
         setStart={setStart}
@@ -120,6 +124,7 @@ const App = () => {
         tasks={tasks}
         setTasks={setTasks}
         login={login}
+        user={user}
       />
     </div>
   )

@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import loginService from '../services/login'
-import taskService from '../services/tasks'
+// import taskService from '../services/tasks'
+import taskTemplateService from '../services/taskTemplates'
 
-const LoginContainer = () => {
+const LoginContainer = ({ user, setUser }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [user, setUser] = useState(null)
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedTimerAppUser')
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       setUser(user)
-      taskService.setToken(user.token)
+      taskTemplateService.setToken(user.token)
     }
   }, [])
 
   const handleLogin = async (event) => {
     event.preventDefault()
     try {
-      console.log('made it')
       const user = await loginService.login({
         email, password,
       })
       window.localStorage.setItem(
         'loggedTimerAppUser', JSON.stringify(user)
       )
-      taskService.setToken(user.token)
+      taskTemplateService.setToken(user.token)
       setUser(user)
       setEmail('')
       setPassword('')
@@ -34,7 +33,7 @@ const LoginContainer = () => {
       console.log('Wrong credentials')
     }
   }
-  console.log('user', user)
+
   const loginForm = () => {
     return (
       <form onSubmit={handleLogin}>
