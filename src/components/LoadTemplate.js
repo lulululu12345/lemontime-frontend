@@ -6,53 +6,63 @@ import './LoadTemplate.css'
 const LoadTemplate = ({ setTasks }) => {
   const [buttonText, setButtonText] = useState('Load Template')
   const [toggleForm, setToggleForm] = useState(false)
-  const [userTemplates, setUserTemplates] = useState([])
 
   const handleFormToggle = () => {
     setToggleForm(!toggleForm)
   }
 
   useEffect(() => {
-    !toggleForm ? setButtonText('Load Template') : setButtonText('Cancel')
+    if (!toggleForm) {
+      setButtonText('Load Template')
+    } else {
+      setButtonText('Cancel')
+    }
   }, [toggleForm])
 
-  const Templates = () => {
-
-    const getTemplates = async () => {
-      const gottenTemplates = await taskTemplateService.getAll()
-      setUserTemplates(gottenTemplates)
-    }
-    // console.log('userTemplates', userTemplates)
-    getTemplates()
-    const listTemplates = userTemplates.map(template => {
-      return (
-        <TemplateCard 
-          key={template.id}
-          templateName={template.name}
-          templateId={template.id}
-          templateTasks={template.tasks}
-          setTasks={setTasks}
-          setToggleForm={setToggleForm}
-        />
-      )
-    })
-
-    return (
-      <div>
-        <ul className='load-temp-ul'>
-          {listTemplates}
-        </ul>
-      </div>
-    )
-  }
+  
   
   return (
     <div>
       {toggleForm
-        ? Templates()
+        ? <Templates setTasks={setTasks} setToggleForm={setToggleForm}/>
         : null
       }
       <button onClick={handleFormToggle} >{buttonText}</button>
+    </div>
+  )
+}
+
+const Templates = ({ setTasks, setToggleForm }) => {
+  const [userTemplates, setUserTemplates] = useState([])
+
+  const getTemplates = async () => {
+    const gottenTemplates = await taskTemplateService.getAll()
+    setUserTemplates(gottenTemplates)
+  }
+  // console.log('userTemplates', userTemplates)
+  // getTemplates()
+
+  const listTemplates = userTemplates.map(template => {
+    return (
+      <TemplateCard 
+        key={template.id}
+        templateName={template.name}
+        templateId={template.id}
+        templateTasks={template.tasks}
+        setTasks={setTasks}
+        setToggleForm={setToggleForm}
+      />
+    )
+  })
+  useEffect(() => {
+    getTemplates()
+  }, [])
+
+  return (
+    <div>
+      <ul className='load-temp-ul'>
+        {listTemplates}
+      </ul>
     </div>
   )
 }
