@@ -12,11 +12,7 @@ const LoadTemplate = ({ setTasks }) => {
   }
 
   useEffect(() => {
-    if (!toggleForm) {
-      setButtonText('Load Template')
-    } else {
-      setButtonText('Cancel')
-    }
+    !toggleForm ? setButtonText('Load Template') : setButtonText('Cancel')
   }, [toggleForm])
 
   
@@ -39,8 +35,6 @@ const Templates = ({ setTasks, setToggleForm }) => {
     const gottenTemplates = await taskTemplateService.getAll()
     setUserTemplates(gottenTemplates)
   }
-  // console.log('userTemplates', userTemplates)
-  // getTemplates()
 
   const listTemplates = userTemplates.map(template => {
     return (
@@ -51,6 +45,8 @@ const Templates = ({ setTasks, setToggleForm }) => {
         templateTasks={template.tasks}
         setTasks={setTasks}
         setToggleForm={setToggleForm}
+        userTemplates={userTemplates}
+        setUserTemplates={setUserTemplates}
       />
     )
   })

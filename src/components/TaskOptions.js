@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import taskTemplateService from '../services/taskTemplates'
+import React from 'react'
 import LoadTemplate from './LoadTemplate'
 import SaveTemplate from './SaveTemplate'
+import ClearTasks from './ClearTasks'
 
 const TaskOptions = ({ user, tasks, setTasks }) => {
   return (
@@ -12,6 +12,9 @@ const TaskOptions = ({ user, tasks, setTasks }) => {
       <SaveTemplate
         user={user}
         tasks={tasks} 
+      />
+      <ClearTasks
+      setTasks={setTasks}
       />
     </div>
   )

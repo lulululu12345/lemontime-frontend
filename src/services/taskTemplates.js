@@ -21,6 +21,11 @@ const create = async newObject => {
   return res.data
 }
 
-const taskTemplateService = { getAll, create, setToken }
+const remove = async (id) => {
+  const res = await axios.delete(`${baseUrl}/${id}`)
+  return res.data
+}
+
+const taskTemplateService = { getAll, create, remove, setToken }
 
 export default taskTemplateService

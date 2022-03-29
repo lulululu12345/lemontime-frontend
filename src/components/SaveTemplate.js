@@ -33,7 +33,7 @@ const SaveTemplate = ({ user, tasks }) => {
             name: templateName,
             tasks: tasks
           }
-          const savedTaskTemplate = await taskTemplateService.create(newTaskTemplate)
+          await taskTemplateService.create(newTaskTemplate)
           setTemplateName('')
           setShowToggleSaveForm(false)
         } else if (!user) {
