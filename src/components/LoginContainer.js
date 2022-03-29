@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import CreateAccount from './CreateAccount'
 import loginService from '../services/login'
 // import taskService from '../services/tasks'
 import taskTemplateService from '../services/taskTemplates'
@@ -77,6 +78,7 @@ const LoginContainer = ({ user, setUser }) => {
         ? loginForm()
         : logOut()
       }
+      <CreateAccount />
     </div>
   )
 }

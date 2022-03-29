@@ -7,6 +7,7 @@ const TaskOptions = ({ user, tasks, setTasks }) => {
   return (
     <div>
       <LoadTemplate 
+        user={user}
         setTasks={setTasks}
       />
       <SaveTemplate

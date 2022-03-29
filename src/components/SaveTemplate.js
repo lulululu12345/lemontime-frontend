@@ -8,7 +8,8 @@ const SaveTemplate = ({ user, tasks }) => {
   
   // This is the handler for the og button click, to change the text and toggle the form
   const toggleSaveForm = () => {
-    setShowToggleSaveForm(!showTemplateSaveForm);
+    user ? setShowToggleSaveForm(!showTemplateSaveForm) : console.log('must be logged in')
+    
   }
 
   useEffect(() => {

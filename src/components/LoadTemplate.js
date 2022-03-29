@@ -3,19 +3,17 @@ import taskTemplateService from '../services/taskTemplates'
 import TemplateCard from './TemplateCard'
 import './LoadTemplate.css'
 
-const LoadTemplate = ({ setTasks }) => {
+const LoadTemplate = ({ setTasks, user }) => {
   const [buttonText, setButtonText] = useState('Load Template')
   const [toggleForm, setToggleForm] = useState(false)
 
   const handleFormToggle = () => {
-    setToggleForm(!toggleForm)
+    user ?  setToggleForm(!toggleForm) : console.log('must be logged in')
   }
 
   useEffect(() => {
     !toggleForm ? setButtonText('Load Template') : setButtonText('Cancel')
   }, [toggleForm])
-
-  
   
   return (
     <div>
