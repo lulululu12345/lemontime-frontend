@@ -1,6 +1,11 @@
 import axios from 'axios'
 const baseUrl = 'http://localhost:3001/api/tasktemplates'
 
+const getAll = async () => {
+  const res = await axios.get(baseUrl)
+  return res.data
+}
+
 let token = null
 
 const setToken = newToken => {
@@ -11,12 +16,11 @@ const create = async newObject => {
   const config = {
     headers: { Authorization: token },
   }
-  console.log('config', config);
 
   const res = await axios.post(baseUrl, newObject, config)
   return res.data
 }
 
-const taskTemplateService = { create, setToken }
+const taskTemplateService = { getAll, create, setToken }
 
 export default taskTemplateService

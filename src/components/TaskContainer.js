@@ -9,8 +9,8 @@ const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks, login, 
   const listTasks = tasks.map((task) => {
     return (
       <TaskCard 
-        key={task.id} 
-        taskId={task.id}
+        key={task._id} 
+        taskId={task._id}
         taskName={task.name} 
         taskDur={task.dur} 
         taskNote={task.note} 
@@ -29,6 +29,7 @@ const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks, login, 
       <TaskOptions 
         user={user}
         tasks={tasks}
+        setTasks={setTasks}
       />
       <div>
       {listTasks}
