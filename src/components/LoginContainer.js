@@ -82,7 +82,7 @@ const Login = ({showLogin, setShowLogin, showSignup, setShowSignup, setUser }) =
         setUser={setUser}
         setShowLogin={setShowLogin}
       />
-      <span>Don't have an account? <button onClick={toggleSignup} >Sign-up!</button></span>
+      <span>Don't have an account? <button onClick={toggleSignup}>Sign-up!</button></span>
       <div>
         <button onClick={cancelLogin}>Cancel</button>
       </div>
