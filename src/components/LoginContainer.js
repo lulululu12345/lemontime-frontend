@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import taskTemplateService from '../services/taskTemplates'
 import loginService from '../services/login'
+import signupService from '../services/signup'
+import signup from '../services/signup'
 
 const LoginContainer2 = ({ user, setUser}) => {
   const [showLogin, setShowLogin] = useState(false)
@@ -32,7 +34,7 @@ const LoginContainer2 = ({ user, setUser}) => {
     form = <Login showLogin={showLogin} setShowLogin={setShowLogin} showSignup={showSignup} setShowSignup={setShowSignup} setUser={setUser} />
   } 
   if (showSignup) {
-    form = <Signup showLogin={showLogin} setShowLogin={setShowLogin} showSignup={showSignup} setShowSignup={setShowSignup} />
+    form = <Signup showLogin={showLogin} setShowLogin={setShowLogin} showSignup={showSignup} setShowSignup={setShowSignup} setUser={setUser} />
   }
   if (showLogin === false && showSignup === false) {
     form = false
@@ -168,7 +170,7 @@ const LoginForm = ({ setUser, setShowLogin }) => {
 
 
 
-const Signup = ({ showLogin, setShowLogin, showSignup, setShowSignup }) => {
+const Signup = ({ showLogin, setShowLogin, showSignup, setShowSignup, setUser }) => {
   const cancelSignup = () => {
     setShowSignup(!showSignup)
   }
@@ -181,7 +183,10 @@ const Signup = ({ showLogin, setShowLogin, showSignup, setShowSignup }) => {
   return (
     <div>
       <h3>Sign-up</h3>
-      <SignupForm />
+      <SignupForm 
+        setUser={setUser}
+        setShowSignup={setShowSignup}
+      />
       <span>Already have an account? <button onClick={toggleLogin} >Login!</button></span>
       <div>
         <button onClick={cancelSignup}>Cancel</button>
@@ -191,7 +196,7 @@ const Signup = ({ showLogin, setShowLogin, showSignup, setShowSignup }) => {
 }
 
 
-const SignupForm = () => {
+const SignupForm = ({ setUser, setShowSignup }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -211,9 +216,27 @@ const SignupForm = () => {
     setConfirmPassword(eventValue)
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log('submit')
+    try {
+      if (password === confirmPassword) {
+        const user =  await signupService.signup({ email, password, })
+        window.localStorage.setItem(
+          'loggedTimerAppUser', JSON.stringify(user)
+        )
+        taskTemplateService.setToken(user.token)
+        setUser(user)
+        setEmail('')
+        setPassword('')
+        setConfirmPassword('')
+        setShowSignup(false)
+      }
+      if (password !== confirmPassword) {
+        console.log('You gotta have the asswords match dooood!!')
+      }
+    } catch (exception) {
+      console.log(exception)
+    }
   }
 
   return (
