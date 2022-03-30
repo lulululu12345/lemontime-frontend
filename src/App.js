@@ -69,7 +69,6 @@ const App = () => {
 
   return (
     <div className='App'>
-      <span>
       <LoginContainer 
         user={user}
         setUser={setUser}
@@ -94,9 +93,6 @@ const App = () => {
         longBreakInterval={longBreakInterval}
         setLongBreakInterval={setLongBreakInterval}
       />
-      </span>
-      <span>
-      </span>
       <h1>Timer</h1>
       <TimerContainer 
         start={start}
