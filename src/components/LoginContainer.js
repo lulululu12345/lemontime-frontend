@@ -52,12 +52,6 @@ const LoginContainer2 = ({ user, setUser}) => {
   
   return (
     <div>
-      <div>
-        {user
-          ? `${user.email} is logged in`
-          : null
-        }
-      </div>
       {form}
       {button}
     </div>

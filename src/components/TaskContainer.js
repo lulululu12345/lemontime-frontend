@@ -9,8 +9,6 @@ const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks, login, 
 
   // let taskId
   const listTasks = tasks.map((task) => {
-
-    console.log(task)
     return (
       <TaskCard 
         key={task._id} 

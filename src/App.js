@@ -5,6 +5,8 @@ import SettingsContainer from './components/SettingsContainer'
 import TimerContainer from './components/TimerContainer'
 import TaskContainer from './components/TaskContainer'
 
+import './App.css'
+
 const App = () => {
   // localStorage.clear()
   const [login, setLogin] = useState(false)
@@ -69,30 +71,47 @@ const App = () => {
 
   return (
     <div className='App'>
-      <LoginContainer 
-        user={user}
-        setUser={setUser}
-      />
-      <SettingsContainer 
-        pomodoro={pomodoro}
-        setPomodoro={setPomodoro}
-        shortBreak={shortBreak}
-        setShortBreak={setShortBreak}
-        longBreak={longBreak}
-        setLongBreak={setLongBreak}
-        currentTimeBlock={currentTimeBlock}
-        setCurrentTimeBlock={setCurrentTimeBlock}
-        time={time}
-        setTime={setTime}
-        start={start}
-        setStart={setStart}
-        autoBreak={autoBreak}
-        setAutoBreak={setAutoBreak}
-        autoPomodoro={autoPomodoro}
-        setAutoPomodoro={setAutoPomodoro}
-        longBreakInterval={longBreakInterval}
-        setLongBreakInterval={setLongBreakInterval}
-      />
+      <header className='primary-header'>
+        <div>
+          <h3>LOGO</h3>
+        </div>
+        <nav>
+          <ul className='primary-navigation'>
+            <li>
+              <SettingsContainer 
+                pomodoro={pomodoro}
+                setPomodoro={setPomodoro}
+                shortBreak={shortBreak}
+                setShortBreak={setShortBreak}
+                longBreak={longBreak}
+                setLongBreak={setLongBreak}
+                currentTimeBlock={currentTimeBlock}
+                setCurrentTimeBlock={setCurrentTimeBlock}
+                time={time}
+                setTime={setTime}
+                start={start}
+                setStart={setStart}
+                autoBreak={autoBreak}
+                setAutoBreak={setAutoBreak}
+                autoPomodoro={autoPomodoro}
+                setAutoPomodoro={setAutoPomodoro}
+                longBreakInterval={longBreakInterval}
+                setLongBreakInterval={setLongBreakInterval}
+              />
+            </li>
+            <li>
+              <LoginContainer 
+                user={user}
+                setUser={setUser}
+              />
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+
+
+
       <h1>Timer</h1>
       <TimerContainer 
         start={start}

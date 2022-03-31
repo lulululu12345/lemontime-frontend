@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import FocusDurationInput from './FocusDurationInput'
 import LongBreakSchedule from './LongBreakSchedule'
 import AutoRunBox from './AutoRunBox'
+import './SettingsContainer.css'
 
 const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, setAutoBreak, setAutoPomodoro, longBreakInterval, setLongBreakInterval }) => {
   // State hooks
@@ -114,19 +115,21 @@ const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, se
   }
   if (showSettings === true) {
     return (
-      <div>
-        <h2>Settings</h2>
-        <h3>Time(minutes)</h3>
-        <form onSubmit={onSubmitSettings}>
-          <FocusDurationInput numBoxValue={pomodoroValue}   setNumBoxValue={setPomodoroValue}   labelText='Pomodoro' />
-          <FocusDurationInput numBoxValue={shortBreakValue} setNumBoxValue={setShortBreakValue} labelText='Short Break' />
-          <FocusDurationInput numBoxValue={longBreakValue}  setNumBoxValue={setLongBreakValue}  labelText='Long Break' />
-          <LongBreakSchedule longBreakIntervalValue={longBreakIntervalValue} setLongBreakIntervalValue={setLongBreakIntervalValue} />
-          <AutoRunBox checkboxValue={autoBreakCheckbox}    setCheckboxValue={setAutoBreakCheckbox}    labelText={'Auto Run Breaks'} />
-          <AutoRunBox checkboxValue={autoPomodoroCheckbox} setCheckboxValue={setAutoPomodoroCheckbox} labelText={'Auto Run Pomodoros'} />
-          <input type='submit' value='Save' />
-        </form>
-          <button onClick={onClickSettings}>Close</button>
+      <div className='popup'>
+        <div className='popup-inner'>
+          <h2>Settings</h2>
+          <h3>Time(minutes)</h3>
+          <form onSubmit={onSubmitSettings}>
+            <FocusDurationInput numBoxValue={pomodoroValue}   setNumBoxValue={setPomodoroValue}   labelText='Pomodoro' />
+            <FocusDurationInput numBoxValue={shortBreakValue} setNumBoxValue={setShortBreakValue} labelText='Short Break' />
+            <FocusDurationInput numBoxValue={longBreakValue}  setNumBoxValue={setLongBreakValue}  labelText='Long Break' />
+            <LongBreakSchedule longBreakIntervalValue={longBreakIntervalValue} setLongBreakIntervalValue={setLongBreakIntervalValue} />
+            <AutoRunBox checkboxValue={autoBreakCheckbox}    setCheckboxValue={setAutoBreakCheckbox}    labelText={'Auto Run Breaks'} />
+            <AutoRunBox checkboxValue={autoPomodoroCheckbox} setCheckboxValue={setAutoPomodoroCheckbox} labelText={'Auto Run Pomodoros'} />
+            <input type='submit' value='Save' />
+          </form>
+            <button className='close-btn' onClick={onClickSettings}>Close</button>
+        </div>
       </div>
     )
   }
