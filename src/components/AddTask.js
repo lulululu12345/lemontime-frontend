@@ -30,7 +30,7 @@ const AddTask = ({ tasks, setTasks, login }) => {
     event.preventDefault()
     if (!login) {
       const newTask = {
-        id: tasks.length,
+        tempId: Math.floor(Math.random() * Date.now()),
         name: taskNameAdd,
         dur: taskDurAdd,
         note: taskNoteAdd,

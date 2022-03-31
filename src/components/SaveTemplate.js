@@ -41,7 +41,7 @@ const SaveTemplate = ({ user, tasks }) => {
           console.log('must be signed in!')
         }
       } catch (exception) {
-        console.log('this is the catch thing')
+        console.log(exception)
       }
        
     }
