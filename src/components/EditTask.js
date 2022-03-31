@@ -36,37 +36,22 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
 
   const deleteTask = () => {
     console.log(taskId)
-    setTasks(tasks.filter(task => task.id !== taskId))
-
-    if (login) {
-      taskService
-        .remove(taskId)
-        .then(() => {
-          setTasks(tasks.filter(task => task.id !== taskId))
-        })
-    }
+    setTasks(tasks.filter(task => task._id !== taskId))
   }
 
   const submitTaskForm = (event) => {
     event.preventDefault()
 
     const changedTask = {
-      id: taskId,
+      _id: taskId,
       name: taskNameEdit,
       dur: taskDurEdit,
       note: taskNoteEdit,
       blocksCompleted: 0
     }
 
-    setTasks(tasks.map(task => task.id !== taskId ? task : changedTask))
+    setTasks(tasks.map(task => task._id !== taskId ? task : changedTask))
 
-    if (login) {
-      taskService
-        .update(taskId, changedTask)
-        .then(response => {
-          setTasks(tasks.map(task => task.id !== taskId ? task : response.data))
-        })
-    }
 
     setTaskNameEdit('')
     setTaskDurEdit(1)

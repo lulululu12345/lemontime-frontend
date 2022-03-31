@@ -28,32 +28,15 @@ const AddTask = ({ tasks, setTasks, login }) => {
 
   const submitTaskForm = (event) => {
     event.preventDefault()
-    if (!login) {
-      const newTask = {
-        tempId: Math.floor(Math.random() * Date.now()),
-        name: taskNameAdd,
-        dur: taskDurAdd,
-        note: taskNoteAdd,
-        blocksCompleted: 0
-      }
-      setTasks(tasks.concat(newTask))
-    }
 
-
-    if (login) {
-      const newTask = {
-        name: taskNameAdd,
-        dur: taskDurAdd,
-        note: taskNoteAdd,
-        blocksCompleted: 0
-      }
-      
-      taskService
-        .create(newTask)
-        .then(response => {
-          setTasks(tasks.concat(response.data))
-        })
+    const newTask = {
+      _id: Math.floor(Math.random() * Date.now()),
+      name: taskNameAdd,
+      dur: taskDurAdd,
+      note: taskNoteAdd,
+      blocksCompleted: 0
     }
+    setTasks(tasks.concat(newTask))
 
     setTaskNameAdd('')
     setTaskDurAdd(1)

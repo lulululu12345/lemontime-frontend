@@ -7,14 +7,13 @@ import './TaskContainer.css'
 const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks, login, user }) => {
 
 
-  let taskId
-
+  // let taskId
   const listTasks = tasks.map((task) => {
-    taskId = task._id ? task._id : task.tempId
+
     console.log(task)
     return (
       <TaskCard 
-        key={taskId} 
+        key={task._id} 
         taskId={task._id}
         taskName={task.name} 
         taskDur={task.dur} 
