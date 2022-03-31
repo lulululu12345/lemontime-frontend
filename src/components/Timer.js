@@ -111,7 +111,11 @@ const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTim
   }
   
   // Display the time props remaining minutes and seconds
-  return <h2>{`${calcMinutes()}:${calcSeconds()}`}</h2>
+  return (
+    <div>
+      <h2>{`${calcMinutes()}:${calcSeconds()}`}</h2>
+    </div>
+  )
 }
 
 export default Timer

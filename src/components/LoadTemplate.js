@@ -16,7 +16,7 @@ const LoadTemplate = ({ setTasks, user }) => {
   }, [toggleForm])
   
   return (
-    <div>
+    <div className='dropdown-content-option'>
       {toggleForm
         ? <Templates setTasks={setTasks} setToggleForm={setToggleForm}/>
         : null

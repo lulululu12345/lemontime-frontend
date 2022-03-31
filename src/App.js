@@ -108,11 +108,6 @@ const App = () => {
           </ul>
         </nav>
       </header>
-
-
-
-
-      <h1>Timer</h1>
       <TimerContainer 
         start={start}
         setStart={setStart}

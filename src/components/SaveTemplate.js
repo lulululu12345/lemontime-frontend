@@ -54,7 +54,7 @@ const SaveTemplate = ({ user, tasks }) => {
   }
 
   return (
-    <div>
+    <div className='dropdown-content-option'>
       <div>
         {showTemplateSaveForm
           ? TemplateSaveForm()

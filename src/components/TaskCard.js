@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import EditTask from './EditTask'
+import './TaskCard.css'
 
 const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, setSelectedTask, tasks, setTasks, taskId, login }) => {
   const [showTaskForm, setShowTaskForm] = useState(false)

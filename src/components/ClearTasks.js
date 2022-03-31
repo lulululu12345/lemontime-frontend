@@ -7,7 +7,9 @@ const ClearTasks = ({ setTasks }) => {
   }
 
   return (
-    <button onClick={handleClearTasks} >Clear Task List</button>
+    <div className='dropdown-content-option'>
+      <button onClick={handleClearTasks} >Clear Task List</button>
+    </div>
   )
 }
 
