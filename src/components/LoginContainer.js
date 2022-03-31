@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import taskTemplateService from '../services/taskTemplates'
 import loginService from '../services/login'
 import signupService from '../services/signup'
-import signup from '../services/signup'
 
 const LoginContainer2 = ({ user, setUser}) => {
   const [showLogin, setShowLogin] = useState(false)
@@ -66,6 +65,24 @@ const LoginContainer2 = ({ user, setUser}) => {
 
 const Login = ({showLogin, setShowLogin, showSignup, setShowSignup, setUser }) => {
 
+  return (
+    <div>
+      <h3>Login</h3>
+      <LoginForm 
+        setUser={setUser}
+        setShowLogin={setShowLogin}
+        setShowSignup={setShowSignup}
+      />
+      
+    </div>
+  )
+}
+
+
+const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   const cancelLogin = () => {
     setShowLogin(false)
   }
@@ -74,26 +91,6 @@ const Login = ({showLogin, setShowLogin, showSignup, setShowSignup, setUser }) =
     setShowSignup(true)
     setShowLogin(false)
   }
-
-  return (
-    <div>
-      <h3>Login</h3>
-      <LoginForm 
-        setUser={setUser}
-        setShowLogin={setShowLogin}
-      />
-      <span>Don't have an account? <button onClick={toggleSignup}>Sign-up!</button></span>
-      <div>
-        <button onClick={cancelLogin}>Cancel</button>
-      </div>
-    </div>
-  )
-}
-
-
-const LoginForm = ({ setUser, setShowLogin }) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
 
   const handleLogin = async (event) => {
     event.preventDefault()
@@ -114,29 +111,37 @@ const LoginForm = ({ setUser, setShowLogin }) => {
     }
   }
   return (
-    <form onSubmit={handleLogin}>
-      <div>
-        <input 
-          type='text' 
-          value={email} 
-          name='Email' 
-          placeholder='email'
-          onChange={({target}) => setEmail(target.value)} 
-        />
+    <div className='popup'>
+      <div className='popup-inner'>
+        <form onSubmit={handleLogin}>
+          <div>
+            <input 
+              type='text' 
+              value={email} 
+              name='Email' 
+              placeholder='email'
+              onChange={({target}) => setEmail(target.value)} 
+            />
+          </div>
+          <div>
+            <input 
+              type='password'
+              value={password}
+              name='Password'
+              placeholder='password'
+              onChange={({target}) => setPassword(target.value)}
+            />
+          </div>
+          <div>
+            <button type='submit'>Login</button>
+          </div>
+        </form>
+        <span>Don't have an account? <button onClick={toggleSignup}>Sign-up!</button></span>
+        <div>
+          <button onClick={cancelLogin}>Cancel</button>
+        </div>
       </div>
-      <div>
-        <input 
-          type='password'
-          value={password}
-          name='Password'
-          placeholder='password'
-          onChange={({target}) => setPassword(target.value)}
-        />
-      </div>
-      <div>
-        <button type='submit'>Login</button>
-      </div>
-    </form>
+    </div>
   )
 }
 
@@ -171,6 +176,28 @@ const LoginForm = ({ setUser, setShowLogin }) => {
 
 
 const Signup = ({ showLogin, setShowLogin, showSignup, setShowSignup, setUser }) => {
+  
+
+  return (
+    <div>
+      <h3>Sign-up</h3>
+      <SignupForm 
+        setUser={setUser}
+        showSignup={showSignup}
+        setShowSignup={setShowSignup}
+        setShowLogin={setShowLogin}
+      />
+      
+    </div>
+  )
+}
+
+
+const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+
   const cancelSignup = () => {
     setShowSignup(!showSignup)
   }
@@ -179,27 +206,6 @@ const Signup = ({ showLogin, setShowLogin, showSignup, setShowSignup, setUser })
     setShowLogin(true)
     setShowSignup(false)
   }
-
-  return (
-    <div>
-      <h3>Sign-up</h3>
-      <SignupForm 
-        setUser={setUser}
-        setShowSignup={setShowSignup}
-      />
-      <span>Already have an account? <button onClick={toggleLogin} >Login!</button></span>
-      <div>
-        <button onClick={cancelSignup}>Cancel</button>
-      </div>
-    </div>
-  )
-}
-
-
-const SignupForm = ({ setUser, setShowSignup }) => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
   
   const handleEmailChange = (event) => {
     const eventValue = event.target.value
@@ -240,18 +246,26 @@ const SignupForm = ({ setUser, setShowSignup }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} >
-      <div>
-        <input type='text' placeholder='email' value={email} onChange={handleEmailChange} />
+    <div className='popup'>
+      <div className='popup-inner'>
+        <form onSubmit={handleSubmit} >
+          <div>
+            <input type='text' placeholder='email' value={email} onChange={handleEmailChange} />
+          </div>
+          <div>
+            <input type='password' placeholder='password' value={password} onChange={handlePasswordChange} />
+          </div>
+          <div>
+            <input type='password' placeholder='confirm password' value={confirmPassword} onChange={handleConfirmPasswordChange} />
+          </div>
+          <input type='submit' value='Submit'  />
+        </form>
+        <span>Already have an account? <button onClick={toggleLogin} >Login!</button></span>
+        <div>
+          <button onClick={cancelSignup}>Cancel</button>
+        </div>
       </div>
-      <div>
-        <input type='password' placeholder='password' value={password} onChange={handlePasswordChange} />
-      </div>
-      <div>
-        <input type='password' placeholder='confirm password' value={confirmPassword} onChange={handleConfirmPasswordChange} />
-      </div>
-      <input type='submit' value='Submit'  />
-    </form>
+    </div>
   )
 }
 
