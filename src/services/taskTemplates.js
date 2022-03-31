@@ -1,12 +1,15 @@
 import axios from 'axios'
 const baseUrl = 'http://localhost:3001/api/tasktemplates'
 
+let token = null
+
 const getAll = async () => {
-  const res = await axios.get(baseUrl)
+  const config = {
+    headers: { Authorization: token },
+  }
+  const res = await axios.get(baseUrl, config)
   return res.data
 }
-
-let token = null
 
 const setToken = newToken => {
   token = `bearer ${newToken}`
@@ -22,7 +25,10 @@ const create = async newObject => {
 }
 
 const remove = async (id) => {
-  const res = await axios.delete(`${baseUrl}/${id}`)
+  const config = {
+    headers: { Authorization: token },
+  }
+  const res = await axios.delete(`${baseUrl}/${id}`, config)
   return res.data
 }
 

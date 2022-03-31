@@ -30,6 +30,7 @@ const Templates = ({ setTasks, setToggleForm }) => {
   const [userTemplates, setUserTemplates] = useState([])
 
   const getTemplates = async () => {
+    // This is geting all templates, but it needs to only get the templates associated with the logged in user
     const gottenTemplates = await taskTemplateService.getAll()
     setUserTemplates(gottenTemplates)
   }
