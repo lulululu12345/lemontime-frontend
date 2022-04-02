@@ -38,7 +38,7 @@ const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, 
   else {
     return (
       <div className={className} onClick={onCardClick} id={taskName} >
-        <h3 id={taskName}>{taskName}</h3>
+        <h3 id={taskName} className='task-card-heading'>{taskName}</h3>
         <p id={taskName}>{blocksCompleted}/{taskDur}</p>
         <p id={taskName}>{taskNote}</p>
         <button onClick={onEditClick} >Edit</button>

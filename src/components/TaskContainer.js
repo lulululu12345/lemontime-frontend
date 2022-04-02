@@ -2,7 +2,7 @@ import React from 'react'
 import TaskCard from './TaskCard'
 import TaskOptions from './TaskOptions'
 import AddTask from './AddTask'
-// import './TaskContainer.css'
+import './TaskContainer.css'
 
 const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks, login, user }) => {
 
@@ -26,16 +26,18 @@ const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks, login, 
     ) 
   })
   return (
-    <div>
-      <h2>Tasks</h2>
-      <TaskOptions 
-        user={user}
-        tasks={tasks}
-        setTasks={setTasks}
-      />
+    <div className='task-container-primary'>
+      <div className='task-container-header'>
+        <h2 className='task-container-heading'>Tasks</h2>
+        <TaskOptions 
+          user={user}
+          tasks={tasks}
+          setTasks={setTasks}
+        />
+      </div>
       <div>
-      {listTasks}
-    </div>
+        {listTasks}
+      </div>
       <AddTask 
         tasks={tasks} 
         setTasks={setTasks}

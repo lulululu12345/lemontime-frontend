@@ -8,7 +8,7 @@ import './TaskOptions.css'
 const TaskOptions = ({ user, tasks, setTasks }) => {
   return (
     <div className='dropdown'>
-      <button className='dropbtn'>Options</button>
+      <button className='dropbtn'>...</button>
       <div className='dropdown-content'>
         <LoadTemplate 
           user={user}

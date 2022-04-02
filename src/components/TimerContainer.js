@@ -1,22 +1,43 @@
 import React from 'react'
-import TimeBlocks from './TimeBlocks'
+import TimeBlockButton from './TimeBlockButton'
 import Timer from './Timer'
 import TransportCtrl from './TransportCtrl'
 
-import './TimeContainer.css'
+import './TimerContainer.css'
 
 const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock, time, setTime, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog, selectedTask, setSelectedTask, tasks, setTasks }) => {
 
   return (
     
-    <div className='timecontainer'>
-      <TimeBlocks
+    <div className='timerContainer'>
+      {/* <TimeBlocks
         setStart={setStart}
         setTime={setTime}
         setCurrentTimeBlock={setCurrentTimeBlock}
         pomodoro={pomodoro}
         shortBreak={shortBreak}
         longBreak={longBreak}
+      /> */}
+      <TimeBlockButton
+        setStart={setStart}
+        setTime={setTime}
+        setCurrentTimeBlock={setCurrentTimeBlock}
+        newBlock={pomodoro}
+        text='Pomodoro'
+      />
+      <TimeBlockButton
+        setStart={setStart}
+        setTime={setTime}
+        setCurrentTimeBlock={setCurrentTimeBlock}
+        newBlock={shortBreak}
+        text='Short Break'
+      />
+      <TimeBlockButton
+        setStart={setStart}
+        setTime={setTime}
+        setCurrentTimeBlock={setCurrentTimeBlock}
+        newBlock={longBreak}
+        text='Long Break'
       />
       <Timer
         time={time}

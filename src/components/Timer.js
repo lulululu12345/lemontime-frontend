@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import './Timer.css'
 
 const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTimeBlock, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog, selectedTask, setSelectedTask, tasks, setTasks }) => {
   // Stop countdown when timer reaches zero and add completed TimeBlock to log
@@ -113,7 +114,7 @@ const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTim
   // Display the time props remaining minutes and seconds
   return (
     <div>
-      <h2>{`${calcMinutes()}:${calcSeconds()}`}</h2>
+      <h2 className='timeDisplay'>{`${calcMinutes()}:${calcSeconds()}`}</h2>
     </div>
   )
 }

@@ -1,8 +1,8 @@
 .taskCard {
   border: 1px solid black;
   border-radius: 8px;
-  padding: 10px;
-  margin: 5px;
+  padding: 1rem 0 1rem 0.5rem;
+  margin: 0.5rem 0 0.5rem;
 }
 
 .taskCard-selected {
@@ -10,3 +10,6 @@
   border-color: red;
 }
 
+.task-card-heading {
+  margin: 0;
+}

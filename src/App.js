@@ -9,23 +9,13 @@ import './App.css'
 
 const App = () => {
   // localStorage.clear()
-  const [login, setLogin] = useState(false)
+
   const [user, setUser] = useState(null)
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')))
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }, [tasks])
-
-  useEffect(() => {
-    if (login) {
-      taskService
-        .getAll()
-        .then(response => {
-          setTasks(response.data)
-        })
-    }
-  }, [])
   
   // Duration in milliseconds for different tasks
   const [pomodoro, setPomodoro] = 
@@ -133,7 +123,6 @@ const App = () => {
         setSelectedTask={setSelectedTask}
         tasks={tasks}
         setTasks={setTasks}
-        login={login}
         user={user}
       />
     </div>

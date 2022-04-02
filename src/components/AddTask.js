@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import taskService from '../services/tasks'
 
+import './AddTask.css'
+
 const AddTask = ({ tasks, setTasks, login }) => {
   const [showTaskForm, setShowTaskForm] = useState(false)
   const [taskNameAdd, setTaskNameAdd] = useState('')
@@ -61,7 +63,7 @@ const AddTask = ({ tasks, setTasks, login }) => {
       </div>
     )
   }
-  return <button onClick={toggleForm}>Add</button>
+  return <button onClick={toggleForm} className='task-container-add'>+</button>
 }
 
 export default AddTask

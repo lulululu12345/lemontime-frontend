@@ -1,12 +1,15 @@
-.taskCard {
-  border: 1px solid black;
-  border-radius: 8px;
-  padding: 10px;
-  margin: 5px;
+.task-container-primary {
+  display: flex;
+  flex-direction: column;
 }
 
-.taskCard-selected {
-  color: red;
-  border-color: red;
+.task-container-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
+.task-container-heading {
+  margin: 0;
+}
