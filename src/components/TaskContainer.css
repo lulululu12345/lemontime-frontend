@@ -1,6 +1,9 @@
 .task-container-primary {
   display: flex;
   flex-direction: column;
+  background-color: whitesmoke;
+  border-radius: 6px;
+  padding: 1rem;
 }
 
 .task-container-header {

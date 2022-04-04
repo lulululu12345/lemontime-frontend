@@ -1,8 +1,9 @@
 .taskCard {
   border: 1px solid black;
   border-radius: 8px;
-  padding: 1rem 0 1rem 0.5rem;
+  padding: 1rem 0.5rem;
   margin: 0.5rem 0 0.5rem;
+  background-color: white;
 }
 
 .taskCard-selected {
@@ -12,4 +13,43 @@
 
 .task-card-heading {
   margin: 0;
+}
+
+.taskCard-mainLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0 0.5rem;
+  height: 3rem;
+}
+
+.taskCard-settings {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  height: 3rem;
+}
+
+.edit-button {
+  align-self: center;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 50%;
+}
+
+.edit-button:hover {
+  cursor: pointer;
+}
+
+.taskNotes {
+  border: solid 1px black;
+  padding: 0 0.5rem;
+  margin: 1rem 2rem;
+  width: 93%;
+  background-color: whitesmoke;
+  border-radius: 3px;
+  resize: none;
+  font-size: 1.5rem;
+  padding: 5px;
 }

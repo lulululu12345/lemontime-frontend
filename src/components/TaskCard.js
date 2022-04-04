@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import EditTask from './EditTask'
 import './TaskCard.css'
+import { MdEdit } from 'react-icons/md'
+import TextareaAutosize from 'react-textarea-autosize';
 
 const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, setSelectedTask, tasks, setTasks, taskId, login }) => {
   const [showTaskForm, setShowTaskForm] = useState(false)
@@ -13,7 +15,7 @@ const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, 
   const onEditClick = () => {
     setShowTaskForm(true)
   }
-  
+  console.log('taskNote', typeof taskNote);
   let className = 'taskCard'
   if (selectedTask === taskName) className += ' taskCard-selected'
 
@@ -38,10 +40,17 @@ const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, 
   else {
     return (
       <div className={className} onClick={onCardClick} id={taskName} >
-        <h3 id={taskName} className='task-card-heading'>{taskName}</h3>
-        <p id={taskName}>{blocksCompleted}/{taskDur}</p>
-        <p id={taskName}>{taskNote}</p>
-        <button onClick={onEditClick} >Edit</button>
+        <div className='taskCard-mainLine'>
+          <h3 id={taskName} className='task-card-heading'>{taskName}</h3>
+          <div className='taskCard-settings'>
+            <p id={taskName}>{blocksCompleted}/{taskDur}</p>
+            <button onClick={onEditClick} className='edit-button'><MdEdit/></button>
+          </div>
+        </div>
+        {taskNote.length !== 0
+          ? <TextareaAutosize id={taskName} className='taskNotes' value={taskNote} readOnly/>
+          : <></>
+        }
       </div>
     )
   }
