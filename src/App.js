@@ -63,7 +63,7 @@ const App = () => {
     <div className='App'>
       <header className='primary-header'>
         <div>
-          <h3>LOGO</h3>
+          <h3 className='primary-header_logo'>LOGO</h3>
         </div>
         <nav>
           <ul className='primary-navigation'>

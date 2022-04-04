@@ -11,14 +11,6 @@ import './TimerContainer.css'
 const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock, time, setTime, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog, selectedTask, setSelectedTask, tasks, setTasks }) => {
   return (
     <div className='timerContainer'>
-      {/* <TimeBlocks
-        setStart={setStart}
-        setTime={setTime}
-        setCurrentTimeBlock={setCurrentTimeBlock}
-        pomodoro={pomodoro}
-        shortBreak={shortBreak}
-        longBreak={longBreak}
-      /> */}
       <div className='pomodoro-wrapper'>
         <TimeBlockButton
           setStart={setStart}
@@ -96,20 +88,6 @@ const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock
           longBreakInterval={longBreakInterval} 
         />
       </div>
-      {/* <TransportCtrl
-        start={start}
-        setStart={setStart}
-        time={time}
-        setTime={setTime}
-        currentTimeBlock={currentTimeBlock}
-        setCurrentTimeBlock={setCurrentTimeBlock}
-        pomodoro={pomodoro}
-        shortBreak={shortBreak}
-        longBreak={longBreak}
-        longBreakInterval={longBreakInterval}
-        log={log}
-        setLog={setLog}
-      /> */}
     </div>
   )
 }

@@ -5,7 +5,7 @@
   grid-template-rows: 2.5rem 20rem 3rem;
   place-items: center;
   place-content: center;
-  margin-bottom: 5rem;
+  margin: 2rem 0 5rem;
 }
 
 .button:hover {
