@@ -46,23 +46,27 @@ const SaveTemplate = ({ user, tasks }) => {
        
     }
     return (
-      <form onSubmit={submitTemplateSaveForm} key='templateNameForm' >
-        <input type='text' placeholder='Template Name' value={templateName}  onChange={handleTemplateNameChange} />
-        <input type='submit' value='Save' />
-      </form>
+      <div className='popup'>
+        <div className='popup-inner'>
+          <form onSubmit={submitTemplateSaveForm} key='templateNameForm' >
+            <input type='text' placeholder='Template Name' value={templateName}  onChange={handleTemplateNameChange} />
+            <input type='submit' value='Save' />
+          </form>
+
+        </div>
+      </div>
     )
   }
 
-  return (
-    <div className='dropdown-content-option'>
-      <div>
+  return (      
+      <div className='dropdown-content-option' onClick={toggleSaveForm}>
+        <p>{buttonText}</p>
         {showTemplateSaveForm
           ? TemplateSaveForm()
           : null
         }
+      {/* <button className='button_task-options' onClick={toggleSaveForm} ></button> */}
       </div>
-      <button onClick={toggleSaveForm} >{buttonText}</button>
-    </div>
   )
 }
 

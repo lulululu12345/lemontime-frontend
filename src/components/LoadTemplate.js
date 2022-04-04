@@ -16,12 +16,13 @@ const LoadTemplate = ({ setTasks, user }) => {
   }, [toggleForm])
   
   return (
-    <div className='dropdown-content-option'>
+    <div className='dropdown-content-option' onClick={handleFormToggle}>
+      <p>{buttonText}</p>
       {toggleForm
         ? <Templates setTasks={setTasks} setToggleForm={setToggleForm}/>
         : null
       }
-      <button onClick={handleFormToggle} >{buttonText}</button>
+      {/* <button className='button_task-options' ></button> */}
     </div>
   )
 }
@@ -54,10 +55,13 @@ const Templates = ({ setTasks, setToggleForm }) => {
   }, [])
 
   return (
-    <div>
-      <ul className='load-temp-ul'>
-        {listTemplates}
-      </ul>
+    <div className='popup'>
+      <div className='popup-inner'>
+        <ul className='load-temp-ul'>
+          {listTemplates}
+        </ul>
+      </div>
+
     </div>
   )
 }
