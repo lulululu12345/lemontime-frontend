@@ -1,5 +1,9 @@
+.timeDisplay-wrapper {
+  grid-column: span 3;
+  /* place-self: center center; */
+}
+
 .timeDisplay {
   font-size: 15rem;
-
   margin: 0 0
 }

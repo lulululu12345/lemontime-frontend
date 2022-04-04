@@ -6,7 +6,9 @@ const StopAndGoButton = ({ start, setStart }) => {
     setStart(!start)
   }
 
-  return <button onClick={onClickStopAndGo}>{start ? 'Stop' : 'Start'}</button>
+  return (
+    <button onClick={onClickStopAndGo} className='button stopAndGoButton'>{start ? 'Stop' : 'Start'}</button>
+  ) 
 }
 
 export default StopAndGoButton

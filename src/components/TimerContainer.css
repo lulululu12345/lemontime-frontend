@@ -1,7 +1,57 @@
 .timerContainer {
   display: grid;
   grid-gap: 0.5rem;
-  grid-template-columns: 10rem 10rem 10rem;
-  grid-template-rows: auto 1fr auto;
-  min-height: 50vh;
+  grid-template-columns: 13rem 13rem 13rem;
+  grid-template-rows: 2.5rem 20rem 3rem;
+  place-items: center;
+  place-content: center;
+  margin-bottom: 5rem;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button-timeBlock {
+  background: none;
+  border: none;
+}
+
+.timeBlock-clicked {
+  background: fixed;
+  border: solid
+}
+
+.pomodoro-wrapper {
+  place-self: center end;
+}
+
+.shortBreak-wrapper {
+  place-self: center
+}
+
+.longBreak-wrapper {
+  place-self: center start;
+}
+
+.stopAndGoButton {
+  place-self: stretch;
+}
+
+.reset-wrapper  {
+  place-self: center end;
+}
+
+.resetButton {
+  background: none;
+  border: none;
+}
+
+.skip-wrapper {
+  place-self: center start;
+}
+
+.skipButton {
+  background: none;
+  border: none;
 }
