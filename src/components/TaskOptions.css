@@ -1,11 +1,11 @@
 /* Style the dropdown button */
 .dropbtn {
-  background-color: egg;
+  background-color: white;
   color: black;
-  padding: 0.5rem 0.8rem 2rem;
+  padding: 0.6;
   font-size: 3rem;
-  border: none;
-  border-radius: 8px;
+  border: 1px solid gray;
+  border-radius: 3px;
   cursor: pointer;
   text-align: center;
   line-height: 1rem;
@@ -42,11 +42,14 @@
 }
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
+/* .dropdown:hover .dropdown-content {
+  display: block;
+} */
+.show-dropdown-content {
   display: block;
 }
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hoover .dropbtn {
-  background-color: #3e8e41;
+.dropdown:hover .dropbtn {
+  background-color: gray;
 }

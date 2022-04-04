@@ -15,7 +15,7 @@ const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, 
   const onEditClick = () => {
     setShowTaskForm(true)
   }
-  console.log('taskNote', typeof taskNote);
+  
   let className = 'taskCard'
   if (selectedTask === taskName) className += ' taskCard-selected'
 
