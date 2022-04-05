@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import taskService from '../services/tasks'
+import TextareaAutosize from 'react-textarea-autosize';
+
+import { CgClose } from 'react-icons/cg'
+
+
+import './EditTask.css'
 
 const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTaskForm, setShowTaskForm, login }) => {
   // const [showTaskForm, setShowTaskForm] = useState(false)
@@ -61,20 +67,20 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
 
   if (showTaskForm) {
     return (
-      <div>
+      <div className='editTask-card'>
         <form onSubmit={submitTaskForm} >
-          <input type='text' placeholder='Task Name' value={taskNameEdit} onChange={handleNameChange} required />
-          <br/>
-          <label>Task Duration</label>
-          <br/>
-          <input type='number' min='1' max='999' value={taskDurEdit} onChange={handleDurChange} />
-          <br/>
-          <input type='textarea' placeholder='Notes' value={taskNoteEdit} onChange={handleNoteChange} />
-          <br/>
-          <input type='submit' value='Save' />
+          <div className='editTask-wrapper'>
+            <div className='editTask-mainline'>
+              <input className='editTask-heading' type='text' placeholder='Task Name' value={taskNameEdit} onChange={handleNameChange} required />
+              <input className='editTask-duration' type='number' min='1' max='999' value={taskDurEdit} onChange={handleDurChange} />
+            </div>
+            <TextareaAutosize className='editTaskNotes' value={taskNoteEdit} onChange={handleNoteChange} />
+            {/* <input type='textarea' placeholder='Notes' value={taskNoteEdit} onChange={handleNoteChange} /> */}
+            <input className='editTask-save' type='submit' value='Save' />
+          </div>
         </form>
-        <button onClick={toggleForm} >Cancel</button>
-        <button onClick={deleteTask} >Delete</button>
+        <button className='editTask-delete' onClick={deleteTask} >Delete</button>
+        <button className='editTask-close' onClick={toggleForm} ><CgClose size={14}/></button>
       </div>
     )
   }

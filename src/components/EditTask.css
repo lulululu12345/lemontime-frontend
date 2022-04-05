@@ -1,0 +1,95 @@
+.editTask-card {
+  position: relative;
+}
+
+.editTask-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.editTask-mainline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* change the right side margin to move duration number box */
+  margin: 1rem 4.9rem 0.5rem 0.8rem;
+  padding: 0 0.5rem;
+  height: 3rem;
+}
+
+.editTask-heading {
+  font-size: 2rem;
+  font-family: 'Varela Round', sans-serif;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.editTask-duration {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid gray;
+  width: 3rem;
+
+}
+
+.editTask-save {
+  align-self: flex-end;
+  margin: 1rem 1.8rem 0;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: var(--color-green);
+}
+
+.editTask-save:hover {
+  cursor: pointer;
+}
+
+.editTaskNotes {
+  padding: 0.5rem;
+  margin: 0.5rem 1rem;
+  align-self: flex-start;
+  width: 96%;
+  background-color: whitesmoke;
+  font-family: 'Varela Round', sans-serif;
+  border-radius: 3px;
+  resize: none;
+  font-size: 1.5rem;
+}
+
+.editTask-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  border: none;
+  padding: 0.55rem;
+  border-radius: 25%;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.editTask-close:hover {
+  background-color: var(--color-button-hover);
+  cursor: pointer;
+}
+
+.editTask-delete {
+  position: absolute;
+  bottom: 0.05rem;
+  right: 6.5rem;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: var(--color-red);
+}
+
+.editTask-delete:hover {
+  cursor: pointer;
+}
