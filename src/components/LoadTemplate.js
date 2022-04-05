@@ -16,13 +16,15 @@ const LoadTemplate = ({ setTasks, user }) => {
   }, [toggleForm])
   
   return (
-    <div className='dropdown-content-option' onClick={handleFormToggle}>
-      <p>{buttonText}</p>
+    <div>
+      <div className='dropdown-content-option' onClick={handleFormToggle}>
+        <p>Load Template</p>
+        {/* <button className='button_task-options' ></button> */}
+      </div>
       {toggleForm
         ? <Templates setTasks={setTasks} setToggleForm={setToggleForm}/>
         : null
       }
-      {/* <button className='button_task-options' ></button> */}
     </div>
   )
 }
@@ -54,14 +56,18 @@ const Templates = ({ setTasks, setToggleForm }) => {
     getTemplates()
   }, [])
 
+  const closeForm = () => {
+    setToggleForm(false)
+  }
+
   return (
     <div className='popup'>
       <div className='popup-inner'>
         <ul className='load-temp-ul'>
           {listTemplates}
         </ul>
+        <button className='close-btn' onClick={closeForm} >cancel</button>
       </div>
-
     </div>
   )
 }

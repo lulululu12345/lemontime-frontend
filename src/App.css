@@ -1,3 +1,11 @@
+:root {
+  --color-primary: #fefcbf;
+  --color-darker: #d9d684;
+  --color-darkest: #b2af50;
+  --color-lighter: #fffedd;
+  --color-lightest: #fffff3;
+}
+
 *,
 *::before,
 *::after {
@@ -14,6 +22,7 @@ body {
   color: #000;
   font-size: 2rem;
   margin: 0 10rem;
+  background-color: var(--color-primary);
 }
 
 .primary-header {

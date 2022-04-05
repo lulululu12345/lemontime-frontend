@@ -7,13 +7,13 @@ import { BsThreeDots } from 'react-icons/bs'
 import './TaskOptions.css'
 
 const TaskOptions = ({ user, tasks, setTasks }) => {
-  const [dropdownContent, showDropdownContent] = useState('dropdown-content')
+  const [dropdownContent, setDropdownContent] = useState('dropdown-content')
 
   const handleShowSettings = () => {
     if ( dropdownContent === 'dropdown-content') {
-      return showDropdownContent(`${dropdownContent} show-dropdown-content`)
+      return setDropdownContent(`${dropdownContent} show-dropdown-content`)
     }
-    return showDropdownContent('dropdown-content')
+    return setDropdownContent('dropdown-content')
   }
 
   return (
