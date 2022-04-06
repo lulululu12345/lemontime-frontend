@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { BsFillSkipEndFill } from 'react-icons/bs'
 
 // SkipButton component for skipping to the next time block
-const SkipButton = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock, log, setLog, setTime, pomodoro, shortBreak, longBreak, longBreakInterval }) => {
+const SkipButton = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock, log, setLog, time, setTime, pomodoro, shortBreak, longBreak, longBreakInterval }) => {
   const [skip, setSkip] = useState(false)
 
   const onClickSkip = () => {
@@ -42,7 +42,7 @@ const SkipButton = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock, lo
   
   return (
     <>
-      {start
+      {time < currentTimeBlock.durMs
         ? <button onClick={onClickSkip} className='button skipButton'><BsFillSkipEndFill size='3rem' /></button>
         : <div></div>
       }

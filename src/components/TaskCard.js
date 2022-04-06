@@ -16,12 +16,12 @@ const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, 
     setShowTaskForm(true)
   }
   
-  let className = 'taskCard'
-  if (selectedTask === taskName) className += ' taskCard-selected'
+  let className = ''
+  if (selectedTask === taskName) className += 'taskCard-selected'
 
   if (showTaskForm) {
     return (
-      <div className={className} onClick={onCardClick} id={taskName} >
+      <div className={`taskCard ${className}`} onClick={onCardClick} id={taskName} >
         <EditTask 
           taskId={taskId}
           tasks={tasks}
@@ -39,18 +39,20 @@ const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, 
   }
   else {
     return (
-      <div className={className} onClick={onCardClick} id={taskName} >
-        <div className='taskCard-mainLine'>
-          <h3 id={taskName} className='task-card-heading'>{taskName}</h3>
-          <div className='taskCard-settings'>
-            <p id={taskName}>{blocksCompleted}/{taskDur}</p>
-            <button onClick={onEditClick} className='edit-button'><MdEdit/></button>
+      <div className={className}>
+        <div className='taskCard' onClick={onCardClick} id={taskName} >
+          <div className='taskCard-mainLine'>
+            <h3 id={taskName} className='task-card-heading'>{taskName}</h3>
+            <div className='taskCard-settings'>
+              <p id={taskName}>{blocksCompleted}/{taskDur}</p>
+              <button onClick={onEditClick} className='edit-button'><MdEdit/></button>
+            </div>
           </div>
+          {taskNote.length !== 0
+            ? <TextareaAutosize id={taskName} className='taskNotes' value={taskNote} readOnly/>
+            : <></>
+          }
         </div>
-        {taskNote.length !== 0
-          ? <TextareaAutosize id={taskName} className='taskNotes' value={taskNote} readOnly/>
-          : <></>
-        }
       </div>
     )
   }

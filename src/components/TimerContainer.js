@@ -81,6 +81,7 @@ const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock
           setCurrentTimeBlock={setCurrentTimeBlock} 
           log={log} 
           setLog={setLog} 
+          time={time}
           setTime={setTime} 
           pomodoro={pomodoro} 
           shortBreak={shortBreak} 
