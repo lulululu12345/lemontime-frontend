@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import FocusDurationInput from './FocusDurationInput'
 import LongBreakSchedule from './LongBreakSchedule'
 import AutoRunBox from './AutoRunBox'
-import './SettingsContainer.css'
+// import './SettingsContainer.css'
 
 const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, setAutoBreak, setAutoPomodoro, longBreakInterval, setLongBreakInterval }) => {
   // State hooks
@@ -118,7 +118,6 @@ const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, se
       <div className='popup'>
         <div className='popup-inner'>
           <h2>Settings</h2>
-          <h3>Time(minutes)</h3>
           <form onSubmit={onSubmitSettings}>
             <FocusDurationInput numBoxValue={pomodoroValue}   setNumBoxValue={setPomodoroValue}   labelText='Pomodoro' />
             <FocusDurationInput numBoxValue={shortBreakValue} setNumBoxValue={setShortBreakValue} labelText='Short Break' />

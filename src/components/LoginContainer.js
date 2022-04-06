@@ -138,7 +138,7 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
         </form>
         <span>Don't have an account? <button onClick={toggleSignup}>Sign-up!</button></span>
         <div>
-          <button onClick={cancelLogin}>Cancel</button>
+          <button className='close-btn' onClick={cancelLogin}>Cancel</button>
         </div>
       </div>
     </div>
