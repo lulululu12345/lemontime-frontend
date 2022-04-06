@@ -62,10 +62,10 @@
 }
 
 .taskNotes {
-  padding: 0.5rem;
+  padding: 0.8rem 1.5rem;
   margin: 0.5rem 1rem;
-  align-self: flex-start;
-  width: 96%;
+  align-self: stretch;
+  /* width: 97.5%; */
   /* background-color: var(--color-accent); */
   background-color: whitesmoke;
   font-family: 'Varela Round', sans-serif;

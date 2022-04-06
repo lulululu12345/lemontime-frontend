@@ -1,8 +1,19 @@
 :root {
-  /* --color-primary: #fefcbf; */
+  /* Option one: */
   --color-primary: #fefcbf;
-  --color-secondary: #fffff3;
-  --color-accent: #f4b7be80;
+  --color-secondary: #FFFED1;
+  --color-accent: #EEB3BD80;
+
+  /* Option two: */
+  /* --color-primary: #FFFF83; */
+  /* --color-secondary: #FFFFB6; */
+  /* --color-accent: #8EBAFF; */
+
+  /* --color-primary: #fefcbf; */
+  /* --color-secondary: #fffff3; */
+  /* --color-accent: #D6D6D2; */
+  /* --color-accent: #f4b7be80; */
+
   --color-red: #FF9D9D;
   --color-green: #82D382 ;
   --color-button-hover: lightgray;
