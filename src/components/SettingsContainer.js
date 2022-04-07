@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import FocusDurationInput from './FocusDurationInput'
 import LongBreakSchedule from './LongBreakSchedule'
 import AutoRunBox from './AutoRunBox'
-// import './SettingsContainer.css'
+
+import './SettingsContainer.css'
 
 const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, setAutoBreak, setAutoPomodoro, longBreakInterval, setLongBreakInterval }) => {
   // State hooks
@@ -117,15 +118,32 @@ const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, se
     return (
       <div className='popup'>
         <div className='popup-inner'>
-          <h2>Settings</h2>
-          <form onSubmit={onSubmitSettings}>
-            <FocusDurationInput numBoxValue={pomodoroValue}   setNumBoxValue={setPomodoroValue}   labelText='Pomodoro' />
-            <FocusDurationInput numBoxValue={shortBreakValue} setNumBoxValue={setShortBreakValue} labelText='Short Break' />
-            <FocusDurationInput numBoxValue={longBreakValue}  setNumBoxValue={setLongBreakValue}  labelText='Long Break' />
-            <LongBreakSchedule longBreakIntervalValue={longBreakIntervalValue} setLongBreakIntervalValue={setLongBreakIntervalValue} />
-            <AutoRunBox checkboxValue={autoBreakCheckbox}    setCheckboxValue={setAutoBreakCheckbox}    labelText={'Auto Run Breaks'} />
-            <AutoRunBox checkboxValue={autoPomodoroCheckbox} setCheckboxValue={setAutoPomodoroCheckbox} labelText={'Auto Run Pomodoros'} />
-            <input type='submit' value='Save' />
+          <form className='settings-grid-container' onSubmit={onSubmitSettings}>
+            <h2 className='settings-header'>Settings</h2>
+
+            <div className='blank1'></div>
+
+            <label className='pomo settings-label'>Pomodoro</label>
+            <FocusDurationInput className='pomo-value settings-value' numBoxValue={pomodoroValue}   setNumBoxValue={setPomodoroValue}   labelText='Pomodoro' />
+
+            <label className='sbreak settings-label'>Short Break</label>
+            <FocusDurationInput className='sbreak-value settings-value' numBoxValue={shortBreakValue} setNumBoxValue={setShortBreakValue} labelText='Short Break' />
+
+            <label className='lbreak settings-label' >Long Break</label>
+            <FocusDurationInput className='lbreak-value settings-value' numBoxValue={longBreakValue}  setNumBoxValue={setLongBreakValue}  labelText='Long Break' />
+            
+            <label className='lbreak-interval settings-label' >Long Break interval</label>
+            <LongBreakSchedule className='lbreak-interval-value settings-value' longBreakIntervalValue={longBreakIntervalValue} setLongBreakIntervalValue={setLongBreakIntervalValue} />
+            
+            <div className='blank2' ></div>
+
+            <label className='auto-break settings-label' >Auto Run Breaks</label>
+            <AutoRunBox className='auto-break-value settings-value' checkboxValue={autoBreakCheckbox}    setCheckboxValue={setAutoBreakCheckbox}    labelText={'Auto Run Breaks'} />
+            
+            <label className='auto-pomo settings-label' >Auto Run Pomodoros</label>
+            <AutoRunBox className='auto-pomo-value settings-value' checkboxValue={autoPomodoroCheckbox} setCheckboxValue={setAutoPomodoroCheckbox} labelText={'Auto Run Pomodoros'} />
+
+            <input className='settings-save' type='submit' value='Save' />
           </form>
             <button className='close-btn' onClick={onClickSettings}>Close</button>
         </div>

@@ -1,0 +1,93 @@
+.settings-grid-container {
+  display: grid;
+  grid-template:
+    [row1-start]  'header          header'                4rem [row1-end]
+    [row2-start]  'blank1          blank1'                3rem [row2-end]
+    [row3-start]  'pomo            pomo-value'            3rem [row3-end]
+    [row4-start]  'sbreak          sbreak-value'          3rem [row4-end]
+    [row5-start]  'lbreak          lbreak-value'          3rem [row5-end]
+    [row6-start]  'lbreak-interval lbreak-interval-value' 3rem [row6-end]
+    [row7-start]  'blank2          blank2'                3rem [row7-end]
+    [row8-start]  'auto-break      auto-break-value'      3rem [row8-end]
+    [row9-start]  'auto-pomo       auto-pomo-value'       3rem [row9-end]
+    [row10-start] 'save            save'                  3rem [row10-end]
+    / 50% 25%;
+  justify-content: center;
+}
+.settings-label {
+  font-size: 2rem;
+}
+
+.settings-value {
+  place-self: center end;
+  font-size: 2rem;
+  width: 5rem;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.settings-header {
+  grid-area: header;
+  place-self: center center;
+}
+
+.blank1 {
+  grid-area: blank1;
+}
+
+.pomo {
+  grid-area: pomo;
+}
+
+.pomo-value {
+  grid-area: pomo-value;
+}
+
+.sbreak {
+  grid-area: sbreak;
+}
+
+.sbreak-value {
+  grid-area: sbreak-value;
+}
+
+.lbreak {
+  grid-area: lbreak;
+}
+
+.lbreak-value {
+  grid-area: lbreak-value;
+}
+
+.lbreak-interval {
+  grid-area: lbreak-interval;
+}
+
+.lbreak-interval-value {
+  grid-area: lbreak-interval-value;
+}
+
+.blank2 {
+  grid-area: blank2;
+}
+
+.auto-break {
+  grid-area: auto-break;
+}
+
+.auto-break-value {
+  grid-area: auto-break-value
+}
+
+.auto-pomo {
+  grid-area: auto-pomo;
+}
+
+.auto-pomo-value {
+  grid-area: auto-pomo-value;
+}
+
+.settings-save {
+  grid-area: save;
+  place-self: center;
+}

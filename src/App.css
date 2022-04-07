@@ -93,9 +93,10 @@ h3 {
 
 .popup-inner {
   position: relative;
-  padding: 32px;
-  width: 100%;
-  max-width: 640px;
+  /* padding: 32px; */
+  padding: 1rem 0;
+  width: 50%;
+  max-width: 500px;
   background-color: #fff;
 }
 

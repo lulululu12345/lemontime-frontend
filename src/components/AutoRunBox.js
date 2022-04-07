@@ -1,6 +1,6 @@
 import React from 'react'
 
-const AutoRunBox = ({ checkboxValue, setCheckboxValue, labelText }) => {
+const AutoRunBox = ({ checkboxValue, setCheckboxValue, className }) => {
   // Handler for changes to checkbox
   const handleCheckboxChange = (event) => {
     const eventValue = event.target.value;
@@ -8,12 +8,7 @@ const AutoRunBox = ({ checkboxValue, setCheckboxValue, labelText }) => {
     if (eventValue === 'false') return setCheckboxValue('true')
   }
 
-  return (
-    <div>
-    <label>{labelText}</label>
-    <input type='checkbox' value={checkboxValue} onChange={handleCheckboxChange} checked={(checkboxValue === 'true') ? true : false} />
-    </div>
-  )
+  return <input className={className} type='checkbox' value={checkboxValue} onChange={handleCheckboxChange} checked={(checkboxValue === 'true') ? true : false} />
 }
 
 export default AutoRunBox

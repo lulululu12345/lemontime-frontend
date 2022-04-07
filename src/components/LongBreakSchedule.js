@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LongBreakSchedule = ({ longBreakIntervalValue, setLongBreakIntervalValue }) => {
+const LongBreakSchedule = ({ longBreakIntervalValue, setLongBreakIntervalValue, className }) => {
   // After task container has been built, I would like the option of scheduling a long break per completed pomodoros, or per completetd task
 
   const handleLongBreakIntervalChange = (event) => {
@@ -8,13 +8,7 @@ const LongBreakSchedule = ({ longBreakIntervalValue, setLongBreakIntervalValue }
     setLongBreakIntervalValue(eventValue)
   }
 
-  return (
-    <div>
-      <label>Long Break interval</label>
-      <br/>
-      <input type='number' value={longBreakIntervalValue} onChange={handleLongBreakIntervalChange} />
-    </div>
-  )
+  return <input className={className} type='number' value={longBreakIntervalValue} onChange={handleLongBreakIntervalChange} />
 }
 
 export default LongBreakSchedule

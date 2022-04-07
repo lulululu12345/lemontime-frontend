@@ -3,6 +3,8 @@ import taskTemplateService from '../services/taskTemplates'
 import loginService from '../services/login'
 import signupService from '../services/signup'
 
+import './LoginContainer.css'
+
 const LoginContainer2 = ({ user, setUser}) => {
   const [showLogin, setShowLogin] = useState(false)
   const [showSignup, setShowSignup] = useState(false)
