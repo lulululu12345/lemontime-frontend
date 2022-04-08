@@ -1,4 +1,4 @@
-.settings-grid-container {
+.settings-container {
   display: grid;
   grid-template:
     [row1-start]  'header          header'                4rem [row1-end]
@@ -90,4 +90,17 @@
 .settings-save {
   grid-area: save;
   place-self: center;
+}
+
+.settings-close {
+  border: none;
+  padding: 0.55rem;
+  border-radius: 25%;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.settings-close:hover {
+  background-color: var(--color-button-hover);
+  cursor: pointer;
 }

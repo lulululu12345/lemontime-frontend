@@ -93,15 +93,32 @@ h3 {
 
 .popup-inner {
   position: relative;
-  /* padding: 32px; */
+  padding: 32px;
   padding: 1rem 0;
   width: 50%;
   max-width: 500px;
   background-color: #fff;
+  border-radius: 6px;
 }
 
 .close-btn {
   position: absolute;
   top: 16px;
   right: 16px;
+}
+
+.button-link {
+  border: none;
+  background: none;
+  border-bottom: 1px solid black;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  font-family: 'Varela Round', sans-serif;
+
+}
+
+.button-link:hover {
+  cursor: pointer;
+  background-color: var(--color-accent);
+  border-radius: 4px;
 }

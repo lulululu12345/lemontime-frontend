@@ -3,6 +3,7 @@ import FocusDurationInput from './FocusDurationInput'
 import LongBreakSchedule from './LongBreakSchedule'
 import AutoRunBox from './AutoRunBox'
 
+import { CgClose } from 'react-icons/cg'
 import './SettingsContainer.css'
 
 const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, setAutoBreak, setAutoPomodoro, longBreakInterval, setLongBreakInterval }) => {
@@ -111,14 +112,14 @@ const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, se
   // Conditional rendering
   if (showSettings === false) {
     return (
-      <button onClick={onClickSettings}>Settings</button>
+      <button className='button-link' onClick={onClickSettings}>Settings</button>
     )
   }
   if (showSettings === true) {
     return (
       <div className='popup'>
         <div className='popup-inner'>
-          <form className='settings-grid-container' onSubmit={onSubmitSettings}>
+          <form className='settings-container' onSubmit={onSubmitSettings}>
             <h2 className='settings-header'>Settings</h2>
 
             <div className='blank1'></div>
@@ -145,7 +146,7 @@ const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, se
 
             <input className='settings-save' type='submit' value='Save' />
           </form>
-            <button className='close-btn' onClick={onClickSettings}>Close</button>
+            <button className='close-btn settings-close' onClick={onClickSettings}><CgClose size={14}/></button>
         </div>
       </div>
     )
