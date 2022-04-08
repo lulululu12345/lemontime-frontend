@@ -16,11 +16,13 @@
 
 .login-input {
   margin: 0 0 1rem;
-  padding: 0.4rem 0.4rem;
+  padding: 0.4rem;
   /* flex: 0 1 3rem; */
   height: 3.5rem;
   width: 100%;
   font-size: 1.8rem;
+  font-family: 'Varela Round', sans-serif;
+
 }
 
 .login-submit {

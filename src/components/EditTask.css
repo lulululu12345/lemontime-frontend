@@ -20,22 +20,23 @@
 .editTask-heading {
   font-size: 2rem;
   font-family: 'Varela Round', sans-serif;
-  border: none;
-  border-bottom: 1px solid gray;
+  /* border: none; */
+  /* border-bottom: 1px solid gray; */
 }
-input[type=number]::-webkit-inner-spin-button, 
+
+/* input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
-}
+} */
 
 .editTask-duration {
   font-family: 'Varela Round', sans-serif;
   font-size: 2rem;
   text-align: center;
-  border: none;
-  border-bottom: 1px solid gray;
-  width: 3rem;
+  /* border: none; */
+  /* border-bottom: 1px solid gray; */
+  width: 5rem;
 
 }
 

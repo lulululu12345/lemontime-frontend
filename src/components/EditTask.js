@@ -72,7 +72,7 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
           <div className='editTask-wrapper'>
             <div className='editTask-mainline'>
               <input className='editTask-heading' type='text' placeholder='Task Name' value={taskNameEdit} onChange={handleNameChange} required />
-              <input className='editTask-duration' type='number' min='1' max='999' value={taskDurEdit} onChange={handleDurChange} />
+              <input className='editTask-duration' type='number' min='1' max='99' value={taskDurEdit} onChange={handleDurChange} />
             </div>
             <TextareaAutosize className='editTaskNotes' value={taskNoteEdit} onChange={handleNoteChange} />
             {/* <input type='textarea' placeholder='Notes' value={taskNoteEdit} onChange={handleNoteChange} /> */}

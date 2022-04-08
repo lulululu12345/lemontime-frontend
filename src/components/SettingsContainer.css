@@ -1,21 +1,118 @@
+.popup-inner.settings-popup {
+  padding: 5rem;
+}
+
+.settings-header {
+  margin: 0 0 2rem;
+}
+
+.settings-section {
+  margin: 0;
+  background-color: darkgray;
+  width: 100%;
+  padding: 0.5rem 0.2rem;
+  border-bottom: 1px solid black; 
+  font-weight: 300;
+  /* font-size: 1.5rem; */
+  color: white;
+
+
+}
+
 .settings-container {
-  display: grid;
-  grid-template:
-    [row1-start]  'header          header'                4rem [row1-end]
-    [row2-start]  'blank1          blank1'                3rem [row2-end]
-    [row3-start]  'pomo            pomo-value'            3rem [row3-end]
-    [row4-start]  'sbreak          sbreak-value'          3rem [row4-end]
-    [row5-start]  'lbreak          lbreak-value'          3rem [row5-end]
-    [row6-start]  'lbreak-interval lbreak-interval-value' 3rem [row6-end]
-    [row7-start]  'blank2          blank2'                3rem [row7-end]
-    [row8-start]  'auto-break      auto-break-value'      3rem [row8-end]
-    [row9-start]  'auto-pomo       auto-pomo-value'       3rem [row9-end]
-    [row10-start] 'save            save'                  3rem [row10-end]
-    / 50% 25%;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  /* gap: 1rem; */
+}
+
+.settings-item {
+  display: flex;
+  width: 100%;
+  padding: 0.5rem 0.2rem;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid black;
 }
 
 .settings-label {
+  font-size: 1.5rem;
+}
+
+
+.settings-input {
+  padding: 0 0.4rem;
+  height: 3rem;
+  width: 5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: 'Varela Round', sans-serif;
+  border: none;
+  background-color: var(--color-button-hover);
+  border-radius: 4px;
+}
+
+.settings-checkbox {
+  cursor: pointer;
+}
+
+
+.settings-save {
+  /* margin-top: 2rem; */
+  margin: 2rem 0;
+  width: 100%;
+  height: 3rem;
+  font-family: 'Varela Round', sans-serif;
+  /* background-color: var(--color-green); */
+  /* border: none; */
+  /* border-radius: 10px; */
+}
+
+.settings-save:hover {
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.settings-close {
+  border: none;
+  padding: 0.55rem;
+  border-radius: 25%;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.settings-close:hover {
+  background-color: var(--color-button-hover);
+  cursor: pointer;
+}
+
+
+
+
+
+
+/* .settings-label {
   font-size: 2rem;
 }
 
@@ -91,17 +188,4 @@
 .settings-save {
   grid-area: save;
   place-self: center;
-}
-
-.settings-close {
-  border: none;
-  padding: 0.55rem;
-  border-radius: 25%;
-  border: 1px solid black;
-  background-color: white;
-}
-
-.settings-close:hover {
-  background-color: var(--color-button-hover);
-  cursor: pointer;
-}
+} */
