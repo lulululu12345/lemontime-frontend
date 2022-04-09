@@ -211,7 +211,7 @@ const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin }) => {
     <div className='popup'>
       <div className='popup-inner login-popup'>
         <form className='login-container' onSubmit={handleSubmit} >
-        <h3 className='login-header'>Sign-up</h3>
+          <h3 className='login-header'>Sign-up</h3>
           <input className='login-input' type='text' placeholder='Email' value={email} onChange={handleEmailChange} />
           <input className='login-input' type='password' placeholder='Password' value={password} onChange={handlePasswordChange} />
           <input className='login-input' type='password' placeholder='Confirm Password' value={confirmPassword} onChange={handleConfirmPasswordChange} />

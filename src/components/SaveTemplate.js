@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import taskTemplateService from '../services/taskTemplates'
+import { CgClose } from 'react-icons/cg'
 
 const SaveTemplate = ({ user, tasks }) => {
   const [buttonText, setButtonText] = useState('Save As Template')
@@ -47,12 +48,13 @@ const SaveTemplate = ({ user, tasks }) => {
     }
     return (
       <div className='popup'>
-        <div className='popup-inner'>
-          <form onSubmit={submitTemplateSaveForm} key='templateNameForm' >
-            <input type='text' placeholder='Template Name' value={templateName}  onChange={handleTemplateNameChange} />
-            <input type='submit' value='Save' />
+        <div className='popup-inner login-popup'>
+          <form className='login-container' onSubmit={submitTemplateSaveForm} key='templateNameForm' >
+            <h2 className='login-header'>Save Template</h2>
+            <input className='login-input' type='text' placeholder='Template Name' value={templateName}  onChange={handleTemplateNameChange} />
+            <input className='settings-save' type='submit' value='Save' />
           </form>
-          <button className='close-btn' onClick={toggleSaveForm}>cancel</button>
+          <button className='close-btn login-close' onClick={toggleSaveForm}><CgClose size={14}/></button>
         </div>
       </div>
     )

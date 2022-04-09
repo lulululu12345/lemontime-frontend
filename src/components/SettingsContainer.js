@@ -197,7 +197,7 @@ const SettingsForm = ({ setStart, pomodoroValue, setPomodoroValue, shortBreakVal
 
             <input className='settings-save' type='submit' value='Save' />
           </form>
-            <button className='close-btn settings-close' onClick={onClickSettings}><CgClose size={14}/></button>
+            <button className='close-btn login-close' onClick={onClickSettings}><CgClose size={14}/></button>
         </div>
       </div>
   )

@@ -57,13 +57,13 @@
 
 .login-close {
   border: none;
-  padding: 0.55rem;
+  padding: 0.55rem 0.55rem 0.2rem;
   border-radius: 25%;
   border: 1px solid black;
-  background-color: white;
+  background-color: var(--color-secondary);
 }
 
 .login-close:hover {
-  background-color: var(--color-button-hover);
+  background-color: var(--color-accent);
   cursor: pointer;
 }

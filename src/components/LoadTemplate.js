@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import taskTemplateService from '../services/taskTemplates'
 import TemplateCard from './TemplateCard'
+import { CgClose } from 'react-icons/cg'
 import './LoadTemplate.css'
 
 const LoadTemplate = ({ setTasks, user }) => {
@@ -62,11 +63,15 @@ const Templates = ({ setTasks, setToggleForm }) => {
 
   return (
     <div className='popup'>
-      <div className='popup-inner'>
+      <div className='popup-inner login-popup'>
+        <div className='load-temp-header'>
+          <h2 className='header-title'>Templates</h2>
+          <button className='load-temp-edit-btn'>Edit</button>
+        </div>
         <ul className='load-temp-ul'>
           {listTemplates}
         </ul>
-        <button className='close-btn' onClick={closeForm} >cancel</button>
+        <button className='close-btn login-close' onClick={closeForm}><CgClose size={14}/></button>
       </div>
     </div>
   )

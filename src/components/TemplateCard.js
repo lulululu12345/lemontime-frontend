@@ -1,6 +1,5 @@
 import React from 'react'
 import taskTemplateService from '../services/taskTemplates'
-import './TemplateCard.css'
 
 const TemplateCard = ({ templateId, templateName, templateTasks, setTasks, setToggleForm, userTemplates, setUserTemplates }) => {
   const handleTemplateSelect = () => {
@@ -20,11 +19,11 @@ const TemplateCard = ({ templateId, templateName, templateTasks, setTasks, setTo
 
   return (
     <li className='load-temp-li' onClick={handleTemplateSelect} >
-      <span>
+      <span className='load-temp-name'>
       {templateName}
       </span>
       <span>
-        <button onClick={deleteTemplate}>Delete</button>
+        {/* <button onClick={deleteTemplate}>Delete</button> */}
       </span>
     </li>
   )

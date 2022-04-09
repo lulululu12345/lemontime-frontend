@@ -1,9 +1,0 @@
-.load-temp-li {
-  margin-bottom: 1rem;
-  border-style: solid;
-  border: 1px, solid, black;
-}
-
-.load-temp-li:hover {
-  cursor: pointer;
-}

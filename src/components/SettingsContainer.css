@@ -8,13 +8,13 @@
 
 .settings-section {
   margin: 0;
-  background-color: darkgray;
+  background-color: var(--color-accent);
   width: 100%;
   padding: 0.5rem 0.2rem;
   border-bottom: 1px solid black; 
   font-weight: 300;
   /* font-size: 1.5rem; */
-  color: white;
+
 
 
 }
@@ -50,7 +50,7 @@
   text-align: center;
   font-family: 'Varela Round', sans-serif;
   border: none;
-  background-color: var(--color-button-hover);
+  background-color: var(--color-accent);
   border-radius: 4px;
 }
 
@@ -60,132 +60,19 @@
 
 
 .settings-save {
-  /* margin-top: 2rem; */
-  margin: 2rem 0;
+  margin: 2rem 0 0;
   width: 100%;
   height: 3rem;
   font-family: 'Varela Round', sans-serif;
-  /* background-color: var(--color-green); */
-  /* border: none; */
-  /* border-radius: 10px; */
+  border: none;
+  background-color: white;
+  font-size: 2rem;
+  border-radius: 4px;
+
 }
 
 .settings-save:hover {
   cursor: pointer;
+  background-color: var(--color-green);
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.settings-close {
-  border: none;
-  padding: 0.55rem;
-  border-radius: 25%;
-  border: 1px solid black;
-  background-color: white;
-}
-
-.settings-close:hover {
-  background-color: var(--color-button-hover);
-  cursor: pointer;
-}
-
-
-
-
-
-
-/* .settings-label {
-  font-size: 2rem;
-}
-
-.settings-value {
-  place-self: center end;
-  font-size: 2rem;
-  width: 5rem;
-  border: none;
-  border-bottom: 1px solid black;
-}
-
-.settings-header {
-  grid-area: header;
-  place-self: center center;
-}
-
-.blank1 {
-  grid-area: blank1;
-}
-
-.pomo {
-  grid-area: pomo;
-}
-
-.pomo-value {
-  grid-area: pomo-value;
-}
-
-.sbreak {
-  grid-area: sbreak;
-}
-
-.sbreak-value {
-  grid-area: sbreak-value;
-}
-
-.lbreak {
-  grid-area: lbreak;
-}
-
-.lbreak-value {
-  grid-area: lbreak-value;
-}
-
-.lbreak-interval {
-  grid-area: lbreak-interval;
-}
-
-.lbreak-interval-value {
-  grid-area: lbreak-interval-value;
-}
-
-.blank2 {
-  grid-area: blank2;
-}
-
-.auto-break {
-  grid-area: auto-break;
-}
-
-.auto-break-value {
-  grid-area: auto-break-value
-}
-
-.auto-pomo {
-  grid-area: auto-pomo;
-}
-
-.auto-pomo-value {
-  grid-area: auto-pomo-value;
-}
-
-.settings-save {
-  grid-area: save;
-  place-self: center;
-} */

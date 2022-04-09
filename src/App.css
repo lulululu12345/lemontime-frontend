@@ -109,7 +109,7 @@ h3 {
   padding: 1rem 0;
   width: 50%;
   max-width: 500px;
-  background-color: #fff;
+  background-color: var(--color-primary);
   border-radius: 6px;
 }
 
