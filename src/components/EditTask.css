@@ -20,22 +20,12 @@
 .editTask-heading {
   font-size: 2rem;
   font-family: 'Varela Round', sans-serif;
-  /* border: none; */
-  /* border-bottom: 1px solid gray; */
 }
-
-/* input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
-} */
 
 .editTask-duration {
   font-family: 'Varela Round', sans-serif;
   font-size: 2rem;
   text-align: center;
-  /* border: none; */
-  /* border-bottom: 1px solid gray; */
   width: 5rem;
 
 }
@@ -57,7 +47,6 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 0.8rem 1.5rem;
   margin: 0.5rem 1rem;
   align-self: stretch;
-  /* width: 96%; */
   background-color: whitesmoke;
   font-family: 'Varela Round', sans-serif;
   border-radius: 3px;

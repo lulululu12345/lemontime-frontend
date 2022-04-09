@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import taskService from '../services/tasks'
+import TextareaAutosize from 'react-textarea-autosize';
+import { BsPlusLg } from 'react-icons/bs'
+import { CgClose } from 'react-icons/cg'
 
 import './AddTask.css'
 
@@ -47,23 +49,22 @@ const AddTask = ({ tasks, setTasks, login }) => {
   }
   if (showTaskForm) {
     return (
-      <div>
+      <div className='editTask-card add-card'>
         <form onSubmit={submitTaskForm} >
-          <input type='text' placeholder='Task Name' value={taskNameAdd} onChange={handleNameChange} required />
-          <br/>
-          <label>Task Duration</label>
-          <br/>
-          <input type='number' min='1' max='999' value={taskDurAdd} onChange={handleDurChange} />
-          <br/>
-          <input type='textarea' placeholder='Notes' value={taskNoteAdd} onChange={handleNoteChange} />
-          <br/>
-          <input type='submit' value='Save' />
+          <div className='editTask-wrapper'>
+            <div className='editTask-mainline'>
+              <input className='editTask-heading' type='text' placeholder='Task Name' value={taskNameAdd} onChange={handleNameChange} required/>
+              <input className='editTask-duration' type='number' min='1' max='99' value={taskDurAdd} onChange={handleDurChange}/>
+            </div>
+            <TextareaAutosize className='editTaskNotes' placeholder='Notes' value={taskNoteAdd} onChange={handleNoteChange} />
+            <input className='editTask-save' type='submit' value='Save'/>
+          </div>
         </form>
-        <button onClick={toggleForm} >Cancel</button>
+        <button className='editTask-close' onClick={toggleForm} ><CgClose size={14}/></button>
       </div>
     )
   }
-  return <button onClick={toggleForm} className='task-container-add'>+</button>
+  return <button onClick={toggleForm} className='task-container-add'><BsPlusLg size={30} /></button>
 }
 
 export default AddTask

@@ -1,8 +1,14 @@
 :root {
   /* Option one: */
-  --color-primary: #fefcbf;
-  --color-secondary: #FFFED1;
-  --color-accent: #EEB3BD80;
+  --color-primary: #FFFB89;
+  /* --color-primary: #fefcbf; */
+  --color-secondary: #FFFCAE;
+  /* --color-secondary: #FFFED1; */
+  --color-accent-hover: #FF8989d9;
+  --color-accent: #FF898966;
+  /* --color-accent-hover: #FFAEAE; */
+  /* --color-accent: #EEB3BD80; */
+  /* --color-accent-hover: #EEB3BDD9; */
 
   /* Option two: */
   /* --color-primary: #FFFF83; */
@@ -14,8 +20,10 @@
   /* --color-accent: #D6D6D2; */
   /* --color-accent: #f4b7be80; */
 
+  --color-blue: #698EB7;
   --color-red: #FF9D9D;
-  --color-green: #82D382 ;
+  --color-green: #ADE87D ;
+  /* --color-green: #82D382 ; */
   --color-button-hover: #f1f1f1;
 }
 
