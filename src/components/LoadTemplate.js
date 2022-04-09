@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
+import ErrorPopup from './ErrorPopup'
 import taskTemplateService from '../services/taskTemplates'
 import TemplateCard from './TemplateCard'
 import { CgClose } from 'react-icons/cg'
 import './LoadTemplate.css'
 
-const LoadTemplate = ({ setTasks, user }) => {
+const LoadTemplate = ({ setTasks, user, toggleError, setToggleError }) => {
   const [buttonText, setButtonText] = useState('Load Template')
   const [toggleForm, setToggleForm] = useState(false)
 
   const handleFormToggle = () => {
-    user ?  setToggleForm(!toggleForm) : console.log('must be logged in')
+    user ?  setToggleForm(!toggleForm) : setToggleError(true)
   }
 
   useEffect(() => {
@@ -20,15 +21,21 @@ const LoadTemplate = ({ setTasks, user }) => {
     <div>
       <div className='dropdown-content-option' onClick={handleFormToggle}>
         <p>Load Template</p>
-        {/* <button className='button_task-options' ></button> */}
       </div>
       {toggleForm
         ? <Templates setTasks={setTasks} setToggleForm={setToggleForm}/>
         : null
       }
+      {toggleError
+        ? <ErrorPopup setToggleError={setToggleError} />
+        : null  
+      }
     </div>
   )
 }
+
+
+
 
 const Templates = ({ setTasks, setToggleForm }) => {
   const [userTemplates, setUserTemplates] = useState([])

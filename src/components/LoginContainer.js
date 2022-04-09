@@ -129,7 +129,7 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
             placeholder='Password'
             onChange={({target}) => setPassword(target.value)}
           />
-          <button className='login-submit' type='submit'>Login</button>
+          <button className='settings-save' type='submit'>Login</button>
         </form>
         <div className='login-footer'>
           <span className='footer-text'>Don't have an account? <button className='altForm-button' onClick={toggleSignup}>Sign-up!</button></span>
@@ -216,7 +216,7 @@ const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin }) => {
           <input className='login-input' type='password' placeholder='Password' value={password} onChange={handlePasswordChange} />
           <input className='login-input' type='password' placeholder='Confirm Password' value={confirmPassword} onChange={handleConfirmPasswordChange} />
           {/* <input type='submit' value='Submit'  /> */}
-          <button className='login-submit' type='submit'>Submit</button>
+          <button className='settings-save' type='submit'>Submit</button>
         </form>
         <div className='login-footer'>
           <span className='footer-text'>Already have an account? <button className='altForm-button' onClick={toggleLogin} >Login!</button></span>

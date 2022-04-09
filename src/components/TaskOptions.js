@@ -8,6 +8,8 @@ import './TaskOptions.css'
 
 const TaskOptions = ({ user, tasks, setTasks }) => {
   const [dropdownContent, setDropdownContent] = useState('dropdown-content')
+  const [toggleError, setToggleError] = useState(false)
+
 
   const handleShowSettings = () => {
     if ( dropdownContent === 'dropdown-content') {
@@ -23,10 +25,14 @@ const TaskOptions = ({ user, tasks, setTasks }) => {
         <LoadTemplate 
           user={user}
           setTasks={setTasks}
+          toggleError={toggleError}
+          setToggleError={setToggleError}
         />
         <SaveTemplate
           user={user}
           tasks={tasks} 
+          toggleError={toggleError}
+          setToggleError={setToggleError}
         />
         <ClearTasks
         setTasks={setTasks}

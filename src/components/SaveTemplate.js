@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
+import ErrorPopup from './ErrorPopup'
 import taskTemplateService from '../services/taskTemplates'
 import { CgClose } from 'react-icons/cg'
 
-const SaveTemplate = ({ user, tasks }) => {
+const SaveTemplate = ({ user, tasks, toggleError, setToggleError }) => {
   const [buttonText, setButtonText] = useState('Save As Template')
   const [showTemplateSaveForm, setShowToggleSaveForm] = useState(false)
   const [templateName, setTemplateName] = useState('')
   
   // This is the handler for the og button click, to change the text and toggle the form
   const toggleSaveForm = () => {
-    user ? setShowToggleSaveForm(!showTemplateSaveForm) : console.log('must be logged in')
+    user ? setShowToggleSaveForm(!showTemplateSaveForm) : setToggleError(true)
     
   }
 
@@ -64,11 +65,14 @@ const SaveTemplate = ({ user, tasks }) => {
     <div>
       <div className='dropdown-content-option' onClick={toggleSaveForm}>
         <p>Save as Template</p>
-      {/* <button className='button_task-options' onClick={toggleSaveForm} ></button> */}
       </div>
       {showTemplateSaveForm
         ? TemplateSaveForm()
         : null
+      }
+      {toggleError
+        ? <ErrorPopup setToggleError={setToggleError} />
+        : null  
       }
     </div>     
   )
