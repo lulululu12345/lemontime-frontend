@@ -41,7 +41,7 @@
 .edit-button {
   align-self: center;
   border: 1px solid black;
-  padding: 0.6rem;
+  padding: 0.55rem 0.55rem 0.2rem;
   border-radius: 25%;
   background-color: white;
 }

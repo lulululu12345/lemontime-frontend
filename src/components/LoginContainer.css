@@ -68,3 +68,23 @@
   background-color: var(--color-accent);
   cursor: pointer;
 }
+
+.error {
+  color: orangered;
+  margin: 0;
+  font-size: 1.5rem;
+  align-self: center;
+
+}
+
+.login-error {
+  color: orangered;
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  align-self: center;
+}
+
+.input-error {
+  border: 1px solid orangered;
+  box-shadow: 0 1px 5px orangered;
+}

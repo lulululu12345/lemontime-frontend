@@ -80,6 +80,8 @@ const Login = ({showLogin, setShowLogin, showSignup, setShowSignup, setUser }) =
 const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loginError, setLoginError] = useState(false)
+  const [inputClasses, setInputClasses] = useState('login-input')
 
   const cancelLogin = () => {
     setShowLogin(false)
@@ -106,28 +108,42 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
       setShowLogin(false)
     } catch (exception) {
       console.log(exception)
+      setLoginError(true)
     }
   }
+
+  useEffect(() => {
+    if (loginError) {
+      setInputClasses('login-input input-error')
+    }
+  }, [loginError])
+
   return (
     <div className='popup'>
       <div className='popup-inner login-popup'>
         <form className='login-container' onSubmit={handleLogin}>
           <h3 className='login-header'>Login</h3>
+          {loginError
+            ?<p className='login-error' >Incorrect email or password</p>
+            : null
+          }
           <input 
-            className='login-input'
-            type='text' 
+            className={inputClasses}
+            type='email' 
             value={email} 
             name='Email' 
             placeholder='Email'
-            onChange={({target}) => setEmail(target.value)} 
+            onChange={({target}) => setEmail(target.value)}
+            required 
           />
           <input 
-            className='login-input'
+            className={inputClasses}
             type='password'
             value={password}
             name='Password'
             placeholder='Password'
             onChange={({target}) => setPassword(target.value)}
+            required
           />
           <button className='settings-save' type='submit'>Login</button>
         </form>
@@ -159,6 +175,8 @@ const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [passwordError, setPasswordError] = useState(false)
+  const [passwordClasses, setPasswordClasses] = useState('login-input')
 
   const cancelSignup = () => {
     setShowSignup(!showSignup)
@@ -200,22 +218,53 @@ const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin }) => {
         setShowSignup(false)
       }
       if (password !== confirmPassword) {
-        console.log('You gotta have the asswords match dooood!!')
+        setPasswordError(true)
       }
     } catch (exception) {
       console.log(exception)
     }
   }
 
+  useEffect(() => {
+    if (passwordError) {
+      setPasswordClasses('login-input input-error')
+    }
+  }, [passwordError])
+  
   return (
     <div className='popup'>
       <div className='popup-inner login-popup'>
-        <form className='login-container' onSubmit={handleSubmit} >
+        <form className='login-container' onSubmit={handleSubmit}>
           <h3 className='login-header'>Sign-up</h3>
-          <input className='login-input' type='text' placeholder='Email' value={email} onChange={handleEmailChange} />
-          <input className='login-input' type='password' placeholder='Password' value={password} onChange={handlePasswordChange} />
-          <input className='login-input' type='password' placeholder='Confirm Password' value={confirmPassword} onChange={handleConfirmPasswordChange} />
-          {/* <input type='submit' value='Submit'  /> */}
+          <input 
+            className='login-input' 
+            type='email' 
+            placeholder='Email' 
+            value={email} 
+            onChange={handleEmailChange} 
+            required
+          />
+          <input 
+            className={passwordClasses} 
+            type='password' 
+            placeholder='Password' 
+            value={password} 
+            onChange={handlePasswordChange} 
+            required
+          />
+          <input 
+            className={passwordClasses}
+            type='password' 
+            placeholder='Confirm Password' 
+            value={confirmPassword} 
+            onChange={handleConfirmPasswordChange} 
+            required
+          />
+          {passwordError
+            ? <p className='error'>Passwords do not match</p>
+            : null
+          }
+          
           <button className='settings-save' type='submit'>Submit</button>
         </form>
         <div className='login-footer'>
