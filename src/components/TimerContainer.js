@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TimeBlockButton from './TimeBlockButton'
 import Timer from './Timer'
 import TransportCtrl from './TransportCtrl'
@@ -6,11 +6,42 @@ import SkipButton from './SkipButton'
 import StopAndGoButton from './StopAndGoButton'
 import ResetButton from './ResetButton'
 
+import { FaRegLemon } from 'react-icons/fa'
+
 import './TimerContainer.css'
 
+
+
+
+const FocusIcon = () => {
+  return (
+    <span><FaRegLemon size='15'/></span>
+  )
+}
+
 const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock, time, setTime, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog, selectedTask, setSelectedTask, tasks, setTasks }) => {
+  const [focusIcons, setFocusIcons] = useState([])
+  
+  // const focusBlocksArray = Array(Number(longBreakInterval))
+  
+  
+  
+  console.log(Number(longBreakInterval))
+  console.log(focusIcons)
+
+  useEffect(() => {
+    setFocusIcons(Array.from(Array(Number(longBreakInterval))).map((item, index) => 
+      <FocusIcon
+        key={index}
+      />
+    ))
+  }, [])
+
   return (
     <div className='timer-frame'>
+      <div className='focusBlock-container'>
+        {focusIcons}
+      </div>
       <div className='timerContainer'>
         <div className='pomodoro-wrapper'>
           <TimeBlockButton

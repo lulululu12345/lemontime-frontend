@@ -4,9 +4,19 @@
   height: 49rem;
   width: 49rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+.focusBlock-container {
+  display: flex;
+  gap: 1rem;
+}
+
+
+
+
 
 .timerContainer {
   display: grid;
@@ -15,7 +25,7 @@
   grid-template-rows: 2.5rem 20rem 4rem;
   place-items: center;
   place-content: center;
-  margin: 5rem 0;
+  margin: 5rem 0 5rem;
 }
 
 .button:hover {
