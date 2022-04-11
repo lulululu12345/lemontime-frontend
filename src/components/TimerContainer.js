@@ -6,7 +6,7 @@ import SkipButton from './SkipButton'
 import StopAndGoButton from './StopAndGoButton'
 import ResetButton from './ResetButton'
 
-import { FaRegLemon } from 'react-icons/fa'
+import { FaRegLemon, FaLemon } from 'react-icons/fa'
 
 import './TimerContainer.css'
 
@@ -19,26 +19,43 @@ const FocusIcon = () => {
   )
 }
 
+const FocusIconComplete = () => {
+  return (
+    <span><FaLemon size='15'/></span>
+  )
+}
+
 const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock, time, setTime, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog, selectedTask, setSelectedTask, tasks, setTasks }) => {
   const [focusIcons, setFocusIcons] = useState([])
-  
-  // const focusBlocksArray = Array(Number(longBreakInterval))
-  
-  
-  
-  console.log(Number(longBreakInterval))
-  console.log(focusIcons)
+
+  const completedFocusBlocks = log.workCompleted % longBreakInterval
 
   useEffect(() => {
-    setFocusIcons(Array.from(Array(Number(longBreakInterval))).map((item, index) => 
-      <FocusIcon
-        key={index}
-      />
-    ))
-  }, [])
+    if (completedFocusBlocks === 0) {
+      setFocusIcons(Array.from(Array(Number(longBreakInterval))).map((item, index) => 
+        <FocusIcon
+          key={index}
+          className={'focus-icon'}
+        />
+      ))
+    }
+    if (completedFocusBlocks > 0) {
+      setFocusIcons(focusIcons.map((item, index) => {
+        console.log('index', index)
+        // focus-icon-complete
+        // if the index of item is less than completedFocusBlocks
+        if (index < completedFocusBlocks) {
+          console.log('if evaluated to true')
+          return <FocusIconComplete key={index}/>
+        }
+        else return <FocusIcon key={index}/>
+      }))
+    }
+  }, [completedFocusBlocks, longBreakInterval])
 
   return (
     <div className='timer-frame'>
+      <p className='focus-text'>Focus:</p>
       <div className='focusBlock-container'>
         {focusIcons}
       </div>

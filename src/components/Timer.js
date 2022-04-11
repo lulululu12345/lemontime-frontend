@@ -10,7 +10,7 @@ const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTim
       setStart(false)
       // If the timer just completed a pomodoro
       if (currentTimeBlock.type === 'work') {
-        // 
+        // Iterate over the tasks array, find the selected task and increase the blocksCompleted value by one
         setTasks(tasks.map(task => {
           if (task.name === selectedTask) {
             return {

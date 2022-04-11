@@ -178,7 +178,7 @@ const SettingsForm = ({ setStart, pomodoroValue, setPomodoroValue, shortBreakVal
               <FocusDurationInput className='settings-input' numBoxValue={longBreakValue}  setNumBoxValue={setLongBreakValue}  labelText='Long Break'/>
             </div>
             
-            <div className='settings-item'>
+            <div className='settings-item section-end'>
               <label className='settings-label' >Long Break interval</label>
               <LongBreakSchedule className='settings-input' longBreakIntervalValue={longBreakIntervalValue} setLongBreakIntervalValue={setLongBreakIntervalValue}/>  
             </div>
@@ -190,7 +190,7 @@ const SettingsForm = ({ setStart, pomodoroValue, setPomodoroValue, shortBreakVal
               <AutoRunBox className='settings-input settings-checkbox' checkboxValue={autoBreakCheckbox}    setCheckboxValue={setAutoBreakCheckbox}    labelText={'Auto Run Breaks'} />
             </div>
             
-            <div className='settings-item'>
+            <div className='settings-item section-end'>
               <label className='settings-label' >Auto Run Pomodoros</label>
               <AutoRunBox className='settings-input settings-checkbox' checkboxValue={autoPomodoroCheckbox} setCheckboxValue={setAutoPomodoroCheckbox} labelText={'Auto Run Pomodoros'} />
             </div>
