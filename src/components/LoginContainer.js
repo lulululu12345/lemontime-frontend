@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react'
 import taskTemplateService from '../services/taskTemplates'
 import loginService from '../services/login'
 import signupService from '../services/signup'
+import  UserOptions from './UserOptions'
 
 import { CgClose } from 'react-icons/cg'
 import './LoginContainer.css'
 
-const LoginContainer2 = ({ user, setUser}) => {
+const LoginContainer = ({ user, setUser}) => {
   const [showLogin, setShowLogin] = useState(false)
   const [showSignup, setShowSignup] = useState(false)
+  const [userOptions, setUserOptions] = useState(null)
 
   // This effect checks to see if the user is signed in after mounting the LoginContainer component
   useEffect(() => {
@@ -41,18 +43,21 @@ const LoginContainer2 = ({ user, setUser}) => {
   if (showLogin === false && showSignup === false) {
     form = false
   }
-  // Conditionals for setting the button variable
-  if (user === null) {
-    button = <button className='button-link' onClick={toggleLogin}>Login</button>
-  } 
-  if (user) {
-    button = <button className='button-link' onClick={handleLogOut}>Logout</button>
-  }
+  // Conditionals for setting the userOptions state
+  useEffect(() => {
+    if (user === null) {
+      setUserOptions(<button className='button-link' onClick={toggleLogin}>Login</button>)
+    } 
+    if (user) {
+      // setUserOptions(<button className='button-link' onClick={handleLogOut}>Logout</button>)
+      setUserOptions(<UserOptions setUser={setUser}/>)
+    }
+  }, [user])
   
   return (
     <div>
       {form}
-      {button}
+      {userOptions}
     </div>
   )
 }
@@ -276,4 +281,4 @@ const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin }) => {
   )
 }
 
-export default LoginContainer2
+export default LoginContainer

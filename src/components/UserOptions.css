@@ -1,0 +1,25 @@
+.dropbtn.user-opts {
+  /* background-color: var(--color-accent); */
+  background: none;
+  color: black;
+  padding: 0.7rem;
+  /* padding: 0.1rem; */
+  display: flex;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0;
+  border-bottom: 1px solid black;
+}
+
+.dropbtn.user-opts:hover {
+  background-color: var(--color-accent);
+  border-radius: 4px;
+
+}
+
+.icon-case {
+  background-color: var(--color-accent);
+  border-radius: 50%;
+}

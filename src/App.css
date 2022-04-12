@@ -1,8 +1,10 @@
 :root {
   /* Option one: */
-  --color-primary: #FFFB89;
+  --color-primary: #FDFE9C;
+  /* --color-primary: #FFFB89; */
   /* --color-primary: #fefcbf; */
-  --color-secondary: #FFFCAE;
+  --color-secondary: #FEFFC0;
+  /* --color-secondary: #FFFCAE; */
   /* --color-secondary: #FFFED1; */
   --color-accent-hover: #FF8989d9;
   --color-accent: #FF898966;
@@ -84,10 +86,11 @@ h3 {
 
 .primary-navigation {
   display: flex;
-  gap: 1rem;
+  gap: 1.1rem;
   list-style: none;
   padding: 0;
   margin: 0;
+  align-items: center;
 }
 
 .popup {
