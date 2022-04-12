@@ -58,9 +58,14 @@ const App = () => {
       workCompleted: 0,
       blocksCompleted: []
     })
+  const [ready, setReady] = useState(false)
+
+  useEffect(() => {
+    setReady(true)
+  }, [])
 
   return (
-    <div className='App'>
+    <div className='App' style={{ visibility: ready ? 'visible' : 'hidden' }}>
       <header className='primary-header'>
         <div>
           <h3 className='primary-header_logo'>LEMONTIME</h3>
