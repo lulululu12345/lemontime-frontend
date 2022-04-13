@@ -32,6 +32,7 @@
 
 .editTask-save {
   align-self: flex-end;
+  font-family: 'Varela Round', sans-serif;
   margin: 1rem 1.8rem 0;
   border: none;
   border-bottom: 1px solid black;
@@ -75,6 +76,7 @@
 .editTask-delete {
   position: absolute;
   bottom: 0.05rem;
+  font-family: 'Varela Round', sans-serif;
   right: 6.5rem;
   border: none;
   border-bottom: 1px solid black;

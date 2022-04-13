@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import taskTemplateService from '../services/taskTemplates'
+import userToken from '../services/userToken'
 import loginService from '../services/login'
 import signupService from '../services/signup'
 import  UserOptions from './UserOptions'
@@ -18,7 +19,8 @@ const LoginContainer = ({ user, setUser}) => {
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       setUser(user)
-      taskTemplateService.setToken(user.token)
+      userToken.setToken(user.token)
+      // taskTemplateService.setToken(user.token)
     }
   }, [])
 
@@ -26,10 +28,10 @@ const LoginContainer = ({ user, setUser}) => {
     setShowLogin(!showLogin)
   }
 
-  const handleLogOut = () => {
-    window.localStorage.removeItem('loggedTimerAppUser')
-    setUser(null)
-  }
+  // const handleLogOut = () => {
+  //   window.localStorage.removeItem('loggedTimerAppUser')
+  //   setUser(null)
+  // }
 
   let form
   let button
@@ -106,7 +108,8 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
       window.localStorage.setItem(
         'loggedTimerAppUser', JSON.stringify(user)
       )
-      taskTemplateService.setToken(user.token)
+      userToken.setToken(user.token)
+      // taskTemplateService.setToken(user.token)
       setUser(user)
       setEmail('')
       setPassword('')
@@ -116,7 +119,6 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
       setLoginError(true)
     }
   }
-
   useEffect(() => {
     if (loginError) {
       setInputClasses('login-input input-error')

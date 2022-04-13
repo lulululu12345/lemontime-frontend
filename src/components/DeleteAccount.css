@@ -1,0 +1,42 @@
+.delAcc-btn-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.delAcc-btn {
+  padding: 0.5rem 2rem;
+  font-size: 2rem;
+  font-family: 'Varela Round', sans-serif;
+  border: none;
+  border-bottom: 1px solid black;
+  background: none;
+}
+
+.delAcc-btn:hover {
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.yes-btn:hover {
+  background-color: var(--color-green);
+}
+
+.no-btn:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.editTask-save {
+  align-self: flex-end;
+  margin: 1rem 1.8rem 0;
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 0.5rem;
+  background-color: white;
+}
+
+.editTask-save:hover {
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: var(--color-green);
+}
