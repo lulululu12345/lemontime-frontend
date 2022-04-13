@@ -96,12 +96,23 @@ const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, se
 }
 
 const SettingsForm = ({ formSubmit, setFormSubmit, setStart, pomodoroValue, setPomodoroValue, shortBreakValue, setShortBreakValue, longBreakValue, setLongBreakValue, longBreakIntervalValue, setLongBreakIntervalValue, longBreakInterval, autoBreakCheckbox, autoPomodoroCheckbox, setPomodoro, setShortBreak, setLongBreak, setAutoBreak, setAutoPomodoro, setLongBreakInterval, setShowSettings, showSettings, currentTimeBlock, setCurrentTimeBlock, pomodoro, setTime, shortBreak, longBreak, setAutoBreakCheckbox, setAutoPomodoroCheckbox, onClickSettings }) => {
+  const [invalidInput, setInvalidInput] = useState(false)
+
+  useEffect(() => {
+    if (invalidInput) {
+
+    }
+  }, [invalidInput])
+
   // When the settings are saved
   const onSubmitSettings = (event) => {
     // Prevent default form submission behaviour
     event.preventDefault()
     // Stop the timer
     setStart(false)
+    if (Number(pomodoroValue) < 1 || Number(shortBreakValue) < 1 || Number(longBreakValue) < 1 || Number(longBreakIntervalValue) < 1) {
+      return setInvalidInput(true)
+    }
     // Store form values in localStorage
     localStorage.setItem('pomodoro', JSON.stringify(pomodoroValue))
     localStorage.setItem('shortBreak', JSON.stringify(shortBreakValue))
@@ -161,27 +172,32 @@ const SettingsForm = ({ formSubmit, setFormSubmit, setStart, pomodoroValue, setP
           <form className='settings-container' onSubmit={onSubmitSettings}>
 
             <h2 className='settings-header'>Settings</h2>
+            
+            {invalidInput
+              ? <p className='submit-error'>All time blocks must be given a value!</p>
+              : null
+            }
 
             <h3 className='settings-section'>Time</h3>
 
             <div className='settings-item'>
               <label className='settings-label' >Pomodoro</label>
-              <FocusDurationInput className='settings-input' numBoxValue={pomodoroValue}   setNumBoxValue={setPomodoroValue}   labelText='Pomodoro'/>
+              <FocusDurationInput numBoxValue={pomodoroValue}   setNumBoxValue={setPomodoroValue} setInvalidInput={setInvalidInput}   labelText='Pomodoro'/>
             </div>
 
             <div className='settings-item'>
               <label className='settings-label'>Short Break</label>
-              <FocusDurationInput className='settings-input' numBoxValue={shortBreakValue} setNumBoxValue={setShortBreakValue} labelText='Short Break'/>
+              <FocusDurationInput numBoxValue={shortBreakValue} setNumBoxValue={setShortBreakValue} setInvalidInput={setInvalidInput} labelText='Short Break'/>
             </div>
 
             <div className='settings-item'>
               <label className='settings-label'>Long Break</label>
-              <FocusDurationInput className='settings-input' numBoxValue={longBreakValue}  setNumBoxValue={setLongBreakValue}  labelText='Long Break'/>
+              <FocusDurationInput numBoxValue={longBreakValue}  setNumBoxValue={setLongBreakValue} setInvalidInput={setInvalidInput}  labelText='Long Break'/>
             </div>
             
             <div className='settings-item section-end'>
-              <label className='settings-label' >Long Break interval</label>
-              <LongBreakSchedule className='settings-input' longBreakIntervalValue={longBreakIntervalValue} setLongBreakIntervalValue={setLongBreakIntervalValue}/>  
+              <label className='settings-label' >Long Break Interval</label>
+              <LongBreakSchedule longBreakIntervalValue={longBreakIntervalValue} setLongBreakIntervalValue={setLongBreakIntervalValue}/>  
             </div>
 
             <h3 className='settings-section'>Upon Completion</h3>
