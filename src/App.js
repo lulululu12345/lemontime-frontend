@@ -4,6 +4,7 @@ import LoginContainer from './components/LoginContainer'
 import SettingsContainer from './components/SettingsContainer'
 import TimerContainer from './components/TimerContainer'
 import TaskContainer from './components/TaskContainer'
+import { Outlet } from 'react-router-dom'
 
 import './App.css'
 
@@ -130,6 +131,7 @@ const App = () => {
         setTasks={setTasks}
         user={user}
       />
+      <Outlet />
     </div>
   )
 }

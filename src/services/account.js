@@ -11,4 +11,11 @@ const remove = async () => {
   return res.data
 }
 
-export default { remove }
+const verifyUser = (code) => {
+  return axios.get(`${baseUrl}/${code}`)
+    .then(res => {
+      return res.data
+    })
+}
+
+export default { remove, verifyUser }
