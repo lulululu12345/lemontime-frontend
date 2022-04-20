@@ -88,6 +88,7 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loginError, setLoginError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [inputClasses, setInputClasses] = useState('login-input')
 
   const cancelLogin = () => {
@@ -105,6 +106,8 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
       const user = await loginService.login({
         email, password,
       })
+      console.log('user', user)
+
       window.localStorage.setItem(
         'loggedTimerAppUser', JSON.stringify(user)
       )
@@ -114,8 +117,8 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
       setEmail('')
       setPassword('')
       setShowLogin(false)
-    } catch (exception) {
-      console.log(exception)
+    } catch (err) {
+      setErrorMessage(err.response.data.error)
       setLoginError(true)
     }
   }
@@ -131,7 +134,7 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
         <form className='login-container' onSubmit={handleLogin}>
           <h3 className='login-header'>Login</h3>
           {loginError
-            ?<p className='login-error' >Incorrect email or password</p>
+            ?<p className='login-error' >{errorMessage}</p>
             : null
           }
           <input 
@@ -183,6 +186,9 @@ const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin }) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [passwordError, setPasswordError] = useState(false)
+  const [signupError, setSignupError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+  const [emailClasses, setEmailClasses] = useState('login-input')
   const [passwordClasses, setPasswordClasses] = useState('login-input')
 
   const cancelSignup = () => {
@@ -227,8 +233,9 @@ const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin }) => {
       if (password !== confirmPassword) {
         setPasswordError(true)
       }
-    } catch (exception) {
-      console.log(exception)
+    } catch (err) {
+      setErrorMessage(err.response.data.error)
+      setSignupError(true)
     }
   }
 
@@ -237,14 +244,24 @@ const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin }) => {
       setPasswordClasses('login-input input-error')
     }
   }, [passwordError])
+
+  useEffect(() => {
+    if (signupError) {
+      setEmailClasses('login-input input-error')
+    }
+  }, [signupError])
   
   return (
     <div className='popup'>
       <div className='popup-inner login-popup'>
         <form className='login-container' onSubmit={handleSubmit}>
           <h3 className='login-header'>Sign-up</h3>
+          {signupError
+            ? <p className='login-error'>{errorMessage}</p>
+            : null
+          }
           <input 
-            className='login-input' 
+            className={emailClasses} 
             type='email' 
             placeholder='Email' 
             value={email} 
@@ -271,7 +288,6 @@ const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin }) => {
             ? <p className='error'>Passwords do not match</p>
             : null
           }
-          
           <button className='settings-save' type='submit'>Submit</button>
         </form>
         <div className='login-footer'>
