@@ -10,9 +10,7 @@ const rootElement = document.getElementById('root')
 render(
   <BrowserRouter>
     <Routes>
-      <Route path='/' element={<App />}>
-        <Route path='/api/users/:confirmationCode' element={<AccountConfirmed/>} />
-      </Route>
+      <Route path='*' element={<App />} />
     </Routes>
   </BrowserRouter>,
   rootElement

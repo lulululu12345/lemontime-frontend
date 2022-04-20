@@ -4,13 +4,14 @@ import LoginContainer from './components/LoginContainer'
 import SettingsContainer from './components/SettingsContainer'
 import TimerContainer from './components/TimerContainer'
 import TaskContainer from './components/TaskContainer'
-import { Outlet } from 'react-router-dom'
+import AccountConfirmed from './components/AccountConfirmed'
+import { Outlet, Routes, Route } from 'react-router-dom'
 
 import './App.css'
 
 const App = () => {
   // localStorage.clear()
-
+  const [showLogin, setShowLogin] = useState(false)
   const [user, setUser] = useState(null)
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')))
 
@@ -99,11 +100,16 @@ const App = () => {
               <LoginContainer 
                 user={user}
                 setUser={setUser}
+                showLogin={showLogin}
+                setShowLogin={setShowLogin}
               />
             </li>
           </ul>
         </nav>
       </header>
+      <Routes>
+        <Route path='api/users/:confirmationCode' element={<AccountConfirmed setShowLogin={setShowLogin} />} />
+      </Routes>
       <TimerContainer 
         start={start}
         setStart={setStart}

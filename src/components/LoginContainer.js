@@ -9,8 +9,8 @@ import { CgClose } from 'react-icons/cg'
 import './LoginContainer.css'
 import PopupMessage from './PopupMessage'
 
-const LoginContainer = ({ user, setUser}) => {
-  const [showLogin, setShowLogin] = useState(false)
+const LoginContainer = ({ user, setUser, showLogin, setShowLogin }) => {
+  // const [showLogin, setShowLogin] = useState(false)
   const [showSignup, setShowSignup] = useState(false)
   const [showPopupMessage, setShowPopupMessage] = useState(false)
   const [userOptions, setUserOptions] = useState(null)
