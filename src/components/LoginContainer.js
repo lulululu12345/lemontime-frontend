@@ -7,10 +7,12 @@ import  UserOptions from './UserOptions'
 
 import { CgClose } from 'react-icons/cg'
 import './LoginContainer.css'
+import PopupMessage from './PopupMessage'
 
 const LoginContainer = ({ user, setUser}) => {
   const [showLogin, setShowLogin] = useState(false)
   const [showSignup, setShowSignup] = useState(false)
+  const [showPopupMessage, setShowPopupMessage] = useState(false)
   const [userOptions, setUserOptions] = useState(null)
 
   // This effect checks to see if the user is signed in after mounting the LoginContainer component
@@ -40,10 +42,13 @@ const LoginContainer = ({ user, setUser}) => {
     form = <Login showLogin={showLogin} setShowLogin={setShowLogin} showSignup={showSignup} setShowSignup={setShowSignup} setUser={setUser} />
   } 
   if (showSignup) {
-    form = <Signup showLogin={showLogin} setShowLogin={setShowLogin} showSignup={showSignup} setShowSignup={setShowSignup} setUser={setUser} />
+    form = <Signup showLogin={showLogin} setShowLogin={setShowLogin} showSignup={showSignup} setShowSignup={setShowSignup} showPopupMessage={showPopupMessage} setShowPopupMessage={setShowPopupMessage} setUser={setUser} />
   }
   if (showLogin === false && showSignup === false) {
     form = false
+  }
+  if (showPopupMessage) {
+    form = <PopupMessage message='Please check your email to verify your account!' setToggleError={setShowPopupMessage} />
   }
   // Conditionals for setting the userOptions state
   useEffect(() => {
@@ -166,7 +171,7 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
   )
 }
 
-const Signup = ({ showLogin, setShowLogin, showSignup, setShowSignup, setUser }) => {
+const Signup = ({ showLogin, setShowLogin, showSignup, setShowSignup, setUser, showPopupMessage, setShowPopupMessage }) => {
   
   return (
     <div>
@@ -175,13 +180,15 @@ const Signup = ({ showLogin, setShowLogin, showSignup, setShowSignup, setUser })
         showSignup={showSignup}
         setShowSignup={setShowSignup}
         setShowLogin={setShowLogin}
+        setShowPopupMessage={setShowPopupMessage}
+        showPopupMessage={showPopupMessage}
       />
       
     </div>
   )
 }
 
-const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin }) => {
+const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin, showPopupMessage, setShowPopupMessage }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -220,22 +227,25 @@ const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin }) => {
     try {
       if (password === confirmPassword) {
         const user =  await signupService.signup({ email, password, })
-        window.localStorage.setItem(
-          'loggedTimerAppUser', JSON.stringify(user)
-        )
-        taskTemplateService.setToken(user.token)
-        setUser(user)
+        // window.localStorage.setItem(
+        //   'loggedTimerAppUser', JSON.stringify(user)
+        // )
+        // taskTemplateService.setToken(user.token)
+        // setUser(user)
         setEmail('')
         setPassword('')
         setConfirmPassword('')
         setShowSignup(false)
+        setShowPopupMessage(true)
       }
       if (password !== confirmPassword) {
         setPasswordError(true)
       }
     } catch (err) {
-      setErrorMessage(err.response.data.error)
-      setSignupError(true)
+      if (err.response) {
+        setErrorMessage(err.response.data.error)
+        setSignupError(true)
+      }
     }
   }
 
