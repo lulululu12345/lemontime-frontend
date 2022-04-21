@@ -1,6 +1,6 @@
 import axios from 'axios'
 import userToken from './userToken'
-const baseUrl = 'http://localhost:3001/api/users'
+const baseUrl = '/api/users'
 
 const remove = async () => {
   const config = { 

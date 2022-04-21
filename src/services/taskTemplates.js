@@ -1,6 +1,6 @@
 import axios from 'axios'
 import userToken from './userToken'
-const baseUrl = 'http://localhost:3001/api/tasktemplates'
+const baseUrl = '/api/tasktemplates'
 
 // let token = null
 
