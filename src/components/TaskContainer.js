@@ -36,7 +36,10 @@ const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks, login, 
         />
       </div>
       <div>
-        {listTasks}
+        {tasks
+          ? listTasks
+          : null
+        }
       </div>
       <AddTask 
         tasks={tasks} 

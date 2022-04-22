@@ -10,10 +10,19 @@ import { Outlet, Routes, Route } from 'react-router-dom'
 import './App.css'
 
 const App = () => {
+  let localTasks = JSON.parse(localStorage.getItem('tasks')) || []
+  let localPomodoro = JSON.parse(localStorage.getItem('pomodoro')) || 25
+  let localShortBreak = JSON.parse(localStorage.getItem('shortBreak')) || 5
+  let localLongBreak = JSON.parse(localStorage.getItem('longBreak')) || 10
+  let localAutoBreak = JSON.parse(localStorage.getItem('autoBreak')) || false
+  let localAutoPomodoro = JSON.parse(localStorage.getItem('autoPomodoro')) || false
+  let localLongBreakInterval = JSON.parse(localStorage.getItem('longBreakInterval')) || 4
+
   // localStorage.clear()
   const [showLogin, setShowLogin] = useState(false)
   const [user, setUser] = useState(null)
-  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')))
+  // const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')))
+  const [tasks, setTasks] = useState(localTasks)
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
@@ -24,7 +33,7 @@ const App = () => {
     useState({ 
       name: 'pomodoro',
       type: 'work', 
-      durMins: JSON.parse(localStorage.getItem('pomodoro')), 
+      durMins: localPomodoro, 
       get durMs(){
         return this.durMins * 60000
       }
@@ -33,7 +42,7 @@ const App = () => {
     useState({ 
       name: 'shortBreak', 
       type: 'break',
-      durMins: JSON.parse(localStorage.getItem('shortBreak')), 
+      durMins: localShortBreak, 
       get durMs(){
         return this.durMins * 60000
       } 
@@ -42,7 +51,7 @@ const App = () => {
     useState({ 
       name: 'longBreak', 
       type: 'break',
-      durMins: JSON.parse(localStorage.getItem('longBreak')), 
+      durMins: localLongBreak, 
       get durMs(){
         return this.durMins * 60000
       } 
@@ -51,9 +60,9 @@ const App = () => {
   const [currentTimeBlock, setCurrentTimeBlock] = useState(pomodoro)
   const [time, setTime] = useState(currentTimeBlock.durMs)
   const [start, setStart] = useState(false)
-  const [autoBreak, setAutoBreak] = useState(JSON.parse(localStorage.getItem('autoBreak')))
-  const [autoPomodoro, setAutoPomodoro] = useState(JSON.parse(localStorage.getItem('autoPomodoro')))
-  const [longBreakInterval, setLongBreakInterval] = useState(JSON.parse(localStorage.getItem('longBreakInterval')))
+  const [autoBreak, setAutoBreak] = useState(localAutoBreak)
+  const [autoPomodoro, setAutoPomodoro] = useState(localAutoPomodoro)
+  const [longBreakInterval, setLongBreakInterval] = useState(localLongBreakInterval)
   const [selectedTask, setSelectedTask] = useState(false)
   const [log, setLog] = 
     useState({
@@ -108,7 +117,7 @@ const App = () => {
         </nav>
       </header>
       <Routes>
-        <Route path='api/users/:confirmationCode' element={<AccountConfirmed setShowLogin={setShowLogin} />} />
+        <Route path='confirm/:confirmationCode' element={<AccountConfirmed setShowLogin={setShowLogin} />} />
       </Routes>
       <TimerContainer 
         start={start}

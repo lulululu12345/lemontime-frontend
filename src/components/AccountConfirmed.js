@@ -4,7 +4,6 @@ import { Link, useParams } from 'react-router-dom'
 import './AccountConfirmed.css'
 
 const AccountConfirmed = ({ match, setShowLogin }) => {
-  console.log(useParams().confirmationCode)
   let confirmation = useParams().confirmationCode
   if (confirmation) {
     accountService.verifyUser(confirmation)
