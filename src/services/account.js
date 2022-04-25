@@ -18,4 +18,9 @@ const verifyUser = (code) => {
     })
 }
 
-export default { remove, verifyUser }
+const passwordReset = async (password, resetToken) => {
+  const res = await axios.put(`/api/account/${resetToken}`, password)
+  return res.data
+}
+
+export default { remove, verifyUser, passwordReset }

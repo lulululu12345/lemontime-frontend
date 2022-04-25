@@ -227,11 +227,7 @@ const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin, showPopu
     try {
       if (password === confirmPassword) {
         const user =  await signupService.signup({ email, password, })
-        // window.localStorage.setItem(
-        //   'loggedTimerAppUser', JSON.stringify(user)
-        // )
-        // taskTemplateService.setToken(user.token)
-        // setUser(user)
+        
         setEmail('')
         setPassword('')
         setConfirmPassword('')

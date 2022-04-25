@@ -5,6 +5,7 @@ import SettingsContainer from './components/SettingsContainer'
 import TimerContainer from './components/TimerContainer'
 import TaskContainer from './components/TaskContainer'
 import AccountConfirmed from './components/AccountConfirmed'
+import PasswordReset from './components/PasswordReset'
 import { Outlet, Routes, Route } from 'react-router-dom'
 
 import './App.css'
@@ -117,7 +118,8 @@ const App = () => {
         </nav>
       </header>
       <Routes>
-        <Route path='confirm/:confirmationCode' element={<AccountConfirmed setShowLogin={setShowLogin} />} />
+        <Route path='api/users/:confirmationCode' element={<AccountConfirmed setShowLogin={setShowLogin} />} />
+        <Route path='password-reset/:resetToken' element={<PasswordReset setShowLogin={setShowLogin} />} />
       </Routes>
       <TimerContainer 
         start={start}
