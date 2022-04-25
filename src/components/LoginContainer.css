@@ -2,6 +2,7 @@
   padding: 5rem;
 }
 
+
 .login-container {
   display: flex;
   flex-direction: column;
@@ -12,6 +13,10 @@
 .login-header {
   font-size: 3rem;
   margin: 0 0 2rem;
+}
+
+.popup-text {
+  
 }
 
 .login-input {
@@ -34,6 +39,8 @@
 
 .login-footer {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   margin-top: 2rem;
 }

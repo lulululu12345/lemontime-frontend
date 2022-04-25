@@ -68,30 +68,29 @@ const PasswordResetForm = ({ setSuccessful }) => {
 
   return (
     <form className='login-container' onSubmit={handleSubmit}>
-          <h3 className='login-header'>Reset Password</h3>
-          <input 
-            className={passwordClasses} 
-            type='password' 
-            placeholder='Password' 
-            value={password} 
-            onChange={handlePasswordChange} 
-            required
-          />
-          <input 
-            className={passwordClasses}
-            type='password' 
-            placeholder='Confirm Password' 
-            value={confirmPassword} 
-            onChange={handleConfirmPasswordChange} 
-            required
-          />
-          {passwordError
-            ? <p className='error'>Passwords do not match</p>
-            : null
-          }
-          <button className='settings-save' type='submit'>Submit</button>
-
-        </form>
+      <h3 className='login-header'>Reset Password</h3>
+      <input 
+        className={passwordClasses} 
+        type='password' 
+        placeholder='Password' 
+        value={password} 
+        onChange={handlePasswordChange} 
+        required
+      />
+      <input 
+        className={passwordClasses}
+        type='password' 
+        placeholder='Confirm Password' 
+        value={confirmPassword} 
+        onChange={handleConfirmPasswordChange} 
+        required
+      />
+      {passwordError
+        ? <p className='error'>Passwords do not match</p>
+        : null
+      }
+      <button className='settings-save' type='submit'>Submit</button>
+    </form>
   )
 }
 
@@ -103,9 +102,9 @@ const PasswordResetSuccess = ({ setShowLogin }) => {
 
   return (
     <div className='resetSuccess'>
-      <h3>Password reset successful!</h3>
+      <h2 className='error-text'>Password reset successful!</h2>
       <Link to={'/'} >
-        <button className='altForm-button' onClick={handleClick}>Please Login</button>
+        <button className='footer-text altForm-button' onClick={handleClick}>Please Login</button>
       </Link>
     </div>
   )

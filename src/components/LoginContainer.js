@@ -3,6 +3,7 @@ import taskTemplateService from '../services/taskTemplates'
 import userToken from '../services/userToken'
 import loginService from '../services/login'
 import signupService from '../services/signup'
+import accountService from '../services/account'
 import  UserOptions from './UserOptions'
 
 import { CgClose } from 'react-icons/cg'
@@ -10,9 +11,11 @@ import './LoginContainer.css'
 import PopupMessage from './PopupMessage'
 
 const LoginContainer = ({ user, setUser, showLogin, setShowLogin }) => {
-  // const [showLogin, setShowLogin] = useState(false)
-  const [showSignup, setShowSignup] = useState(false)
-  const [showPopupMessage, setShowPopupMessage] = useState(false)
+  const [form, setForm] = useState(null)
+
+  // const [showSignup, setShowSignup] = useState(false)
+  // const [showPasswordReset, setShowPasswordReset] = useState(false)
+  // const [showPopupMessage, setShowPopupMessage] = useState(false)
   const [userOptions, setUserOptions] = useState(null)
 
   // This effect checks to see if the user is signed in after mounting the LoginContainer component
@@ -27,7 +30,8 @@ const LoginContainer = ({ user, setUser, showLogin, setShowLogin }) => {
   }, [])
 
   const toggleLogin = () => {
-    setShowLogin(!showLogin)
+    // setShowLogin(!showLogin)
+    setForm(<Login setUser={setUser} setForm={setForm} />)
   }
 
   // const handleLogOut = () => {
@@ -35,28 +39,43 @@ const LoginContainer = ({ user, setUser, showLogin, setShowLogin }) => {
   //   setUser(null)
   // }
 
-  let form
-  let button
+  // let form
+  // let button
   // Conditionals for setting the form variable
-  if (showLogin) {
-    form = <Login showLogin={showLogin} setShowLogin={setShowLogin} showSignup={showSignup} setShowSignup={setShowSignup} setUser={setUser} />
-  } 
-  if (showSignup) {
-    form = <Signup showLogin={showLogin} setShowLogin={setShowLogin} showSignup={showSignup} setShowSignup={setShowSignup} showPopupMessage={showPopupMessage} setShowPopupMessage={setShowPopupMessage} setUser={setUser} />
-  }
-  if (showLogin === false && showSignup === false) {
-    form = false
-  }
-  if (showPopupMessage) {
-    form = <PopupMessage message='Please check your email to verify your account!' setToggleError={setShowPopupMessage} />
-  }
+
+  // useEffect(() => {
+  //   if (showLogin) {
+  //     setForm(<Login showLogin={showLogin} setShowLogin={setShowLogin} showSignup={showSignup} setShowSignup={setShowSignup} showPasswordReset={showPasswordReset} setShowPasswordReset={setShowPasswordReset} setUser={setUser} />)
+  //   } 
+  //   if (showSignup) {
+  //     setForm(<Signup showLogin={showLogin} setShowLogin={setShowLogin} showSignup={showSignup} setShowSignup={setShowSignup} showPopupMessage={showPopupMessage} setShowPopupMessage={setShowPopupMessage} setUser={setUser} />)
+  //   }
+  //   if (showPasswordReset) {
+  //     setForm(<ForgotPassword />)
+  //   }
+  //   if (showLogin === false && showSignup === false) {
+  //     setForm(false)
+  //   }
+  //   if (showPopupMessage) {
+  //     setForm(<PopupMessage message='Please check your email to verify your account!' setToggleError={setShowPopupMessage} />)
+  //   }
+
+  // }, [])
+
+  useEffect(() => {
+    if (showLogin) {
+      setForm(<Login setUser={setUser} setForm={setForm} />)
+    }
+  }, [showLogin])
+
+
+  
   // Conditionals for setting the userOptions state
   useEffect(() => {
     if (user === null) {
       setUserOptions(<button className='button-link' onClick={toggleLogin}>Login</button>)
     } 
     if (user) {
-      // setUserOptions(<button className='button-link' onClick={handleLogOut}>Logout</button>)
       setUserOptions(<UserOptions setUser={setUser}/>)
     }
   }, [user])
@@ -75,21 +94,20 @@ const LoginContainer = ({ user, setUser, showLogin, setShowLogin }) => {
 
 
 
-const Login = ({showLogin, setShowLogin, showSignup, setShowSignup, setUser }) => {
+const Login = ({ setForm, setUser }) => {
 
   return (
     <div>
       <LoginForm 
         setUser={setUser}
-        setShowLogin={setShowLogin}
-        setShowSignup={setShowSignup}
+        setForm={setForm}
       />
       
     </div>
   )
 }
 
-const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
+const LoginForm = ({ setUser, setForm }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loginError, setLoginError] = useState(false)
@@ -97,12 +115,15 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
   const [inputClasses, setInputClasses] = useState('login-input')
 
   const cancelLogin = () => {
-    setShowLogin(false)
+    setForm(null)
   }
 
   const toggleSignup = () => {
-    setShowSignup(true)
-    setShowLogin(false)
+    setForm(<Signup setForm={setForm} setUser={setUser} />)
+  }
+
+  const togglePasswordReset = () => {
+    setForm(<ForgotPassword setForm={setForm} />)
   }
 
   const handleLogin = async (event) => {
@@ -121,7 +142,7 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
       setUser(user)
       setEmail('')
       setPassword('')
-      setShowLogin(false)
+      setForm(null)
     } catch (err) {
       setErrorMessage(err.response.data.error)
       setLoginError(true)
@@ -163,6 +184,7 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
           <button className='settings-save' type='submit'>Login</button>
         </form>
         <div className='login-footer'>
+          <button className='altForm-button footer-text' onClick={togglePasswordReset}>Forgot Password?</button>
           <span className='footer-text'>Don't have an account? <button className='altForm-button' onClick={toggleSignup}>Sign-up!</button></span>
         </div>
         <button className='close-btn login-close' onClick={cancelLogin}><CgClose size={14}/></button>
@@ -171,24 +193,73 @@ const LoginForm = ({ setUser, setShowLogin, setShowSignup }) => {
   )
 }
 
-const Signup = ({ showLogin, setShowLogin, showSignup, setShowSignup, setUser, showPopupMessage, setShowPopupMessage }) => {
+const ForgotPassword = ({ setForm }) => {
+  const [emailClasses, setEmailClasses] = useState('login-input')
+  const [email, setEmail] = useState('')
+
+  const handleEmailChange = (event) => {
+    const eventValue = event.target.value
+    setEmail(eventValue)
+  }
+
+  const handleClose = () => {
+    setForm(null)
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      await accountService.forgotPassword({ email })
+
+      setForm(<PopupMessage message='Check your inbox' setToggleError={setForm} />)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  return (
+    <div className='popup'>
+      <div className='popup-inner login-popup'>
+        <form className='login-container' onSubmit={handleSubmit}>
+          <h2 className='error-text'>Enter your email</h2>
+          <input 
+            className={emailClasses} 
+            type='email' 
+            placeholder='Email' 
+            value={email} 
+            onChange={handleEmailChange} 
+            required
+          />
+          <button className='settings-save' type='submit'>Submit</button>
+        </form>
+        <button className='close-btn login-close' onClick={handleClose}><CgClose size={14}/></button>
+      </div>
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+const Signup = ({ setForm, setUser }) => {
   
   return (
     <div>
       <SignupForm 
         setUser={setUser}
-        showSignup={showSignup}
-        setShowSignup={setShowSignup}
-        setShowLogin={setShowLogin}
-        setShowPopupMessage={setShowPopupMessage}
-        showPopupMessage={showPopupMessage}
+        setForm={setForm}
       />
       
     </div>
   )
 }
 
-const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin, showPopupMessage, setShowPopupMessage }) => {
+const SignupForm = ({ setForm, setUser }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -199,12 +270,11 @@ const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin, showPopu
   const [passwordClasses, setPasswordClasses] = useState('login-input')
 
   const cancelSignup = () => {
-    setShowSignup(!showSignup)
+    setForm(null)
   }
 
   const toggleLogin = () => {
-    setShowLogin(true)
-    setShowSignup(false)
+    setForm(<Login setForm={setForm} setUser={setUser} />)
   }
   
   const handleEmailChange = (event) => {
@@ -227,12 +297,11 @@ const SignupForm = ({ setUser, showSignup, setShowSignup, setShowLogin, showPopu
     try {
       if (password === confirmPassword) {
         const user =  await signupService.signup({ email, password, })
-        
+
         setEmail('')
         setPassword('')
         setConfirmPassword('')
-        setShowSignup(false)
-        setShowPopupMessage(true)
+        setForm(<PopupMessage message='Please check your email to verify your account!' setToggleError={setForm} />)
       }
       if (password !== confirmPassword) {
         setPasswordError(true)

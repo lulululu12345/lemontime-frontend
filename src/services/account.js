@@ -18,9 +18,13 @@ const verifyUser = (code) => {
     })
 }
 
+const forgotPassword = async (email) => {
+  const res = await axios.put(`/api/account`, email)
+}
+
 const passwordReset = async (password, resetToken) => {
   const res = await axios.put(`/api/account/${resetToken}`, password)
   return res.data
 }
 
-export default { remove, verifyUser, passwordReset }
+export default { remove, verifyUser, forgotPassword, passwordReset }

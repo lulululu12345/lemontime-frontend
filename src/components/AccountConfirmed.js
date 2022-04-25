@@ -3,7 +3,7 @@ import accountService from '../services/account'
 import { Link, useParams } from 'react-router-dom'
 import './AccountConfirmed.css'
 
-const AccountConfirmed = ({ match, setShowLogin }) => {
+const AccountConfirmed = ({ setShowLogin }) => {
   let confirmation = useParams().confirmationCode
   if (confirmation) {
     accountService.verifyUser(confirmation)

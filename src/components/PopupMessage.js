@@ -5,7 +5,7 @@ import './PopupMessage.css'
 
 const PopupMessage = ({ setToggleError, message }) => {
   const handleClick = () => {
-    setToggleError(false)
+    setToggleError(null)
   }
 
   return (

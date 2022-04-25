@@ -110,8 +110,6 @@ const App = () => {
               <LoginContainer 
                 user={user}
                 setUser={setUser}
-                showLogin={showLogin}
-                setShowLogin={setShowLogin}
               />
             </li>
           </ul>
