@@ -1,13 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Timer.css'
+import timeoutMp3 from '../assets/audio/timeout-1.mp3'
+import ReactAudioPlayer from 'react-audio-player'
 
 const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTimeBlock, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog, selectedTask, setSelectedTask, tasks, setTasks }) => {
+  const [audio] = useState(new Audio(timeoutMp3))
+  const [playing, setPlaying] = useState(false)
+
   // Stop countdown when timer reaches zero and add completed TimeBlock to log
   useEffect(() => {
     // If the time prop has reached 0 (timer has completed)
     if (time === 0) {
       // Stop the timer
       setStart(false)
+      // Play the alarm sound
+      audio.play()
       // If the timer just completed a pomodoro
       if (currentTimeBlock.type === 'work') {
         // Iterate over the tasks array, find the selected task and increase the blocksCompleted value by one
@@ -113,9 +120,12 @@ const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTim
   
   // Display the time props remaining minutes and seconds
   return (
-    <div className='timeDisplay-wrapper'>
-      <h2 className='timeDisplay'>{`${calcMinutes()}:${calcSeconds()}`}</h2>
-    </div>
+    <>
+      <div className='timeDisplay-wrapper'>
+        <h2 className='timeDisplay'>{`${calcMinutes()}:${calcSeconds()}`}</h2>
+      </div>
+      <ReactAudioPlayer src={timeoutMp3} />
+    </>
   )
 }
 
