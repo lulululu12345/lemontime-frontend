@@ -1,31 +1,13 @@
 :root {
-  /* Option one: */
   --color-primary: #FDFE9C;
-  /* --color-primary: #FFFB89; */
-  /* --color-primary: #fefcbf; */
   --color-secondary: #FEFFC0;
-  /* --color-secondary: #FFFCAE; */
-  /* --color-secondary: #FFFED1; */
   --color-accent-hover: #FF8989d9;
   --color-accent: #FF898966;
-  /* --color-accent-hover: #FFAEAE; */
-  /* --color-accent: #EEB3BD80; */
-  /* --color-accent-hover: #EEB3BDD9; */
 
-  /* Option two: */
-  /* --color-primary: #FFFF83; */
-  /* --color-secondary: #FFFFB6; */
-  /* --color-accent: #8EBAFF; */
-
-  /* --color-primary: #fefcbf; */
-  /* --color-secondary: #fffff3; */
-  /* --color-accent: #D6D6D2; */
-  /* --color-accent: #f4b7be80; */
 
   --color-blue: #698EB7;
   --color-red: #FF9D9D;
   --color-green: #ADE87D ;
-  /* --color-green: #82D382 ; */
   --color-button-hover: #f1f1f1;
 }
 
@@ -48,16 +30,12 @@ html {
 }
 
 body {
-  min-height: 100%;
-  background: #fff;
+  /* min-height: 100%; */
+  /* background: #fff; */
   color: #000;
   font-size: 2rem;
-  margin: 0 10rem;
+  /* margin: 0 10rem; */
   background-color: var(--color-primary);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 h1 {
@@ -72,7 +50,21 @@ h3 {
   font-size: 2rem;
 }
 
+#root {
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 65rem;
+  margin: auto;
+
+}
+
 .primary-header {
+  width: 100%;
   display: flex;
   gap: 1rem;
   align-items: center;
