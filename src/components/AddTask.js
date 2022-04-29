@@ -60,11 +60,11 @@ const AddTask = ({ tasks, setTasks, login }) => {
             <input className='editTask-save' type='submit' value='Save'/>
           </div>
         </form>
-        <button className='editTask-close' onClick={toggleForm} ><CgClose size={14}/></button>
+        <button className='addTask-close' onClick={toggleForm} ><CgClose/></button>
       </div>
     )
   }
-  return <button onClick={toggleForm} className='task-container-add'><BsPlusLg size={30} /></button>
+  return <button onClick={toggleForm} className='task-container-add'><BsPlusLg size={18} /></button>
 }
 
 export default AddTask

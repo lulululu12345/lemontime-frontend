@@ -80,7 +80,7 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
           </div>
         </form>
         <button className='editTask-delete' onClick={deleteTask} >Delete</button>
-        <button className='editTask-close' onClick={toggleForm} ><CgClose size={14}/></button>
+        <button className='editTask-close' onClick={toggleForm} ><CgClose/></button>
       </div>
     )
   }

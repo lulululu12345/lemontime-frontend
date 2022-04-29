@@ -44,7 +44,7 @@ const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, 
           <div className='taskCard-mainLine'>
             <h3 id={taskName} className='task-card-heading'>{taskName}</h3>
             <div className='taskCard-settings'>
-              <p id={taskName}>{blocksCompleted}/{taskDur}</p>
+              <p className='duration' id={taskName}>{blocksCompleted}/{taskDur}</p>
               <button onClick={onEditClick} className='edit-button'><MdEdit/></button>
             </div>
           </div>
