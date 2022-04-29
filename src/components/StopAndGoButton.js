@@ -34,7 +34,7 @@ const StopAndGoButton = ({ start, setStart }) => {
 
   return (
     <>
-      <button onClick={onClickStopAndGo} className={className}>{start ? <FaPause/> : <FaPlay/>}</button>
+      <button onClick={onClickStopAndGo} className={className}>{start ? <FaPause /> : <FaPlay />}</button>
       <ReactAudioPlayer src={startStopMp3}/>
     </>
   ) 

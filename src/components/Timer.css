@@ -1,6 +1,5 @@
 .timeDisplay-wrapper {
   grid-column: span 3;
-  /* place-self: center center; */
 }
 
 .timeDisplay {

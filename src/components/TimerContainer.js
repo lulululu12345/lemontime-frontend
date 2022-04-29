@@ -15,13 +15,13 @@ import './TimerContainer.css'
 
 const FocusIcon = () => {
   return (
-    <span><FaRegLemon size='15'/></span>
+    <span><FaRegLemon size='12'/></span>
   )
 }
 
 const FocusIconComplete = () => {
   return (
-    <span><FaLemon size='15'/></span>
+    <span><FaLemon size='12'/></span>
   )
 }
 
