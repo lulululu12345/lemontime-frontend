@@ -12,10 +12,6 @@ import PopupMessage from './PopupMessage'
 
 const LoginContainer = ({ user, setUser, showLogin, setShowLogin }) => {
   const [form, setForm] = useState(null)
-
-  // const [showSignup, setShowSignup] = useState(false)
-  // const [showPasswordReset, setShowPasswordReset] = useState(false)
-  // const [showPopupMessage, setShowPopupMessage] = useState(false)
   const [userOptions, setUserOptions] = useState(null)
 
   // This effect checks to see if the user is signed in after mounting the LoginContainer component
@@ -25,7 +21,6 @@ const LoginContainer = ({ user, setUser, showLogin, setShowLogin }) => {
       const user = JSON.parse(loggedUserJSON)
       setUser(user)
       userToken.setToken(user.token)
-      // taskTemplateService.setToken(user.token)
     }
   }, [])
 
@@ -33,34 +28,6 @@ const LoginContainer = ({ user, setUser, showLogin, setShowLogin }) => {
     // setShowLogin(!showLogin)
     setForm(<Login setUser={setUser} setForm={setForm} />)
   }
-
-  // const handleLogOut = () => {
-  //   window.localStorage.removeItem('loggedTimerAppUser')
-  //   setUser(null)
-  // }
-
-  // let form
-  // let button
-  // Conditionals for setting the form variable
-
-  // useEffect(() => {
-  //   if (showLogin) {
-  //     setForm(<Login showLogin={showLogin} setShowLogin={setShowLogin} showSignup={showSignup} setShowSignup={setShowSignup} showPasswordReset={showPasswordReset} setShowPasswordReset={setShowPasswordReset} setUser={setUser} />)
-  //   } 
-  //   if (showSignup) {
-  //     setForm(<Signup showLogin={showLogin} setShowLogin={setShowLogin} showSignup={showSignup} setShowSignup={setShowSignup} showPopupMessage={showPopupMessage} setShowPopupMessage={setShowPopupMessage} setUser={setUser} />)
-  //   }
-  //   if (showPasswordReset) {
-  //     setForm(<ForgotPassword />)
-  //   }
-  //   if (showLogin === false && showSignup === false) {
-  //     setForm(false)
-  //   }
-  //   if (showPopupMessage) {
-  //     setForm(<PopupMessage message='Please check your email to verify your account!' setToggleError={setShowPopupMessage} />)
-  //   }
-
-  // }, [])
 
   useEffect(() => {
     if (showLogin) {
@@ -181,13 +148,13 @@ const LoginForm = ({ setUser, setForm }) => {
             onChange={({target}) => setPassword(target.value)}
             required
           />
-          <button className='settings-save' type='submit'>Login</button>
+          <button className='settings-save' type='submit'>Submit</button>
         </form>
         <div className='login-footer'>
-          <button className='altForm-button footer-text' onClick={togglePasswordReset}>Forgot Password?</button>
           <span className='footer-text'>Don't have an account? <button className='altForm-button' onClick={toggleSignup}>Sign-up!</button></span>
+          <button className='altForm-button footer-text forgot-pass' onClick={togglePasswordReset}>Forgot Password?</button>
         </div>
-        <button className='close-btn login-close' onClick={cancelLogin}><CgClose size={14}/></button>
+        <button className='close-btn login-close' onClick={cancelLogin}><CgClose/></button>
       </div>
     </div>
   )
@@ -196,6 +163,8 @@ const LoginForm = ({ setUser, setForm }) => {
 const ForgotPassword = ({ setForm }) => {
   const [emailClasses, setEmailClasses] = useState('login-input')
   const [email, setEmail] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [error, setError] = useState(false)
 
   const handleEmailChange = (event) => {
     const eventValue = event.target.value
@@ -213,9 +182,15 @@ const ForgotPassword = ({ setForm }) => {
 
       setForm(<PopupMessage message='Check your inbox' setToggleError={setForm} />)
     } catch (err) {
-      console.log(err)
+      setErrorMessage(err.response.data.error)
     }
   }
+
+  useEffect(() => {
+    if(errorMessage) {
+      setEmailClasses('login-input input-error')
+    }
+  }, [errorMessage])
 
   return (
     <div className='popup'>
@@ -230,6 +205,10 @@ const ForgotPassword = ({ setForm }) => {
             onChange={handleEmailChange} 
             required
           />
+          {errorMessage
+            ? <p className='login-error'>{errorMessage}</p>
+            : null
+          }
           <button className='settings-save' type='submit'>Submit</button>
         </form>
         <button className='close-btn login-close' onClick={handleClose}><CgClose size={14}/></button>

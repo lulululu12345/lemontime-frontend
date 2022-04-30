@@ -28,7 +28,7 @@ const UserOptions = ({ setUser }) => {
   return (
     <>
       <div className='dropdown'>
-        <button className='dropbtn user-opts' onClick={handleShowSettings}><FaUser size='14' /></button>
+        <button className='dropbtn user-opts' onClick={handleShowSettings}><FaUser /></button>
         <div className={dropdownContent}>
           <div className='dropdown-content-option' onClick={handleLogOut}>
             <p>Logout</p>
