@@ -7,3 +7,9 @@
   /* font-size: 13rem; */
   margin: 0;
 }
+
+@media only screen and (min-width: 768px) {
+  .timeDisplay {
+    font-size: 10.92rem;
+  }
+}

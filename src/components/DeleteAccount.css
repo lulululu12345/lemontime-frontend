@@ -27,3 +27,10 @@
 .no-btn:hover {
   background-color: var(--color-accent-hover);
 }
+
+@media only screen and (min-width: 768px) {
+  .delAcc-btn {
+    padding: 0.56rem 2.24rem;
+    font-size: 2.24rem;
+  } 
+}

@@ -32,7 +32,7 @@
 /* Links inside the dropdown */
 .dropdown-content .dropdown-content-option {
   color: black;
-  padding: 0.72rem .8rem;
+  padding: 0.72rem 0.8rem;
   /* padding: 0.9rem 1rem; */
 }
 
@@ -58,4 +58,23 @@
   padding: 0.24rem;
   /* padding: 0.3rem; */
   margin: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .dropbtn {
+    font-size: 3.36rem;
+  }
+
+  .dropdown-content {
+    min-width: 168px;
+  }
+
+  .dropdown-content .dropdown-content-option {
+    padding: 1.008rem 1.12rem;
+  }
+
+  .dropdown-content-option > p {
+    font-size: 1.68rem;
+    padding: 0.336rem;
+  }
 }

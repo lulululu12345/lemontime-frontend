@@ -1,5 +1,4 @@
 .dropbtn.user-opts {
-  /* background-color: var(--color-accent); */
   background: none;
   color: black;
   padding: 0.55rem 0.55rem 0.7rem;
@@ -24,4 +23,11 @@
 .icon-case {
   background-color: var(--color-accent);
   border-radius: 50%;
+}
+
+@media only screen and (min-width: 768px) {
+  .dropbtn.user-opts {
+    padding: 0.77rem 0.77rem 0.98rem;
+    font-size: 1.568rem;
+  }
 }

@@ -17,10 +17,6 @@
   margin: 0 0 2rem;
 }
 
-.popup-text {
-  
-}
-
 .login-input {
   margin: 0 0 0.8rem;
   /* margin: 0 0 1rem; */
@@ -108,4 +104,38 @@
 .input-error {
   border: 1px solid orangered;
   box-shadow: 0 1px 5px orangered;
+}
+
+@media only screen and (min-width: 768px) {
+  .popup-inner.login-popup {
+    padding: 5.6rem;
+  }
+
+  .login-header {
+    font-size: 3.36rem;
+  }
+  
+  .login-input {
+    margin: 0 0 1.12rem;
+    padding: 0.448rem;
+    height: 3.92rem;
+    font-size: 2.016rem;
+  }
+  
+  .login-submit {
+    margin: 1.12rem 0 2.8rem;
+    height: 3.36rem;
+  }
+  
+  .login-footer {
+    margin-top: 2.24rem;
+  }
+  
+  .footer-text {
+    font-size: 1.68rem;
+  }
+
+  .error {
+    font-size: 1.68rem;
+  }
 }

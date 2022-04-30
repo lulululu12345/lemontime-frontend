@@ -41,3 +41,16 @@
   background-color: var(--color-button-hover);
   cursor: pointer;
 }
+
+@media only screen and (min-width: 768px) {
+  .add-card {
+    padding: 0.7rem 0.7rem;
+    margin: 0.42rem 0;
+  }
+
+  .addTask-close {
+    right: 1.68rem;
+    padding: 0.616rem 0.616rem 0.196rem;
+    font-size: 1.456rem;
+  }
+}

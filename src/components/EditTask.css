@@ -67,7 +67,6 @@
   resize: none;
   font-size: 1.2rem;
   /* font-size: 1.5rem; */
-  
 }
 
 .editTask-close {
@@ -103,11 +102,50 @@
   background-color: white;
   font-size: 1.04rem;
   /* font-size: 1.3rem; */
-  
 }
 
 .editTask-delete:hover {
   border-radius: 4px;
   cursor: pointer;
   background-color: var(--color-accent-hover);
+}
+
+@media only screen and (min-width: 768px) {
+  .editTask-mainline {
+    margin: 1.12rem 5.488rem 0.56rem 0.896rem;
+  }
+
+  .editTask-heading {
+    font-size: 2.24rem;
+  }
+
+  .editTask-duration {
+    font-size: 2.24rem;
+    width: 5.6rem;
+
+  }
+
+  .editTask-save {
+    margin: 0.12rem 2.016rem 0;
+    padding: 0.56rem;
+    font-size: 1.456rem;
+  }
+
+  .editTaskNotes {
+    padding: 0.896rem 1.68rem;
+    margin: 0.56rem 1.12rem 0;
+    font-size: 1.68rem;
+  }
+  
+  .editTask-close {
+    right: 1.68rem;
+    padding: 0.616rem 0.616rem 0.56rem;
+    font-size: 1.456rem;
+  }
+
+  .editTask-delete {
+    bottom: 0.056rem;
+    right: 7.28rem;
+    font-size: 1.456rem;
+  }
 }
