@@ -31,7 +31,7 @@ const DeleteAccount = ({ setDeletePopup, setUser }) => {
 
 
 
-      <button className='close-btn login-close' onClick={handleClick}><CgClose size={14}/></button>
+      <button className='close-btn login-close' onClick={handleClick}><CgClose /></button>
     </div>
   </div>
   )

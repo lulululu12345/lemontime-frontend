@@ -5,8 +5,10 @@
 }
 
 .delAcc-btn {
-  padding: 0.5rem 2rem;
-  font-size: 2rem;
+  padding: 0.4rem 1.6rem;
+  /* padding: 0.5rem 2rem; */
+  font-size: 1.6rem;
+  /* font-size: 2rem; */
   font-family: 'Varela Round', sans-serif;
   border: none;
   border-bottom: 1px solid black;
@@ -24,19 +26,4 @@
 
 .no-btn:hover {
   background-color: var(--color-accent-hover);
-}
-
-.editTask-save {
-  align-self: flex-end;
-  margin: 1rem 1.8rem 0;
-  border: none;
-  border-bottom: 1px solid black;
-  padding: 0.5rem;
-  background-color: white;
-}
-
-.editTask-save:hover {
-  cursor: pointer;
-  border-radius: 4px;
-  background-color: var(--color-green);
 }

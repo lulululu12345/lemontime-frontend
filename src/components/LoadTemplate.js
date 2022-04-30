@@ -78,7 +78,7 @@ const Templates = ({ setTasks, setToggleForm }) => {
         <ul className='load-temp-ul'>
           {listTemplates}
         </ul>
-        <button className='close-btn login-close' onClick={closeForm}><CgClose size={14}/></button>
+        <button className='close-btn login-close' onClick={closeForm}><CgClose /></button>
       </div>
     </div>
   )
