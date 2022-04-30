@@ -152,3 +152,46 @@
     font-size: 1.96rem;
   }
 }
+
+@media only screen and (min-width: 900px) {
+  .timer-frame {
+    min-height: 57.624rem;
+    min-width: 57.624rem;
+  }
+  
+  .focusBlock-container {
+    gap: 1.568rem;
+  }
+  
+  .focus-text {
+    font-size: 1.881rem;
+  }
+  
+  .timerContainer {
+    grid-template-columns: 15.288rem 15.288rem 15.288rem;
+    grid-template-rows: 2.94rem 23.52rem 4.704rem;
+    margin: 5.88rem 0;
+  }
+  
+  .button-timeBlock {
+    font-size: 2.058rem;
+  }
+  
+  .timeBlock-clicked {
+    font-size: 2.352rem;
+    padding: 0.588rem;
+  }
+
+  .stopAndGoButton {
+    padding: 1.176rem 2.94rem 0.588rem;
+    font-size: 2.744rem;
+  }
+
+  .resetButton {
+    font-size: 2.744rem;
+  }
+  
+  .skipButton {
+    font-size: 2.744rem;
+  }
+}

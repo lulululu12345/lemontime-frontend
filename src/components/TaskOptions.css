@@ -78,3 +78,22 @@
     padding: 0.336rem;
   }
 }
+
+@media only screen and (min-width: 900px) {
+  .dropbtn {
+    font-size: 4.704rem;
+  }
+
+  .dropdown-content {
+    min-width: 235px;
+  }
+
+  .dropdown-content .dropdown-content-option {
+    padding: 1.411rem 1.568rem;
+  }
+
+  .dropdown-content-option > p {
+    font-size: 2.352rem;
+    padding: 0.470rem;
+  }
+}

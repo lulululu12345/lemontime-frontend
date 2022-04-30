@@ -34,3 +34,10 @@
     font-size: 2.24rem;
   } 
 }
+
+@media only screen and (min-width: 900px) {
+  .delAcc-btn {
+    padding: 0.784rem 3.136rem;
+    font-size: 3.136rem;
+  } 
+}

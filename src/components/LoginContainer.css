@@ -139,3 +139,37 @@
     font-size: 1.68rem;
   }
 }
+
+@media only screen and (min-width: 900px) {
+  .popup-inner.login-popup {
+    padding: 7.84rem;
+  }
+
+  .login-header {
+    font-size: 4.704rem;
+  }
+  
+  .login-input {
+    margin: 0 0 1.568rem;
+    padding: 0.627rem;
+    height: 5.488rem;
+    font-size: 2.822rem;
+  }
+  
+  .login-submit {
+    margin: 1.568rem 0 3.92rem;
+    height: 4.704rem;
+  }
+  
+  .login-footer {
+    margin-top: 3.136rem;
+  }
+  
+  .footer-text {
+    font-size: 2.352rem;
+  }
+
+  .error {
+    font-size: 2.352rem;
+  }
+}

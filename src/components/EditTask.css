@@ -149,3 +149,43 @@
     font-size: 1.456rem;
   }
 }
+
+@media only screen and (min-width: 900px) {
+  .editTask-mainline {
+    margin: 1.568rem 7.683rem 0.784rem 1.254rem;
+  }
+
+  .editTask-heading {
+    font-size: 3.136rem;
+  }
+
+  .editTask-duration {
+    font-size: 3.136rem;
+    width: 7.84rem;
+
+  }
+
+  .editTask-save {
+    margin: 0.168rem 2.822rem 0;
+    padding: 0.784rem;
+    font-size: 2.038rem;
+  }
+
+  .editTaskNotes {
+    padding: 1.254rem 2.352rem;
+    margin: 0.784rem 1.568rem 0;
+    font-size: 2.352rem;
+  }
+  
+  .editTask-close {
+    right: 2.352rem;
+    padding: 0.862rem 0.862rem 0.784rem;
+    font-size: 2.038rem;
+  }
+
+  .editTask-delete {
+    bottom: 0.078rem;
+    right: 10.192rem;
+    font-size: 2.038rem;
+  }
+}

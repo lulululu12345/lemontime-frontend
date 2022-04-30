@@ -54,3 +54,16 @@
     font-size: 1.456rem;
   }
 }
+
+@media only screen and (min-width: 900px) {
+  .add-card {
+    padding: 0.98rem 0.98rem;
+    margin: 0.588rem 0;
+  }
+
+  .addTask-close {
+    right: 2.352rem;
+    padding: 0.862rem 0.862rem 0.274rem;
+    font-size: 2.038rem;
+  }
+}

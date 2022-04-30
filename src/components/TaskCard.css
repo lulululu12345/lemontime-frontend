@@ -100,3 +100,27 @@
     font-size: 1.68rem;
   }
 }
+
+@media only screen and (min-width: 900px) {
+  .taskCard-mainLine {
+    margin: 1.568rem 1.568rem 0.784rem;
+  }
+  
+  .task-card-heading {
+    font-size: 3.136rem;
+  }
+  
+  .duration {
+    font-size: 3.136rem;
+  }
+
+  .edit-button {
+    font-size: 2.038rem;
+  }
+
+  .taskNotes {
+    padding: 1.254rem 2.352rem;
+    margin: 0.784rem 1.568rem;
+    font-size: 2.352rem;
+  }
+}

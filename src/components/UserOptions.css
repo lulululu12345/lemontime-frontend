@@ -31,3 +31,10 @@
     font-size: 1.568rem;
   }
 }
+
+@media only screen and (min-width: 900px) {
+  .dropbtn.user-opts {
+    padding: 1.078rem 1.078rem 1.372rem;
+    font-size: 2.195rem;
+  }
+}
