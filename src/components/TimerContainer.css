@@ -110,7 +110,7 @@
   /* font-size: 2rem; */
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 680px) {
   .timer-frame {
     min-height: 41.16rem;
     min-width: 41.16rem;

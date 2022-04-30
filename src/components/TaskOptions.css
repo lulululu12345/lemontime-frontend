@@ -60,7 +60,7 @@
   margin: 0;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 680px) {
   .dropbtn {
     font-size: 3.36rem;
   }

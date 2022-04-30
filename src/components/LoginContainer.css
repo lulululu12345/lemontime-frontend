@@ -106,7 +106,7 @@
   box-shadow: 0 1px 5px orangered;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 680px) {
   .popup-inner.login-popup {
     padding: 5.6rem;
   }
