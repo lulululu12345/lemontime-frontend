@@ -32,10 +32,16 @@ const SaveTemplate = ({ user, tasks, toggleError, setToggleError }) => {
       event.preventDefault()
       try {
         if (user) {
+          const saveTasks = tasks.map(task => {
+            const { _id, ...newTask} = task
+            return newTask
+          })
+
           const newTaskTemplate = {
             name: templateName,
-            tasks: tasks
+            tasks: saveTasks
           }
+          
           await taskTemplateService.create(newTaskTemplate)
           setTemplateName('')
           setShowToggleSaveForm(false)
@@ -77,13 +83,4 @@ const SaveTemplate = ({ user, tasks, toggleError, setToggleError }) => {
     </div>     
   )
 }
-
-
-
-
-
-
-
-
-
 export default SaveTemplate
