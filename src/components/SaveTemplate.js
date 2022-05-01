@@ -18,8 +18,6 @@ const SaveTemplate = ({ user, tasks, toggleError, setToggleError }) => {
     showTemplateSaveForm ? setButtonText('Cancel') : setButtonText('Save As Template')
   }, [showTemplateSaveForm])
 
-
-
   const handleTemplateNameChange = (event) => {
     const eventValue = event.target.value
     setTemplateName(eventValue)
@@ -41,7 +39,7 @@ const SaveTemplate = ({ user, tasks, toggleError, setToggleError }) => {
             name: templateName,
             tasks: saveTasks
           }
-          
+
           await taskTemplateService.create(newTaskTemplate)
           setTemplateName('')
           setShowToggleSaveForm(false)
