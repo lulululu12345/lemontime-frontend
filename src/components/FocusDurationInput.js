@@ -5,7 +5,6 @@ const FocusDurationInput = ({ numBoxValue, setNumBoxValue}) => {
   // Handler for changes to num box
   const handleNumBoxChange = (event) => {
     const eventValue = event.target.value
-    console.log(eventValue)
     if (eventValue === '' || Number(eventValue) < 1) {
       setClassName('settings-input input-error')
     }

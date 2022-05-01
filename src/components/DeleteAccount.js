@@ -4,18 +4,18 @@ import userToken from '../services/userToken'
 import { CgClose } from 'react-icons/cg'
 import './DeleteAccount.css'
 
-const DeleteAccount = ({ setDeletePopup, setUser }) => {
+const DeleteAccount = ({ setDeletePopup, setUser, setTasks }) => {
   const handleClick = () => {
     setDeletePopup(false)
   }
 
   const handleYesClick = async () => {
     try {
-      const removeAccount = await accountService.remove()
-      console.log(removeAccount)
+      await accountService.remove()
       window.localStorage.removeItem('loggedTimerAppUser')
       userToken.token = null
       setUser(null)
+      setTasks([])
     } catch (exception) {
       console.log(exception)
     }

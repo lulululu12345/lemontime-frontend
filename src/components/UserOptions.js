@@ -4,7 +4,7 @@ import DeleteAccount from './DeleteAccount'
 import { FaUser } from 'react-icons/fa'
 import './UserOptions.css'
 
-const UserOptions = ({ setUser }) => {
+const UserOptions = ({ setUser, setTasks }) => {
   const [dropdownContent, setDropdownContent] = useState('dropdown-content')
   const [deletePopup, setDeletePopup] = useState(false)
 
@@ -19,6 +19,7 @@ const UserOptions = ({ setUser }) => {
     window.localStorage.removeItem('loggedTimerAppUser')
     userToken.token = null
     setUser(null)
+    setTasks([])
   }
 
   const handleDelete = () => {
@@ -39,7 +40,7 @@ const UserOptions = ({ setUser }) => {
         </div>
       </div>
       {deletePopup
-        ? <DeleteAccount setDeletePopup={setDeletePopup} setUser={setUser} />
+        ? <DeleteAccount setDeletePopup={setDeletePopup} setUser={setUser} setTasks={setTasks} />
         : null
       }
     </>

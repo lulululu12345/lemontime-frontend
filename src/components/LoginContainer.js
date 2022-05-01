@@ -10,7 +10,7 @@ import { CgClose } from 'react-icons/cg'
 import './LoginContainer.css'
 import PopupMessage from './PopupMessage'
 
-const LoginContainer = ({ user, setUser, showLogin, setShowLogin }) => {
+const LoginContainer = ({ user, setUser, showLogin, setShowLogin, setTasks }) => {
   const [form, setForm] = useState(null)
   const [userOptions, setUserOptions] = useState(null)
 
@@ -43,7 +43,7 @@ const LoginContainer = ({ user, setUser, showLogin, setShowLogin }) => {
       setUserOptions(<button className='button-link' onClick={toggleLogin}>Login</button>)
     } 
     if (user) {
-      setUserOptions(<UserOptions setUser={setUser}/>)
+      setUserOptions(<UserOptions setUser={setUser} setTasks={setTasks} />)
     }
   }, [user])
   
@@ -99,7 +99,6 @@ const LoginForm = ({ setUser, setForm }) => {
       const user = await loginService.login({
         email, password,
       })
-      console.log('user', user)
 
       window.localStorage.setItem(
         'loggedTimerAppUser', JSON.stringify(user)

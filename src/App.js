@@ -22,7 +22,6 @@ const App = () => {
   // localStorage.clear()
   const [showLogin, setShowLogin] = useState(false)
   const [user, setUser] = useState(null)
-  // const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')))
   const [tasks, setTasks] = useState(localTasks)
 
   useEffect(() => {
@@ -112,13 +111,14 @@ const App = () => {
                 setUser={setUser}
                 showLogin={showLogin}
                 setShowLogin={setShowLogin}
+                setTasks={setTasks}
               />
             </li>
           </ul>
         </nav>
       </header>
       <Routes>
-        <Route path='api/users/:confirmationCode' element={<AccountConfirmed setShowLogin={setShowLogin} />} />
+        <Route path='confirm/:confirmationCode' element={<AccountConfirmed setShowLogin={setShowLogin} />} />
         <Route path='password-reset/:resetToken' element={<PasswordReset setShowLogin={setShowLogin} />} />
       </Routes>
       <TimerContainer 
