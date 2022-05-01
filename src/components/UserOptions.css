@@ -2,7 +2,6 @@
   background: none;
   color: black;
   padding: 0.55rem 0.55rem 0.7rem;
-  /* padding: 0.7rem; */
   display: flex;
   border: none;
   justify-content: center;
@@ -11,7 +10,6 @@
   border-radius: 0;
   border-bottom: 1px solid black;
   font-size: 1.12rem;
-  /* font-size: 1.4rem; */
 }
 
 .dropbtn.user-opts:hover {

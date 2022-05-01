@@ -14,7 +14,6 @@
 .header-title {
   margin: 0;
   font-size: 2.4rem;
-  /* font-size: 3rem; */
 }
 
 .load-temp-edit-btn {
@@ -23,7 +22,6 @@
   background: none;
   border-bottom: 1px solid black;
   font-size: 1.2rem;
-  /* font-size: 1.5rem; */
 }
 
 .load-temp-edit-btn:hover {
@@ -43,7 +41,6 @@
 
 .load-temp-name {
   font-size: 1.6rem;
-  /* font-size: 2rem; */
 }
 
 .load-temp-li:hover {

@@ -11,16 +11,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* change the right side margin to move duration number box */
   margin: 0.8rem 3.92rem 0.4rem 0.64rem;
-  /* margin: 1rem 4.9rem 0.5rem 0.8rem; */
   padding: 0 0.5rem;
   height: 3rem;
 }
 
 .editTask-heading {
   font-size: 1.6rem;
-  /* font-size: 2rem; */
   font-family: 'Varela Round', sans-serif;
   width: 16rem;
 }
@@ -28,10 +25,8 @@
 .editTask-duration {
   font-family: 'Varela Round', sans-serif;
   font-size: 1.6rem;
-  /* font-size: 2rem; */
   text-align: center;
   width: 4rem;
-  /* width: 5rem; */
 
 }
 
@@ -39,14 +34,11 @@
   align-self: flex-end;
   font-family: 'Varela Round', sans-serif;
   margin: 0.8rem 1.44rem 0;
-  /* margin: 1rem 1.8rem 0; */
   border: none;
   border-bottom: 1px solid black;
   padding: 0.4rem;
-  /* padding: 0.5rem; */
   background-color: white;
   font-size: 1.04rem;
-  /* font-size: 1.3rem; */
 }
 
 .editTask-save:hover {
@@ -57,31 +49,25 @@
 
 .editTaskNotes {
   padding: 0.64rem 1.2rem;
-  /* padding: 0.8rem 1.5rem; */
   margin: 0.4rem 0.8rem 0;
-  /* margin: 0.5rem 1rem; */
   align-self: stretch;
   background-color: whitesmoke;
   font-family: 'Varela Round', sans-serif;
   border-radius: 3px;
   resize: none;
   font-size: 1.2rem;
-  /* font-size: 1.5rem; */
 }
 
 .editTask-close {
   position: absolute;
   top: 1rem;
   right: 1.2rem;
-  /* right: 1.5rem; */
   border: none;
   padding: 0.44rem 0.44rem 0.4rem;
-  /* padding: 0.55rem 0.55rem 0.2rem; */
   border-radius: 25%;
   border: 1px solid black;
   background-color: white;
   font-size: 1.04rem;
-  /* font-size: 1.3rem; */
 }
 
 .editTask-close:hover {
@@ -92,16 +78,13 @@
 .editTask-delete {
   position: absolute;
   bottom: 0.04rem;
-  /* bottom: 0.05rem; */
   font-family: 'Varela Round', sans-serif;
   right: 5.2rem;
-  /* right: 6.5rem; */
   border: none;
   border-bottom: 1px solid black;
   padding: 0.5rem;
   background-color: white;
   font-size: 1.04rem;
-  /* font-size: 1.3rem; */
 }
 
 .editTask-delete:hover {

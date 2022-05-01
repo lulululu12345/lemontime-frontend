@@ -23,7 +23,6 @@
   align-items: center;
   justify-content: space-between;
   margin: 0.8rem 0.8rem 0.4rem;
-  /* margin: 1rem 1rem 0.5rem; */
   padding: 0 0.5rem;
   height: 3rem;
   border-bottom: 1px dotted black;
@@ -32,12 +31,10 @@
 .task-card-heading {
   margin: 0;
   font-size: 1.6rem;
-  /* font-size: 2rem; */
 }
 
 .duration {
   font-size: 1.6rem;
-  /* font-size: 2rem; */
 }
 
 .taskCard-settings {
@@ -54,7 +51,6 @@
   border-radius: 25%;
   background-color: white;
   font-size: 1.04rem;
-  /* font-size: 1.3rem; */
 }
 
 .edit-button:hover {
@@ -64,16 +60,13 @@
 
 .taskNotes {
   padding: 0.64rem 1.2rem;
-  /* padding: 0.8rem 1.5rem; */
   margin: 0.4rem 0.8rem;
-  /* margin: 0.5rem 1rem; */
   align-self: stretch;
   background-color: whitesmoke;
   font-family: 'Varela Round', sans-serif;
   border-radius: 3px;
   resize: none;
   font-size: 1.2rem;
-  /* font-size: 1.5rem; */
   cursor: default;
 }
 
