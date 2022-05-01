@@ -21,7 +21,7 @@ const StopAndGoButton = ({ start, setStart }) => {
   useEffect(() => {
     // playing ? audio.play() : audio.pause()
     if (playing) {
-      audio.play()
+      // audio.play()
     }
   }, [playing])
 

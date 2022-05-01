@@ -110,6 +110,13 @@
   /* font-size: 2rem; */
 }
 
+.focus-lemon {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+/* ******************************************************* */
+
 @media only screen and (min-width: 680px) {
   .timer-frame {
     min-height: 41.16rem;
@@ -150,6 +157,10 @@
   
   .skipButton {
     font-size: 1.96rem;
+  }
+
+  .focus-lemon {
+    font-size: 1.68rem;
   }
 }
 
@@ -193,5 +204,9 @@
   
   .skipButton {
     font-size: 2.744rem;
+  }
+
+  .focus-lemon {
+    font-size: 2.352rem;
   }
 }

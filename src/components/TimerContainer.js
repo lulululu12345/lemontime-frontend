@@ -15,13 +15,13 @@ import './TimerContainer.css'
 
 const FocusIcon = () => {
   return (
-    <span><FaRegLemon size='12'/></span>
+    <span className='focus-lemon'><FaRegLemon /></span>
   )
 }
 
 const FocusIconComplete = () => {
   return (
-    <span><FaLemon size='12'/></span>
+    <span className='focus-lemon'><FaLemon /></span>
   )
 }
 
@@ -41,11 +41,9 @@ const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock
     }
     if (completedFocusBlocks > 0) {
       setFocusIcons(focusIcons.map((item, index) => {
-        console.log('index', index)
         // focus-icon-complete
         // if the index of item is less than completedFocusBlocks
         if (index < completedFocusBlocks) {
-          console.log('if evaluated to true')
           return <FocusIconComplete key={index}/>
         }
         else return <FocusIcon key={index}/>
