@@ -6,22 +6,28 @@ import TextareaAutosize from 'react-textarea-autosize';
 
 const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, setSelectedTask, tasks, setTasks, taskId, login }) => {
   const [showTaskForm, setShowTaskForm] = useState(false)
+  const [classes, setClasses] = useState('')
 
   const onCardClick = (event) => {
     const eventId = event.target.id
     setSelectedTask(eventId)
+    if (classes !== '') {
+      setClasses('')
+    }
+    if (classes === '') {
+      setClasses('taskCard-selected')
+    }
   }
 
   const onEditClick = () => {
     setShowTaskForm(true)
   }
   
-  let className = ''
-  if (selectedTask === taskName) className += 'taskCard-selected'
+  // if (selectedTask === taskName) setClasses('taskCard-selected')
 
   if (showTaskForm) {
     return (
-      <div className={`taskCard ${className}`} onClick={onCardClick} id={taskName} >
+      <div className={`taskCard ${classes}`} onClick={onCardClick} id={taskName} >
         <EditTask 
           taskId={taskId}
           tasks={tasks}
@@ -39,7 +45,7 @@ const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, 
   }
   else {
     return (
-      <div className={className}>
+      <div className={classes}>
         <div className='taskCard' onClick={onCardClick} id={taskName} >
           <div className='taskCard-mainLine'>
             <h3 id={taskName} className='task-card-heading'>{taskName}</h3>

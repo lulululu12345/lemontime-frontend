@@ -6,7 +6,7 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  z-index: 5;
+  z-index: 999;
   cursor: pointer;
 }
 
@@ -15,7 +15,7 @@
   padding: 0.5rem;
   background-color: var(--color-accent);
   border-radius: 6px;
-  z-index: -1;
+  /* z-index: 100; */
 }
 
 .taskCard-mainLine {

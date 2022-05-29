@@ -1,5 +1,6 @@
 .timer-frame {
   background-color: var(--color-secondary);
+  border: 1px solid black;
   border-radius: 50%;
   min-height: 29.4rem;
   min-width: 29.4rem;

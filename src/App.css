@@ -1,6 +1,9 @@
 :root {
-  --color-primary: #FDFE9C;
-  --color-secondary: #FEFFC0;
+  --color-primary: lightblue;
+  /* --color-primary: #fff; */
+  /* --color-primary: #FDFE9C; */
+  --color-secondary: #fff;
+  /* --color-secondary: #FEFFC0; */
   --color-accent-hover: #FF8989d9;
   --color-accent: #FF898966;
 
