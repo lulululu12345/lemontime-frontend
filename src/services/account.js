@@ -20,6 +20,7 @@ const verifyUser = (code) => {
 
 const forgotPassword = async (email) => {
   const res = await axios.put(`/api/account`, email)
+  return res.data
 }
 
 const passwordReset = async (password, resetToken) => {

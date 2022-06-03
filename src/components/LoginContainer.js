@@ -170,7 +170,11 @@ const ForgotPassword = ({ setForm }) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      await accountService.forgotPassword({ email })
+      console.log(email)
+      const params = await accountService.forgotPassword({ email })
+      console.log(params)
+
+      emailjs.send('service_dgmgizg', 'template_zwq1evs', params, 'qiILZOyanyiItfMQL')
 
       setForm(<PopupMessage message='Check your inbox' setToggleError={setForm} />)
     } catch (err) {
@@ -260,13 +264,6 @@ const SignupForm = ({ setForm, setUser }) => {
     try {
       if (password === confirmPassword) {
         const userEmailParams =  await signupService.signup({ email, password, })
-
-        // const templateParams = {
-        //   email: email,
-        //   confirmationCode: confirmationCode
-        // }
-
-        console.log(userEmailParams)
 
         emailjs.send('service_dgmgizg', 'template_pm9yx2o', userEmailParams, 'qiILZOyanyiItfMQL')
 
