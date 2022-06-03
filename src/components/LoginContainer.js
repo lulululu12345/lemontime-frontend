@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import taskTemplateService from '../services/taskTemplates'
+import emailjs from 'emailjs-com'
 import userToken from '../services/userToken'
 import loginService from '../services/login'
 import signupService from '../services/signup'
 import accountService from '../services/account'
 import  UserOptions from './UserOptions'
+
 
 import { CgClose } from 'react-icons/cg'
 import './LoginContainer.css'
@@ -35,8 +36,6 @@ const LoginContainer = ({ user, setUser, showLogin, setShowLogin, setTasks }) =>
     }
   }, [showLogin])
 
-
-  
   // Conditionals for setting the userOptions state
   useEffect(() => {
     if (user === null) {
@@ -54,12 +53,6 @@ const LoginContainer = ({ user, setUser, showLogin, setShowLogin, setTasks }) =>
     </div>
   )
 }
-
-
-
-
-
-
 
 const Login = ({ setForm, setUser }) => {
 
@@ -216,14 +209,6 @@ const ForgotPassword = ({ setForm }) => {
   )
 }
 
-
-
-
-
-
-
-
-
 const Signup = ({ setForm, setUser }) => {
   
   return (
@@ -274,7 +259,16 @@ const SignupForm = ({ setForm, setUser }) => {
     event.preventDefault()
     try {
       if (password === confirmPassword) {
-        const user =  await signupService.signup({ email, password, })
+        const userEmailParams =  await signupService.signup({ email, password, })
+
+        // const templateParams = {
+        //   email: email,
+        //   confirmationCode: confirmationCode
+        // }
+
+        console.log(userEmailParams)
+
+        emailjs.send('service_dgmgizg', 'template_pm9yx2o', userEmailParams, 'qiILZOyanyiItfMQL')
 
         setEmail('')
         setPassword('')
