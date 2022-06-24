@@ -4,7 +4,6 @@ import LongBreakSchedule from './LongBreakSchedule'
 import AutoRunBox from './AutoRunBox'
 
 import { CgClose } from 'react-icons/cg'
-import './SettingsContainer.css'
 
 const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, setAutoBreak, setAutoPomodoro, longBreakInterval, setLongBreakInterval }) => {
   // State hooks

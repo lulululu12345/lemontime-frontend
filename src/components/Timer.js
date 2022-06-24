@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import './Timer.css'
 import timeoutMp3 from '../assets/audio/timeout-1.mp3'
 import ReactAudioPlayer from 'react-audio-player'
 

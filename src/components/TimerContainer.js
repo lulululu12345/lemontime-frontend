@@ -8,8 +8,6 @@ import ResetButton from './ResetButton'
 
 import { FaRegLemon, FaLemon } from 'react-icons/fa'
 
-import './TimerContainer.css'
-
 
 
 

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import accountService from '../services/account'
 
-import './PasswordReset.css'
-
 const PasswordReset = ({ setShowLogin }) => {
   const [successful, setSuccessful] = useState(false)
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import userToken from '../services/userToken'
 import DeleteAccount from './DeleteAccount'
 import { FaUser } from 'react-icons/fa'
-import './UserOptions.css'
 
 const UserOptions = ({ setUser, setTasks }) => {
   const [dropdownContent, setDropdownContent] = useState('dropdown-content')

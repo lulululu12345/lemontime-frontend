@@ -8,7 +8,6 @@ import UserOptions from './UserOptions'
 
 
 import { CgClose } from 'react-icons/cg'
-import './LoginContainer.css'
 import PopupMessage from './PopupMessage'
 
 const LoginContainer = ({ user, setUser, showLogin, setShowLogin, setTasks }) => {

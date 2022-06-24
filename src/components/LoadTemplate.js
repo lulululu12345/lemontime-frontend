@@ -3,7 +3,6 @@ import ErrorPopup from './ErrorPopup'
 import taskTemplateService from '../services/taskTemplates'
 import TemplateCard from './TemplateCard'
 import { CgClose } from 'react-icons/cg'
-import './LoadTemplate.css'
 
 const LoadTemplate = ({ setTasks, user, toggleError, setToggleError }) => {
   const [buttonText, setButtonText] = useState('Load Template')

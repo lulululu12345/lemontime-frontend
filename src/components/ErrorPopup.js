@@ -1,8 +1,6 @@
 import React from 'react'
 import { CgClose } from 'react-icons/cg'
 
-import './ErrorPopup.css'
-
 const ErrorPopup = ({ setToggleError }) => {
   const handleClick = () => {
     setToggleError(false)

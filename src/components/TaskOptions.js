@@ -4,8 +4,6 @@ import SaveTemplate from './SaveTemplate'
 import ClearTasks from './ClearTasks'
 import { BsThreeDots } from 'react-icons/bs'
 
-import './TaskOptions.css'
-
 const TaskOptions = ({ user, tasks, setTasks }) => {
   const [dropdownContent, setDropdownContent] = useState('dropdown-content')
   const [toggleError, setToggleError] = useState(false)

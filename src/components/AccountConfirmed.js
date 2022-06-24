@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import accountService from '../services/account'
 import { Link, useParams } from 'react-router-dom'
-import './AccountConfirmed.css'
 
 const AccountConfirmed = ({ setShowLogin }) => {
   let confirmation = useParams().confirmationCode

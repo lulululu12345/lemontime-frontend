@@ -2,7 +2,6 @@ import React from 'react'
 import accountService from '../services/account'
 import userToken from '../services/userToken'
 import { CgClose } from 'react-icons/cg'
-import './DeleteAccount.css'
 
 const DeleteAccount = ({ setDeletePopup, setUser, setTasks }) => {
   const handleClick = () => {

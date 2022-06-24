@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import EditTask from './EditTask'
-import './TaskCard.css'
 import { MdEdit } from 'react-icons/md'
 import TextareaAutosize from 'react-textarea-autosize';
 

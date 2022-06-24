@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import taskService from '../services/tasks'
 import TextareaAutosize from 'react-textarea-autosize';
 
 import { CgClose } from 'react-icons/cg'
-
-
-import './EditTask.css'
 
 const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTaskForm, setShowTaskForm, login }) => {
   // const [showTaskForm, setShowTaskForm] = useState(false)

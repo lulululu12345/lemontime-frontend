@@ -3,8 +3,6 @@ import TextareaAutosize from 'react-textarea-autosize';
 import { BsPlusLg } from 'react-icons/bs'
 import { CgClose } from 'react-icons/cg'
 
-import './AddTask.css'
-
 const AddTask = ({ tasks, setTasks, login }) => {
   const [showTaskForm, setShowTaskForm] = useState(false)
   const [taskNameAdd, setTaskNameAdd] = useState('')
