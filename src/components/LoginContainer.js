@@ -4,7 +4,7 @@ import userToken from '../services/userToken'
 import loginService from '../services/login'
 import signupService from '../services/signup'
 import accountService from '../services/account'
-import  UserOptions from './UserOptions'
+import UserOptions from './UserOptions'
 
 
 import { CgClose } from 'react-icons/cg'
@@ -170,9 +170,8 @@ const ForgotPassword = ({ setForm }) => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      console.log(email)
+
       const params = await accountService.forgotPassword({ email })
-      console.log(params)
 
       emailjs.send('service_dgmgizg', 'template_zwq1evs', params, 'qiILZOyanyiItfMQL')
 
