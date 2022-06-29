@@ -70,14 +70,14 @@ const Templates = ({ setTasks, setToggleForm }) => {
   return (
     <div className='popup'>
       <div className='popup-inner login-popup'>
-        <div className='load-temp-header'>
-          <h2 className='header-title'>Templates</h2>
-          <button className='load-temp-edit-btn'>Edit</button>
+        <div className='wrap-load-template-header'>
+          <h2 className='heading-load-template'>Templates</h2>
+          <button className='btn-load-template-edit'>Edit</button>
         </div>
-        <ul className='load-temp-ul'>
+        <ul className='list-load-template'>
           {listTemplates}
         </ul>
-        <button className='close-btn login-close' onClick={closeForm}><CgClose /></button>
+        <button className='btn-close login-close' onClick={closeForm}><CgClose /></button>
       </div>
     </div>
   )

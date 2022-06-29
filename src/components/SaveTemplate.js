@@ -54,12 +54,12 @@ const SaveTemplate = ({ user, tasks, toggleError, setToggleError }) => {
     return (
       <div className='popup'>
         <div className='popup-inner login-popup'>
-          <form className='login-container' onSubmit={submitTemplateSaveForm} key='templateNameForm' >
-            <h2 className='login-header'>Save Template</h2>
-            <input className='login-input' type='text' placeholder='Template Name' value={templateName}  onChange={handleTemplateNameChange} />
+          <form className='form-login-container' onSubmit={submitTemplateSaveForm} key='templateNameForm' >
+            <h2 className='heading-login'>Save Template</h2>
+            <input className='input-login' type='text' placeholder='Template Name' value={templateName}  onChange={handleTemplateNameChange} />
             <input className='settings-save' type='submit' value='Save' />
           </form>
-          <button className='close-btn login-close' onClick={toggleSaveForm}><CgClose size={14}/></button>
+          <button className='btn-close login-close' onClick={toggleSaveForm}><CgClose size={14}/></button>
         </div>
       </div>
     )

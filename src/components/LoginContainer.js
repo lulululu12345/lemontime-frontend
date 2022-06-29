@@ -38,7 +38,7 @@ const LoginContainer = ({ user, setUser, showLogin, setShowLogin, setTasks }) =>
   // Conditionals for setting the userOptions state
   useEffect(() => {
     if (user === null) {
-      setUserOptions(<button className='button-link' onClick={toggleLogin}>Login</button>)
+      setUserOptions(<button className='link-button' onClick={toggleLogin}>Login</button>)
     } 
     if (user) {
       setUserOptions(<UserOptions setUser={setUser} setTasks={setTasks} />)
@@ -71,7 +71,7 @@ const LoginForm = ({ setUser, setForm }) => {
   const [password, setPassword] = useState('')
   const [loginError, setLoginError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
-  const [inputClasses, setInputClasses] = useState('login-input')
+  const [inputClasses, setInputClasses] = useState('input-login')
 
   const cancelLogin = () => {
     setForm(null)
@@ -108,15 +108,15 @@ const LoginForm = ({ setUser, setForm }) => {
   }
   useEffect(() => {
     if (loginError) {
-      setInputClasses('login-input input-error')
+      setInputClasses('input-login input-error')
     }
   }, [loginError])
 
   return (
     <div className='popup'>
       <div className='popup-inner login-popup'>
-        <form className='login-container' onSubmit={handleLogin}>
-          <h3 className='login-header'>Login</h3>
+        <form className='form-login-container' onSubmit={handleLogin}>
+          <h3 className='heading-login'>Login</h3>
           {loginError
             ?<p className='login-error' >{errorMessage}</p>
             : null
@@ -145,14 +145,14 @@ const LoginForm = ({ setUser, setForm }) => {
           <span className='footer-text'>Don't have an account? <button className='altForm-button' onClick={toggleSignup}>Sign-up!</button></span>
           <button className='altForm-button footer-text forgot-pass' onClick={togglePasswordReset}>Forgot Password?</button>
         </div>
-        <button className='close-btn login-close' onClick={cancelLogin}><CgClose/></button>
+        <button className='btn-close login-close' onClick={cancelLogin}><CgClose/></button>
       </div>
     </div>
   )
 }
 
 const ForgotPassword = ({ setForm }) => {
-  const [emailClasses, setEmailClasses] = useState('login-input')
+  const [emailClasses, setEmailClasses] = useState('input-login')
   const [email, setEmail] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [error, setError] = useState(false)
@@ -182,15 +182,15 @@ const ForgotPassword = ({ setForm }) => {
 
   useEffect(() => {
     if(errorMessage) {
-      setEmailClasses('login-input input-error')
+      setEmailClasses('input-login input-error')
     }
   }, [errorMessage])
 
   return (
     <div className='popup'>
       <div className='popup-inner login-popup'>
-        <form className='login-container' onSubmit={handleSubmit}>
-          <h2 className='error-text'>Enter your email</h2>
+        <form className='form-login-container' onSubmit={handleSubmit}>
+          <h2 className='heading-error-text'>Enter your email</h2>
           <input 
             className={emailClasses} 
             type='email' 
@@ -205,7 +205,7 @@ const ForgotPassword = ({ setForm }) => {
           }
           <button className='settings-save' type='submit'>Submit</button>
         </form>
-        <button className='close-btn login-close' onClick={handleClose}><CgClose size={14}/></button>
+        <button className='btn-close login-close' onClick={handleClose}><CgClose size={14}/></button>
       </div>
     </div>
   )
@@ -231,8 +231,8 @@ const SignupForm = ({ setForm, setUser }) => {
   const [passwordError, setPasswordError] = useState(false)
   const [signupError, setSignupError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
-  const [emailClasses, setEmailClasses] = useState('login-input')
-  const [passwordClasses, setPasswordClasses] = useState('login-input')
+  const [emailClasses, setEmailClasses] = useState('input-login')
+  const [passwordClasses, setPasswordClasses] = useState('input-login')
 
   const cancelSignup = () => {
     setForm(null)
@@ -283,21 +283,21 @@ const SignupForm = ({ setForm, setUser }) => {
 
   useEffect(() => {
     if (passwordError) {
-      setPasswordClasses('login-input input-error')
+      setPasswordClasses('input-login input-error')
     }
   }, [passwordError])
 
   useEffect(() => {
     if (signupError) {
-      setEmailClasses('login-input input-error')
+      setEmailClasses('input-login input-error')
     }
   }, [signupError])
   
   return (
     <div className='popup'>
       <div className='popup-inner login-popup'>
-        <form className='login-container' onSubmit={handleSubmit}>
-          <h3 className='login-header'>Sign-up</h3>
+        <form className='form-login-container' onSubmit={handleSubmit}>
+          <h3 className='heading-login'>Sign-up</h3>
           {signupError
             ? <p className='login-error'>{errorMessage}</p>
             : null
@@ -335,7 +335,7 @@ const SignupForm = ({ setForm, setUser }) => {
         <div className='login-footer'>
           <span className='footer-text'>Already have an account? <button className='altForm-button' onClick={toggleLogin} >Login!</button></span>
         </div>
-        <button className='close-btn login-close' onClick={cancelSignup}><CgClose size={14}/></button>
+        <button className='btn-close login-close' onClick={cancelSignup}><CgClose size={14}/></button>
       </div>
     </div>
   )

@@ -18,8 +18,8 @@ const TemplateCard = ({ templateId, templateName, templateTasks, setTasks, setTo
   }
 
   return (
-    <li className='load-temp-li' onClick={handleTemplateSelect} >
-      <span className='load-temp-name'>
+    <li className='list-load-template-item' onClick={handleTemplateSelect} >
+      <span className='wrap-load-template-name'>
       {templateName}
       </span>
       <span>

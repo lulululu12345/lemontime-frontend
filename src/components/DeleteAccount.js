@@ -22,15 +22,15 @@ const DeleteAccount = ({ setDeletePopup, setUser, setTasks }) => {
   return (
     <div className='popup'>
     <div className='popup-inner login-popup'>
-      <h2 className='error-text'>Are you sure you want to delete your account?</h2>
-      <div className='delAcc-btn-wrap'>
-        <button className='delAcc-btn no-btn' onClick={handleClick}>No</button>
-        <button className='delAcc-btn yes-btn' onClick={handleYesClick}>Yes</button>
+      <h2 className='heading-error-text'>Are you sure you want to delete your account?</h2>
+      <div className='wrap-delete-account-buttons'>
+        <button className='btn-delete-account btn-no' onClick={handleClick}>No</button>
+        <button className='btn-delete-account btn-yes' onClick={handleYesClick}>Yes</button>
       </div>
 
 
 
-      <button className='close-btn login-close' onClick={handleClick}><CgClose /></button>
+      <button className='btn-close login-close' onClick={handleClick}><CgClose /></button>
     </div>
   </div>
   )

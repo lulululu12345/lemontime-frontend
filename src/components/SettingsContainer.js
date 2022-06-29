@@ -53,7 +53,7 @@ const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, se
 
   return (
     <>
-      <button className='button-link' onClick={onClickSettings}>Settings</button>
+      <button className='link-button' onClick={onClickSettings}>Settings</button>
       {showSettings
         ? <SettingsForm 
         setStart={setStart}
@@ -213,7 +213,7 @@ const SettingsForm = ({ formSubmit, setFormSubmit, setStart, pomodoroValue, setP
 
             <input className='settings-save' type='submit' value='Save' />
           </form>
-            <button className='close-btn login-close' onClick={onClickSettings}><CgClose size={14}/></button>
+            <button className='btn-close login-close' onClick={onClickSettings}><CgClose size={14}/></button>
         </div>
       </div>
   )

@@ -20,7 +20,7 @@ const PasswordReset = ({ setShowLogin }) => {
 const PasswordResetForm = ({ setSuccessful }) => {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
-  const [passwordClasses, setPasswordClasses] = useState('login-input')
+  const [passwordClasses, setPasswordClasses] = useState('input-login')
   const [passwordError, setPasswordError] = useState(false)
 
   const resetToken = useParams().resetToken
@@ -59,14 +59,14 @@ const PasswordResetForm = ({ setSuccessful }) => {
 
   useEffect(() => {
     if (passwordError) {
-      setPasswordClasses('login-input input-error')
+      setPasswordClasses('input-login input-error')
     }
   }, [passwordError])
 
 
   return (
-    <form className='login-container' onSubmit={handleSubmit}>
-      <h3 className='login-header'>Reset Password</h3>
+    <form className='form-login-container' onSubmit={handleSubmit}>
+      <h3 className='heading-login'>Reset Password</h3>
       <input 
         className={passwordClasses} 
         type='password' 
@@ -100,7 +100,7 @@ const PasswordResetSuccess = ({ setShowLogin }) => {
 
   return (
     <div className='resetSuccess'>
-      <h2 className='error-text'>Password reset successful!</h2>
+      <h2 className='heading-error-text'>Password reset successful!</h2>
       <Link to={'/'} >
         <button className='footer-text altForm-button' onClick={handleClick}>Please Login</button>
       </Link>

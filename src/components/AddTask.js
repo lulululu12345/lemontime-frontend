@@ -47,22 +47,22 @@ const AddTask = ({ tasks, setTasks, login }) => {
   }
   if (showTaskForm) {
     return (
-      <div className='editTask-card add-card'>
+      <div className='card-edit-task card-add'>
         <form onSubmit={submitTaskForm} >
-          <div className='editTask-wrapper'>
-            <div className='editTask-mainline'>
-              <input className='editTask-heading' type='text' placeholder='Task Name' value={taskNameAdd} onChange={handleNameChange} required/>
-              <input className='editTask-duration' type='number' min='1' max='99' value={taskDurAdd} onChange={handleDurChange}/>
+          <div className='wrap-edit-task'>
+            <div className='wrap-edit-task-mainline'>
+              <input className='input-edit-task-heading' type='text' placeholder='Task Name' value={taskNameAdd} onChange={handleNameChange} required/>
+              <input className='input-edit-task-duration' type='number' min='1' max='99' value={taskDurAdd} onChange={handleDurChange}/>
             </div>
-            <TextareaAutosize className='editTaskNotes' placeholder='Notes' value={taskNoteAdd} onChange={handleNoteChange} />
-            <input className='editTask-save' type='submit' value='Save'/>
+            <TextareaAutosize className='input-edit-task-notes' placeholder='Notes' value={taskNoteAdd} onChange={handleNoteChange} />
+            <input className='input-edit-task-save' type='submit' value='Save'/>
           </div>
         </form>
-        <button className='addTask-close' onClick={toggleForm} ><CgClose/></button>
+        <button className='btn-close-addTask' onClick={toggleForm} ><CgClose/></button>
       </div>
     )
   }
-  return <button onClick={toggleForm} className='task-container-add'><BsPlusLg size={18} /></button>
+  return <button onClick={toggleForm} className='btn-task-container-add'><BsPlusLg size={18} /></button>
 }
 
 export default AddTask
