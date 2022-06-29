@@ -175,31 +175,7 @@ h3 {
   cursor: pointer;
 }
 
-@media only screen and (min-width: 680px) {
-  .add-card {
-    padding: 0.7rem 0.7rem;
-    margin: 0.42rem 0;
-  }
 
-  .addTask-close {
-    right: 1.68rem;
-    padding: 0.616rem 0.616rem 0.196rem;
-    font-size: 1.456rem;
-  }
-}
-
-@media only screen and (min-width: 1441px) {
-  .add-card {
-    padding: 0.98rem 0.98rem;
-    margin: 0.588rem 0;
-  }
-
-  .addTask-close {
-    right: 2.352rem;
-    padding: 0.862rem 0.862rem 0.274rem;
-    font-size: 2.038rem;
-  }
-}
 
 /* DeleteAccount.css */
 .delAcc-btn-wrap {
@@ -228,20 +204,6 @@ h3 {
 
 .no-btn:hover {
   background-color: var(--color-accent-hover);
-}
-
-@media only screen and (min-width: 680px) {
-  .delAcc-btn {
-    padding: 0.56rem 2.24rem;
-    font-size: 2.24rem;
-  } 
-}
-
-@media only screen and (min-width: 1441px) {
-  .delAcc-btn {
-    padding: 0.784rem 3.136rem;
-    font-size: 3.136rem;
-  } 
 }
 
 /* EditTask.css */
@@ -340,102 +302,10 @@ h3 {
   background-color: var(--color-accent-hover);
 }
 
-@media only screen and (min-width: 680px) {
-  .editTask-mainline {
-    margin: 1.12rem 5.488rem 0.56rem 0.896rem;
-  }
-
-  .editTask-heading {
-    font-size: 2.24rem;
-  }
-
-  .editTask-duration {
-    font-size: 2.24rem;
-    width: 5.6rem;
-
-  }
-
-  .editTask-save {
-    margin: 0.12rem 2.016rem 0;
-    padding: 0.56rem;
-    font-size: 1.456rem;
-  }
-
-  .editTaskNotes {
-    padding: 0.896rem 1.68rem;
-    margin: 0.56rem 1.12rem 0;
-    font-size: 1.68rem;
-  }
-  
-  .editTask-close {
-    right: 1.68rem;
-    padding: 0.616rem 0.616rem 0.56rem;
-    font-size: 1.456rem;
-  }
-
-  .editTask-delete {
-    bottom: 0.056rem;
-    right: 7.28rem;
-    font-size: 1.456rem;
-  }
-}
-
-@media only screen and (min-width: 1441px) {
-  .editTask-mainline {
-    margin: 1.568rem 7.683rem 0.784rem 1.254rem;
-  }
-
-  .editTask-heading {
-    font-size: 3.136rem;
-  }
-
-  .editTask-duration {
-    font-size: 3.136rem;
-    width: 7.84rem;
-
-  }
-
-  .editTask-save {
-    margin: 0.168rem 2.822rem 0;
-    padding: 0.784rem;
-    font-size: 2.038rem;
-  }
-
-  .editTaskNotes {
-    padding: 1.254rem 2.352rem;
-    margin: 0.784rem 1.568rem 0;
-    font-size: 2.352rem;
-  }
-  
-  .editTask-close {
-    right: 2.352rem;
-    padding: 0.862rem 0.862rem 0.784rem;
-    font-size: 2.038rem;
-  }
-
-  .editTask-delete {
-    bottom: 0.078rem;
-    right: 10.192rem;
-    font-size: 2.038rem;
-  }
-}
-
 /* ErrorPopup.css */
 .error-text {
   text-align: center;
   font-size: 2.8rem;
-}
-
-@media only screen and (min-width: 680px) {
-  .error-text {
-    font-size: 3.92rem;
-  }
-}
-
-@media only screen and (min-width: 1441px) {
-  .error-text {
-    font-size: 5.488rem;
-  }
 }
 
 /* LoadTemplate.css */
@@ -488,34 +358,6 @@ h3 {
   cursor: pointer;
   background-color: var(--color-accent);
   border-radius: 4px;
-}
-
-@media only screen and (min-width: 680px) {
-  .header-title {
-    font-size: 3.36rem;
-  }
-  
-  .load-temp-edit-btn {
-    font-size: 1.68rem;
-  }
-
-  .load-temp-name {
-    font-size: 2.24rem;
-  }
-}
-
-@media only screen and (min-width: 1441px) {
-  .header-title {
-    font-size: 4.704rem;
-  }
-  
-  .load-temp-edit-btn {
-    font-size: 2.352rem;
-  }
-
-  .load-temp-name {
-    font-size: 3.136rem;
-  }
 }
 
 /* LoginContainer.css */
@@ -616,74 +458,6 @@ h3 {
   box-shadow: 0 1px 5px orangered;
 }
 
-@media only screen and (min-width: 680px) {
-  .popup-inner.login-popup {
-    padding: 5.6rem;
-  }
-
-  .login-header {
-    font-size: 3.36rem;
-  }
-  
-  .login-input {
-    margin: 0 0 1.12rem;
-    padding: 0.448rem;
-    height: 3.92rem;
-    font-size: 2.016rem;
-  }
-  
-  .login-submit {
-    margin: 1.12rem 0 2.8rem;
-    height: 3.36rem;
-  }
-  
-  .login-footer {
-    margin-top: 2.24rem;
-  }
-  
-  .footer-text {
-    font-size: 1.68rem;
-  }
-
-  .error {
-    font-size: 1.68rem;
-  }
-}
-
-@media only screen and (min-width: 1441px) {
-  .popup-inner.login-popup {
-    padding: 7.84rem;
-  }
-
-  .login-header {
-    font-size: 4.704rem;
-  }
-  
-  .login-input {
-    margin: 0 0 1.568rem;
-    padding: 0.627rem;
-    height: 5.488rem;
-    font-size: 2.822rem;
-  }
-  
-  .login-submit {
-    margin: 1.568rem 0 3.92rem;
-    height: 4.704rem;
-  }
-  
-  .login-footer {
-    margin-top: 3.136rem;
-  }
-  
-  .footer-text {
-    font-size: 2.352rem;
-  }
-
-  .error {
-    font-size: 2.352rem;
-  }
-}
-
 /* PasswordReset.css */
 .resetSuccess {
   display: flex;
@@ -695,18 +469,6 @@ h3 {
 .error-text {
   text-align: center;
   font-size: 2.8rem;
-}
-
-@media only screen and (min-width: 680px) {
-  .error-text {
-    font-size: 3.92rem;
-  }
-}
-
-@media only screen and (min-width: 1441px) {
-  .error-text {
-    font-size: 5.488rem;
-  }
 }
 
 /* SettingsContainer.css */
@@ -797,30 +559,6 @@ h3 {
   place-self: center;
 }
 
-@media only screen and (min-width: 680px) {
-  .settings-save {
-    margin: 2.24rem 0 0;
-    height: 3.36rem;
-    font-size: 2.24rem;
-  }
-
-  .submit-error {
-    font-size: 1.68rem;
-  }
-}
-
-@media only screen and (min-width: 1441px) {
-  .settings-save {
-    margin: 3.136rem 0 0;
-    height: 4.704rem;
-    font-size: 3.136rem;
-  }
-
-  .submit-error {
-    font-size: 2.352rem;
-  }
-}
-
 /* TaskCard.css */
 .taskCard {
   border: 1px solid grey;
@@ -894,54 +632,6 @@ h3 {
   cursor: default;
 }
 
-@media only screen and (min-width: 680px) {
-  .taskCard-mainLine {
-    margin: 1.12rem 1.12rem 0.56rem;
-  }
-  
-  .task-card-heading {
-    font-size: 2.24rem;
-  }
-  
-  .duration {
-    font-size: 2.24rem;
-  }
-
-  .edit-button {
-    font-size: 1.456rem;
-  }
-
-  .taskNotes {
-    padding: 0.896rem 1.68rem;
-    margin: 0.56rem 1.12rem;
-    font-size: 1.68rem;
-  }
-}
-
-@media only screen and (min-width: 1441px) {
-  .taskCard-mainLine {
-    margin: 1.568rem 1.568rem 0.784rem;
-  }
-  
-  .task-card-heading {
-    font-size: 3.136rem;
-  }
-  
-  .duration {
-    font-size: 3.136rem;
-  }
-
-  .edit-button {
-    font-size: 2.038rem;
-  }
-
-  .taskNotes {
-    padding: 1.254rem 2.352rem;
-    margin: 0.784rem 1.568rem;
-    font-size: 2.352rem;
-  }
-}
-
 /* TaskContainer.css */
 .task-container-primary {
   display: flex;
@@ -962,18 +652,6 @@ h3 {
 .task-container-heading {
   margin: 0;
   font-size: 2.4rem;
-}
-
-@media only screen and (min-width: 680px) {
-  .task-container-heading {
-    font-size: 3.36rem;
-  }
-}
-
-@media only screen and (min-width: 1441px) {
-  .task-container-heading {
-    font-size: 4.704rem;
-  }
 }
 
 /* TaskOptions.css */
@@ -1034,44 +712,6 @@ h3 {
   margin: 0;
 }
 
-@media only screen and (min-width: 680px) {
-  .dropbtn {
-    font-size: 3.36rem;
-  }
-
-  .dropdown-content {
-    min-width: 168px;
-  }
-
-  .dropdown-content .dropdown-content-option {
-    padding: 1.008rem 1.12rem;
-  }
-
-  .dropdown-content-option > p {
-    font-size: 1.68rem;
-    padding: 0.336rem;
-  }
-}
-
-@media only screen and (min-width: 1441px) {
-  .dropbtn {
-    font-size: 4.704rem;
-  }
-
-  .dropdown-content {
-    min-width: 235px;
-  }
-
-  .dropdown-content .dropdown-content-option {
-    padding: 1.411rem 1.568rem;
-  }
-
-  .dropdown-content-option > p {
-    font-size: 2.352rem;
-    padding: 0.470rem;
-  }
-}
-
 /* Timer.css */
 .timeDisplay-wrapper {
   grid-column: span 3;
@@ -1080,18 +720,6 @@ h3 {
 .timeDisplay {
   font-size: 7.8rem;
   margin: 0;
-}
-
-@media only screen and (min-width: 680px) {
-  .timeDisplay {
-    font-size: 10.92rem;
-  }
-}
-
-@media only screen and (min-width: 1441px) {
-  .timeDisplay {
-    font-size: 15.288rem;
-  }
 }
 
 /* TimerContainer.css */
@@ -1199,8 +827,33 @@ h3 {
   margin-top: 0.5rem;
 }
 
-/* ******************************************************* */
+/* UserOptions.css */
+.dropbtn.user-opts {
+  background: none;
+  color: black;
+  padding: 0.55rem 0.55rem 0.7rem;
+  display: flex;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0;
+  border-bottom: 1px solid black;
+  font-size: 1.12rem;
+}
 
+.dropbtn.user-opts:hover {
+  background-color: var(--color-accent);
+  border-radius: 4px;
+
+}
+
+.icon-case {
+  background-color: var(--color-accent);
+  border-radius: 50%;
+}
+
+/* Media Queries */
 @media only screen and (min-width: 680px) {
   .timer-frame {
     min-height: 41.16rem;
@@ -1245,6 +898,191 @@ h3 {
 
   .focus-lemon {
     font-size: 1.68rem;
+  }
+
+  .App {
+    max-width: 50.4rem;
+  }
+
+  .primary-header_logo {
+    font-size: 2.24rem;
+  }
+
+  .popup-inner {
+    width: 50%;
+  }
+
+  .button-link {
+    font-size: 1.68rem;
+    padding: 0.56rem;
+  }
+  
+  .error-text {
+    font-size: 3.92rem;
+  }
+
+  .timeDisplay {
+    font-size: 10.92rem;
+  }
+
+  .dropbtn {
+    font-size: 3.36rem;
+  }
+
+  .dropdown-content {
+    min-width: 168px;
+  }
+
+  .dropdown-content .dropdown-content-option {
+    padding: 1.008rem 1.12rem;
+  }
+
+  .dropdown-content-option > p {
+    font-size: 1.68rem;
+    padding: 0.336rem;
+  }
+
+  .task-container-heading {
+    font-size: 3.36rem;
+  }
+
+  .taskCard-mainLine {
+    margin: 1.12rem 1.12rem 0.56rem;
+  }
+  
+  .task-card-heading {
+    font-size: 2.24rem;
+  }
+  
+  .duration {
+    font-size: 2.24rem;
+  }
+
+  .edit-button {
+    font-size: 1.456rem;
+  }
+
+  .taskNotes {
+    padding: 0.896rem 1.68rem;
+    margin: 0.56rem 1.12rem;
+    font-size: 1.68rem;
+  }
+
+  .settings-save {
+    margin: 2.24rem 0 0;
+    height: 3.36rem;
+    font-size: 2.24rem;
+  }
+
+  .submit-error {
+    font-size: 1.68rem;
+  }
+
+  .popup-inner.login-popup {
+    padding: 5.6rem;
+  }
+
+  .login-header {
+    font-size: 3.36rem;
+  }
+  
+  .login-input {
+    margin: 0 0 1.12rem;
+    padding: 0.448rem;
+    height: 3.92rem;
+    font-size: 2.016rem;
+  }
+  
+  .login-submit {
+    margin: 1.12rem 0 2.8rem;
+    height: 3.36rem;
+  }
+  
+  .login-footer {
+    margin-top: 2.24rem;
+  }
+  
+  .footer-text {
+    font-size: 1.68rem;
+  }
+
+  .error {
+    font-size: 1.68rem;
+  }
+
+  .header-title {
+    font-size: 3.36rem;
+  }
+  
+  .load-temp-edit-btn {
+    font-size: 1.68rem;
+  }
+
+  .load-temp-name {
+    font-size: 2.24rem;
+  }
+
+  .error-text {
+    font-size: 3.92rem;
+  }
+
+  .editTask-mainline {
+    margin: 1.12rem 5.488rem 0.56rem 0.896rem;
+  }
+
+  .editTask-heading {
+    font-size: 2.24rem;
+  }
+
+  .editTask-duration {
+    font-size: 2.24rem;
+    width: 5.6rem;
+
+  }
+
+  .editTask-save {
+    margin: 0.12rem 2.016rem 0;
+    padding: 0.56rem;
+    font-size: 1.456rem;
+  }
+
+  .editTaskNotes {
+    padding: 0.896rem 1.68rem;
+    margin: 0.56rem 1.12rem 0;
+    font-size: 1.68rem;
+  }
+  
+  .editTask-close {
+    right: 1.68rem;
+    padding: 0.616rem 0.616rem 0.56rem;
+    font-size: 1.456rem;
+  }
+
+  .editTask-delete {
+    bottom: 0.056rem;
+    right: 7.28rem;
+    font-size: 1.456rem;
+  }
+
+  .delAcc-btn {
+    padding: 0.56rem 2.24rem;
+    font-size: 2.24rem;
+  } 
+
+  .add-card {
+    padding: 0.7rem 0.7rem;
+    margin: 0.42rem 0;
+  }
+
+  .addTask-close {
+    right: 1.68rem;
+    padding: 0.616rem 0.616rem 0.196rem;
+    font-size: 1.456rem;
+  }
+
+  .dropbtn.user-opts {
+    padding: 0.77rem 0.77rem 0.98rem;
+    font-size: 1.568rem;
   }
 }
 
@@ -1293,70 +1131,7 @@ h3 {
   .focus-lemon {
     font-size: 2.352rem;
   }
-}
 
-/* UserOptions.css */
-.dropbtn.user-opts {
-  background: none;
-  color: black;
-  padding: 0.55rem 0.55rem 0.7rem;
-  display: flex;
-  border: none;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 0;
-  border-bottom: 1px solid black;
-  font-size: 1.12rem;
-}
-
-.dropbtn.user-opts:hover {
-  background-color: var(--color-accent);
-  border-radius: 4px;
-
-}
-
-.icon-case {
-  background-color: var(--color-accent);
-  border-radius: 50%;
-}
-
-@media only screen and (min-width: 680px) {
-  .dropbtn.user-opts {
-    padding: 0.77rem 0.77rem 0.98rem;
-    font-size: 1.568rem;
-  }
-}
-
-@media only screen and (min-width: 1441px) {
-  .dropbtn.user-opts {
-    padding: 1.078rem 1.078rem 1.372rem;
-    font-size: 2.195rem;
-  }
-}
-
-/* Media Queries */
-@media only screen and (min-width: 680px) {
-  .App {
-    max-width: 50.4rem;
-  }
-
-  .primary-header_logo {
-    font-size: 2.24rem;
-  }
-
-  .popup-inner {
-    width: 50%;
-  }
-
-  .button-link {
-    font-size: 1.68rem;
-    padding: 0.56rem;
-  }
-
-}
-
-@media only screen and (min-width: 1441px) {
   .App {
     max-width: 70.56rem;
   }
@@ -1374,4 +1149,171 @@ h3 {
     padding: 0.784rem;
   }
 
+  .error-text {
+    font-size: 5.488rem;
+  }
+
+  .timeDisplay {
+    font-size: 15.288rem;
+  }
+
+  .dropbtn {
+    font-size: 4.704rem;
+  }
+
+  .dropdown-content {
+    min-width: 235px;
+  }
+
+  .dropdown-content .dropdown-content-option {
+    padding: 1.411rem 1.568rem;
+  }
+
+  .dropdown-content-option > p {
+    font-size: 2.352rem;
+    padding: 0.470rem;
+  }
+
+  .task-container-heading {
+    font-size: 4.704rem;
+  }
+
+  .taskCard-mainLine {
+    margin: 1.568rem 1.568rem 0.784rem;
+  }
+  
+  .task-card-heading {
+    font-size: 3.136rem;
+  }
+  
+  .duration {
+    font-size: 3.136rem;
+  }
+
+  .edit-button {
+    font-size: 2.038rem;
+  }
+
+  .taskNotes {
+    padding: 1.254rem 2.352rem;
+    margin: 0.784rem 1.568rem;
+    font-size: 2.352rem;
+  }
+
+  .settings-save {
+    margin: 3.136rem 0 0;
+    height: 4.704rem;
+    font-size: 3.136rem;
+  }
+
+  .submit-error {
+    font-size: 2.352rem;
+  }
+
+  .popup-inner.login-popup {
+    padding: 7.84rem;
+  }
+
+  .login-header {
+    font-size: 4.704rem;
+  }
+  
+  .login-input {
+    margin: 0 0 1.568rem;
+    padding: 0.627rem;
+    height: 5.488rem;
+    font-size: 2.822rem;
+  }
+  
+  .login-submit {
+    margin: 1.568rem 0 3.92rem;
+    height: 4.704rem;
+  }
+  
+  .login-footer {
+    margin-top: 3.136rem;
+  }
+  
+  .footer-text {
+    font-size: 2.352rem;
+  }
+
+  .error {
+    font-size: 2.352rem;
+  }
+
+  .header-title {
+    font-size: 4.704rem;
+  }
+  
+  .load-temp-edit-btn {
+    font-size: 2.352rem;
+  }
+
+  .load-temp-name {
+    font-size: 3.136rem;
+  }
+
+  .error-text {
+    font-size: 5.488rem;
+  }
+
+  .editTask-mainline {
+    margin: 1.568rem 7.683rem 0.784rem 1.254rem;
+  }
+
+  .editTask-heading {
+    font-size: 3.136rem;
+  }
+
+  .editTask-duration {
+    font-size: 3.136rem;
+    width: 7.84rem;
+
+  }
+
+  .editTask-save {
+    margin: 0.168rem 2.822rem 0;
+    padding: 0.784rem;
+    font-size: 2.038rem;
+  }
+
+  .editTaskNotes {
+    padding: 1.254rem 2.352rem;
+    margin: 0.784rem 1.568rem 0;
+    font-size: 2.352rem;
+  }
+  
+  .editTask-close {
+    right: 2.352rem;
+    padding: 0.862rem 0.862rem 0.784rem;
+    font-size: 2.038rem;
+  }
+
+  .editTask-delete {
+    bottom: 0.078rem;
+    right: 10.192rem;
+    font-size: 2.038rem;
+  }
+
+  .delAcc-btn {
+    padding: 0.784rem 3.136rem;
+    font-size: 3.136rem;
+  } 
+
+  .add-card {
+    padding: 0.98rem 0.98rem;
+    margin: 0.588rem 0;
+  }
+
+  .addTask-close {
+    right: 2.352rem;
+    padding: 0.862rem 0.862rem 0.274rem;
+    font-size: 2.038rem;
+  }
+
+  .dropbtn.user-opts {
+    padding: 1.078rem 1.078rem 1.372rem;
+    font-size: 2.195rem;
+  }
 }
