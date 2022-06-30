@@ -18,7 +18,7 @@ const LoadTemplate = ({ setTasks, user, toggleError, setToggleError }) => {
   
   return (
     <div>
-      <div className='dropdown-content-option' onClick={handleFormToggle}>
+      <div className='wrap-dropdown-content-option' onClick={handleFormToggle}>
         <p>Load Template</p>
       </div>
       {toggleForm
@@ -69,7 +69,7 @@ const Templates = ({ setTasks, setToggleForm }) => {
 
   return (
     <div className='popup'>
-      <div className='popup-inner login-popup'>
+      <div className='popup-inner popup-login'>
         <div className='wrap-load-template-header'>
           <h2 className='heading-load-template'>Templates</h2>
           <button className='btn-load-template-edit'>Edit</button>
@@ -77,7 +77,7 @@ const Templates = ({ setTasks, setToggleForm }) => {
         <ul className='list-load-template'>
           {listTemplates}
         </ul>
-        <button className='btn-close login-close' onClick={closeForm}><CgClose /></button>
+        <button className='btn-close btn-login-close' onClick={closeForm}><CgClose /></button>
       </div>
     </div>
   )

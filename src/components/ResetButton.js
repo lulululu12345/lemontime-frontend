@@ -11,7 +11,7 @@ const ResetButton = ({ time, setTime, setStart, currentTimeBlock }) => {
   return (
     <>
       {time < currentTimeBlock.durMs
-        ? <button onClick={onClickReset} className='button resetButton'>
+        ? <button onClick={onClickReset} className='button btn-reset'>
             <GrPowerReset />
           </button>
         : <div></div>

@@ -53,13 +53,13 @@ const SaveTemplate = ({ user, tasks, toggleError, setToggleError }) => {
     }
     return (
       <div className='popup'>
-        <div className='popup-inner login-popup'>
+        <div className='popup-inner popup-login'>
           <form className='form-login-container' onSubmit={submitTemplateSaveForm} key='templateNameForm' >
             <h2 className='heading-login'>Save Template</h2>
             <input className='input-login' type='text' placeholder='Template Name' value={templateName}  onChange={handleTemplateNameChange} />
-            <input className='settings-save' type='submit' value='Save' />
+            <input className='btn-settings-save' type='submit' value='Save' />
           </form>
-          <button className='btn-close login-close' onClick={toggleSaveForm}><CgClose size={14}/></button>
+          <button className='btn-close btn-login-close' onClick={toggleSaveForm}><CgClose size={14}/></button>
         </div>
       </div>
     )
@@ -67,7 +67,7 @@ const SaveTemplate = ({ user, tasks, toggleError, setToggleError }) => {
 
   return ( 
     <div>
-      <div className='dropdown-content-option' onClick={toggleSaveForm}>
+      <div className='wrap-dropdown-content-option' onClick={toggleSaveForm}>
         <p>Save as Template</p>
       </div>
       {showTemplateSaveForm

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
 const TimeBlockButton = ({ setStart, setTime, currentTimeBlock, setCurrentTimeBlock, newBlock, text }) => {
-  const [className, setClassName] = useState('button button-timeBlock')
+  const [className, setClassName] = useState('button btn-time-block')
   
   useEffect(() => {
     if (currentTimeBlock.name === newBlock.name) {
-      setClassName(`${className} timeBlock-clicked`)
+      setClassName(`${className} wrap-time-block-selected`)
     } else {
-      setClassName('button button-timeBlock')
+      setClassName('button btn-time-block')
     }
   }, [currentTimeBlock])
 

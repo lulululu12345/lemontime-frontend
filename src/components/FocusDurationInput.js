@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 
 const FocusDurationInput = ({ numBoxValue, setNumBoxValue}) => {
-  const [className, setClassName ] = useState('settings-input')
+  const [className, setClassName ] = useState('input-settings')
   // Handler for changes to num box
   const handleNumBoxChange = (event) => {
     const eventValue = event.target.value
     if (eventValue === '' || Number(eventValue) < 1) {
-      setClassName('settings-input input-error')
+      setClassName('input-settings input-error')
     }
-    else setClassName('settings-input')
+    else setClassName('input-settings')
     setNumBoxValue(eventValue)
   }
   

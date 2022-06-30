@@ -8,7 +8,7 @@ const LongBreakSchedule = ({ longBreakIntervalValue, setLongBreakIntervalValue, 
     setLongBreakIntervalValue(eventValue)
   }
 
-  return <input className='settings-input' type='number' value={longBreakIntervalValue} onChange={handleLongBreakIntervalChange} />
+  return <input className='input-settings' type='number' value={longBreakIntervalValue} onChange={handleLongBreakIntervalChange} />
 }
 
 export default LongBreakSchedule

@@ -8,9 +8,9 @@ const ErrorPopup = ({ setToggleError }) => {
 
   return (
     <div className='popup'>
-      <div className='popup-inner login-popup'>
+      <div className='popup-inner popup-login'>
         <h2 className='heading-error-text'>Must be Logged in!</h2>
-        <button className='btn-close login-close' onClick={handleClick}><CgClose size={14}/></button>
+        <button className='btn-close btn-login-close' onClick={handleClick}><CgClose size={14}/></button>
       </div>
     </div>
   )

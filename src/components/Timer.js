@@ -120,8 +120,8 @@ const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTim
   // Display the time props remaining minutes and seconds
   return (
     <>
-      <div className='timeDisplay-wrapper'>
-        <h2 className='timeDisplay'>{`${calcMinutes()}:${calcSeconds()}`}</h2>
+      <div className='wrap-time-display'>
+        <h2 className='heading-time-display'>{`${calcMinutes()}:${calcSeconds()}`}</h2>
       </div>
       <ReactAudioPlayer src={timeoutMp3} />
     </>

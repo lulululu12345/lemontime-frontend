@@ -43,7 +43,7 @@ const SkipButton = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock, lo
   return (
     <>
       {time < currentTimeBlock.durMs
-        ? <button onClick={onClickSkip} className='button skipButton'><BsFillSkipEndFill /></button>
+        ? <button onClick={onClickSkip} className='button btn-skip'><BsFillSkipEndFill /></button>
         : <div></div>
       }
     </>

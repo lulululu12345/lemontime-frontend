@@ -7,7 +7,7 @@ const ClearTasks = ({ setTasks }) => {
   }
 
   return (
-    <div className='dropdown-content-option' onClick={handleClearTasks}>
+    <div className='wrap-dropdown-content-option' onClick={handleClearTasks}>
       <p>Clear Task List</p>
       {/* <button className='button_task-options'  >Clear Task List</button> */}
     </div>

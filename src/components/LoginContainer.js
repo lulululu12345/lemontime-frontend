@@ -114,11 +114,11 @@ const LoginForm = ({ setUser, setForm }) => {
 
   return (
     <div className='popup'>
-      <div className='popup-inner login-popup'>
+      <div className='popup-inner popup-login'>
         <form className='form-login-container' onSubmit={handleLogin}>
           <h3 className='heading-login'>Login</h3>
           {loginError
-            ?<p className='login-error' >{errorMessage}</p>
+            ?<p className='text-login-error' >{errorMessage}</p>
             : null
           }
           <input 
@@ -139,13 +139,13 @@ const LoginForm = ({ setUser, setForm }) => {
             onChange={({target}) => setPassword(target.value)}
             required
           />
-          <button className='settings-save' type='submit'>Submit</button>
+          <button className='btn-settings-save' type='submit'>Submit</button>
         </form>
-        <div className='login-footer'>
-          <span className='footer-text'>Don't have an account? <button className='altForm-button' onClick={toggleSignup}>Sign-up!</button></span>
-          <button className='altForm-button footer-text forgot-pass' onClick={togglePasswordReset}>Forgot Password?</button>
+        <div className='wrap-login-footer'>
+          <span className='wrap-footer-text'>Don't have an account? <button className='btn-alt-form' onClick={toggleSignup}>Sign-up!</button></span>
+          <button className='btn-alt-form wrap-footer-text btn-forgot-pass' onClick={togglePasswordReset}>Forgot Password?</button>
         </div>
-        <button className='btn-close login-close' onClick={cancelLogin}><CgClose/></button>
+        <button className='btn-close btn-login-close' onClick={cancelLogin}><CgClose/></button>
       </div>
     </div>
   )
@@ -188,7 +188,7 @@ const ForgotPassword = ({ setForm }) => {
 
   return (
     <div className='popup'>
-      <div className='popup-inner login-popup'>
+      <div className='popup-inner popup-login'>
         <form className='form-login-container' onSubmit={handleSubmit}>
           <h2 className='heading-error-text'>Enter your email</h2>
           <input 
@@ -200,12 +200,12 @@ const ForgotPassword = ({ setForm }) => {
             required
           />
           {errorMessage
-            ? <p className='login-error'>{errorMessage}</p>
+            ? <p className='text-login-error'>{errorMessage}</p>
             : null
           }
-          <button className='settings-save' type='submit'>Submit</button>
+          <button className='btn-settings-save' type='submit'>Submit</button>
         </form>
-        <button className='btn-close login-close' onClick={handleClose}><CgClose size={14}/></button>
+        <button className='btn-close btn-login-close' onClick={handleClose}><CgClose size={14}/></button>
       </div>
     </div>
   )
@@ -295,11 +295,11 @@ const SignupForm = ({ setForm, setUser }) => {
   
   return (
     <div className='popup'>
-      <div className='popup-inner login-popup'>
+      <div className='popup-inner popup-login'>
         <form className='form-login-container' onSubmit={handleSubmit}>
           <h3 className='heading-login'>Sign-up</h3>
           {signupError
-            ? <p className='login-error'>{errorMessage}</p>
+            ? <p className='text-login-error'>{errorMessage}</p>
             : null
           }
           <input 
@@ -327,15 +327,15 @@ const SignupForm = ({ setForm, setUser }) => {
             required
           />
           {passwordError
-            ? <p className='error'>Passwords do not match</p>
+            ? <p className='text-error'>Passwords do not match</p>
             : null
           }
-          <button className='settings-save' type='submit'>Submit</button>
+          <button className='btn-settings-save' type='submit'>Submit</button>
         </form>
-        <div className='login-footer'>
-          <span className='footer-text'>Already have an account? <button className='altForm-button' onClick={toggleLogin} >Login!</button></span>
+        <div className='wrap-login-footer'>
+          <span className='wrap-footer-text'>Already have an account? <button className='btn-alt-form' onClick={toggleLogin} >Login!</button></span>
         </div>
-        <button className='btn-close login-close' onClick={cancelSignup}><CgClose size={14}/></button>
+        <button className='btn-close btn-login-close' onClick={cancelSignup}><CgClose size={14}/></button>
       </div>
     </div>
   )

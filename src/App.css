@@ -150,8 +150,22 @@ h3 {
   padding: 5rem;
 }
 
-.popup-inner.login-popup {
+.popup-inner.popup-login {
   padding: 4rem 10rem;
+}
+
+.popup-inner.popup-settings {
+  padding: 4rem 10rem;
+}
+
+/* Sections */
+.section-task-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 2rem;
+  width: 100%;
 }
 
 /* Headings */
@@ -170,7 +184,76 @@ h3 {
   margin: 0 0 2rem;
 }
 
+.heading-settings {
+  margin: 0 0 2rem;
+}
+
+.heading-settings-sub {
+  margin: 0;
+  width: 100%;
+  padding: 0.5rem 0.2rem;
+  border-bottom: 1px solid black; 
+  font-size: 2.2rem;
+}
+
+.heading-task {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.heading-task-container {
+  margin: 0;
+  font-size: 2.4rem;
+}
+
+.heading-time-display {
+  font-size: 7.8rem;
+  margin: 0;
+}
+
+
+/* Text */
+.text-login-error {
+  color: orangered;
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  align-self: center;
+}
+
+.text-error {
+  color: orangered;
+  margin: 0;
+  font-size: 1.2rem;
+  align-self: center;
+}
+
+.text-submission-error {
+  color: orangered;
+  margin: 0.5rem;
+  font-size: 1.2rem;
+  place-self: center;
+}
+
+.text-duration {
+  font-size: 1.6rem;
+}
+
+.text-focus-icons {
+  margin: 0;
+  font-size: 0.96rem;
+}
+
+/* Icons */
+.icon-focus-lemon {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
 /* Buttons */
+.button:hover {
+  cursor: pointer;
+}
+
 .btn-close {
   position: absolute;
   top: 16px;
@@ -277,6 +360,133 @@ h3 {
   cursor: pointer;
 }
 
+.btn-forgot-pass {
+  margin-top: 1.1rem;
+}
+
+.btn-alt-form {
+  border: none;
+  background: none;
+  text-decoration: underline;
+  color: #3F50BB;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.btn-alt-form:hover {
+  cursor: pointer;
+  color: #828FE0;
+}
+
+.btn-login-close {
+  border: none;
+  padding: 0.55rem 0.55rem 0.2rem;
+  border-radius: 25%;
+  border: 1px solid black;
+  background-color: var(--color-secondary);
+  font-size: 1.4;
+}
+
+.btn-login-close:hover {
+  background-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.btn-settings-save {
+  margin: 1.6rem 0 0;
+  width: 100%;
+  height: 2.4rem;
+  font-family: 'Varela Round', sans-serif;
+  border: none;
+  background-color: white;
+  font-size: 1.6rem;
+  border-radius: 4px;
+}
+
+.btn-settings-save:hover {
+  cursor: pointer;
+  background-color: var(--color-green);
+}
+
+.btn-edit {
+  align-self: center;
+  border: 1px solid black;
+  padding: 0.55rem 0.55rem 0.2rem;
+  border-radius: 25%;
+  background-color: white;
+  font-size: 1.04rem;
+}
+
+.btn-edit:hover {
+  background-color: var(--color-button-hover);
+  cursor: pointer;
+}
+
+.btn-dropdown {
+  background-color: white;
+  color: black;
+  font-size: 2.4rem;
+  border: 1px solid gray;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1rem;
+}
+
+.btn-dropdown:hover {
+  background-color: var(--color-button-hover)
+}
+
+.btn-time-block {
+  background: none;
+  border: none;
+  font-size: 1.05rem;
+}
+
+.btn-stop-and-go {
+  padding: 0.6rem 1.5rem 0.3rem;
+  background-color: var(--color-green);
+  border: none;
+  border-radius: 4px;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 1.4rem;
+}
+
+.btn-stop {
+  background-color: var(--color-accent-hover);
+}
+
+.btn-reset {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+}
+
+.btn-skip {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+}
+
+.btn-dropdown.user-opts {
+  background: none;
+  color: black;
+  padding: 0.55rem 0.55rem 0.7rem;
+  display: flex;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 0;
+  border-bottom: 1px solid black;
+  font-size: 1.12rem;
+}
+
+.btn-dropdown.user-opts:hover {
+  background-color: var(--color-accent);
+  border-radius: 4px;
+
+}
+
 /* Links */
 .link-button {
   border: none;
@@ -310,6 +520,36 @@ h3 {
   position: relative;
 }
 
+.card-task {
+  border: 1px solid grey;
+  border-radius: 4px;
+  padding: 0.5rem 0.5rem;
+  margin: 0.3rem 0;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.card-task-selected {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background-color: var(--color-accent);
+  border-radius: 6px;
+  /* z-index: 100; */
+}
+
+.card-timer-container {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 7.8rem 7.8rem 7.8rem;
+  grid-template-rows: 1.5rem 12rem 2.4rem;
+  place-items: center;
+  place-content: center;
+  margin: 3rem 0;
+}
+
 /* Wrappers */
 .wrap-delete-account-buttons {
   display: flex;
@@ -341,8 +581,162 @@ h3 {
   font-size: 1.6rem;
 }
 
+.wrap-login-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.6rem;
+}
+
+.wrap-footer-text {
+  font-size: 1.2rem;
+}
+
+.wrap-reset-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrap-settings-item {
+  display: flex;
+  width: 100%;
+  padding: 0.5rem;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dotted black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  background-color: white;
+}
+
+.wrap-settings-item.section-end {
+  border-bottom: 1px solid black;
+}
+
+.wrap-task-mainline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.8rem 0.8rem 0.4rem;
+  padding: 0 0.5rem;
+  height: 3rem;
+  border-bottom: 1px dotted black;
+}
+
+.wrap-task-settings {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  height: 3rem;
+}
+
+.wrap-task-container-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.wrap-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.wrap-dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.wrap-dropdown-content .wrap-dropdown-content-option {
+  color: black;
+  padding: 0.72rem 0.8rem;
+}
+
+.wrap-dropdown-content .wrap-dropdown-content-option:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.wrap-show-dropdown-content {
+  display: block;
+}
+
+.wrap-dropdown-content-option > p {
+  font-size: 1.2rem;
+  padding: 0.24rem;
+  margin: 0;
+}
+
+.wrap-time-display {
+  grid-column: span 3;
+}
+
+.wrap-timer-frame {
+  background-color: var(--color-secondary);
+  border: 1px solid black;
+  border-radius: 50%;
+  min-height: 29.4rem;
+  min-width: 29.4rem;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.wrap-focus-icons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.wrap-time-block-selected {
+  background: fixed;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 0.3rem;
+  border-radius: 4px;
+  background-color: var(--color-accent);
+  border-bottom: 1px solid black;
+}
+
+.wrap-pomodoro {
+  place-self: center end;
+}
+
+.wrap-short-break {
+  place-self: center
+}
+
+.wrap-long-break {
+  place-self: center start;
+}
+
+.wrap-reset  {
+  place-self: center end;
+}
+
+.wrap-skip {
+  place-self: center start;
+}
+
 /* Forms */
 .form-login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.form-settings-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -399,6 +793,42 @@ h3 {
   font-family: 'Varela Round', sans-serif;
 }
 
+.input-error {
+  border: 1px solid orangered;
+  box-shadow: 0 1px 5px orangered;
+}
+
+.input-label-settings {
+  font-size: 1.5rem;
+}
+
+.input-settings {
+  padding: 0 0.4rem;
+  height: 3rem;
+  width: 5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: 'Varela Round', sans-serif;
+  border: none;
+  background-color: var(--color-secondary);
+  border-radius: 4px;
+}
+
+.input-settings-checkbox {
+  cursor: pointer;
+}
+
+.input-task-notes {
+  padding: 0.64rem 1.2rem;
+  margin: 0.4rem 0.8rem;
+  align-self: stretch;
+  background-color: whitesmoke;
+  font-family: 'Varela Round', sans-serif;
+  border-radius: 3px;
+  resize: none;
+  font-size: 1.2rem;
+  cursor: default;
+}
 
 /* Lists */
 .list-load-template {
@@ -423,599 +853,50 @@ h3 {
   border-radius: 4px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* LoginContainer.css */
-.login-submit {
-  margin: 0.8rem 0 2rem;
-  width: 100%;
-  height: 2.4rem;
-  font-family: 'Varela Round', sans-serif;
-}
-
-.login-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1.6rem;
-}
-
-.footer-text {
-  font-size: 1.2rem;
-}
-
-.forgot-pass {
-  margin-top: 1.1rem;
-}
-
-.altForm-button {
-  border: none;
-  background: none;
-  text-decoration: underline;
-  color: #3F50BB;
-  font-family: 'Varela Round', sans-serif;
-}
-
-.altForm-button:hover {
-  cursor: pointer;
-  color: #828FE0;
-
-}
-
-.login-close {
-  border: none;
-  padding: 0.55rem 0.55rem 0.2rem;
-  border-radius: 25%;
-  border: 1px solid black;
-  background-color: var(--color-secondary);
-  font-size: 1.4;
-}
-
-.login-close:hover {
-  background-color: var(--color-accent);
-  cursor: pointer;
-}
-
-.error {
-  color: orangered;
-  margin: 0;
-  font-size: 1.2rem;
-  align-self: center;
-}
-
-.login-error {
-  color: orangered;
-  margin: 0 0 0.5rem;
-  font-size: 1.5rem;
-  align-self: center;
-}
-
-.input-error {
-  border: 1px solid orangered;
-  box-shadow: 0 1px 5px orangered;
-}
-
-/* PasswordReset.css */
-.resetSuccess {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* PopupMessage.css */
-.heading-error-text {
-  text-align: center;
-  font-size: 2.8rem;
-}
-
-/* SettingsContainer.css */
-.popup-inner.settings-popup {
-  padding: 4rem 10rem;
-}
-
-.settings-header {
-  margin: 0 0 2rem;
-}
-
-.settings-section {
-  margin: 0;
-  width: 100%;
-  padding: 0.5rem 0.2rem;
-  border-bottom: 1px solid black; 
-  font-size: 2.2rem;
-}
-
-.settings-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.settings-item {
-  display: flex;
-  width: 100%;
-  padding: 0.5rem;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px dotted black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  background-color: white;
-}
-
-.settings-item.section-end {
-  border-bottom: 1px solid black;
-}
-
-.settings-label {
-  font-size: 1.5rem;
-}
-
-
-.settings-input {
-  padding: 0 0.4rem;
-  height: 3rem;
-  width: 5rem;
-  font-size: 1.5rem;
-  text-align: center;
-  font-family: 'Varela Round', sans-serif;
-  border: none;
-  background-color: var(--color-secondary);
-  border-radius: 4px;
-
-}
-
-.settings-checkbox {
-  cursor: pointer;
-}
-
-
-.settings-save {
-  margin: 1.6rem 0 0;
-  width: 100%;
-  height: 2.4rem;
-  font-family: 'Varela Round', sans-serif;
-  border: none;
-  background-color: white;
-  font-size: 1.6rem;
-  border-radius: 4px;
-}
-
-.settings-save:hover {
-  cursor: pointer;
-  background-color: var(--color-green);
-
-}
-
-.submit-error {
-  color: orangered;
-  margin: 0.5rem;
-  font-size: 1.2rem;
-  place-self: center;
-}
-
-/* TaskCard.css */
-.taskCard {
-  border: 1px solid grey;
-  border-radius: 4px;
-  padding: 0.5rem 0.5rem;
-  margin: 0.3rem 0;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  z-index: 999;
-  cursor: pointer;
-}
-
-.taskCard-selected {
-  margin: 1rem 0;
-  padding: 0.5rem;
-  background-color: var(--color-accent);
-  border-radius: 6px;
-  /* z-index: 100; */
-}
-
-.taskCard-mainLine {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0.8rem 0.8rem 0.4rem;
-  padding: 0 0.5rem;
-  height: 3rem;
-  border-bottom: 1px dotted black;
-}
-
-.task-card-heading {
-  margin: 0;
-  font-size: 1.6rem;
-}
-
-.duration {
-  font-size: 1.6rem;
-}
-
-.taskCard-settings {
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-  height: 3rem;
-}
-
-.edit-button {
-  align-self: center;
-  border: 1px solid black;
-  padding: 0.55rem 0.55rem 0.2rem;
-  border-radius: 25%;
-  background-color: white;
-  font-size: 1.04rem;
-}
-
-.edit-button:hover {
-  background-color: var(--color-button-hover);
-  cursor: pointer;
-}
-
-.taskNotes {
-  padding: 0.64rem 1.2rem;
-  margin: 0.4rem 0.8rem;
-  align-self: stretch;
-  background-color: whitesmoke;
-  font-family: 'Varela Round', sans-serif;
-  border-radius: 3px;
-  resize: none;
-  font-size: 1.2rem;
-  cursor: default;
-}
-
-/* TaskContainer.css */
-.task-container-primary {
-  display: flex;
-  flex-direction: column;
-  border-radius: 6px;
-  padding: 1rem;
-  margin-top: 2rem;
-  width: 100%;
-}
-
-.task-container-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-.task-container-heading {
-  margin: 0;
-  font-size: 2.4rem;
-}
-
-/* TaskOptions.css */
-/* Style the dropdown button */
-.dropbtn {
-  background-color: white;
-  color: black;
-  font-size: 2.4rem;
-  border: 1px solid gray;
-  border-radius: 3px;
-  cursor: pointer;
-  text-align: center;
-  line-height: 1rem;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown content (hidden by default */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: #fff;
-  min-width: 120px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content .dropdown-content-option {
-  color: black;
-  padding: 0.72rem 0.8rem;
-}
-
-/* Change the color of dropdown links on hover */
-.dropdown-content .dropdown-content-option:hover {
-  background-color: #f1f1f1;
-  cursor: pointer;
-}
-
-/* Show the dropdown menu on hover */
-.show-dropdown-content {
-  display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropbtn:hover {
-  background-color: var(--color-button-hover)
-}
-
-.dropdown-content-option > p {
-  font-size: 1.2rem;
-  padding: 0.24rem;
-  margin: 0;
-}
-
-/* Timer.css */
-.timeDisplay-wrapper {
-  grid-column: span 3;
-}
-
-.timeDisplay {
-  font-size: 7.8rem;
-  margin: 0;
-}
-
-/* TimerContainer.css */
-.timer-frame {
-  background-color: var(--color-secondary);
-  border: 1px solid black;
-  border-radius: 50%;
-  min-height: 29.4rem;
-  min-width: 29.4rem;
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-}
-
-.focusBlock-container {
-  display: flex;
-  gap: 0.8rem;
-}
-
-.focus-text {
-  margin: 0;
-  font-size: 0.96rem;
-}
-
-.timerContainer {
-  display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: 7.8rem 7.8rem 7.8rem;
-  grid-template-rows: 1.5rem 12rem 2.4rem;
-  place-items: center;
-  place-content: center;
-  margin: 3rem 0;
-}
-
-.button:hover {
-  cursor: pointer;
-}
-
-.button-timeBlock {
-  background: none;
-  border: none;
-  font-size: 1.05rem;
-}
-
-.timeBlock-clicked {
-  background: fixed;
-  font-size: 1.2rem;
-  font-weight: 800;
-  padding: 0.3rem;
-  border-radius: 4px;
-  background-color: var(--color-accent);
-  border-bottom: 1px solid black;
-}
-
-.pomodoro-wrapper {
-  place-self: center end;
-}
-
-.shortBreak-wrapper {
-  place-self: center
-}
-
-.longBreak-wrapper {
-  place-self: center start;
-}
-
-.stopAndGoButton {
-  padding: 0.6rem 1.5rem 0.3rem;
-  background-color: var(--color-green);
-  border: none;
-  border-radius: 4px;
-  font-family: 'Varela Round', sans-serif;
-  font-size: 1.4rem;
-}
-
-.stopAndGoStopper {
-  background-color: var(--color-accent-hover);
-}
-
-.reset-wrapper  {
-  place-self: center end;
-}
-
-.resetButton {
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-}
-
-.skip-wrapper {
-  place-self: center start;
-}
-
-.skipButton {
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-}
-
-.focus-lemon {
-  font-size: 1.2rem;
-  margin-top: 0.5rem;
-}
-
-/* UserOptions.css */
-.dropbtn.user-opts {
-  background: none;
-  color: black;
-  padding: 0.55rem 0.55rem 0.7rem;
-  display: flex;
-  border: none;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 0;
-  border-bottom: 1px solid black;
-  font-size: 1.12rem;
-}
-
-.dropbtn.user-opts:hover {
-  background-color: var(--color-accent);
-  border-radius: 4px;
-
-}
-
-.icon-case {
-  background-color: var(--color-accent);
-  border-radius: 50%;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Media Queries */
 @media only screen and (min-width: 680px) {
-  .timer-frame {
+  .wrap-timer-frame {
     min-height: 41.16rem;
     min-width: 41.16rem;
   }
   
-  .focusBlock-container {
+  .wrap-focus-icons {
     gap: 1.12rem;
   }
   
-  .focus-text {
+  .text-focus-icons {
     font-size: 1.344rem;
   }
   
-  .timerContainer {
+  .card-timer-container {
     grid-template-columns: 10.92rem 10.92rem 10.92rem;
     grid-template-rows: 2.1rem 16.8rem 3.36rem;
     margin: 4.2rem 0;
   }
   
-  .button-timeBlock {
+  .btn-time-block {
     font-size: 1.47rem;
   }
   
-  .timeBlock-clicked {
+  .wrap-time-block-selected {
     font-size: 1.68rem;
     padding: 0.42rem;
   }
 
-  .stopAndGoButton {
+  .btn-stop-and-go {
     padding: 0.84rem 2.1rem 0.42rem;
     font-size: 1.96rem;
   }
 
-  .resetButton {
+  .btn-reset {
     font-size: 1.96rem;
   }
   
-  .skipButton {
+  .btn-skip {
     font-size: 1.96rem;
   }
 
-  .focus-lemon {
+  .icon-focus-lemon {
     font-size: 1.68rem;
   }
 
@@ -1040,64 +921,64 @@ h3 {
     font-size: 3.92rem;
   }
 
-  .timeDisplay {
+  .heading-time-display {
     font-size: 10.92rem;
   }
 
-  .dropbtn {
+  .btn-dropdown {
     font-size: 3.36rem;
   }
 
-  .dropdown-content {
+  .wrap-dropdown-content {
     min-width: 168px;
   }
 
-  .dropdown-content .dropdown-content-option {
+  .wrap-dropdown-content .wrap-dropdown-content-option {
     padding: 1.008rem 1.12rem;
   }
 
-  .dropdown-content-option > p {
+  .wrap-dropdown-content-option > p {
     font-size: 1.68rem;
     padding: 0.336rem;
   }
 
-  .task-container-heading {
+  .heading-task-container {
     font-size: 3.36rem;
   }
 
-  .taskCard-mainLine {
+  .wrap-task-mainline {
     margin: 1.12rem 1.12rem 0.56rem;
   }
   
-  .task-card-heading {
+  .heading-task {
     font-size: 2.24rem;
   }
   
-  .duration {
+  .text-duration {
     font-size: 2.24rem;
   }
 
-  .edit-button {
+  .btn-edit {
     font-size: 1.456rem;
   }
 
-  .taskNotes {
+  .input-task-notes {
     padding: 0.896rem 1.68rem;
     margin: 0.56rem 1.12rem;
     font-size: 1.68rem;
   }
 
-  .settings-save {
+  .btn-settings-save {
     margin: 2.24rem 0 0;
     height: 3.36rem;
     font-size: 2.24rem;
   }
 
-  .submit-error {
+  .text-submission-error {
     font-size: 1.68rem;
   }
 
-  .popup-inner.login-popup {
+  .popup-inner.popup-login {
     padding: 5.6rem;
   }
 
@@ -1117,11 +998,11 @@ h3 {
     height: 3.36rem;
   }
   
-  .login-footer {
+  .wrap-login-footer {
     margin-top: 2.24rem;
   }
   
-  .footer-text {
+  .wrap-footer-text {
     font-size: 1.68rem;
   }
 
@@ -1199,55 +1080,55 @@ h3 {
     font-size: 1.456rem;
   }
 
-  .dropbtn.user-opts {
+  .btn-dropdown.user-opts {
     padding: 0.77rem 0.77rem 0.98rem;
     font-size: 1.568rem;
   }
 }
 
 @media only screen and (min-width: 1441px) {
-  .timer-frame {
+  .wrap-timer-frame {
     min-height: 57.624rem;
     min-width: 57.624rem;
   }
   
-  .focusBlock-container {
+  .wrap-focus-icons {
     gap: 1.568rem;
   }
   
-  .focus-text {
+  .text-focus-icons {
     font-size: 1.881rem;
   }
   
-  .timerContainer {
+  .card-timer-container {
     grid-template-columns: 15.288rem 15.288rem 15.288rem;
     grid-template-rows: 2.94rem 23.52rem 4.704rem;
     margin: 5.88rem 0;
   }
   
-  .button-timeBlock {
+  .btn-time-block {
     font-size: 2.058rem;
   }
   
-  .timeBlock-clicked {
+  .wrap-time-block-selected {
     font-size: 2.352rem;
     padding: 0.588rem;
   }
 
-  .stopAndGoButton {
+  .btn-stop-and-go {
     padding: 1.176rem 2.94rem 0.588rem;
     font-size: 2.744rem;
   }
 
-  .resetButton {
+  .btn-reset {
     font-size: 2.744rem;
   }
   
-  .skipButton {
+  .btn-skip {
     font-size: 2.744rem;
   }
 
-  .focus-lemon {
+  .icon-focus-lemon {
     font-size: 2.352rem;
   }
 
@@ -1272,64 +1153,64 @@ h3 {
     font-size: 5.488rem;
   }
 
-  .timeDisplay {
+  .heading-time-display {
     font-size: 15.288rem;
   }
 
-  .dropbtn {
+  .btn-dropdown {
     font-size: 4.704rem;
   }
 
-  .dropdown-content {
+  .wrap-dropdown-content {
     min-width: 235px;
   }
 
-  .dropdown-content .dropdown-content-option {
+  .wrap-dropdown-content .wrap-dropdown-content-option {
     padding: 1.411rem 1.568rem;
   }
 
-  .dropdown-content-option > p {
+  .wrap-dropdown-content-option > p {
     font-size: 2.352rem;
     padding: 0.470rem;
   }
 
-  .task-container-heading {
+  .heading-task-container {
     font-size: 4.704rem;
   }
 
-  .taskCard-mainLine {
+  .wrap-task-mainline {
     margin: 1.568rem 1.568rem 0.784rem;
   }
   
-  .task-card-heading {
+  .heading-task {
     font-size: 3.136rem;
   }
   
-  .duration {
+  .text-duration {
     font-size: 3.136rem;
   }
 
-  .edit-button {
+  .btn-edit {
     font-size: 2.038rem;
   }
 
-  .taskNotes {
+  .input-task-notes {
     padding: 1.254rem 2.352rem;
     margin: 0.784rem 1.568rem;
     font-size: 2.352rem;
   }
 
-  .settings-save {
+  .btn-settings-save {
     margin: 3.136rem 0 0;
     height: 4.704rem;
     font-size: 3.136rem;
   }
 
-  .submit-error {
+  .text-submission-error {
     font-size: 2.352rem;
   }
 
-  .popup-inner.login-popup {
+  .popup-inner.popup-login {
     padding: 7.84rem;
   }
 
@@ -1349,11 +1230,11 @@ h3 {
     height: 4.704rem;
   }
   
-  .login-footer {
+  .wrap-login-footer {
     margin-top: 3.136rem;
   }
   
-  .footer-text {
+  .wrap-footer-text {
     font-size: 2.352rem;
   }
 
@@ -1431,7 +1312,7 @@ h3 {
     font-size: 2.038rem;
   }
 
-  .dropbtn.user-opts {
+  .btn-dropdown.user-opts {
     padding: 1.078rem 1.078rem 1.372rem;
     font-size: 2.195rem;
   }

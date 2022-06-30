@@ -17,7 +17,7 @@ const AccountConfirmed = ({ setShowLogin }) => {
       <div className='popup-inner verification-popup'>
           <h3>Confirmation Successful!</h3>
           <Link to={'/'} >
-            <button className='altForm-button' onClick={handleClick}>Please Login</button>
+            <button className='btn-alt-form' onClick={handleClick}>Please Login</button>
           </Link>
       </div>
     </div>

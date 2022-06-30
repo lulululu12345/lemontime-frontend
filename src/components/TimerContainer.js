@@ -13,13 +13,13 @@ import { FaRegLemon, FaLemon } from 'react-icons/fa'
 
 const FocusIcon = () => {
   return (
-    <span className='focus-lemon'><FaRegLemon /></span>
+    <span className='icon-focus-lemon'><FaRegLemon /></span>
   )
 }
 
 const FocusIconComplete = () => {
   return (
-    <span className='focus-lemon'><FaLemon /></span>
+    <span className='icon-focus-lemon'><FaLemon /></span>
   )
 }
 
@@ -50,13 +50,13 @@ const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock
   }, [completedFocusBlocks, longBreakInterval])
 
   return (
-    <div className='timer-frame'>
-      <p className='focus-text'>Focus:</p>
-      <div className='focusBlock-container'>
+    <div className='wrap-timer-frame'>
+      <p className='text-focus-icons'>Focus:</p>
+      <div className='wrap-focus-icons'>
         {focusIcons}
       </div>
-      <div className='timerContainer'>
-        <div className='pomodoro-wrapper'>
+      <div className='card-timer-container'>
+        <div className='wrap-pomodoro'>
           <TimeBlockButton
             setStart={setStart}
             setTime={setTime}
@@ -66,7 +66,7 @@ const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock
             text='Pomodoro'
           />
         </div>
-        <div className='shortBreak-wrapper'>
+        <div className='wrap-short-break'>
           <TimeBlockButton
             setStart={setStart}
             setTime={setTime}
@@ -76,7 +76,7 @@ const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock
             text='Short Break'
           />
         </div>
-        <div className='longBreak-wrapper'>
+        <div className='wrap-long-break'>
           <TimeBlockButton
             setStart={setStart}
             setTime={setTime}
@@ -106,7 +106,7 @@ const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock
           tasks={tasks}
           setTasks={setTasks}
         />
-        <div className='reset-wrapper'>
+        <div className='wrap-reset'>
           <ResetButton 
             time={time} 
             setTime={setTime} 
@@ -118,7 +118,7 @@ const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock
           start={start}
           setStart={setStart}
         />
-        <div className='skip-wrapper'>
+        <div className='wrap-skip'>
           <SkipButton 
             start={start} 
             setStart={setStart} 

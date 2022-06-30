@@ -7,7 +7,7 @@ const PasswordReset = ({ setShowLogin }) => {
 
   return (
     <div className='popup'>
-      <div className='popup-inner login-popup'>
+      <div className='popup-inner popup-login'>
         {successful
           ? <PasswordResetSuccess setShowLogin={setShowLogin} />
           : <PasswordResetForm setSuccessful={setSuccessful} />
@@ -87,7 +87,7 @@ const PasswordResetForm = ({ setSuccessful }) => {
         ? <p className='error'>Passwords do not match</p>
         : null
       }
-      <button className='settings-save' type='submit'>Submit</button>
+      <button className='btn-settings-save' type='submit'>Submit</button>
     </form>
   )
 }
@@ -99,10 +99,10 @@ const PasswordResetSuccess = ({ setShowLogin }) => {
   }
 
   return (
-    <div className='resetSuccess'>
+    <div className='wrap-reset-success'>
       <h2 className='heading-error-text'>Password reset successful!</h2>
       <Link to={'/'} >
-        <button className='footer-text altForm-button' onClick={handleClick}>Please Login</button>
+        <button className='wrap-footer-text btn-alt-form' onClick={handleClick}>Please Login</button>
       </Link>
     </div>
   )

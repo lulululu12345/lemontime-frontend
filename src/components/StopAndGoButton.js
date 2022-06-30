@@ -5,7 +5,7 @@ import ReactAudioPlayer from 'react-audio-player'
 
 // StopAndGoButton component for starting and stopping the timer
 const StopAndGoButton = ({ start, setStart }) => {
-  const [className, setClassName] = useState('button stopAndGoButton')
+  const [className, setClassName] = useState('button btn-stop-and-go')
   const [audio] = useState(new Audio(startStopMp3))
   const [playing, setPlaying] = useState(false)
 
@@ -15,7 +15,7 @@ const StopAndGoButton = ({ start, setStart }) => {
   }
 
   useEffect(() => {
-    start ? setClassName('button stopAndGoButton stopAndGoStopper') : setClassName('button stopAndGoButton')
+    start ? setClassName('button btn-stop-and-go btn-stop') : setClassName('button btn-stop-and-go')
   }, [start])
 
   useEffect(() => {

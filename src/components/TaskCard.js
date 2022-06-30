@@ -14,7 +14,7 @@ const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, 
       setClasses('')
     }
     if (classes === '') {
-      setClasses('taskCard-selected')
+      setClasses('card-task-selected')
     }
   }
 
@@ -22,11 +22,11 @@ const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, 
     setShowTaskForm(true)
   }
   
-  // if (selectedTask === taskName) setClasses('taskCard-selected')
+  // if (selectedTask === taskName) setClasses('card-task-selected')
 
   if (showTaskForm) {
     return (
-      <div className={`taskCard ${classes}`} onClick={onCardClick} id={taskName} >
+      <div className={`card-task ${classes}`} onClick={onCardClick} id={taskName} >
         <EditTask 
           taskId={taskId}
           tasks={tasks}
@@ -45,16 +45,16 @@ const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, 
   else {
     return (
       <div className={classes}>
-        <div className='taskCard' onClick={onCardClick} id={taskName} >
-          <div className='taskCard-mainLine'>
-            <h3 id={taskName} className='task-card-heading'>{taskName}</h3>
-            <div className='taskCard-settings'>
-              <p className='duration' id={taskName}>{blocksCompleted}/{taskDur}</p>
-              <button onClick={onEditClick} className='edit-button'><MdEdit/></button>
+        <div className='card-task' onClick={onCardClick} id={taskName} >
+          <div className='wrap-task-mainline'>
+            <h3 id={taskName} className='heading-task'>{taskName}</h3>
+            <div className='wrap-task-settings'>
+              <p className='text-duration' id={taskName}>{blocksCompleted}/{taskDur}</p>
+              <button onClick={onEditClick} className='btn-edit'><MdEdit/></button>
             </div>
           </div>
           {taskNote.length !== 0
-            ? <TextareaAutosize id={taskName} className='taskNotes' value={taskNote} readOnly/>
+            ? <TextareaAutosize id={taskName} className='input-task-notes' value={taskNote} readOnly/>
             : <></>
           }
         </div>

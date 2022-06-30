@@ -167,53 +167,53 @@ const SettingsForm = ({ formSubmit, setFormSubmit, setStart, pomodoroValue, setP
   
   return (
     <div className='popup'>
-        <div className='popup-inner settings-popup'>
-          <form className='settings-container' onSubmit={onSubmitSettings}>
+        <div className='popup-inner popup-settings'>
+          <form className='form-settings-container' onSubmit={onSubmitSettings}>
 
-            <h2 className='settings-header'>Settings</h2>
+            <h2 className='heading-settings'>Settings</h2>
             
             {invalidInput
-              ? <p className='submit-error'>All time blocks must be given a value!</p>
+              ? <p className='text-submission-error'>All time blocks must be given a value!</p>
               : null
             }
 
-            <h3 className='settings-section'>Time</h3>
+            <h3 className='heading-settings-sub'>Time</h3>
 
-            <div className='settings-item'>
-              <label className='settings-label' >Pomodoro</label>
+            <div className='wrap-settings-item'>
+              <label className='input-label-settings' >Pomodoro</label>
               <FocusDurationInput numBoxValue={pomodoroValue}   setNumBoxValue={setPomodoroValue} setInvalidInput={setInvalidInput}   labelText='Pomodoro'/>
             </div>
 
-            <div className='settings-item'>
-              <label className='settings-label'>Short Break</label>
+            <div className='wrap-settings-item'>
+              <label className='input-label-settings'>Short Break</label>
               <FocusDurationInput numBoxValue={shortBreakValue} setNumBoxValue={setShortBreakValue} setInvalidInput={setInvalidInput} labelText='Short Break'/>
             </div>
 
-            <div className='settings-item'>
-              <label className='settings-label'>Long Break</label>
+            <div className='wrap-settings-item'>
+              <label className='input-label-settings'>Long Break</label>
               <FocusDurationInput numBoxValue={longBreakValue}  setNumBoxValue={setLongBreakValue} setInvalidInput={setInvalidInput}  labelText='Long Break'/>
             </div>
             
-            <div className='settings-item section-end'>
-              <label className='settings-label' >Long Break Interval</label>
+            <div className='wrap-settings-item section-end'>
+              <label className='input-label-settings' >Long Break Interval</label>
               <LongBreakSchedule longBreakIntervalValue={longBreakIntervalValue} setLongBreakIntervalValue={setLongBreakIntervalValue}/>  
             </div>
 
-            <h3 className='settings-section'>Upon Completion</h3>
+            <h3 className='heading-settings-sub'>Upon Completion</h3>
 
-            <div className='settings-item'>  
-              <label className='settings-label'>Auto Run Breaks</label>
-              <AutoRunBox className='settings-input settings-checkbox' checkboxValue={autoBreakCheckbox}    setCheckboxValue={setAutoBreakCheckbox}    labelText={'Auto Run Breaks'} />
+            <div className='wrap-settings-item'>  
+              <label className='input-label-settings'>Auto Run Breaks</label>
+              <AutoRunBox className='input-settings input-settings-checkbox' checkboxValue={autoBreakCheckbox}    setCheckboxValue={setAutoBreakCheckbox}    labelText={'Auto Run Breaks'} />
             </div>
             
-            <div className='settings-item section-end'>
-              <label className='settings-label' >Auto Run Pomodoros</label>
-              <AutoRunBox className='settings-input settings-checkbox' checkboxValue={autoPomodoroCheckbox} setCheckboxValue={setAutoPomodoroCheckbox} labelText={'Auto Run Pomodoros'} />
+            <div className='wrap-settings-item section-end'>
+              <label className='input-label-settings' >Auto Run Pomodoros</label>
+              <AutoRunBox className='input-settings input-settings-checkbox' checkboxValue={autoPomodoroCheckbox} setCheckboxValue={setAutoPomodoroCheckbox} labelText={'Auto Run Pomodoros'} />
             </div>
 
-            <input className='settings-save' type='submit' value='Save' />
+            <input className='btn-settings-save' type='submit' value='Save' />
           </form>
-            <button className='btn-close login-close' onClick={onClickSettings}><CgClose size={14}/></button>
+            <button className='btn-close btn-login-close' onClick={onClickSettings}><CgClose size={14}/></button>
         </div>
       </div>
   )

@@ -25,9 +25,9 @@ const TaskContainer = ({ selectedTask, setSelectedTask, tasks, setTasks, login, 
     ) 
   })
   return (
-    <div className='task-container-primary'>
-      <div className='task-container-header'>
-        <h2 className='task-container-heading'>Tasks</h2>
+    <div className='section-task-container'>
+      <div className='wrap-task-container-header'>
+        <h2 className='heading-task-container'>Tasks</h2>
         <TaskOptions 
           user={user}
           tasks={tasks}
