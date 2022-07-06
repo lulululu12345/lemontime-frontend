@@ -102,7 +102,7 @@ h3 {
   border-radius: 6px;
 }
 
-.verification-popup {
+.popup-verification {
   display: flex;
   flex-direction: column;
   justify-content: center;
