@@ -21,7 +21,7 @@ const DeleteAccount = ({ setDeletePopup, setUser, setTasks }) => {
   }
   return (
     <div className='popup'>
-    <div className='popup-inner popup-login'>
+    <div className='popup-inner'>
       <h2 className='heading-error-text'>Are you sure you want to delete your account?</h2>
       <div className='wrap-delete-account-buttons'>
         <button className='btn-delete-account btn-no' onClick={handleClick}>No</button>

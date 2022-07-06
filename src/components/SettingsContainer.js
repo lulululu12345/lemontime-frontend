@@ -167,7 +167,7 @@ const SettingsForm = ({ formSubmit, setFormSubmit, setStart, pomodoroValue, setP
   
   return (
     <div className='popup'>
-        <div className='popup-inner popup-settings'>
+        <div className='popup-inner'>
           <form className='form-settings-container' onSubmit={onSubmitSettings}>
 
             <h2 className='heading-settings'>Settings</h2>

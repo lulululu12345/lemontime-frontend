@@ -53,7 +53,7 @@ const SaveTemplate = ({ user, tasks, toggleError, setToggleError }) => {
     }
     return (
       <div className='popup'>
-        <div className='popup-inner popup-login'>
+        <div className='popup-inner'>
           <form className='form-login-container' onSubmit={submitTemplateSaveForm} key='templateNameForm' >
             <h2 className='heading-login'>Save Template</h2>
             <input className='input-login' type='text' placeholder='Template Name' value={templateName}  onChange={handleTemplateNameChange} />

@@ -114,7 +114,7 @@ const LoginForm = ({ setUser, setForm }) => {
 
   return (
     <div className='popup'>
-      <div className='popup-inner popup-login'>
+      <div className='popup-inner'>
         <form className='form-login-container' onSubmit={handleLogin}>
           <h3 className='heading-login'>Login</h3>
           {loginError
@@ -188,7 +188,7 @@ const ForgotPassword = ({ setForm }) => {
 
   return (
     <div className='popup'>
-      <div className='popup-inner popup-login'>
+      <div className='popup-inner'>
         <form className='form-login-container' onSubmit={handleSubmit}>
           <h2 className='heading-error-text'>Enter your email</h2>
           <input 
@@ -295,7 +295,7 @@ const SignupForm = ({ setForm, setUser }) => {
   
   return (
     <div className='popup'>
-      <div className='popup-inner popup-login'>
+      <div className='popup-inner'>
         <form className='form-login-container' onSubmit={handleSubmit}>
           <h3 className='heading-login'>Sign-up</h3>
           {signupError

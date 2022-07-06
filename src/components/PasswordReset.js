@@ -7,7 +7,7 @@ const PasswordReset = ({ setShowLogin }) => {
 
   return (
     <div className='popup'>
-      <div className='popup-inner popup-login'>
+      <div className='popup-inner'>
         {successful
           ? <PasswordResetSuccess setShowLogin={setShowLogin} />
           : <PasswordResetForm setSuccessful={setSuccessful} />

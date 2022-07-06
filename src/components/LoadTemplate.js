@@ -69,7 +69,7 @@ const Templates = ({ setTasks, setToggleForm }) => {
 
   return (
     <div className='popup'>
-      <div className='popup-inner popup-login'>
+      <div className='popup-inner'>
         <div className='wrap-load-template-header'>
           <h2 className='heading-load-template'>Templates</h2>
           <button className='btn-load-template-edit'>Edit</button>
