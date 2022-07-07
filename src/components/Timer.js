@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import timeoutMp3 from '../assets/audio/timeout-1.mp3'
-import ReactAudioPlayer from 'react-audio-player'
 
 const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTimeBlock, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog, selectedTask, setSelectedTask, tasks, setTasks }) => {
-  const [audio] = useState(new Audio(timeoutMp3))
-  const [playing, setPlaying] = useState(false)
-
   // Stop countdown when timer reaches zero and add completed TimeBlock to log
   useEffect(() => {
     // If the time prop has reached 0 (timer has completed)
@@ -123,7 +118,6 @@ const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTim
       <div className='wrap-time-display'>
         <h2 className='heading-time-display'>{`${calcMinutes()}:${calcSeconds()}`}</h2>
       </div>
-      <ReactAudioPlayer src={timeoutMp3} />
     </>
   )
 }
