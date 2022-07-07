@@ -7,8 +7,6 @@ const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTim
     if (time === 0) {
       // Stop the timer
       setStart(false)
-      // Play the alarm sound
-      // audio.play()
       // If the timer just completed a pomodoro
       if (currentTimeBlock.type === 'work') {
         // Iterate over the tasks array, find the selected task and increase the blocksCompleted value by one
