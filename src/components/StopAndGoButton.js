@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import { FaPlay, FaStop, FaPause } from 'react-icons/fa'
+import { FaPlay, FaPause } from 'react-icons/fa'
 
 // StopAndGoButton component for starting and stopping the timer
-const StopAndGoButton = ({ start, setStart }) => {
+const StopAndGoButton = ({ runWorker, start, setStart }) => {
   const [className, setClassName] = useState('button btn-stop-and-go')
-  const [playing, setPlaying] = useState(false)
 
   const onClickStopAndGo = () => {
-    setStart(!start)
-    setPlaying(!playing)
+    if (start === false) {
+      runWorker('start-timer')
+      setStart(true)
+    } else if (start === true) {
+      runWorker('stop-timer')
+      setStart(false)
+    }
   }
-
+  
   useEffect(() => {
     start ? setClassName('button btn-stop-and-go btn-stop') : setClassName('button btn-stop-and-go')
   }, [start])

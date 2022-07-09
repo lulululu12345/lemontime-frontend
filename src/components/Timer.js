@@ -77,25 +77,25 @@ const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTim
     }
   }, [log])
 
-  // Effect hook for the decrementing timer every setInterval
-  useEffect(() => {
-    // Create an interval variable outside setInterval so that it will also be accessible to the return (unmount) statement at the end of the effect
-    let interval = null
-    // If the timer has been started
-    if (start) {
-      // Set the interval variable to a setInterval function which runs every 10 milliseconds
-      interval = setInterval(() => {
-        // Set the new time prop value by subtracting ten milliseconds from the previously stored value
-        setTime(prevTime => prevTime - 10)
-      }, 10)
-    } 
-    // If start is false, i.e. if the timer has been stopped, clear the interval so that it ceases to run
-    else {
-      clearInterval(interval)
-    }
-    // Clear the interval when the component is unmounted
-    return () => clearInterval(interval)
-  }, [start])
+  // // Effect hook for decrementing timer every setInterval
+  // useEffect(() => {
+  //   // Create an interval variable outside setInterval so that it will also be accessible to the return (unmount) statement at the end of the effect
+  //   let interval = null
+  //   // If the timer has been started
+  //   if (start) {
+  //     // Set the interval variable to a setInterval function which runs every 10 milliseconds
+  //     interval = setInterval(() => {
+  //       // Set the new time prop value by subtracting ten milliseconds from the previously stored value
+  //       setTime(prevTime => prevTime - 10)
+  //     }, 10)
+  //   } 
+  //   // If start is false, i.e. if the timer has been stopped, clear the interval so that it ceases to run
+  //   else {
+  //     clearInterval(interval)
+  //   }
+  //   // Clear the interval when the component is unmounted
+  //   return () => clearInterval(interval)
+  // }, [start])
 
   // Convert the time props millisecond value to minutes
   const calcMinutes = () => {

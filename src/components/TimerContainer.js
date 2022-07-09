@@ -23,7 +23,7 @@ const FocusIconComplete = () => {
   )
 }
 
-const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock, time, setTime, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog, selectedTask, setSelectedTask, tasks, setTasks }) => {
+const TimerContainer = ({ runWorker, start, setStart, currentTimeBlock, setCurrentTimeBlock, time, setTime, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog, selectedTask, setSelectedTask, tasks, setTasks }) => {
   const [focusIcons, setFocusIcons] = useState([])
 
   const completedFocusBlocks = log.workCompleted % longBreakInterval
@@ -117,6 +117,7 @@ const TimerContainer = ({ start, setStart, currentTimeBlock, setCurrentTimeBlock
         <StopAndGoButton 
           start={start}
           setStart={setStart}
+          runWorker={runWorker}
         />
         <div className='wrap-skip'>
           <SkipButton 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import taskService from './services/tasks'
 import LoginContainer from './components/LoginContainer'
 import SettingsContainer from './components/SettingsContainer'
 import TimerContainer from './components/TimerContainer'
@@ -9,6 +8,9 @@ import PasswordReset from './components/PasswordReset'
 import { Outlet, Routes, Route } from 'react-router-dom'
 
 import './App.css'
+
+const worker = new window.Worker('./timer-worker.js')
+
 
 const App = () => {
   let localTasks = JSON.parse(localStorage.getItem('tasks')) || []
@@ -75,6 +77,28 @@ const App = () => {
     setReady(true)
   }, [])
 
+
+
+
+
+
+  // const [worker, setWorker] = useState()
+  
+  const runWorker = (message) => {
+    worker.postMessage(message)
+    worker.onmessage = (e) => {
+      const result = e.data
+      console.log('worker -> main thread: ', result)
+    }
+  }
+
+
+
+
+
+
+  
+
   return (
     <div className='App' style={{ visibility: ready ? 'visible' : 'hidden' }}>
       <header className='primary-header'>
@@ -140,6 +164,7 @@ const App = () => {
         setSelectedTask={setSelectedTask}
         tasks={tasks}
         setTasks={setTasks}
+        runWorker={runWorker}
       />
       <TaskContainer 
         selectedTask={selectedTask}
