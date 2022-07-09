@@ -109,7 +109,13 @@ const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTim
   const calcSeconds = () => {
     return ('0' + Math.floor((time / 1000) % 60)).slice(-2)
   }
-  
+
+  if (start) {
+    document.title = (`${calcMinutes()}:${calcSeconds()} - Lemontime`)
+  } else {
+    document.title = 'Lemontime'
+  }
+
   // Display the time props remaining minutes and seconds
   return (
     <>
