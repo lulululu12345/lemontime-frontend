@@ -77,27 +77,14 @@ const App = () => {
     setReady(true)
   }, [])
 
-
-
-
-
-
-  // const [worker, setWorker] = useState()
-  
   const runWorker = (message) => {
     worker.postMessage(message)
     worker.onmessage = (e) => {
       const result = e.data
       console.log('worker -> main thread: ', result)
+      if (result === 'tick') setTime(prevTime => prevTime - 1000)
     }
   }
-
-
-
-
-
-
-  
 
   return (
     <div className='App' style={{ visibility: ready ? 'visible' : 'hidden' }}>
