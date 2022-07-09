@@ -211,7 +211,7 @@ const SettingsForm = ({ formSubmit, setFormSubmit, setStart, pomodoroValue, setP
               <AutoRunBox className='input-settings input-settings-checkbox' checkboxValue={autoPomodoroCheckbox} setCheckboxValue={setAutoPomodoroCheckbox} labelText={'Auto Run Pomodoros'} />
             </div>
 
-            <input className='btn-settings-save' type='submit' value='Save' />
+            <input className='btn-submit' type='submit' value='Save' />
           </form>
             <button className='btn-close btn-login-close' onClick={onClickSettings}><CgClose size={14}/></button>
         </div>

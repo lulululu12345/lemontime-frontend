@@ -139,7 +139,7 @@ const LoginForm = ({ setUser, setForm }) => {
             onChange={({target}) => setPassword(target.value)}
             required
           />
-          <button className='btn-settings-save' type='submit'>Submit</button>
+          <button className='btn-submit' type='submit'>Submit</button>
         </form>
         <div className='wrap-login-footer'>
           <span className='wrap-footer-text'>Don't have an account? <button className='btn-alt-form' onClick={toggleSignup}>Sign-up!</button></span>
@@ -203,7 +203,7 @@ const ForgotPassword = ({ setForm }) => {
             ? <p className='text-login-error'>{errorMessage}</p>
             : null
           }
-          <button className='btn-settings-save' type='submit'>Submit</button>
+          <button className='btn-submit' type='submit'>Submit</button>
         </form>
         <button className='btn-close btn-login-close' onClick={handleClose}><CgClose size={14}/></button>
       </div>
@@ -330,7 +330,7 @@ const SignupForm = ({ setForm, setUser }) => {
             ? <p className='text-error'>Passwords do not match</p>
             : null
           }
-          <button className='btn-settings-save' type='submit'>Submit</button>
+          <button className='btn-submit' type='submit'>Submit</button>
         </form>
         <div className='wrap-login-footer'>
           <span className='wrap-footer-text'>Already have an account? <button className='btn-alt-form' onClick={toggleLogin} >Login!</button></span>

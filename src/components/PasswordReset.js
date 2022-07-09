@@ -87,7 +87,7 @@ const PasswordResetForm = ({ setSuccessful }) => {
         ? <p className='error'>Passwords do not match</p>
         : null
       }
-      <button className='btn-settings-save' type='submit'>Submit</button>
+      <button className='btn-submit' type='submit'>Submit</button>
     </form>
   )
 }
