@@ -51,15 +51,11 @@ const App = () => {
       } 
     })
 
-  
-
   const [currentTimeBlock, setCurrentTimeBlock] = useState(pomodoro)
   const [time, setTime] = useState(currentTimeBlock.durMs)
   const [start, setStart] = useState(false)
-
   const [autoBreak, setAutoBreak] = useState(JSON.parse(localStorage.getItem('autoBreak')) || false)
   const [autoPomodoro, setAutoPomodoro] = useState(JSON.parse(localStorage.getItem('autoPomodoro')) || false)
-
   const [longBreakInterval, setLongBreakInterval] = useState(JSON.parse(localStorage.getItem('longBreakInterval')) || 4)
   const [selectedTask, setSelectedTask] = useState(false)
   const [log, setLog] = 
