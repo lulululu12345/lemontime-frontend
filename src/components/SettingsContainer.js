@@ -5,7 +5,7 @@ import AutoRunBox from './AutoRunBox'
 
 import { CgClose } from 'react-icons/cg'
 
-const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, setAutoBreak, setAutoPomodoro, longBreakInterval, setLongBreakInterval }) => {
+const SettingsContainer = ({ autoBreak, autoPomodoro, setStart, currentTimeBlock, setCurrentTimeBlock, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, setAutoBreak, setAutoPomodoro, longBreakInterval, setLongBreakInterval }) => {
   // State hooks
   const [showSettings, setShowSettings] = useState(false)
   const [pomodoroValue, setPomodoroValue] = useState('25')
@@ -23,8 +23,8 @@ const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, se
     setShortBreakValue(shortBreak.durMins)
     setLongBreakValue(longBreak.durMins)
     setLongBreakIntervalValue(longBreakInterval)
-    setAutoBreakCheckbox(JSON.parse(localStorage.getItem('autoBreak')))
-    setAutoPomodoroCheckbox(JSON.parse(localStorage.getItem('autoPomodoro')))
+    setAutoBreakCheckbox(`${autoBreak}`)
+    setAutoPomodoroCheckbox(`${autoPomodoro}`)
   }
 
   // After the settings form submission, timer display is updated with the new duration supplied in the settings form
@@ -94,15 +94,8 @@ const SettingsContainer = ({ setStart, currentTimeBlock, setCurrentTimeBlock, se
   )
 }
 
-const SettingsForm = ({ formSubmit, setFormSubmit, setStart, pomodoroValue, setPomodoroValue, shortBreakValue, setShortBreakValue, longBreakValue, setLongBreakValue, longBreakIntervalValue, setLongBreakIntervalValue, longBreakInterval, autoBreakCheckbox, autoPomodoroCheckbox, setPomodoro, setShortBreak, setLongBreak, setAutoBreak, setAutoPomodoro, setLongBreakInterval, setShowSettings, showSettings, currentTimeBlock, setCurrentTimeBlock, pomodoro, setTime, shortBreak, longBreak, setAutoBreakCheckbox, setAutoPomodoroCheckbox, onClickSettings }) => {
+const SettingsForm = ({ autoBreak, autoPomodoro, formSubmit, setFormSubmit, setStart, pomodoroValue, setPomodoroValue, shortBreakValue, setShortBreakValue, longBreakValue, setLongBreakValue, longBreakIntervalValue, setLongBreakIntervalValue, longBreakInterval, autoBreakCheckbox, autoPomodoroCheckbox, setPomodoro, setShortBreak, setLongBreak, setAutoBreak, setAutoPomodoro, setLongBreakInterval, setShowSettings, showSettings, currentTimeBlock, setCurrentTimeBlock, pomodoro, setTime, shortBreak, longBreak, setAutoBreakCheckbox, setAutoPomodoroCheckbox, onClickSettings }) => {
   const [invalidInput, setInvalidInput] = useState(false)
-
-  useEffect(() => {
-    if (invalidInput) {
-
-    }
-  }, [invalidInput])
-
   // When the settings are saved
   const onSubmitSettings = (event) => {
     // Prevent default form submission behaviour
@@ -117,8 +110,11 @@ const SettingsForm = ({ formSubmit, setFormSubmit, setStart, pomodoroValue, setP
     localStorage.setItem('shortBreak', JSON.stringify(shortBreakValue))
     localStorage.setItem('longBreak', JSON.stringify(longBreakValue))
     localStorage.setItem('longBreakInterval', JSON.stringify(longBreakIntervalValue))
-    localStorage.setItem('autoBreak', JSON.stringify(autoBreakCheckbox))
-    localStorage.setItem('autoPomodoro', JSON.stringify(autoPomodoroCheckbox))
+
+    // checkbox values are stored as strings, turn them into a boolean true or false before storing
+    const checkBoxBoolean = box => (box === 'true') ? true : false
+    localStorage.setItem('autoBreak', JSON.stringify(checkBoxBoolean(autoBreakCheckbox)))
+    localStorage.setItem('autoPomodoro', JSON.stringify(checkBoxBoolean(autoPomodoroCheckbox)))
     // Set the pomodoro prop to a new object using the duration value supplied in the settings form
     setPomodoro({ 
       name: 'pomodoro',
@@ -172,10 +168,7 @@ const SettingsForm = ({ formSubmit, setFormSubmit, setStart, pomodoroValue, setP
 
             <h2 className='heading-settings'>Settings</h2>
             
-            {invalidInput
-              ? <p className='text-submission-error'>All time blocks must be given a value!</p>
-              : null
-            }
+            {invalidInput && <p className='text-submission-error'>All time blocks must be given a value!</p>}
 
             <h3 className='heading-settings-sub'>Time</h3>
 

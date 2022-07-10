@@ -13,18 +13,10 @@ const worker = new window.Worker('./timer-worker.js')
 
 
 const App = () => {
-  let localTasks = JSON.parse(localStorage.getItem('tasks')) || []
-  let localPomodoro = JSON.parse(localStorage.getItem('pomodoro')) || 25
-  let localShortBreak = JSON.parse(localStorage.getItem('shortBreak')) || 5
-  let localLongBreak = JSON.parse(localStorage.getItem('longBreak')) || 10
-  let localAutoBreak = JSON.parse(localStorage.getItem('autoBreak')) || false
-  let localAutoPomodoro = JSON.parse(localStorage.getItem('autoPomodoro')) || false
-  let localLongBreakInterval = JSON.parse(localStorage.getItem('longBreakInterval')) || 4
-
   // localStorage.clear()
   const [showLogin, setShowLogin] = useState(false)
   const [user, setUser] = useState(null)
-  const [tasks, setTasks] = useState(localTasks)
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || [])
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
@@ -35,7 +27,7 @@ const App = () => {
     useState({ 
       name: 'pomodoro',
       type: 'work', 
-      durMins: localPomodoro, 
+      durMins: JSON.parse(localStorage.getItem('pomodoro')) || 25, 
       get durMs(){
         return this.durMins * 60000
       }
@@ -44,7 +36,7 @@ const App = () => {
     useState({ 
       name: 'shortBreak', 
       type: 'break',
-      durMins: localShortBreak, 
+      durMins: JSON.parse(localStorage.getItem('shortBreak')) || 5, 
       get durMs(){
         return this.durMins * 60000
       } 
@@ -53,18 +45,22 @@ const App = () => {
     useState({ 
       name: 'longBreak', 
       type: 'break',
-      durMins: localLongBreak, 
+      durMins: JSON.parse(localStorage.getItem('longBreak')) || 10, 
       get durMs(){
         return this.durMins * 60000
       } 
     })
 
+  
+
   const [currentTimeBlock, setCurrentTimeBlock] = useState(pomodoro)
   const [time, setTime] = useState(currentTimeBlock.durMs)
   const [start, setStart] = useState(false)
-  const [autoBreak, setAutoBreak] = useState(localAutoBreak)
-  const [autoPomodoro, setAutoPomodoro] = useState(localAutoPomodoro)
-  const [longBreakInterval, setLongBreakInterval] = useState(localLongBreakInterval)
+
+  const [autoBreak, setAutoBreak] = useState(JSON.parse(localStorage.getItem('autoBreak')) || false)
+  const [autoPomodoro, setAutoPomodoro] = useState(JSON.parse(localStorage.getItem('autoPomodoro')) || false)
+
+  const [longBreakInterval, setLongBreakInterval] = useState(JSON.parse(localStorage.getItem('longBreakInterval')) || 4)
   const [selectedTask, setSelectedTask] = useState(false)
   const [log, setLog] = 
     useState({

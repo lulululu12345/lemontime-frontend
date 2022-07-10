@@ -8,7 +8,7 @@ const AutoRunBox = ({ checkboxValue, setCheckboxValue, className }) => {
     if (eventValue === 'false') return setCheckboxValue('true')
   }
 
-  return <input className={className} type='checkbox' value={checkboxValue} onChange={handleCheckboxChange} checked={(checkboxValue === 'true') ? true : false} />
+  return <input className={className} type='checkbox' value={checkboxValue || 'false'} onChange={handleCheckboxChange} checked={(checkboxValue === 'true') ? true : false} />
 }
 
 export default AutoRunBox
