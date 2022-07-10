@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import TimeBlockButton from './TimeBlockButton'
 import Timer from './Timer'
-import TransportCtrl from './TransportCtrl'
 import SkipButton from './SkipButton'
 import StopAndGoButton from './StopAndGoButton'
 import ResetButton from './ResetButton'
+import { useTimer } from '../useTimer'
 
 import { FaRegLemon, FaLemon } from 'react-icons/fa'
 
@@ -23,9 +23,28 @@ const FocusIconComplete = () => {
   )
 }
 
-const TimerContainer = ({ runWorker, start, setStart, currentTimeBlock, setCurrentTimeBlock, time, setTime, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog, selectedTask, setSelectedTask, tasks, setTasks }) => {
-  const [focusIcons, setFocusIcons] = useState([])
+const TimerContainer = ({ runWorker }) => {
+  
+  const { start, 
+          setStart, 
+          currentTimeBlock, 
+          setCurrentTimeBlock, 
+          time, 
+          setTime, 
+          pomodoro, 
+          shortBreak, 
+          longBreak, 
+          autoBreak, 
+          autoPomodoro, 
+          longBreakInterval, 
+          log, 
+          setLog, 
+          selectedTask, 
+          setSelectedTask, 
+          tasks, 
+          setTasks } = useTimer()
 
+  const [focusIcons, setFocusIcons] = useState([])
   const completedFocusBlocks = log.workCompleted % longBreakInterval
 
   useEffect(() => {

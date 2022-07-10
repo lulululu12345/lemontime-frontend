@@ -2,18 +2,29 @@ import React, { useState, useEffect } from 'react'
 import FocusDurationInput from './FocusDurationInput'
 import LongBreakSchedule from './LongBreakSchedule'
 import AutoRunBox from './AutoRunBox'
+import { useTimer } from '../useTimer'
 
 import { CgClose } from 'react-icons/cg'
 
-const SettingsContainer = ({ autoBreak, autoPomodoro, setStart, currentTimeBlock, setCurrentTimeBlock, setTime, pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, setAutoBreak, setAutoPomodoro, longBreakInterval, setLongBreakInterval }) => {
+const SettingsContainer = () => {
+  // state from useTimer hook
+  const { autoBreak, 
+          autoPomodoro, 
+          currentTimeBlock, 
+          setCurrentTimeBlock, 
+          setTime, 
+          pomodoro, 
+          shortBreak, 
+          longBreak, 
+          longBreakInterval } = useTimer()
   // State hooks
   const [showSettings, setShowSettings] = useState(false)
   const [pomodoroValue, setPomodoroValue] = useState('25')
   const [shortBreakValue, setShortBreakValue] = useState('5')
   const [longBreakValue, setLongBreakValue] = useState('10')
+  const [longBreakIntervalValue, setLongBreakIntervalValue] = useState('4')
   const [autoBreakCheckbox, setAutoBreakCheckbox] = useState('false')
   const [autoPomodoroCheckbox, setAutoPomodoroCheckbox] = useState('false')
-  const [longBreakIntervalValue, setLongBreakIntervalValue] = useState('4')
   const [formSubmit, setFormSubmit] = useState(false)
 
   // Handler function for settings button. Used to toggle display of settings popup window.
@@ -54,48 +65,39 @@ const SettingsContainer = ({ autoBreak, autoPomodoro, setStart, currentTimeBlock
   return (
     <>
       <button className='link-button' onClick={onClickSettings}>Settings</button>
-      {showSettings
-        ? <SettingsForm 
-          setStart={setStart}
-          pomodoroValue={pomodoroValue}
-          setPomodoroValue={setPomodoroValue} 
-          shortBreakValue={shortBreakValue}
-          setShortBreakValue={setShortBreakValue}
-          longBreakValue={longBreakValue}
-          setLongBreakValue={setLongBreakValue}
-          longBreakIntervalValue={longBreakIntervalValue}
-          setLongBreakIntervalValue={setLongBreakIntervalValue}
-          longBreakInterval={longBreakInterval}
-          autoBreakCheckbox={autoBreakCheckbox}
-          autoPomodoroCheckbox={autoPomodoroCheckbox}
-          setPomodoro={setPomodoro}
-          setShortBreak={setShortBreak}
-          setLongBreak={setLongBreak}
-          setAutoBreak={setAutoBreak}
-          setAutoPomodoro={setAutoPomodoro}
-          setLongBreakInterval={setLongBreakInterval}
-          setShowSettings={setShowSettings}
-          showSettings={showSettings}
-          currentTimeBlock={currentTimeBlock}
-          setCurrentTimeBlock={setCurrentTimeBlock}
-          pomodoro={pomodoro}
-          setTime={setTime}
-          shortBreak={shortBreak}
-          longBreak={longBreak}
-          setAutoBreakCheckbox={setAutoBreakCheckbox} 
-          setAutoPomodoroCheckbox={setAutoPomodoroCheckbox}
-          onClickSettings={onClickSettings}
-          formSubmit={formSubmit}
-          setFormSubmit={setFormSubmit}
-        />
-        : <></>
-      }
+      {showSettings && <SettingsForm 
+        pomodoroValue={pomodoroValue}
+        setPomodoroValue={setPomodoroValue} 
+        shortBreakValue={shortBreakValue}
+        setShortBreakValue={setShortBreakValue}
+        longBreakValue={longBreakValue}
+        setLongBreakValue={setLongBreakValue}
+        longBreakIntervalValue={longBreakIntervalValue}
+        setLongBreakIntervalValue={setLongBreakIntervalValue}
+        autoBreakCheckbox={autoBreakCheckbox}
+        autoPomodoroCheckbox={autoPomodoroCheckbox}
+        setShowSettings={setShowSettings}
+        showSettings={showSettings}
+        setAutoBreakCheckbox={setAutoBreakCheckbox} 
+        setAutoPomodoroCheckbox={setAutoPomodoroCheckbox}
+        onClickSettings={onClickSettings}
+        formSubmit={formSubmit}
+        setFormSubmit={setFormSubmit}
+      />}
     </>
   )
 }
 
-const SettingsForm = ({ autoBreak, autoPomodoro, formSubmit, setFormSubmit, setStart, pomodoroValue, setPomodoroValue, shortBreakValue, setShortBreakValue, longBreakValue, setLongBreakValue, longBreakIntervalValue, setLongBreakIntervalValue, longBreakInterval, autoBreakCheckbox, autoPomodoroCheckbox, setPomodoro, setShortBreak, setLongBreak, setAutoBreak, setAutoPomodoro, setLongBreakInterval, setShowSettings, showSettings, currentTimeBlock, setCurrentTimeBlock, pomodoro, setTime, shortBreak, longBreak, setAutoBreakCheckbox, setAutoPomodoroCheckbox, onClickSettings }) => {
+const SettingsForm = ({ setFormSubmit, pomodoroValue, setPomodoroValue, shortBreakValue, setShortBreakValue, longBreakValue, setLongBreakValue, longBreakIntervalValue, setLongBreakIntervalValue, setShowSettings, showSettings, autoBreakCheckbox, setAutoBreakCheckbox, autoPomodoroCheckbox, setAutoPomodoroCheckbox, onClickSettings }) => {
   const [invalidInput, setInvalidInput] = useState(false)
+  // state from useTimer hook
+  const { setStart, 
+          setPomodoro, 
+          setShortBreak, 
+          setLongBreak, 
+          setAutoBreak, 
+          setAutoPomodoro, 
+          setLongBreakInterval } = useTimer()
   // When the settings are saved
   const onSubmitSettings = (event) => {
     // Prevent default form submission behaviour
@@ -111,7 +113,7 @@ const SettingsForm = ({ autoBreak, autoPomodoro, formSubmit, setFormSubmit, setS
     localStorage.setItem('longBreak', JSON.stringify(longBreakValue))
     localStorage.setItem('longBreakInterval', JSON.stringify(longBreakIntervalValue))
 
-    // checkbox values are stored as strings, turn them into a boolean true or false before storing
+    // checkbox values are stored as strings, turn them into a boolean true or false before putting in local storage
     const checkBoxBoolean = box => (box === 'true') ? true : false
     localStorage.setItem('autoBreak', JSON.stringify(checkBoxBoolean(autoBreakCheckbox)))
     localStorage.setItem('autoPomodoro', JSON.stringify(checkBoxBoolean(autoPomodoroCheckbox)))

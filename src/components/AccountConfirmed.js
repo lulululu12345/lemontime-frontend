@@ -1,8 +1,11 @@
 import React from 'react'
 import accountService from '../services/account'
 import { Link, useParams } from 'react-router-dom'
+import { useTimer } from '../useTimer'
 
-const AccountConfirmed = ({ setShowLogin }) => {
+const AccountConfirmed = () => {
+  const{ setShowLogin } = useTimer()
+
   let confirmation = useParams().confirmationCode
   if (confirmation) {
     accountService.verifyUser(confirmation)

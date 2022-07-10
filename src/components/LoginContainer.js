@@ -5,12 +5,13 @@ import loginService from '../services/login'
 import signupService from '../services/signup'
 import accountService from '../services/account'
 import UserOptions from './UserOptions'
-
+import { useTimer } from '../useTimer'
 
 import { CgClose } from 'react-icons/cg'
 import PopupMessage from './PopupMessage'
 
-const LoginContainer = ({ user, setUser, showLogin, setShowLogin, setTasks }) => {
+const LoginContainer = () => {
+  const { user, setUser, showLogin, setTasks } = useTimer()
   const [form, setForm] = useState(null)
   const [userOptions, setUserOptions] = useState(null)
 
@@ -25,7 +26,6 @@ const LoginContainer = ({ user, setUser, showLogin, setShowLogin, setTasks }) =>
   }, [])
 
   const toggleLogin = () => {
-    // setShowLogin(!showLogin)
     setForm(<Login setUser={setUser} setForm={setForm} />)
   }
 
