@@ -12,9 +12,11 @@ import './App.css'
 
 const worker = new window.Worker('./timer-worker.js')
 
+
 const App = () => {
   // localStorage.clear()
-  const { setReady, setTime, ready } = useTimer()
+const appState = useTimer()
+const { setReady, setTime, ready, time } = appState
 
   React.useEffect(() => {
     setReady(true)
@@ -28,7 +30,7 @@ const App = () => {
       if (result === 'tick') setTime(prevTime => prevTime - 1000)
     }
   }
-
+  console.log('time = ', time)
   return (
     <div className='App' style={{ visibility: ready ? 'visible' : 'hidden' }}>
       <header className='primary-header'>
@@ -38,20 +40,20 @@ const App = () => {
         <nav>
           <ul className='primary-navigation'>
             <li>
-              <SettingsContainer />
+              <SettingsContainer appState={appState} />
             </li>
             <li>
-              <LoginContainer />
+              <LoginContainer appState={appState} />
             </li>
           </ul>
         </nav>
       </header>
       <Routes>
-        <Route path='confirm/:confirmationCode' element={<AccountConfirmed />} />
-        <Route path='password-reset/:resetToken' element={<PasswordReset />} />
+        <Route path='confirm/:confirmationCode' element={<AccountConfirmed appState={appState} />} />
+        <Route path='password-reset/:resetToken' element={<PasswordReset appState={appState} />} />
       </Routes>
-      <TimerContainer runWorker={runWorker} />
-      <TaskContainer />
+      <TimerContainer runWorker={runWorker} appState={appState} />
+      <TaskContainer appState={appState} />
       <Outlet />
     </div>
   )

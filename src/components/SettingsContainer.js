@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react'
 import FocusDurationInput from './FocusDurationInput'
 import LongBreakSchedule from './LongBreakSchedule'
 import AutoRunBox from './AutoRunBox'
-import useTimer from '../useTimer'
 
 import { CgClose } from 'react-icons/cg'
 
-const SettingsContainer = () => {
+const SettingsContainer = ({ appState }) => {
   // state from useTimer hook
   const { autoBreak, 
           autoPomodoro, 
@@ -16,7 +15,8 @@ const SettingsContainer = () => {
           pomodoro, 
           shortBreak, 
           longBreak, 
-          longBreakInterval } = useTimer()
+          longBreakInterval } = appState
+
   // State hooks
   const [showSettings, setShowSettings] = useState(false)
   const [pomodoroValue, setPomodoroValue] = useState('25')
@@ -83,12 +83,13 @@ const SettingsContainer = () => {
         onClickSettings={onClickSettings}
         formSubmit={formSubmit}
         setFormSubmit={setFormSubmit}
+        appState={appState}
       />}
     </>
   )
 }
 
-const SettingsForm = ({ setFormSubmit, pomodoroValue, setPomodoroValue, shortBreakValue, setShortBreakValue, longBreakValue, setLongBreakValue, longBreakIntervalValue, setLongBreakIntervalValue, setShowSettings, showSettings, autoBreakCheckbox, setAutoBreakCheckbox, autoPomodoroCheckbox, setAutoPomodoroCheckbox, onClickSettings }) => {
+const SettingsForm = ({ appState, setFormSubmit, pomodoroValue, setPomodoroValue, shortBreakValue, setShortBreakValue, longBreakValue, setLongBreakValue, longBreakIntervalValue, setLongBreakIntervalValue, setShowSettings, showSettings, autoBreakCheckbox, setAutoBreakCheckbox, autoPomodoroCheckbox, setAutoPomodoroCheckbox, onClickSettings }) => {
   const [invalidInput, setInvalidInput] = useState(false)
   // state from useTimer hook
   const { setStart, 
@@ -97,7 +98,7 @@ const SettingsForm = ({ setFormSubmit, pomodoroValue, setPomodoroValue, shortBre
           setLongBreak, 
           setAutoBreak, 
           setAutoPomodoro, 
-          setLongBreakInterval } = useTimer()
+          setLongBreakInterval } = appState
   // When the settings are saved
   const onSubmitSettings = (event) => {
     // Prevent default form submission behaviour

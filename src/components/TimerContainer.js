@@ -4,7 +4,6 @@ import Timer from './Timer'
 import SkipButton from './SkipButton'
 import StopAndGoButton from './StopAndGoButton'
 import ResetButton from './ResetButton'
-import useTimer from '../useTimer'
 
 import { FaRegLemon, FaLemon } from 'react-icons/fa'
 
@@ -23,7 +22,7 @@ const FocusIconComplete = () => {
   )
 }
 
-const TimerContainer = ({ runWorker }) => {
+const TimerContainer = ({ runWorker, appState }) => {
   
   const { start, 
           setStart, 
@@ -42,7 +41,7 @@ const TimerContainer = ({ runWorker }) => {
           selectedTask, 
           setSelectedTask, 
           tasks, 
-          setTasks } = useTimer()
+          setTasks } = appState
 
   const [focusIcons, setFocusIcons] = useState([])
   const completedFocusBlocks = log.workCompleted % longBreakInterval
