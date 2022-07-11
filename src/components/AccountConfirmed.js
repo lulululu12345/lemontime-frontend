@@ -1,7 +1,7 @@
 import React from 'react'
 import accountService from '../services/account'
 import { Link, useParams } from 'react-router-dom'
-import { useTimer } from '../useTimer'
+import useTimer from '../useTimer'
 
 const AccountConfirmed = () => {
   const{ setShowLogin } = useTimer()

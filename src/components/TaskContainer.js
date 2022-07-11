@@ -2,11 +2,10 @@ import React from 'react'
 import TaskCard from './TaskCard'
 import TaskOptions from './TaskOptions'
 import AddTask from './AddTask'
-import { useTimer } from '../useTimer'
+import useTimer from '../useTimer'
 
 const TaskContainer = () => {
   const { selectedTask, setSelectedTask, tasks, setTasks, login, user } = useTimer()
-
   // let taskId
   const listTasks = tasks.map((task) => {
     return (

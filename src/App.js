@@ -6,7 +6,7 @@ import TaskContainer from './components/TaskContainer'
 import AccountConfirmed from './components/AccountConfirmed'
 import PasswordReset from './components/PasswordReset'
 import { Outlet, Routes, Route } from 'react-router-dom'
-import { useTimer } from './useTimer'
+import useTimer from './useTimer'
 
 import './App.css'
 
@@ -28,6 +28,7 @@ const App = () => {
       if (result === 'tick') setTime(prevTime => prevTime - 1000)
     }
   }
+
   return (
     <div className='App' style={{ visibility: ready ? 'visible' : 'hidden' }}>
       <header className='primary-header'>

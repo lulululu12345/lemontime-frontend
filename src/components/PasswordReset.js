@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import accountService from '../services/account'
-import { useTimer } from '../useTimer'
+import useTimer from '../useTimer'
 
 const PasswordReset = () => {
-  const { setShowLogin } = useTimer
+  const { setShowLogin } = useTimer()
   const [successful, setSuccessful] = useState(false)
 
   return (

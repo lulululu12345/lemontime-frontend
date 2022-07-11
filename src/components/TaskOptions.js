@@ -8,6 +8,7 @@ const TaskOptions = ({ user, tasks, setTasks }) => {
   const [dropdownContent, setDropdownContent] = useState('wrap-dropdown-content')
   const [toggleError, setToggleError] = useState(false)
 
+  console.log('user =', user)
 
   const handleShowSettings = () => {
     if ( dropdownContent === 'wrap-dropdown-content') {

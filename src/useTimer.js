@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react'
 
-export function useTimer() {
-  const [pomodoro, setPomodoro] = useState(
-    { 
-      name: 'pomodoro',
-      type: 'work', 
-      durMins: JSON.parse(localStorage.getItem('pomodoro')) || 25, 
-      get durMs(){
-        return this.durMins * 60000
-      }
-    }
-    
-    )
+const useTimer = () => {
+  
+  const [pomodoro, setPomodoro] = useState(1500000)
+
+  // const [pomodoro, setPomodoro] = useState(
+  //   { 
+  //     name: 'pomodoro',
+  //     type: 'work', 
+  //     durMins: JSON.parse(localStorage.getItem('pomodoro')) || 21, 
+  //     get durMs(){
+  //       return this.durMins * 60000
+  //     }
+  //   }  
+  // )
+
   const [shortBreak, setShortBreak] = useState(
     { 
       name: 'shortBreak', 
@@ -45,7 +48,8 @@ export function useTimer() {
   const [showLogin, setShowLogin] = useState(false)
   const [start, setStart] = useState(false)
   const [currentTimeBlock, setCurrentTimeBlock] = useState(pomodoro)
-  const [time, setTime] = useState(currentTimeBlock.durMs)
+  const [time, setTime] = useState(currentTimeBlock)
+  // const [time, setTime] = useState(currentTimeBlock.durMs)
   const [autoBreak, setAutoBreak] = useState(JSON.parse(localStorage.getItem('autoBreak')) || false)
   const [autoPomodoro, setAutoPomodoro] = useState(JSON.parse(localStorage.getItem('autoPomodoro')) || false)
   const [longBreakInterval, setLongBreakInterval] = useState(JSON.parse(localStorage.getItem('longBreakInterval')) || 4)
@@ -59,3 +63,5 @@ export function useTimer() {
 
   return { pomodoro, setPomodoro, shortBreak, setShortBreak, longBreak, setLongBreak, log, setLog, user, setUser, showLogin, setShowLogin, start, setStart, currentTimeBlock, setCurrentTimeBlock, time, setTime, autoBreak, setAutoBreak, autoPomodoro, setAutoPomodoro, longBreakInterval, setLongBreakInterval, selectedTask, setSelectedTask, tasks, setTasks, ready, setReady}
 }
+
+export default useTimer

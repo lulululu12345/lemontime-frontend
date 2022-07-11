@@ -5,7 +5,7 @@ import loginService from '../services/login'
 import signupService from '../services/signup'
 import accountService from '../services/account'
 import UserOptions from './UserOptions'
-import { useTimer } from '../useTimer'
+import useTimer from '../useTimer'
 
 import { CgClose } from 'react-icons/cg'
 import PopupMessage from './PopupMessage'
@@ -14,7 +14,7 @@ const LoginContainer = () => {
   const { user, setUser, showLogin, setTasks } = useTimer()
   const [form, setForm] = useState(null)
   const [userOptions, setUserOptions] = useState(null)
-
+  console.log('user =', user)
   // This effect checks to see if the user is signed in after mounting the LoginContainer component
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedTimerAppUser')

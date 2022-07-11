@@ -37,7 +37,6 @@ const EditTask = ({ tasks, setTasks, taskName, taskDur, taskNote, taskId, showTa
   }
 
   const deleteTask = () => {
-    console.log(taskId)
     setTasks(tasks.filter(task => task._id !== taskId))
   }
 

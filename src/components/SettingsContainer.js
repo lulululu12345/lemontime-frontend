@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import FocusDurationInput from './FocusDurationInput'
 import LongBreakSchedule from './LongBreakSchedule'
 import AutoRunBox from './AutoRunBox'
-import { useTimer } from '../useTimer'
+import useTimer from '../useTimer'
 
 import { CgClose } from 'react-icons/cg'
 
