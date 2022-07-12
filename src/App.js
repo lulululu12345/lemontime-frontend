@@ -16,7 +16,7 @@ const worker = new window.Worker('./timer-worker.js')
 const App = () => {
   // localStorage.clear()
 const appState = useTimer()
-const { setReady, setTime, ready, time } = appState
+const { setReady, setTime, ready } = appState
 
   React.useEffect(() => {
     setReady(true)
@@ -30,7 +30,7 @@ const { setReady, setTime, ready, time } = appState
       if (result === 'tick') setTime(prevTime => prevTime - 1000)
     }
   }
-  console.log('time = ', time)
+  
   return (
     <div className='App' style={{ visibility: ready ? 'visible' : 'hidden' }}>
       <header className='primary-header'>
