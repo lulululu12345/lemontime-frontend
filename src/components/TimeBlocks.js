@@ -1,9 +1,10 @@
 import React from 'react'
 
-const TimeBlocks = ({ setStart, setTime, setCurrentTimeBlock, pomodoro, shortBreak, longBreak }) => {
+const TimeBlocks = ({ runWorker, setStart, setTime, setCurrentTimeBlock, pomodoro, shortBreak, longBreak }) => {
   return (
     <div>
       <TimeBlockButton
+        runWorker={runWorker}
         setStart={setStart}
         setTime={setTime}
         setCurrentTimeBlock={setCurrentTimeBlock}
@@ -11,6 +12,7 @@ const TimeBlocks = ({ setStart, setTime, setCurrentTimeBlock, pomodoro, shortBre
         text='Pomodoro'
       />
       <TimeBlockButton
+        runWorker={runWorker}
         setStart={setStart}
         setTime={setTime}
         setCurrentTimeBlock={setCurrentTimeBlock}
@@ -18,6 +20,7 @@ const TimeBlocks = ({ setStart, setTime, setCurrentTimeBlock, pomodoro, shortBre
         text='Short Break'
       />
       <TimeBlockButton
+        runWorker={runWorker}
         setStart={setStart}
         setTime={setTime}
         setCurrentTimeBlock={setCurrentTimeBlock}

@@ -75,6 +75,7 @@ const TimerContainer = ({ runWorker, appState }) => {
       <div className='card-timer-container'>
         <div className='wrap-pomodoro'>
           <TimeBlockButton
+            runWorker={runWorker}
             setStart={setStart}
             setTime={setTime}
             currentTimeBlock={currentTimeBlock}
@@ -85,6 +86,7 @@ const TimerContainer = ({ runWorker, appState }) => {
         </div>
         <div className='wrap-short-break'>
           <TimeBlockButton
+            runWorker={runWorker}
             setStart={setStart}
             setTime={setTime}
             currentTimeBlock={currentTimeBlock}
@@ -95,6 +97,7 @@ const TimerContainer = ({ runWorker, appState }) => {
         </div>
         <div className='wrap-long-break'>
           <TimeBlockButton
+            runWorker={runWorker}
             setStart={setStart}
             setTime={setTime}
             currentTimeBlock={currentTimeBlock}

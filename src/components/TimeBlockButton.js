@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const TimeBlockButton = ({ setStart, setTime, currentTimeBlock, setCurrentTimeBlock, newBlock, text }) => {
+const TimeBlockButton = ({ runWorker, setStart, setTime, currentTimeBlock, setCurrentTimeBlock, newBlock, text }) => {
   const [className, setClassName] = useState('button btn-time-block')
   
   useEffect(() => {
@@ -12,6 +12,7 @@ const TimeBlockButton = ({ setStart, setTime, currentTimeBlock, setCurrentTimeBl
   }, [currentTimeBlock])
 
   const onClickBlock = () => {
+    runWorker('stop-timer')
     setStart(false)
     setTime(newBlock.durMs)
     setCurrentTimeBlock(newBlock)
