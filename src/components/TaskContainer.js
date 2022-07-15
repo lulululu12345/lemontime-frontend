@@ -5,24 +5,6 @@ import AddTask from './AddTask'
 
 const TaskContainer = ({ appState }) => {
   const { selectedTask, setSelectedTask, tasks, setTasks, login, user } = appState
-  // let taskId
-  const listTasks = tasks.map((task) => {
-    return (
-      <TaskCard 
-        key={task._id} 
-        taskId={task._id}
-        taskName={task.name} 
-        taskDur={task.dur} 
-        taskNote={task.note} 
-        blocksCompleted={task.blocksCompleted} 
-        selectedTask={selectedTask} 
-        setSelectedTask={setSelectedTask}
-        tasks={tasks}
-        setTasks={setTasks}
-        login={login}
-      />
-    ) 
-  })
   return (
     <div className='section-task-container'>
       <div className='wrap-task-container-header'>
@@ -34,9 +16,19 @@ const TaskContainer = ({ appState }) => {
         />
       </div>
       <div>
-        {tasks
-          ? listTasks
-          : null
+        {tasks && tasks.map(task => <TaskCard 
+            key={task._id} 
+            taskId={task._id}
+            taskName={task.name} 
+            taskDur={task.dur} 
+            taskNote={task.note} 
+            blocksCompleted={task.blocksCompleted} 
+            selectedTask={selectedTask} 
+            setSelectedTask={setSelectedTask}
+            tasks={tasks}
+            setTasks={setTasks}
+            login={login}
+          />)
         }
       </div>
       <AddTask 
