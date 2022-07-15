@@ -7,16 +7,17 @@ const TaskCard = ({ taskName, taskDur, taskNote, blocksCompleted, selectedTask, 
   const [showTaskForm, setShowTaskForm] = useState(false)
   const [classes, setClasses] = useState('')
 
-  const onCardClick = (event) => {
-    const eventId = event.target.id
-    setSelectedTask(eventId)
-    if (classes !== '') {
+  const onCardClick = (e) => {
+    setSelectedTask(taskId)
+  }
+
+  React.useEffect(() => {
+    if (selectedTask === taskId) {
+      setClasses('card-task-selected')
+    } else {
       setClasses('')
     }
-    if (classes === '') {
-      setClasses('card-task-selected')
-    }
-  }
+  }, [selectedTask, taskId])
 
   const onEditClick = () => {
     setShowTaskForm(true)
