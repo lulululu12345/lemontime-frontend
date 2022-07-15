@@ -16,7 +16,8 @@ const TaskContainer = ({ appState }) => {
         />
       </div>
       <div>
-        {tasks && tasks.map(task => <TaskCard 
+        {tasks && tasks.map(task => 
+          <TaskCard 
             key={task._id} 
             taskId={task._id}
             taskName={task.name} 
