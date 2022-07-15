@@ -49,7 +49,7 @@ const useTimer = () => {
   const [autoBreak, setAutoBreak] = useState(JSON.parse(localStorage.getItem('autoBreak')) || false)
   const [autoPomodoro, setAutoPomodoro] = useState(JSON.parse(localStorage.getItem('autoPomodoro')) || false)
   const [longBreakInterval, setLongBreakInterval] = useState(JSON.parse(localStorage.getItem('longBreakInterval')) || 4)
-  const [selectedTask, setSelectedTask] = useState(false)
+  const [selectedTask, setSelectedTask] = useState(null)
   const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || [])
   const [ready, setReady] = useState(false)
 
