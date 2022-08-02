@@ -15,8 +15,8 @@ const worker = new window.Worker('./timer-worker.js')
 
 const App = () => {
   // localStorage.clear()
-const appState = useTimer()
-const { setReady, setTime, ready } = appState
+  const appState = useTimer()
+  const { setReady, setTime, ready } = appState
 
   React.useEffect(() => {
     setReady(true)

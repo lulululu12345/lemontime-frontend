@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTimeBlock, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog, selectedTask, setSelectedTask, tasks, setTasks }) => {
+const Timer = ({ time, setTime, start, setStart, currentTimeBlock, setCurrentTimeBlock, pomodoro, shortBreak, longBreak, autoBreak, autoPomodoro, longBreakInterval, log, setLog, selectedTask, setSelectedTask, tasks, setTasks, runWorker }) => {
   // Stop countdown when timer reaches zero and add completed TimeBlock to log
   useEffect(() => {
     // If the time prop has reached 0 (timer has completed)
     if (time === 0) {
       // Stop the timer
+      runWorker('stop-timer')
       setStart(false)
       // If the timer just completed a pomodoro
       if (currentTimeBlock.type === 'work') {

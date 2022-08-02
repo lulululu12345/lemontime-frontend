@@ -125,6 +125,7 @@ const TimerContainer = ({ runWorker, appState }) => {
           setSelectedTask={setSelectedTask}
           tasks={tasks}
           setTasks={setTasks}
+          runWorker={runWorker}
         />
         <div className='wrap-reset'>
           <ResetButton 
